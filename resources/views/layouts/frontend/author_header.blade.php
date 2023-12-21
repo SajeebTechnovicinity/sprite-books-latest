@@ -34,7 +34,14 @@
                 </div>
             </div>
             <div class="right-side">
-                <div class="yes-no-btn">
+                <div class="author-type">
+                    <ul>
+                        <li>Reader</li>
+                        <li class="active">Author</li>
+                        <li>Publisher</li>
+                    </ul>
+                </div>
+                <!-- <div class="yes-no-btn">
                     <input type="checkbox" name="profile-type" class="checkbox" id="reader" />
                     <label for="reader" class="switch">
                         @if (session('type') == 'AUTHOR')
@@ -45,7 +52,7 @@
                             <span class="author">Author</span>
                         @endif
                     </label>
-                </div>
+                </div> -->
                 <div class="user-profile">
                     <span class="btn-trigger" data-target="#profile-dropdown">
                         <img height="60px" width="60px"

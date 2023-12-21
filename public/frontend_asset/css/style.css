@@ -6631,3 +6631,35 @@ iframe{
 .accordion{
   margin: 5px 0;
 }
+
+.author-type{}
+.author-type ul{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+  background-color: #efefef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.author-type ul li{
+  padding: 12px 18px;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  font-size: 15px;
+}
+
+.author-type ul li.active{
+  background-color: var(--color-highlight);
+  color: #000000;
+  border: 0!important;
+}
+
+.author-type ul li:first-child{
+  border-left: 0!important;
+}
+
+.author-type ul li:last-child{
+  border-right: 0!important;
+}
