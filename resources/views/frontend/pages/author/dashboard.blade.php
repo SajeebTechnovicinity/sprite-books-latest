@@ -37,11 +37,21 @@
                         <textarea name="book_description" id="dsc" class="textarea" required></textarea>
                     </div>
 
+                       <div class="form-field">
+                        <label for="dsc" class="label">Select Genere*</label>
+                        <select class="input form-control" name="genere_id" required>
+                            @foreach ($generes as $row)
+                                <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="links" class="label">Book Amazon Links*</label>
+                            <label for="links" class="label">Book Amazon Links</label>
                             <input type="text" name="book_amazon_link" id="links" class="input"
-                                placeholder="Max 250 character" required />
+                                placeholder="" />
                         </div>
 
                     </div>
@@ -49,9 +59,9 @@
 
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="links" class="label">Book Ebay Links*</label>
+                            <label for="links" class="label">Book Ebay Links</label>
                             <input type="text" name="book_ebay_link" id="links" class="input"
-                                placeholder="Max 250 character" required />
+                                placeholder=""  />
                         </div>
                         {{-- <div class="add">
                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
@@ -70,10 +80,12 @@
                         </div> --}}
                     </div>
 
+                    
+
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Book Discount in Percentage*</label>
-                            <input type="number" name="book_discount_in_percentage" class="input" placeholder="" />
+                            <input type="number" name="book_discount_in_percentage" class="input" placeholder="" required/>
                         </div>
 
                     </div>
@@ -81,7 +93,7 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show</label>
-                            <input type="number" name="book_price" class="input" placeholder="Price" />
+                            <input type="number" name="book_price" class="input" placeholder="Price" required/>
                         </div>
 
                         <div class="form-field">
@@ -89,7 +101,7 @@
                             <input type="number" name="hard_book_price" class="input" placeholder="HardBook" required />
                         </div>
                         <div class="form-field">
-                            <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
+                            <input type="number" name="ebook_price" class="input" placeholder="Ebook" required/>
                         </div>
                     </div>
 
@@ -103,7 +115,7 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach File(s)*
+                            Attach File(Max 512 KB)*
                         </label>
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
@@ -119,10 +131,10 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach Video*
+                            Attach Video(Max 5 MB)
                         </label>
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
-                            accept="video/*" required />
+                            accept="video/*" />
                     </div>
 
                     <div class="btn-group">

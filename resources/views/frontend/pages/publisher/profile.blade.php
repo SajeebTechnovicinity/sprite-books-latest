@@ -53,12 +53,12 @@
 
                     <div class="form-field">
                         <label for="dsc" class="label">Book Description*</label>
-                        <textarea name="book_description" id="dsc" class="textarea"></textarea>
+                        <textarea name="book_description" id="dsc" class="textarea" required></textarea>
                     </div>
 
                     <div class="form-field">
                         <label for="dsc" class="label">Select Genere*</label>
-                        <select class="input form-control" name="genere_id">
+                        <select class="input form-control" name="genere_id" required>
                             @foreach ($generes as $row)
                                 <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
                             @endforeach
@@ -67,7 +67,7 @@
 
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="links" class="label">Book Amazon Links*</label>
+                            <label for="links" class="label">Book Amazon Links</label>
                             <input type="text" name="book_amazon_link" id="links" class="input" />
                         </div>
 
@@ -76,7 +76,7 @@
 
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="links" class="label">Book Ebay Links*</label>
+                            <label for="links" class="label">Book Ebay Links</label>
                             <input type="text" name="book_ebay_link" id="links" class="input" />
                         </div>
                         {{-- <div class="add">
@@ -129,7 +129,7 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach File*
+                            Attach File (Max 512 KB)*
                         </label>
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
@@ -145,10 +145,10 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach Video (Max 5 MB)*
+                            Attach Video (Max 5 MB)
                         </label>
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
-                            accept="video/*" required />
+                            accept="video/*" />
                     </div>
 
                     <div class="btn-group">
@@ -824,12 +824,12 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Sl</th>
-                                                            <th>Code</th>
-                                                            <th>Name</th>
+                                                            {{-- <th>Code</th> --}}
+                                                            <th>First Name</th>
                                                             <th>Last Name</th>
                                                             <th>Email</th>
                                                             <th>Phone</th>
-                                                            <th>Country</th>
+                                                            {{-- <th>Country</th> --}}
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -840,9 +840,9 @@
                                                                     {{ $loop->iteration }}
                                                                 </td>
 
-                                                                <td>
+                                                                {{-- <td>
                                                                     {{ $list->author_code }}
-                                                                </td>
+                                                                </td> --}}
                                                                 <td>
                                                                     {{ $list->author_name }}
                                                                 </td>
@@ -855,9 +855,9 @@
                                                                 <td>
                                                                     {{ $list->author_phone }}
                                                                 </td>
-                                                                <td>
+                                                                {{-- <td>
                                                                     {{ $list->author_country }}
-                                                                </td>
+                                                                </td> --}}
 
                                                                 <td>
                                                                     <div class="table-actions">

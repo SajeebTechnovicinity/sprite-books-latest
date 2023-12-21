@@ -30,7 +30,7 @@
                   <a href="{{url('blogs/'.$row->id)}}" class="name">{{$row->blog_name}}</a>
                   <p class="bio"></p>
                   <p class="dsc">
-                    {{$row->blog_short_description}}
+                    {{ \Illuminate\Support\Str::limit($row->blog_short_description, 100, '...') }}
                   </p>
                    <p class="dsc">
                         Publisher: {{$row->author->author_name}}

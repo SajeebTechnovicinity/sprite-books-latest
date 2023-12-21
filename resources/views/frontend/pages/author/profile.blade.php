@@ -51,12 +51,12 @@
 
                     <div class="form-field">
                         <label for="dsc" class="label">Book Description*</label>
-                        <textarea name="book_description" id="dsc" class="textarea"></textarea>
+                        <textarea name="book_description" id="dsc" class="textarea" required></textarea>
                     </div>
 
                     <div class="form-field">
                         <label for="dsc" class="label">Select Genere*</label>
-                        <select class="input form-control" name="genere_id">
+                        <select class="input form-control" name="genere_id" required>
                             @foreach ($generes as $row)
                                 <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
                             @endforeach
@@ -78,7 +78,7 @@
                             <input type="text" name="isbn_13" id="isbn_13" class="input" @readonly(true) />
                         </div> --}}
                     <div class="form-field">
-                        <label for="links" class="label">Book Amazon Links*</label>
+                        <label for="links" class="label">Book Amazon Links</label>
                         <input type="text" name="book_amazon_link" id="links" class="input" />
                     </div>
 
@@ -86,8 +86,8 @@
 
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="links" class="label">Book Ebay Links*</label>
-                            <input type="text" name="book_ebay_link" id="links" class="input" required />
+                            <label for="links" class="label">Book Ebay Links</label>
+                            <input type="text" name="book_ebay_link" id="links" class="input" />
                         </div>
                         {{-- <div class="add">
                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
@@ -140,7 +140,7 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach File*
+                            Attach File(Max 512 KB)*
                         </label>
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
@@ -156,10 +156,10 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach Video*
+                            Attach Video (Max 5 MB)
                         </label>
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
-                            accept="video/*" required />
+                            accept="video/*" />
                     </div>
 
                     <div class="btn-group">

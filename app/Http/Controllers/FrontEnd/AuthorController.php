@@ -140,6 +140,7 @@ class AuthorController extends Controller
         if (session('author_id')) {
             $data['author'] = Author::whereId(session('author_id'))->get();
             $data['authors'] = Author::whereType('AUTHOR')->orderBy('id', 'desc')->get();
+            $data['generes'] = Genere::all();
             $data['followed_authors'] = AuthorFollower::whereType('AUTHOR')->whereFollowedBy(session('author_id'))->orderBy('id', 'desc')->get();
             return view('frontend.pages.author.dashboard', $data);
         }
@@ -283,10 +284,10 @@ class AuthorController extends Controller
             Session::flash('wrong', 'Image File is required');
             return back();
         }
-        if (!$request->video_file_updoad) {
-            Session::flash('wrong', 'Video File is required');
-            return back();
-        }
+        // if (!$request->video_file_updoad) {
+        //     Session::flash('wrong', 'Video File is required');
+        //     return back();
+        // }
 
         $file=$request->file_updoad;
         // Check the file size
@@ -298,14 +299,18 @@ class AuthorController extends Controller
             return back();
         }
 
-        $file=$request->video_file_updoad;
-        // Check the file size
-        $maxFileSize = 5160; // Maximum file size in kilobytes (5 MB)
-        $fileSize = $file->getSize();
+        if ($request->video_file_updoad) {
 
-        if ($fileSize > $maxFileSize * 1024) {
-            Session::flash('wrong', 'Maximum video file size 5MB');
-            return back();
+            $file=$request->video_file_updoad;
+            // Check the file size
+            $maxFileSize = 5160; // Maximum file size in kilobytes (5 MB)
+            $fileSize = $file->getSize();
+
+            if ($fileSize > $maxFileSize * 1024) {
+                Session::flash('wrong', 'Maximum video file size 5MB');
+                return back();
+            }
+
         }
         // echo '<pre>';print_r($request->all());die;
         $book = new Book;
