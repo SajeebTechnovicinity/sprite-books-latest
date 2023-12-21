@@ -36,21 +36,21 @@
             <div class="right-side">
                 <div class="author-type">
                     <ul>
-                        <li>Reader</li>
-                        <li class="active">Author</li>
-                        <li>Publisher</li>
+                        <li @if (Session::get('type') == 'USER') class="active" @endif>Reader</li>
+                        <li @if (Session::get('type') == 'AUTHOR') class="active" @endif>Author</li>
+                        <li @if (Session::get('type') == 'PUBLISHER') class="active" @endif>Publisher</li>
                     </ul>
                 </div>
                 <!-- <div class="yes-no-btn">
                     <input type="checkbox" name="profile-type" class="checkbox" id="reader" />
                     <label for="reader" class="switch">
                         @if (session('type') == 'AUTHOR')
-                            <span class="reader">Reader</span>
+<span class="reader">Reader</span>
                             <span class="author">Author</span>
-                        @elseif (session('type') == 'USER')
-                            <span class="reader">Reader</span>
+@elseif (session('type') == 'USER')
+<span class="reader">Reader</span>
                             <span class="author">Author</span>
-                        @endif
+@endif
                     </label>
                 </div> -->
                 <div class="user-profile">
@@ -79,7 +79,7 @@
                         <ul class="links">
                             <li>
 
-                                <a href="@if (session('type') == 'AUTHOR') {{ url('author/profile') }} @elseif(session('type') == 'USER') {{ url('user/profile') }} @else {{ url('publisher/profile') }}  @endif"
+                                <a href="@if (session('type') == 'AUTHOR') {{ url('author/profile') }} @elseif(session('type') == 'USER') {{ url('user/profile') }} @else {{ url('publisher/profile') }} @endif"
                                     class="link">
                                     <span class="icon">
                                         <svg width="23" height="21" viewBox="0 0 23 21" fill="none"

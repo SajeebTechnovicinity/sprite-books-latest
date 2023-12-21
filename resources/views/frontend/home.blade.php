@@ -471,12 +471,18 @@
                 <p class="text">
                     {!! $globalSetting->section4_details !!}
                 </p>
-                <a href="{{ $globalSetting->section4_button_url }}" class="sign-up-btn"
-                    target="_black">{{ $globalSetting->section4_button_text }}</a>
+                @if (session('type') == null)
+                    <a href="{{ $globalSetting->section4_button_url }}" class="sign-up-btn"
+                         onclick="confirmCancellation(event)">{{ $globalSetting->section4_button_text }}</a>
+                @else
+                    <a href="{{ $globalSetting->section4_button_url }}" class="sign-up-btn"
+                        >{{ $globalSetting->section4_button_text }}</a>
+                @endif
+                
             </div>
         </div>
     </section>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         $("#add_btn").click(function() {
             $('.loader').show();
@@ -520,5 +526,25 @@
             });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function confirmCancellation(event) {
+            event.preventDefault(); // Prevent the default action of the link
 
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Please login first!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, login please!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user clicks "Yes," proceed with the cancellation
+                    window.location.href = "{{ url('user/login') }}";
+                }
+            });
+        }
+    </script>
 @endsection

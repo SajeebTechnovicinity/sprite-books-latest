@@ -74,7 +74,7 @@
                                     {{ $row->blog_name }}
                                 </td>
                                 <td>
-                                    {{ $row->blog_short_description }}
+                                    {{ \Illuminate\Support\Str::limit($row->blog_short_description, 100, '...') }}
                                 </td>
 
                                 <td>

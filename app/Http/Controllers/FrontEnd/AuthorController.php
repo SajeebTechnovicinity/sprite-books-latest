@@ -20,12 +20,39 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class AuthorController extends Controller
 {
     public function author_login()
     {
         return view('frontend.pages.account.author.login');
+    }
+
+    public function getTopAuthors($topCount = 10)
+    {
+        if (session('author_id')) {
+            $data['author'] = Author::whereId(session('author_id'))->get();
+            $data['generes'] = Genere::all();
+        
+            // Retrieve authors and their follower counts
+            $authorsWithFollowerCounts = Author::
+                select('author.*', DB::raw('COUNT(author_followers.id) as follower_count'))
+                ->leftJoin('author_followers', 'author.id', '=', 'author_followers.author_id')
+                ->where('author.type','AUTHOR')
+                ->groupBy('author.id')
+                ->orderByDesc('follower_count')
+                ->take($topCount)
+                ->get();
+        
+            $data['authors'] = $authorsWithFollowerCounts;
+        
+            $data['followed_authors'] = AuthorFollower::whereType('AUTHOR')
+                ->whereFollowedBy(session('author_id'))
+                ->orderBy('id', 'desc')
+                ->get();
+            return view('frontend.pages.author.dashboard', $data);
+        }
     }
 
 
@@ -322,8 +349,10 @@ class AuthorController extends Controller
             $book->author_id = session('author_id');
         }
         if ($request->author_define) {
+            //return $book->publisher_id;
             if ($request->author_define == "Publisher") {
                 $book->author_id = session('author_id');
+                $book->publisher_id = session('author_id');
             }
         }
 

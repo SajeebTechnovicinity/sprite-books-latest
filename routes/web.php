@@ -156,6 +156,8 @@ Route::get('settings',[AuthorController::class,'author_settings'])->name('author
 Route::post('save-informations',[AuthorController::class,'save_informations'])->name('post-save-informations');
 Route::get('author/membership-plan',[AuthorController::class,'membership_plan'])->name('author-membership-plan');
 
+Route::get('/top-authors/{topCount?}', [AuthorController::class,'getTopAuthors'])->name('topAuthors');
+
 Route::get('author-events/{any}',[AuthorController::class,'author_public_events'])->name('author-public-events');
 Route::post('authors-get-event',[AuthorController::class,'authors_get_event'])->name('authors-get-event');
 Route::post('author/update-event',[EventController::class,'update_event'])->name('author/update-event');
