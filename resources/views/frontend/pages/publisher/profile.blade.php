@@ -28,14 +28,15 @@
                      <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
                     <div class="form-field">
                         <label for="isbn" class="label">ISBN*</label>
-                        <input type="text" name="isbn" id="#isbn" class="input" onblur="handleInput()" required/>
+                        <div class="has-loader">
+                            <span class="loader" style="display: none;"></span>
+                            <input type="text" name="isbn" id="#isbn" class="input" onblur="handleInput()" required/>
+                        </div>
                     </div>
                     <div class="form-field">
                         <label for="isbn" class="label">Role*</label>
-                        <input type="radio" value="Publisher" name="author_define" required>
-                        <label for="html">Publisher</label>
-                        <input type="radio" value="Author" name="author_define" required>
-                        <label for="html">Author</label>
+                        <label><input type="radio" value="Publisher" name="author_define" required> Publisher</label>
+                        <label><input type="radio" value="Author" name="author_define" required> Author</label>
                     </div>
                     <div class="form-field">
                         <label for="text-area" id="author_text">Author </label>
@@ -107,7 +108,7 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show</label>
-                            <input type="number" name="book_price" class="input" placeholder="Price" required/>
+                            <input type="number" name="book_price" class="input" placeholder="Price"/>
                         </div>
 
                         <div class="form-field">
@@ -115,7 +116,7 @@
                             <input type="number" name="hard_book_price" class="input" placeholder="HardBook" required/>
                         </div>
                         <div class="form-field">
-                            <input type="number" name="ebook_price" class="input" placeholder="Ebook" required/>
+                            <input type="number" name="ebook_price" class="input" placeholder="Ebook"/>
                         </div>
                     </div>
 
@@ -1359,7 +1360,8 @@
 
             console.log(isbn);
             $("#invalid-isbn").empty();
-            showCalimaticLoader();
+            // showCalimaticLoader();
+            $('.has-loader .loader').css('display', 'block');
 
             // Make an API call
             var apiUrl = "https://api2.isbndb.com/book/" + isbn;
@@ -1375,7 +1377,8 @@
                 success: function(response) {
                     // Request was successful, process the response
                     console.log(response);
-                    HideCalimaticLoader();
+                    // HideCalimaticLoader();
+                    $('.has-loader .loader').css('display', 'none');
                     // Process the bookData here
                 },
                 error: function(xhr) {
@@ -1386,7 +1389,8 @@
                             'color': 'red',
                             'display': 'block'
                         });
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     } else if (xhr.status == 429) {
                         // Too Many Requests error
                         console.log("Error: Limit Exceeded");
@@ -1394,7 +1398,8 @@
                             'color': 'red',
                             'display': 'block'
                         });;
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     } else {
                         // Handle other status codes
                         console.log("Error: Unexpected status code " + xhr.status);
@@ -1402,12 +1407,13 @@
                             'color': 'red',
                             'display': 'block'
                         });;
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     }
                 },
-                
+
             });
-            
+
         }
     </script>
 @endsection
