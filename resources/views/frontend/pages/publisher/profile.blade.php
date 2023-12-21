@@ -48,7 +48,7 @@
 
                     <div class="form-field">
                         <label for="title" class="label">Book Title*</label>
-                        <input type="text" name="book_name" id="title" class="input" />
+                        <input type="text" name="book_name" id="title" class="input" required/>
                     </div>
 
                     <div class="form-field">
@@ -99,7 +99,7 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Book Discount in Percentage*</label>
-                            <input type="number" name="book_discount_in_percentage" class="input" placeholder="" />
+                            <input type="number" name="book_discount_in_percentage" class="input" placeholder="" required/>
                         </div>
 
                     </div>
@@ -107,15 +107,15 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show</label>
-                            <input type="number" name="book_price" class="input" placeholder="Price" />
+                            <input type="number" name="book_price" class="input" placeholder="Price" required/>
                         </div>
 
                         <div class="form-field">
                             <label class="label">Book Price*</label>
-                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook" />
+                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook" required/>
                         </div>
                         <div class="form-field">
-                            <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
+                            <input type="number" name="ebook_price" class="input" placeholder="Ebook" required/>
                         </div>
                     </div>
 
