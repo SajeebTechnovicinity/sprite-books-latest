@@ -28,12 +28,12 @@
     
                     <div class="form-group col-md-12">
                         <label for="title" class="label">Blog short Description*</label>
-                        <textarea name="blog_short_description" class="form-control">{{$blog->blog_short_description}}</textarea>
+                        <textarea name="blog_short_description" class="form-control">{!!$blog->blog_short_description!!}</textarea>
                     </div>
     
                     <div class="form-group col-md-12">
                         <label for="title" class="label">Blog Description*</label>
-                        <textarea name="blog_full_description" class="form-control" id="summernote">{{$blog->blog_full_description}}</textarea>
+                        <textarea name="blog_full_description" class="form-control" id="summernote">{!!$blog->blog_full_description!!}</textarea>
                     </div>
     
                     <div class="form-group col-md-12">

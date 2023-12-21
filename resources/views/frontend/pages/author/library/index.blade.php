@@ -24,7 +24,7 @@
 
 
                 <div class="form-field">
-                    <label for="dsc" class="label">Select Genere*</label>
+                    <label for="dsc" class="label">Select Genre*</label>
                     <select class="input form-control" name="genere_id" required>
                         @foreach ($generes as $row)
                         <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
