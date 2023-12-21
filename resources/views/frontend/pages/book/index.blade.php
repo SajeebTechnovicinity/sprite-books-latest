@@ -460,9 +460,24 @@
                             </div>
                             <div class="tab-body">
                                 <div class="tab-body__inner" id="book-dsc">
-                                    <p class="dsc">
-                                        {{ $book->book_description }}
-                                    </p>
+                                  <?php
+                                            $li_class = '';
+
+                                            $paragraphs = explode("\n", $book->book_description);
+
+                                            for ($i = 0; $i < count ($paragraphs); $i++)
+                                            {
+                                                if(ord($paragraphs[$i][0])!==13){
+                                                    $paragraphs[$i] = '<p>' . $paragraphs[$i] . '</p>';
+                                                }
+                                            }
+                                            $content = implode('', $paragraphs);
+                                            $content = preg_replace('~\s?<p>\n</p>\s?~', '', $content);
+                                            if(count($paragraphs) ===1){
+                                                $li_class = 'no-list';
+                                            }
+                                            ?>
+                                            {!! $content !!}
                                 </div>
                                 <div class="tab-body__inner author-details-body d-none" id="author-details">
                                     <div class="author-info">

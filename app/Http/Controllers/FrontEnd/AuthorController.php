@@ -210,7 +210,7 @@ class AuthorController extends Controller
     public function add_books(Request $request)
     {
 
-        
+        //return $request;
 
         if (!$request->isbn) {
             Session::flash('wrong', 'Isbn is required');
