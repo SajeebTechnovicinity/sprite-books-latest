@@ -207,9 +207,12 @@
                             <div class="select-wrap">
                                 <select name="topCount" class="select"
                                     onchange="window.location.href = '{{ route('topAuthors') }}/' + this.value;">
-                                    <option value="10">Top 10</option>
-                                    <option value="5">Top 5</option>
-                                    <option value="3">Top 3</option>
+                                    <option value="10" {{ Request::is('top-authors/10') ? 'selected' : '' }}>Top 10
+                                    </option>
+                                    <option value="5" {{ Request::is('top-authors/5') ? 'selected' : '' }}>Top 5
+                                    </option>
+                                    <option value="3" {{ Request::is('top-authors/3') ? 'selected' : '' }}>Top 3
+                                    </option>
                                 </select>
                             </div>
                         </div>
