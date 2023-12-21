@@ -5,6 +5,47 @@
         span.select2.select2-container.select2-container--default {
             width: 450px !important;
         }
+
+        .conf-top label{
+            display: block;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .conf-top{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 30px;
+            list-style: none;
+            padding: 0 0 20px;
+        }
+
+        @media (min-width:1400px) and (max-width: 1600px){
+            .conf-top{
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width:680px) and (max-width: 1399px){
+            .conf-top{
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 679px){
+            .conf-top{
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        .conf-top li img{
+            height: 100px;
+        }
+        .conf-top li{
+            padding: 22px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
     </style>
     <br>
     <div class="col-12">
@@ -36,44 +77,62 @@
             <div class="card-body">
                 <form action="{{ url('admin/configuration/update') }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <ul class="conf-top">
                     @if ($globalSetting->app_logo)
-                        <label for="Name">Previous App Logo</label>
-                        <img src="{{ asset($globalSetting->app_logo) }}" height="100px" width="200px">
+                        <li>
+                            <label for="Name">Previous App Logo</label>
+                            <img src="{{ asset($globalSetting->app_logo) }}">
+                        </li>
                     @endif
                     {{-- @if ($globalSetting->hero_image)
-                        <label for="Name">Previous Hero Image</label>
-                        <img src="{{ asset($globalSetting->hero_image) }}" height="100px" width="200px">
+                        <li>
+                            <label for="Name">Previous Hero Image</label>
+                            <img src="{{ asset($globalSetting->hero_image) }}">
+                        </li>
                     @endif --}}
                     @if ($globalSetting->section1_image)
+                    <li>
                         <label for="Name">Previous Section1 Image</label>
-                        <img src="{{ asset($globalSetting->section1_image) }}" height="100px" width="200px">
+                        <img src="{{ asset($globalSetting->section1_image) }}">
+                    </li>
                     @endif
                     @if ($globalSetting->section2_image)
+                    <li>
                         <label for="Name">Previous Section2 Image</label>
-                        <img src="{{ asset($globalSetting->section2_image) }}" height="100px" width="200px">
+                        <img src="{{ asset($globalSetting->section2_image) }}">
+                    </li>
                     @endif
                     @if ($globalSetting->section3_image)
+                    <li>
                         <label for="Name">Previous Section3 Image</label>
-                        <img src="{{ asset($globalSetting->section3_image) }}" height="100px" width="200px">
+                        <img src="{{ asset($globalSetting->section3_image) }}">
+                    </li>
                     @endif
                     @if ($globalSetting->section2_icon1)
+                    <li>
                         <label for="Name">Previous Section2 Icon1</label>
-                        <img src="{{ asset($globalSetting->section2_icon1) }}" height="100px" width="200px">
+                        <img src="{{ asset($globalSetting->section2_icon1) }}">
+                    </li>
                     @endif
                     @if ($globalSetting->section2_icon2)
+                    <li>
                         <label for="Name">Previous Section2 Icon2</label>
-                        <img src="{{ asset($globalSetting->section2_icon2) }}" height="100px" width="200px">
+                        <img src="{{ asset($globalSetting->section2_icon2) }}">
+                    </li>
                     @endif
                     @if ($globalSetting->section2_icon3)
+                    <li>
                         <label for="Name">Previous Section2 Icon3</label>
-                        <img src="{{ asset($globalSetting->section2_icon3) }}" height="100px" width="200px">
+                        <img src="{{ asset($globalSetting->section2_icon3) }}">
+                    </li>
                     @endif
                     @if ($globalSetting->section2_icon4)
+                    <li>
                         <label for="Name">Previous Section2 Icon4</label>
-                        <img src="{{ asset($globalSetting->section2_icon4) }}" height="100px" width="200px">
+                        <img src="{{ asset($globalSetting->section2_icon4) }}">
+                    </li>
                     @endif
-                    <br>
-                    <br>
+                    </ul>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Name">App Name</label>
@@ -134,7 +193,7 @@
                                 placeholder="Enter section1 image">
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Name">Section2 Heading</label>
