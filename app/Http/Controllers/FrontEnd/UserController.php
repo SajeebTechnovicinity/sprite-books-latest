@@ -63,7 +63,15 @@ class UserController extends Controller
             return redirect()->back()->with('msg',"Credentials already used by another user.");
         }
 
+        if(Author::count()!=0)
+        {
             $authorId = Author::orderBy('id','desc')->first()->id;
+        }
+        else
+        {
+            $authorId = 1;
+        }
+            
 
         $author = Author::create([
             'author_name' => $request->author_name,
