@@ -198,6 +198,9 @@
                                     Community
                                 </a>
                             </li>
+                           
+                            
+                             --}}
                             <li class="tab-item">
                                 <a href="{{url('author/events')}}" class="tab-link">
                                     <span class="icon">
@@ -223,5 +226,5 @@
                                     </span>
                                     Events
                                 </a>
-                            </li> --}}
+                            </li>
                 </ul>

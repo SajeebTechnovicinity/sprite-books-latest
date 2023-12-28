@@ -116,6 +116,7 @@
                             </span>
                             Attach File(Max 512 KB)*
                         </label>
+                         (Recommanded: 300x300 px)
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
                     </div>
@@ -247,10 +248,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button class="follower-btn" id="author{{ $row->id }}"
-                                                    onclick="followAuthor({{ $row->id }})">
-                                                    Follow
-                                                </button>
+                                            <button class="follower-btn" id="author{{ $row->id }}" onclick="followedAuthor({{ $row->id }})">
+    Follow
+</button>
                                             </div>
                                             <div class="author-block__body flex-equal">
                                                 <div class="author-block__imgs flex-wrap">
@@ -336,10 +336,9 @@
         </div>
         </div>
     </section>
-
-    <script>
-        function followAuthor(authorId) {
-            $('.loader').show();
+<script>
+    function followedAuthor(authorId) {
+        $('.loader').show();
             $(".error_msg").html('');
             var data = new FormData($('#add_form')[0]);
 
@@ -353,9 +352,10 @@
                     author_id: authorId
                 },
                 success: function(data, textStatus, jqXHR) {
+                    console.log(data);
                     if (data.status == 1) {
 
-                        $('#author' + authorId).text('Follwing');
+                        $('#author' + authorId).text('Following');
                     }
 
                 }
@@ -371,7 +371,10 @@
                 });
             });
             $('.loader').hide();
-        }
+    }
+</script>
+    <script>
+       
 
         function UnfollowAuthor(Id) {
             $('.loader').show();

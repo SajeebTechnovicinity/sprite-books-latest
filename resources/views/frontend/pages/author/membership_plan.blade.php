@@ -85,9 +85,9 @@
                                                 Create upto {{ $row->max_no_of_events }} Events
                                             </li>
 
-                                            <li class="plan__item">
+                                            {{-- <li class="plan__item">
                                                 Add Upto {{ $row->max_no_of_video_promotion }} Video Promotion
-                                            </li>
+                                            </li> --}}
 
                                             {!! $row->membership_plan_description !!}
                                         </ul>
@@ -144,9 +144,9 @@
                                                 Create upto {{ $row->max_no_of_events }} Events
                                             </li>
 
-                                            <li class="plan__item">
+                                            {{-- <li class="plan__item">
                                                 Add Upto {{ $row->max_no_of_video_promotion }} Video Promotion
-                                            </li>
+                                            </li> --}}
 
                                             {!! $row->membership_plan_description !!}
                                         </ul>

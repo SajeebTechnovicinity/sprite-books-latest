@@ -53,7 +53,7 @@
                     />
                   </svg>
                 </span>
-                Cover Image
+                Cover Image (Max: 512KB) (Recommanded: 300x300 px)
               </label>
               <input
                 class="attach-input"

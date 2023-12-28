@@ -285,7 +285,7 @@
                         </button>
                     @endif
                     <nav>
-                        @include('layouts.frontend.author_sidebar')
+                        @include('layouts.frontend.publisher_sidebar')
                     </nav>
                 </div>
                 <div class="tab-content">
