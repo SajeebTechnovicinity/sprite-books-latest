@@ -53,7 +53,7 @@ if (!function_exists('get_author_total_followers_count_by_author_id')) {
 
     function get_author_total_followers_count_by_author_id($authorId) {
 
-     return AuthorFollower::whereType('USER')->whereAuthorId($authorId)->count();
+     return AuthorFollower::whereAuthorId($authorId)->count();
 
     }
 }

@@ -37,13 +37,26 @@ class AuthorController extends Controller
         
             // Retrieve authors and their follower counts
             $authorsWithFollowerCounts = Author::
-                select('author.*', DB::raw('COUNT(author_followers.id) as follower_count'))
-                ->leftJoin('author_followers', 'author.id', '=', 'author_followers.author_id')
-                ->where('author.type','AUTHOR')
-                ->groupBy('author.id')
-                ->orderByDesc('follower_count')
-                ->take($topCount)
-                ->get();
+            select(
+                'author.id',          // Include all selected columns from the author table
+                'author.author_name',
+                'author.author_email',
+                'author.type',
+                'author.created_at',
+                DB::raw('COUNT(author_followers.id) as follower_count')
+            )
+            ->leftJoin('author_followers', 'author.id', '=', 'author_followers.author_id')
+            ->where('author.type', 'AUTHOR')
+            ->groupBy(            // Include all selected columns from the author table
+                'author.id',
+                'author.author_name',
+                'author.author_email',
+                'author.type',
+                'author.created_at'
+            )
+            ->orderByDesc('follower_count')
+            ->take($topCount)
+            ->get();
         
             $data['authors'] = $authorsWithFollowerCounts;
         
@@ -51,6 +64,8 @@ class AuthorController extends Controller
                 ->whereFollowedBy(session('author_id'))
                 ->orderBy('id', 'desc')
                 ->get();
+            
+            //return $data['followed_authors'];
             return view('frontend.pages.author.dashboard', $data);
         }
     }
@@ -667,7 +682,7 @@ class AuthorController extends Controller
         if (!session('author_id')) {
             return ['data' => 'Please login first.', 'status' => 0];
         }
-        return $request->author_id;
+        //return $request->author_id;
         if (AuthorFollower::whereAuthorId($request->author_id)->whereFollowedAuthorId(session('author_id'))->orWhere('user_id', session('author_id'))->get()->isNotEmpty()) {
             return ['data' => 'You are already following this author.', 'status' => 0];
         }

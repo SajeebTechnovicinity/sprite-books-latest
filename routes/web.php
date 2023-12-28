@@ -143,6 +143,8 @@ Route::post('author/add-event',[EventController::class,'add_events'])->name('pos
 Route::post('author/add-feature-media',[AuthorController::class,'add_feature_media'])->name('post-author-add-media');
 Route::get('author/community',[CommunityController::class,'index'])->name('author-community');
 Route::post('author/create-community',[CommunityController::class,'create_community'])->name('post-author-community');
+Route::post('author/update-community/{id}',[CommunityController::class,'update_community']);
+Route::get('author/delete-community/{id}',[CommunityController::class,'delete_community']);
 Route::get('community/{any}',[CommunityController::class,'view_community'])->name('view-community');
 Route::get('author/library',[LibraryController::class,'index'])->name('author-library');
 Route::get('author/library/recent',[LibraryController::class,'recent'])->name('author-library-recent');

@@ -142,6 +142,7 @@
                             </span>
                             Attach File(Max 512 KB)*
                         </label>
+                        (Recommanded: 300x300 px)
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
                     </div>
@@ -201,8 +202,9 @@
                                     fill="black" />
                             </svg>
                         </span>
-                        Attach File
+                        Attach File (Max 2 MB)
                     </label>
+                    (Recommanded: 300x300 px)
                     <input class="attach-input" type="file" name="file" id="attach-file-media" accept="image/*"
                         required />
                 </div>

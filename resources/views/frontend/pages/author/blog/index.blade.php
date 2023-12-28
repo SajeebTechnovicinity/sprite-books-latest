@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="form-field">
-                    <label for="title" class="label">Blog Image*</label>
+                    <label for="title" class="label">Blog Image (Max 512 KB) (Recommanded: 300x300 px)*</label>
                     <input type="file" name="blog_image" id="title" class="input" />
 
                 </div>

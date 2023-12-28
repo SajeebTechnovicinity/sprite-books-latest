@@ -71,7 +71,8 @@ class UserController extends Controller
         {
             $authorId = 1;
         }
-            
+        
+        $authorId=rand(10000,999999);
 
         $author = Author::create([
             'author_name' => $request->author_name,

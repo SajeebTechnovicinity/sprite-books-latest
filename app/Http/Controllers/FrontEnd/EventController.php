@@ -16,6 +16,12 @@ class EventController extends Controller
             // echo '<pre>';print_r( $data['followed_authors']);die;
             return view('frontend.pages.author.event.index',$data);
         }
+        else if((session('author_id') && session('type') == 'PUBLISHER'))
+        {
+            $data['events'] = Event::wherePublisherId(session('author_id'))->orderBy('id','desc')->get();
+            // echo '<pre>';print_r( $data['followed_authors']);die;
+            return view('frontend.pages.publisher.event.index',$data);
+        }
     }
 
  public function add_events(Request $request){
