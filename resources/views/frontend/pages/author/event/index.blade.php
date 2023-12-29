@@ -28,7 +28,7 @@
 
                     <div class="form-field">
                         <label for="title" class="label">Book Title*</label>
-                        <input type="text" name="book_name" id="title" class="input" />
+                        <input type="text" name="book_name" id="title" class="input" required/>
                     </div>
 
                     <div class="form-field">
@@ -38,7 +38,7 @@
 
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="links" class="label">Book Amazon Links*</label>
+                            <label for="links" class="label">Book Amazon Links</label>
                             <input type="text" name="book_amazon_link" id="links" class="input" />
                         </div>
 
@@ -47,7 +47,7 @@
 
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="links" class="label">Book Ebay Links*</label>
+                            <label for="links" class="label">Book Ebay Links</label>
                             <input type="text" name="book_ebay_link" id="links" class="input" />
                         </div>
                         {{-- <div class="add">
@@ -69,7 +69,7 @@
 
               <div class="form-row">
                   <div class="form-field">
-                      <label class="label">Book Discount in Percentage*</label>
+                      <label class="label">Book Discount in Percentage</label>
                       <input type="number" name="book_discount_in_percentage" class="input" placeholder="" />
                   </div>
 
@@ -77,13 +77,13 @@
 
                     <div class="form-row">
                         <div class="form-field">
-                            <label class="label">Main Price to Show</label>
-                            <input type="number" name="book_price" class="input" placeholder="Price" />
+                            <label class="label">Main Price to Show*</label>
+                            <input type="number" name="book_price" class="input" placeholder="Price" required/>
                         </div>
 
                         <div class="form-field">
-                            <label class="label">Book Price*</label>
-                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook" required />
+                            <label class="label">Book Price</label>
+                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook"  />
                         </div>
                         <div class="form-field">
                             <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
@@ -102,7 +102,7 @@
                             </span>
                             Attach File(Max 512 KB)*
                         </label>
-                         (Recommanded: 300x300 px)
+                         (Recommanded: 400x600 px)
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
                     </div>
@@ -149,59 +149,68 @@
                 </svg>
             </div>
             <h3 class="title">Add Event</h3>
-            <form action="{{ url('author/add-event') }}" method="post" class="modal__form"
-                enctype="multipart/form-data">
-                @csrf
-                @method('post')
+           <form action="{{ url('author/add-event') }}" method="post" class="modal__form"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('post')
 
-                <div class="form-field">
-                    <label for="title" class="label">Event Name*</label>
-                    <input type="text" name="event_name" id="title" class="input" />
-                </div>
-
-                <div class="form-field">
-                    <label for="dsc" class="label">Event Description*</label>
-                    <textarea name="event_description" id="dsc" class="textarea"></textarea>
-                </div>
-
-                <div class="form-row">
                     <div class="form-field">
-                        <label class="label">Event Location*</label>
-                        <input type="text" name="event_location" class="input" placeholder="Location" />
+                        <label for="text-area">Author </label>
+                        <select name="event_author" id="event_author" class="input">
+                            @foreach ($author_created_list as $listA)
+                                <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                </div>
 
-                <div class="form-row">
                     <div class="form-field">
-                        <label class="label">Event Date*</label>
-                        <input type="date" name="event_date" class="input" placeholder="Date" />
+                        <label for="title" class="label">Event Name*</label>
+                        <input type="text" name="event_name" id="title" class="input" />
                     </div>
-                </div>
 
-                <div class="form-row">
                     <div class="form-field">
-                        <label class="label">Event Link</label>
-                        <input type="text" name="event_link" class="input" placeholder="Link" />
+                        <label for="dsc" class="label">Event Description*</label>
+                        <textarea name="event_description" id="dsc" class="textarea"></textarea>
                     </div>
-                </div>
 
-                <div class="form-row">
-                    <div class="form-field">
-                        <label class="label">Time Start & Ending*</label>
-                        <input type="time" name="event_starting_time" class="input" placeholder="Time start" />
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="label">Event Location*</label>
+                            <input type="text" name="event_location" class="input" placeholder="Location" />
+                        </div>
                     </div>
-                    <div class="form-field">
-                        <input type="time" name="event_ending_time" class="input" placeholder="Time End" />
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="label">Event Date*</label>
+                            <input type="date" name="event_date" class="input" placeholder="Date" />
+                        </div>
                     </div>
-                </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="label">Event Link</label>
+                            <input type="text" name="event_link" class="input" placeholder="Link" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="label">Time Start & Ending*</label>
+                            <input type="time" name="event_starting_time" class="input" placeholder="Time start" />
+                        </div>
+                        <div class="form-field">
+                            <input type="time" name="event_ending_time" class="input" placeholder="Time End" />
+                        </div>
+                    </div>
 
 
 
-                <div class="btn-group">
-                    <button class="btn btn-lite">Cancel</button>
-                    <button class="btn btn-solid">Add Event</button>
-                </div>
-            </form>
+                    <div class="btn-group">
+                        <button class="btn btn-lite">Cancel</button>
+                        <button class="btn btn-solid">Add Event</button>
+                    </div>
+                </form>
         </div>
     </div>
 

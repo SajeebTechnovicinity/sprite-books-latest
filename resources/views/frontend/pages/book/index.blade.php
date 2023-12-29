@@ -55,17 +55,17 @@
 
                                     <div class="form-field">
                                         <label for="title" class="label">Book Title*</label>
-                                        <input type="text" name="book_name" id="title" class="input" />
+                                        <input type="text" name="book_name" id="title" class="input" required />
                                     </div>
 
                                     <div class="form-field">
                                         <label for="dsc" class="label">Book Description*</label>
-                                        <textarea name="book_description" id="dsc" class="textarea"></textarea>
+                                        <textarea name="book_description" id="dsc" class="textarea" required></textarea>
                                     </div>
 
                                     <div class="form-field">
                                         <label for="dsc" class="label">Select Genre*</label>
-                                        <select class="input form-control" name="genere_id">
+                                        <select class="input form-control" name="genere_id" required>
                                             @foreach ($generes as $row)
                                                 <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
                                             @endforeach
@@ -74,7 +74,7 @@
 
                                     <div class="form-row">
                                         <div class="form-field">
-                                            <label for="links" class="label">Book Amazon Links*</label>
+                                            <label for="links" class="label">Book Amazon Links</label>
                                             <input type="text" name="book_amazon_link" id="links" class="input" />
                                         </div>
 
@@ -83,7 +83,7 @@
 
                                     <div class="form-row">
                                         <div class="form-field">
-                                            <label for="links" class="label">Book Ebay Links*</label>
+                                            <label for="links" class="label">Book Ebay Links</label>
                                             <input type="text" name="book_ebay_link" id="links" class="input" />
                                         </div>
                                         {{-- <div class="add">
@@ -105,7 +105,7 @@
 
                                     <div class="form-row">
                                         <div class="form-field">
-                                            <label class="label">Book Discount in Percentage*</label>
+                                            <label class="label">Book Discount in Percentage</label>
                                             <input type="number" name="book_discount_in_percentage" class="input"
                                                 placeholder="" />
                                         </div>
@@ -114,16 +114,17 @@
 
                                     <div class="form-row">
                                         <div class="form-field">
-                                            <label class="label">Main Price to Show</label>
-                                            <input type="number" name="book_price" class="input" placeholder="Price" />
+                                            <label class="label">Main Price to Show*</label>
+                                            <input type="number" name="book_price" class="input" placeholder="Price" required/>
                                         </div>
 
                                         <div class="form-field">
-                                            <label class="label">Book Price*</label>
+                                            <label class="label">Book Price</label>
                                             <input type="number" name="hard_book_price" class="input"
                                                 placeholder="HardBook" />
                                         </div>
                                         <div class="form-field">
+                                            <label class="label">Ebook Price</label>
                                             <input type="number" name="ebook_price" class="input"
                                                 placeholder="Ebook" />
                                         </div>
@@ -139,8 +140,9 @@
                                                         fill="black" />
                                                 </svg>
                                             </span>
-                                            Attach File*
+                                            Attach File(Max 512 KB)*
                                         </label>
+                                        (Recommanded: 400x600 px)
                                         <input class="attach-input" type="file" name="file_updoad" id="attach-file"
                                             accept="image/*" required />
                                     </div>
@@ -155,10 +157,10 @@
                                                         fill="black" />
                                                 </svg>
                                             </span>
-                                            Attach Video (Max 10 MB)*
+                                            Attach Video (Max 10 MB)
                                         </label>
                                         <input class="attach-input" type="file" name="video_file_updoad"
-                                            id="attach-file1" accept="video/*" required />
+                                            id="attach-file1" accept="video/*"  />
                                     </div>
 
                                     <div class="btn-group">

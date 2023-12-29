@@ -24,7 +24,7 @@
                     <div class='col-6'>
                         <div class="form-group">
                           <label for="text-area">Select Type </label>
-                          <select name="type" id="type" class="form-control">
+                          <select name="type" id="type" class="form-control" readonly>
                               <option @if($membership_plan->type == 'AUTHOR') @selected(true) @endif>AUTHOR</option>
                               <option @if($membership_plan->type == 'PUBLISHER') @selected(true) @endif>PUBLISHER</option>
                           </select>
@@ -33,42 +33,42 @@
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Title*</label>
-                        <input type="text" name="membership_plan_name" value="{{$membership_plan->membership_plan_name}}" id="title" class="form-control" />
+                        <input type="text" readonly name="membership_plan_name" value="{{$membership_plan->membership_plan_name}}" id="title" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Slug*</label>
-                        <input type="text" value="{{$membership_plan->membership_plan_slug}}" name="membership_plan_slug" id="membership_plan_slug" class="form-control" />
+                        <input type="text" readonly value="{{$membership_plan->membership_plan_slug}}" name="membership_plan_slug" id="membership_plan_slug" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Monthly Price*</label>
-                        <input type="number" name="membership_plan_monthly_price" value="{{$membership_plan->membership_plan_monthly_price}}" id="membership_plan_monthly_price" class="form-control" />
+                        <input type="number" readonly name="membership_plan_monthly_price" value="{{$membership_plan->membership_plan_monthly_price}}" id="membership_plan_monthly_price" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Monthly Price Strype Key*</label>
-                        <input type="text" name="membership_plan_monthly_stripe_plan" id="membership_plan_monthly_stripe_plan" value="{{$membership_plan->membership_plan_monthly_stripe_plan}}" required class="form-control" />
+                        <input type="text" readonly name="membership_plan_monthly_stripe_plan" id="membership_plan_monthly_stripe_plan" value="{{$membership_plan->membership_plan_monthly_stripe_plan}}" required class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Yearly Price*</label>
-                        <input type="number" name="membership_plan_yearly_price" value="{{$membership_plan->membership_plan_yearly_price}}" id="membership_plan_yearly_price" class="form-control" />
+                        <input type="number" readonly name="membership_plan_yearly_price" value="{{$membership_plan->membership_plan_yearly_price}}" id="membership_plan_yearly_price" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Yearly Price Strype Key*</label>
-                        <input type="text" name="membership_plan_yearly_stripe_plan" id="membership_plan_yearly_stripe_plan" value="{{$membership_plan->membership_plan_yearly_stripe_plan}}" required class="form-control" />
+                        <input type="text" readonly name="membership_plan_yearly_stripe_plan" id="membership_plan_yearly_stripe_plan" value="{{$membership_plan->membership_plan_yearly_stripe_plan}}" required class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Max Book In Number*</label>
-                        <input type="number" name="max_no_of_books" value="{{$membership_plan->max_no_of_books}}" id="max_no_of_books" class="form-control" />
+                        <input type="number" readonly name="max_no_of_books" value="{{$membership_plan->max_no_of_books}}" id="max_no_of_books" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Max Events In Number*</label>
-                        <input type="number" name="max_no_of_events" id="max_no_of_events" value="{{$membership_plan->max_no_of_events}}" class="form-control" />
+                        <input type="number" readonly name="max_no_of_events" id="max_no_of_events" value="{{$membership_plan->max_no_of_events}}" class="form-control" />
                     </div>
 
                     {{-- <div class="form-group col-md-6">
@@ -80,17 +80,17 @@
 
                         <div class="form-group col-md-6">
                             <label for="title" class="label">Membership Plan Max Author Account In Number*</label>
-                            <input type="number" value="{{$membership_plan->max_author_account}}" name="max_author_account" id="max_author_account" class="form-control" />
+                            <input type="number" readonly value="{{$membership_plan->max_author_account}}" name="max_author_account" id="max_author_account" class="form-control" />
                         </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Author Max Book In Number*</label>
-                        <input type="number" value="{{$membership_plan->author_max_no_of_books}}" name="author_max_no_of_books" id="author_max_no_of_books" class="form-control" />
+                        <input type="number" readonly value="{{$membership_plan->author_max_no_of_books}}" name="author_max_no_of_books" id="author_max_no_of_books" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="title" class="label">Membership Plan Author Max Event In Number*</label>
-                        <input type="number" value="{{$membership_plan->author_max_no_of_events}}" name="author_max_no_of_events" id="author_max_no_of_events" class="form-control" />
+                        <input type="number" readonly value="{{$membership_plan->author_max_no_of_events}}" name="author_max_no_of_events" id="author_max_no_of_events" class="form-control" />
                     </div>
 
                 </div>
@@ -99,13 +99,13 @@
 
                     <div class="form-group col-md-12">
                         <label for="title" class="label">Membership Plan Description</label>
-                        <textarea id="summernote" name="membership_plan_description">{!!$membership_plan->membership_plan_description!!}</textarea>
+                        {!!$membership_plan->membership_plan_description!!}
                     </div>
 
                     <div class='col-6'>
                         <div class="form-group">
                           <label for="text-area">Select Status</label>
-                          <select name="membership_plan_status" id="membership_plan_status" class="form-control">
+                          <select name="membership_plan_status" id="membership_plan_status" class="form-control" readonly>
                               <option @if($membership_plan->membership_plan_status == '1') @selected(true) @endif value="1">Publish</option>
                               <option @if($membership_plan->membership_plan_status == '0') @selected(true) @endif value="0">Unpublished</option>
                           </select>
@@ -116,7 +116,7 @@
 
                 </div>
 
-                <button type="button" id="add_btn" class="btn btn-primary">Submit</button>
+                {{-- <button type="button" id="add_btn" class="btn btn-primary">Submit</button> --}}
             </form>
         </div>
     </div>

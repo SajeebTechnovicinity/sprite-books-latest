@@ -33,9 +33,11 @@
                   <p class="dsc">
                     {{ \Illuminate\Support\Str::limit($row->blog_short_description, 100, '...') }}
                   </p>
+                  @if($row->author)
                    <p class="dsc">
                         Author: {{$row->author->author_name}}
                   </p>
+                  @endif
                   <a href="{{url('blogs/'.$row->id)}}" class="card-link">View</a>
                 </div>
               </div>
