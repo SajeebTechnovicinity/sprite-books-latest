@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -13,12 +14,14 @@ class EventController extends Controller
     public function index(){
         if(session('author_id') && session('type') == 'AUTHOR'){
             $data['events'] = Event::whereAuthorId(session('author_id'))->orderBy('id','desc')->get();
+            $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
             // echo '<pre>';print_r( $data['followed_authors']);die;
             return view('frontend.pages.author.event.index',$data);
         }
         else if((session('author_id') && session('type') == 'PUBLISHER'))
         {
             $data['events'] = Event::wherePublisherId(session('author_id'))->orderBy('id','desc')->get();
+            $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
             // echo '<pre>';print_r( $data['followed_authors']);die;
             return view('frontend.pages.publisher.event.index',$data);
         }

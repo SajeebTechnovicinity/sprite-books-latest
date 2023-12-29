@@ -14,6 +14,7 @@ use App\Models\MembershipPlan;
 use App\Models\Podcast;
 use App\Models\Settings\Genere;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -85,7 +86,16 @@ class PublisherController extends Controller
    public function update_author(Request $request){
     $request->validate([
         'name' => 'required',
-        'author_id' => 'required'
+        'author_id' => 'required',
+        'author_email' => [
+            'required',
+            Rule::unique('author')->ignore($request->author_id),
+        ],
+    ], [
+        'name.required' => 'The name field is required.',
+        'author_id.required' => 'The author ID field is required.',
+        'author_email.required' => 'The author email field is required.',
+        'author_email.unique' => 'The provided email address is already in use by another author.',
     ]);
 
     // $authorInfo= Author::where('author_email',$request->email)->first();
@@ -96,7 +106,7 @@ class PublisherController extends Controller
 
     $author = Author::find($request->author_id);
     $author->author_name = $request->name;
-    $author->author_email = $request->email;
+    $author->author_email = $request->author_email;
     $author->author_last_name = $request->last_name;
     $author->author_country = $request->country;
     $author->author_phone = $request->phone;

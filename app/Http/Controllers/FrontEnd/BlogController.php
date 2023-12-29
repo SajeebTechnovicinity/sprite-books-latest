@@ -67,7 +67,7 @@ class BlogController extends Controller
         $request->validate([
             'blog_name' => 'required',
             'blog_full_description' => 'required',
-            'blog_image' => 'nullable|mimes:jpg,png|max:512',
+            'blog_image' => 'nullable|mimes:jpg,jpeg,png|max:512',
         ], [
             'blog_name.required' => 'The blog name field is required.',
             'blog_full_description.required' => 'The blog full description field is required.',

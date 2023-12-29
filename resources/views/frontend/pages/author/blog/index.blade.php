@@ -64,7 +64,7 @@
                 </svg>
             </div>
             <h3 class="title">Edit Blog</h3>
-            <form action="{{ url('author/update-blog') }}" method="POST" class="modal__form">
+            <form action="{{ url('author/update-blog') }}" method="POST" class="modal__form" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div id="editBlogInputs"></div>

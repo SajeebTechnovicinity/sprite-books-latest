@@ -314,14 +314,14 @@ class AuthorController extends Controller
         //     Session::flash('wrong','Role is required');
         //     return back();
         // }
-        if (!$request->hard_book_price) {
-            Session::flash('wrong', 'Hard Book Price is required');
+        if (!$request->book_price) {
+            Session::flash('wrong', 'Main Book Price is required');
             return back();
         }
-        if (!$request->ebook_price) {
-            Session::flash('wrong', 'Ebook Price is required');
-            return back();
-        }
+        // if (!$request->ebook_price) {
+        //     Session::flash('wrong', 'Ebook Price is required');
+        //     return back();
+        // }
         if (!$request->file_updoad) {
             Session::flash('wrong', 'Image File is required');
             return back();

@@ -25,7 +25,7 @@
     <label for="email" class="label">Email *</label>
     <input
         type="text"
-        name="email"
+        name="author_email"
         id="email"
         class="input"
         required
