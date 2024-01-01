@@ -425,39 +425,51 @@
             <div class="cards leading-cards">
                 <div class="card-wrap">
                     <div class="card-heading">Author of the Month</div>
+                     @if($author!=null)
                     <div class="card">
-                        <a href="#" class="figure">
-                            <img src="{{ asset('public/frontend_asset') }}/imgs/placeholder-7.png" alt="" />
-                        </a>
+                        @if($author->profile_picture)
+                            <a href="#" class="figure">
+                                <img src="{{ asset($author->profile_picture) }}" alt="" />
+                            </a>
+                        @else
+                            <a href="#" class="figure">
+                                <img src="{{ asset('public/frontend_asset') }}/imgs/profile.jpg"  alt="" />
+                            </a>
+                        @endif
                         <div class="text-wrap">
-                            <a href="#" class="name">Jk Rowling</a>
-                            <p class="bio">London, England</p>
+                            <a href="#" class="name"></a>
+                            <p class="bio">{{ $author->author_name }}</p>
                             <p class="dsc">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s,
+        
+                                {{ $author->author_description }} 
+
                             </p>
-                            <a href="#" class="card-link">Follow</a>
+                            <a href="#" class="card-link" onclick="confirmLogin(event)">Follow</a>
                         </div>
                     </div>
+                    @else
+                        No Data Found!
+                    @endif
                 </div>
                 <div class="card-wrap">
                     <div class="card-heading">Book of the Month</div>
+                    @if($book!=null)
                     <div class="card">
                         <a href="#" class="figure">
-                            <img src="{{ asset('public/frontend_asset') }}/imgs/placeholder-7.png" alt="" />
+                            <img src="{{ asset($book->bookDocuments[0]->path ?? '') }}" alt="" />
                         </a>
                         <div class="text-wrap">
-                            <a href="#" class="name">Harry Potter</a>
-                            <p class="bio">The prisoner of Azkaban</p>
+                            <a href="#" class="name">{{ $book->name }}</a>
+                            <p class="bio">Isbn: {{ $book->isbn }}</p>
                             <p class="dsc">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s,
+                                {{ $book->description }}
                             </p>
-                            <a href="#" class="card-link">View Book</a>
+                            <a href="#" class="card-link" onclick="confirmLogin(event)">View Book</a>
                         </div>
                     </div>
+                    @else
+                        No Data Found!
+                    @endif
                 </div>
             </div>
         </div>
@@ -473,7 +485,7 @@
                 </p>
                 @if (session('type') == null)
                     <a href="{{ $globalSetting->section4_button_url }}" class="sign-up-btn"
-                         onclick="confirmCancellation(event)">{{ $globalSetting->section4_button_text }}</a>
+                         onclick="confirmLogin(event)">{{ $globalSetting->section4_button_text }}</a>
                 @else
                     <a href="{{ $globalSetting->section4_button_url }}" class="sign-up-btn"
                         >{{ $globalSetting->section4_button_text }}</a>
@@ -528,7 +540,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        function confirmCancellation(event) {
+        function confirmLogin(event) {
             event.preventDefault(); // Prevent the default action of the link
 
             Swal.fire({

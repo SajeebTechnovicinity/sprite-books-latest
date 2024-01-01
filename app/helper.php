@@ -179,6 +179,39 @@ if (!function_exists('check_user_max_book_by_user_id')) {
 
     }
 }
+if (!function_exists('check_publisher_max_book_by_user_id')) {
+
+    function check_publisher_max_book_by_user_id($userId) {
+
+        $checked = check_author_has_publisher($userId);
+
+        if($checked != 0){
+            $userPlan = AuthorMembershipPlan::whereAuthorId($checked)->latest()->take(1)->get();
+
+            $maxBook = $userPlan[0]->MembershipPlan->author_max_no_of_books;
+        }else{
+            $userPlan = AuthorMembershipPlan::whereAuthorId($userId)->latest()->take(1)->get();
+
+            $maxBook = $userPlan[0]->MembershipPlan->max_no_of_books;
+        }
+
+        $maxBook=$userPlan[0]->MembershipPlan->max_no_of_books+$userPlan[0]->MembershipPlan->max_author_account*$userPlan[0]->MembershipPlan->author_max_no_of_books;
+
+
+        $userCountBooks = Book::wherePublisherId($userId)->count();
+
+
+
+        // return $userCountBooks;
+
+        if($userCountBooks >= $maxBook){
+            return 0;
+        }else{
+            return 1;
+        }
+
+    }
+}
 
 if (!function_exists('check_user_max_event_by_user_id')) {
 

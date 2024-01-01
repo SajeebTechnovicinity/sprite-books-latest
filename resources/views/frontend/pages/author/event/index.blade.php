@@ -36,6 +36,15 @@
                         <textarea name="book_description" id="dsc" class="textarea" required></textarea>
                     </div>
 
+                    <div class="form-field">
+                        <label for="dsc" class="label">Select Genre*</label>
+                        <select class="input form-control" name="genere_id" required>
+                            @foreach ($generes as $row)
+                                <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Book Amazon Links</label>
@@ -117,10 +126,10 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach Video*
+                            Attach Video (Max: 5 MB)
                         </label>
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
-                            accept="video/*" required />
+                            accept="video/*"  />
                     </div>
 
                     <div class="btn-group">

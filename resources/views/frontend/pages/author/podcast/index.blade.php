@@ -182,7 +182,7 @@
                                                 </div>
 
                                                 <p class="para">
-                                                   <a href="{!!$row->podcast_embed_code!!} {!!$row->podcast_embed_code!!} </a>
+                                                   <iframe {!!$row->podcast_embed_code!!}</iframe>
                                                 </p>
                                             </div>
                                         </div>

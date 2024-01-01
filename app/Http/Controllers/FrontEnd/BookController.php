@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookDocuments;
+use App\Models\BookView;
 use App\Models\Settings\Genere;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
@@ -21,7 +23,20 @@ class BookController extends Controller
             return redirect('/user/login');
         }
 
+        $today = Carbon::now();
+
+        BookView::create([
+            'book_id'=>$id,
+            'user_id'=>session('author_id')
+        ]);
+
         $book = Book::find($id);
+
+        $book->viewers= $book->viewers+1;
+
+        $book->view_date_time=$today;
+
+        $book->save();
         
         if($book){
             $data['book'] = $book;

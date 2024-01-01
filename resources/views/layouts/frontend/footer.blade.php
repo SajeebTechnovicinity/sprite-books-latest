@@ -6,14 +6,15 @@
 
                     <h3 class="title">Subscribe to our newsletter</h3>
 
-                    <div id="success_msg"></div>
-                    <div id="error_msg"></div>
+     
+                    <div id="success_msg2"></div>
+                    <div id="error_msg2"></div>
                     <form id="add_form" class="hero__form">
                         <div class="form-field">
-                            <input type="email" class="input" name="email" placeholder="Email address" />
+                            <input type="email" class="input" name="email2" placeholder="Email address" />
                         </div>
                         <div class="form-btn">
-                            <button type="button" id="add_btn" class="btn">Subscribe</button>
+                            <button type="button" id="add_btn3" class="btn">Subscribe</button>
                         </div>
                     </form>
                 </div>
@@ -82,6 +83,9 @@
                     @endif
                 </div>
             </div>
+                {{-- <script>
+        alert('heooe');
+    </script> --}}
         </div>
         {{-- <script>
        
@@ -131,6 +135,59 @@
             });
         });
     </script> --}}
+
     </footer>
+{{-- 
+    <script>
+        alert('heooe');
+    </script> --}}
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+    <script>
+        $("#add_btn3").click(function() {
+
+           
+            $('.loader').show();
+            $(".error_msg").html('');
+
+
+
+            // Get the value of the "email" input field
+
+
+            // var data = new FormData();
+            //data.append('email', email);
+
+            //console.log(data);
+
+            var email = $('input[name="email2"]').val();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                },
+                method: "GET",
+                url: "{{ url('subscribe/now') }}?email=" + encodeURIComponent(email),
+                cache: false,
+                success: function(response, textStatus, jqXHR) {
+                    console.log(response);
+                    if (response === "Email is required and Email is unique") {
+                        $("#error_msg2").html("Email is required and Email is unique").addClass(
+                            "alert alert-danger");
+                    } else {
+                        $("#success_msg2").html("Successfully Subscribed").addClass("alert alert-success");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(jqXHR.responseText);
+                    // Handle error
+                },
+                complete: function() {
+                    $('.loader').hide();
+                }
+            });
+        });
+    </script>
 
     

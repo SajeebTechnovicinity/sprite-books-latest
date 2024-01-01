@@ -386,7 +386,7 @@
                     @endif
                     <!-- Content Block -->
                     <div class="profile-banner">
-                        <img src="@if ($author->author_cover_picture) {{ asset($author->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-banner.png @endif"
+                        <img src="@if ($author->author_cover_picture) {{ asset($author->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/cover.jpg @endif"
                             alt="" />
                         <a href="{{ url('settings') }}" style="float:right;">
                             <svg width="23" height="23" viewBox="0 0 23 23" fill="none"
@@ -438,7 +438,7 @@
                             <div class="author-summary">
                                 <div class="author-bio unit">
                                     <div class="author-profile-pic">
-                                        <img src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                        <img src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                             alt="" />
 
                                     </div>
@@ -699,7 +699,7 @@
                                                 </div>
 
                                                 <p class="para">
-                                                    {!! $row->podcast_embed_code !!}
+                                                   <iframe {!!$row->podcast_embed_code!!} </iframe>
                                                 </p>
                                             </div>
                                         </div>

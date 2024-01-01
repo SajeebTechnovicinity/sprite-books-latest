@@ -15,7 +15,7 @@
                 <div class="tab-content space-0">
                     <!-- Content Block -->
                     <div class="profile-banner">
-                        <img src="@if($author[0]->author_cover_picture) {{asset($author[0]->author_cover_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile-banner.png @endif" alt="" />
+                        <img src="@if($author[0]->author_cover_picture) {{asset($author[0]->author_cover_picture)}} @else {{asset('public/frontend_asset')}}/imgs/cover.jpg @endif" alt="" />
                          <a href="{{ url('settings') }}"
                                                                 style="float:right;">
                                                                 <svg width="23" height="23" viewBox="0 0 23 23"
@@ -67,7 +67,7 @@
                             <div class="author-summary">
                                 <div class="author-bio unit">
                                     <div class="author-profile-pic">
-                                        <img src="@if($author[0]->author_profile_picture) {{asset($author[0]->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/reviewer.png @endif" alt="" />
+                                        <img src="@if($author[0]->author_profile_picture) {{asset($author[0]->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile.jpg @endif" alt="" />
                                     </div>
                                      <a href="{{ url('settings') }}"
                                                                 style="float:right;">

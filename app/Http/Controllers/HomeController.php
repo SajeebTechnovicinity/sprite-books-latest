@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use App\Models\AuthorFollower;
 use App\Models\AuthorMembershipPlan;
 use App\Models\Blog;
+use App\Models\Book;
+use App\Models\BookView;
 use App\Models\Contact;
 use App\Models\FrequentQuestion;
 use App\Models\MembershipPlan;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -22,7 +26,45 @@ public function index(){
             return redirect('publisher/profile');
         }
     }else{
-        return view('frontend.home');
+
+        //author of the month
+        $today = Carbon::now();
+        $authorOfTheMonth = AuthorFollower::selectRaw('author_id, COUNT(id) as total_sum')
+            ->whereMonth('created_at', $today->month)
+            ->whereYear('created_at', $today->year)
+            ->groupBy('author_id')
+            ->orderByDesc('total_sum')
+        ->first();
+
+        $bookOfTheMonth = BookView::selectRaw('book_id, COUNT(id) as total_sum')
+        ->whereMonth('created_at', $today->month)
+        ->whereYear('created_at', $today->year)
+        ->groupBy('book_id')
+        ->orderByDesc('total_sum')
+        ->first();
+
+        if($authorOfTheMonth!=null)
+        {
+            $author=Author::where('id',$authorOfTheMonth->author_id)->first();
+        }
+        else
+        {
+            $author=NULL;
+        }
+
+        if($bookOfTheMonth!=null)
+        {
+            $book=Book::where('id',$bookOfTheMonth->book_id)->first();
+        }
+        else
+        {
+            $book=NULL;
+        }
+
+        // return $authorId = $authorWithHighestSum->author_id;
+
+        //return  $authorWithHighestSum;
+        return view('frontend.home',['author'=>$author,'book'=>$book]);
     }
 
 }

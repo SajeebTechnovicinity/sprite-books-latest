@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AuthorMail;
 use App\Models\Author;
 use App\Models\AuthorFollower;
 use App\Models\AuthorMembershipPlan;
@@ -16,6 +17,7 @@ use App\Models\Settings\Genere;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class PublisherController extends Controller
@@ -54,7 +56,9 @@ class PublisherController extends Controller
             return redirect()->back()->with('msg','Email already used.') ;
          }
 
-             $authorId = Author::orderBy('id','desc')->first()->id;
+
+             //$authorId = Author::orderBy('id','desc')->first()->id;
+             $authorId=rand(10000,99999);
 
          $author = Author::create([
              'author_name' => $request->name,
@@ -68,6 +72,14 @@ class PublisherController extends Controller
              'author_email' => $request->email,
              'author_password' => Hash::make($request->password)
          ]);
+
+        $mailData = [
+            'title' => 'Author Creation Email',
+            'username'=>$request->name,
+            'body' => 'Your password -'.$request->password
+        ];
+         
+        Mail::to($request->email)->send(new AuthorMail($mailData));
 
 
          return redirect()->back()->with('msg','Successfully added Author.') ;
