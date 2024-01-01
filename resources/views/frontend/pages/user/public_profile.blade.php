@@ -32,14 +32,14 @@
                 <div class="tab-content space-0">
                     <!-- Content Block -->
                     <div class="profile-banner">
-                        <img src="@if($author[0]->author_cover_picture) {{asset($author[0]->author_cover_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile-banner.png @endif" alt="" />
+                        <img src="@if($author[0]->author_cover_picture) {{asset($author[0]->author_cover_picture)}} @else {{asset('public/frontend_asset')}}/imgs/cover.jpg @endif" alt="" />
                     </div>
                     <div class="block-wrap bg-none" style="padding-left: 0; padding-right: 0;">
                         <div class="block-component">
                             <div class="author-summary">
                                 <div class="author-bio unit">
                                     <div class="author-profile-pic">
-                                        <img src="@if($author[0]->author_profile_picture) {{asset($author[0]->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/reviewer.png @endif" alt="" />
+                                        <img src="@if($author[0]->author_profile_picture) {{asset($author[0]->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile.jpg @endif" alt="" />
                                     </div>
                                     <h3 class="author-name">
                                         {{$author[0]->author_name}} {{$author[0]->author_last_name}}

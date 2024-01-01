@@ -36,6 +36,15 @@
                         <textarea name="book_description" id="dsc" class="textarea" required></textarea>
                     </div>
 
+                    <div class="form-field">
+                        <label for="dsc" class="label">Select Genre*</label>
+                        <select class="input form-control" name="genere_id" required>
+                            @foreach ($generes as $row)
+                                <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Book Amazon Links</label>
@@ -83,7 +92,7 @@
 
                         <div class="form-field">
                             <label class="label">Book Price</label>
-                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook" required />
+                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook" />
                         </div>
                         <div class="form-field">
                             <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
@@ -117,10 +126,10 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach Video*
+                            Attach Video (Max: 5 MB)
                         </label>
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
-                            accept="video/*" required />
+                            accept="video/*" />
                     </div>
 
                     <div class="btn-group">
@@ -253,7 +262,7 @@
         <div class="container">
             <div class="inner-content">
                 <div class="tab-panel">
-                    @if (check_user_max_book_by_user_id(session('author_id')) == '1')
+                    {{-- @if (check_publisher_max_book_by_user_id(session('author_id')) == '1')
                         <button class="add-btn btn-solid btn-trigger" data-target="#add-book">
                             <span class="icon">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -292,7 +301,15 @@
                             </span>
                             Add a Book
                         </button>
-                    @endif
+                    @endif --}}
+                     @if (check_user_max_event_by_user_id(session('author_id')) == '1')
+                            <a href="#" class="add-event-btn btn-trigger" data-target="#add-event">+ Add
+                                Event</a>
+                        @else
+                            <a href="#" class="add-event-btn"
+                                onclick="alert('You have crossed the limit of your current membership plan!')">+ Add
+                                Event</a>
+                        @endif
                     <nav>
                         @include('layouts.frontend.publisher_sidebar')
                     </nav>

@@ -28,7 +28,7 @@ public function store(Request $request){
         'podcast_name' => 'required',
         'podcast_embed_code' => [
             'required',
-            'regex:/^(<iframe.*<\/iframe>|<embed.*<\/embed>|<object.*<\/object>|<video.*<\/video>|<audio.*<\/audio>|<a.*<\/a>)$/'
+            // 'regex:/^(<iframe.*<\/iframe>|<embed.*<\/embed>|<object.*<\/object>|<video.*<\/video>|<audio.*<\/audio>|<a.*<\/a>)$/'
         ],
     ], [
         'podcast_name.required' => 'The podcast name field is required.',
@@ -53,7 +53,7 @@ public function store(Request $request){
         'podcast_name' => 'required',
         'podcast_embed_code' => [
             'required',
-            'regex:/^(<iframe.*<\/iframe>|<embed.*<\/embed>|<object.*<\/object>|<video.*<\/video>|<audio.*<\/audio>|<a.*<\/a>)$/'
+            // 'regex:/^(<iframe.*<\/iframe>|<embed.*<\/embed>|<object.*<\/object>|<video.*<\/video>|<audio.*<\/audio>|<a.*<\/a>)$/'
         ],
     ], [
         'podcast_name.required' => 'The podcast name field is required.',
