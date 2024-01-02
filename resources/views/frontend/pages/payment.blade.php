@@ -215,7 +215,7 @@
                 </div>
                 <div class="tab-content">
                     <h2 class="heading mb-37">Membership Plan Amount to be paid ${{$membership_plan[0]->MembershipPlan->membership_plan_yearly_price}} Will be Charged.</h2>
-                    <div class="plans flex gp-26">
+                    <div class="plans">
                         {{-- <!-- cards -->
                         <div class="plan__card">
                             <div class="inner__card flex">

@@ -7,11 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('public/frontend_asset') }}/css/style.css" />
@@ -29,7 +27,7 @@
             <div class="user__text from-side">
                 <div class="user__text__inner">
                     <div class="title">Get Started</div>
-                   
+
 
                     @if (Session::has('message'))
                     <div class="alert alert-success" role="alert">
@@ -47,7 +45,7 @@
                                   @if ($errors->has('author_email'))
                                       <span class="text-danger">{{ $errors->first('author_email') }}</span>
                                   @endif
-                       
+
                         <button type="submit" class="page-user-sb-btn">
                             Send Password Reset Link
                         </button>
@@ -55,7 +53,7 @@
                             Don’t have an account? <a href="{{url('user/registration')}}">Sign up</a>
                         </div>
                     </form>
-                   
+
                 </div>
             </div>
         </div>

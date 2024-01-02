@@ -1,8 +1,7 @@
 :root {
-  --base-font: "Poppins", sans-serif;
-  --secondary-font: "Montserrat", sans-serif;
-  --tertiary-font: "DM Sans", sans-serif;
-  --color-highlight: #fcc71b;
+  --base-font: 'EB Garamond', serif;
+  --secondary-font: 'Cinzel Decorative', serif;
+  --color-highlight: #5763EA;
   --color-dark: #1d1d23;
   --color-dark_lite: #8d8d9b;
   --light-color: #ffffff;
@@ -31,6 +30,19 @@ body {
   font-family: var(--base-font);
   font-weight: 400;
   overflow-x: hidden;
+}
+
+textarea{
+  resize: vertical;
+}
+
+input, textarea, select,
+button{
+  font-family: var(--base-font);
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: var(--secondary-font);
 }
 
  .icon svg{
@@ -379,7 +391,6 @@ figure {
 }
 
 .hero__form .input {
-  font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
   /* line-height: 156%; */
@@ -398,9 +409,8 @@ figure {
   background-color: var(--color-highlight);
   font-weight: 500;
   font-size: 16px;
-  /* line-height: 122%; */
   letter-spacing: 0.3px;
-  color: var(--color-dark);
+  color: #ffffff;
   padding: 15px 27px;
   border-radius: 8px;
   font-family: var(--base-font);
@@ -1287,7 +1297,6 @@ figure {
   border: none;
   outline-color: var(--color-highlight);
   width: 315px;
-  font-family: var(--tertiary-font);
 }
 
 .footer__form .submit-btn {
@@ -1357,7 +1366,6 @@ figure {
 }
 
 .agreement-links .link {
-  font-family: var(--tertiary-font);
   font-weight: 400;
   font-size: 15px;
   line-height: 1.3;
@@ -1513,7 +1521,6 @@ figure {
   background-color: var(--bg-color_extra-lite);
   border-radius: 40px;
   padding: 13px 20px;
-  font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
   line-height: 1.56;
@@ -1698,7 +1705,7 @@ figure {
 /* Add Book Modal */
 .modal {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   height: 100vh;
   width: 100vw;
@@ -1796,7 +1803,6 @@ figure {
   border: 1px solid #8d8d9b;
   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
-  font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
   line-height: 1.56;
@@ -2034,7 +2040,6 @@ figure {
 }
 
 .title-bar .select {
-  font-family: "Poppins";
   font-weight: 500;
   font-size: 16px;
   line-height: 131%;
@@ -2282,7 +2287,11 @@ figure {
 @media (max-width: 767px) {
   .tab-content .heading {
     font-size: 32px;
-    margin-bottom: 5px;
+    margin-bottom: 13px!important;
+  }
+
+  .swtcher-wrap.membership-top{
+    display: block;
   }
 
   .btn-solid {
@@ -3249,7 +3258,6 @@ figure {
 }
 
 .is-helpful button.btn {
-  font-family: "Poppins";
   font-weight: 400;
   background-color: #333333;
   border: 1px solid var(--color-dark_lite);
@@ -3451,12 +3459,32 @@ figure {
 .profile-banner {
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
 }
 
 .profile-banner img {
   width: 100%;
   object-fit: cover;
   height: 330px;
+}
+
+.profile-banner .edit-banner{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: var(--color-highlight);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-weight: 700;
+}
+
+.profile-banner .edit-banner svg{
+  width: 16px;
+  height: auto;
 }
 
 .author-bio {
@@ -3470,11 +3498,33 @@ figure {
   margin: -130px auto 0;
   overflow: hidden;
   border-radius: 50%;
+  position: relative;
+  border: 5px solid #efefef;
 }
 
 .author-profile-pic img {
   height: 100%;
   object-fit: cover;
+}
+
+.author-profile-pic .edit{
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.7);
+  color: #ffffff;
+  opacity: 0;
+  transition: .2s;
+}
+
+.author-profile-pic:hover .edit{
+  opacity: 1;
 }
 
 .author-name {
@@ -4975,9 +5025,24 @@ label.pseudo-checkbox {
   border-radius: 20px;
   padding: 30px;
   padding-bottom: 35px;
+  display: grid;
+  grid-gap: 26px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-.plans.flex > div {
+@media (min-width: 668px) and (max-width: 980px){
+  .plans {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 667px){
+  .plans {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.plans > div {
   flex: 1;
 }
 
@@ -5093,16 +5158,6 @@ label.pseudo-checkbox {
 }
 
 @media (max-width: 1400px) {
-  .plans {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .plans .plan__card {
-    min-width: 320px;
-    max-width: 50%;
-  }
-
   .plan-amount.flex{
     padding: 0;
   }
@@ -5110,8 +5165,6 @@ label.pseudo-checkbox {
 
 @media (max-width: 575px) {
   .plans .plan__card {
-    min-width: 320px;
-    max-width: 100%;
     width: 100%;
   }
 }
@@ -5162,10 +5215,6 @@ label.pseudo-checkbox {
 @media (max-width: 575px) {
   .plans .inner__card {
     padding: 15px;
-  }
-
-  .plans .plan__card{
-    min-width: 280px;
   }
 }
 
@@ -6630,4 +6679,66 @@ iframe{
 
 .accordion{
   margin: 5px 0;
+}
+
+.author-type{}
+.author-type ul{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+  background-color: #efefef;
+  overflow: hidden;
+  border-radius: 50px;
+}
+
+.author-type ul li{
+  padding: 10px 20px;
+  font-size: 13px;
+}
+
+.author-type ul li.active{
+  background-color: #333333;
+  color: #ffffff;
+  border: 0!important;
+  border-radius: 50px;
+}
+
+.has-loader{
+  position: relative;
+}
+
+.loader {
+  position: relative;
+}
+
+.loader::after,
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  width: 33px;
+  height: 32px;
+  border-radius: 50%;
+  background: #333333;
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  animation: animloader 2s linear infinite;
+  opacity: 0;
+}
+
+.loader::after {
+  animation-delay: 1s;
+}
+
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
 }

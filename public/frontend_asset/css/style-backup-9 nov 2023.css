@@ -371,7 +371,6 @@ figure {
 }
 
 .hero__form .input {
-  font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
   /* line-height: 156%; */
@@ -1500,7 +1499,6 @@ figure {
   background-color: var(--bg-color_extra-lite);
   border-radius: 40px;
   padding: 13px 20px;
-  font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
   line-height: 1.56;
@@ -1751,7 +1749,6 @@ figure {
   border: 1px solid #8d8d9b;
   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
-  font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
   line-height: 1.56;
@@ -2022,7 +2019,6 @@ figure {
 }
 
 .title-bar .select {
-  font-family: "Poppins";
   font-weight: 500;
   font-size: 16px;
   line-height: 131%;
@@ -3174,7 +3170,6 @@ figure {
 }
 
 .is-helpful button.btn {
-  font-family: "Poppins";
   font-weight: 400;
   background-color: #333333;
   border: 1px solid var(--color-dark_lite);

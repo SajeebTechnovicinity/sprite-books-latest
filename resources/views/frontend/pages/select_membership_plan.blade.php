@@ -13,7 +13,7 @@
             <div class="inner-content">
                 <div class="tab-content" style="width: 100%;">
 
-                    <div class="swtcher-wrap">
+                    <div class="swtcher-wrap membership-top">
                         <h2 class="heading">Membership Plans</h2>
                         <div class="switcher-main">
                             <label class="toggle">
@@ -24,7 +24,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="plans flex gp-26">
+                    <div class="plans">
                         {{-- <!-- cards -->
                         <div class="plan__card">
                             <div class="inner__card flex">
