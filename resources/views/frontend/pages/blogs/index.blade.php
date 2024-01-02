@@ -31,7 +31,7 @@
                   <a href="{{url('blogs/'.$row->id)}}" class="name">{{$row->blog_name}}</a>
                   <p class="bio"></p>
                   <p class="dsc">
-                    {{$row->blog_short_description}}
+                    {!!$row->blog_short_description !!}
                   </p>
                   
                   <a href="{{url('blogs/'.$row->id)}}" class="card-link">View</a>

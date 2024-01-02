@@ -30,7 +30,7 @@
                   <a href="{{url('blogs/'.$row->id)}}" class="name">{{$row->blog_name}}</a>
                   <p class="bio"></p>
                   <p class="dsc">
-                    {{ \Illuminate\Support\Str::limit($row->blog_short_description, 100, '...') }}
+                    {!! $row->blog_short_description !!}
                   </p>
                   @if($row->author)
                    <p class="dsc">

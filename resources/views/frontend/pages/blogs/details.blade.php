@@ -24,7 +24,7 @@
                   <a href="{{url('blogs/'.$blog->id)}}" class="name">{{$blog->blog_name}}</a>
                   <p class="bio"></p>
                   <p class="dsc">
-                    {{ \Illuminate\Support\Str::limit($blog->blog_short_description, 100, '...') }}
+                    {!! $blog->blog_short_description !!}
                   </p>
                   <p class="dsc">
                     {!!$blog->blog_full_description!!}
