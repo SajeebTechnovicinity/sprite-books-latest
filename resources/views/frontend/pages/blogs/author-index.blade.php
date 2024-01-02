@@ -4,7 +4,7 @@
 
       <!-- Cards Holder -->
       <section class="cards-holder">
-        <div class="container container-alt2">
+        <div class="container">
           <div class="title">
             <h4 class="title__sub">Blog post from author</h4>
             <h2 class="title__main">Author Blogs</h2>
