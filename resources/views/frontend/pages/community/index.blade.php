@@ -25,7 +25,7 @@
             </svg>
           </div>
           <h3 class="title">Edit Community</h3>
-          <form action="{{url('author/update-community/'.$community->id)}}" method="post" class="modal__form" enctype="multipart/form-data">
+          <form action="{{url('author/update-community/'.$community->id)}}" method="post" class="modal__form" enctype="multipart/form-data" >
               @csrf
               @method('post')
             <div class="form-field">
@@ -341,15 +341,18 @@
                                                     <div class="create-post_body">
                                                         <form id="add_post_form" enctype="multipart/form-data">
 
+                                                            <span id="charCount" style="margin-left:100px;">0</span>/100
+
                                                             <div class="input-area flex">
+                                                            
                                                                 <figure class="img">
                                                                     <img src="@if ($current_user->author_cover_picture) {{ asset($current_user->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
                                                                         alt="" />
                                                                 </figure>
-
+                                                                
                                                                 <input class="input"
                                                                     placeholder="Share what on your mind?" type="text"
-                                                                    name="post" />
+                                                                    name="post" id="postInput"/>
 
                                                                 <input class="input"
                                                                     placeholder="Share what on your mind?" type="hidden"
@@ -384,7 +387,7 @@
 
 
                                                                 <button class="btn btn-success"
-                                                                    type='submit'>Post</button>
+                                                                    type='submit' id="postButton" disabled>Post</button>
 
                                                             </div>
                                                         </form>
@@ -1101,6 +1104,7 @@
                             value + "</span>");
                     });
                 });
+                location.reload();
                 // HideCalimaticLoader();
             }
 
@@ -1199,6 +1203,33 @@
                 }
             });
         }
+    </script>
+
+    <script>
+        document.getElementById('add_post_form').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Prevent the default form submission
+                // You can add additional logic here if needed
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var postInput = document.getElementById('postInput');
+            var postButton = document.getElementById('postButton');
+            var charCountElement = document.getElementById('charCount');
+
+            postInput.addEventListener('input', function () {
+                var charCount = postInput.value.length;
+                charCountElement.textContent = charCount;
+
+                if (charCount > 100) {
+                    postButton.disabled = true;
+                } else {
+                    postButton.disabled = false;
+                }
+            });
+        });
     </script>
 
 @endsection

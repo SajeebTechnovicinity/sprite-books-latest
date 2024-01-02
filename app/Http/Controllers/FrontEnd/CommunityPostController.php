@@ -20,10 +20,11 @@ class CommunityPostController extends Controller
     {
 
         $request->validate([
-            'post' => 'required',
+            'post' => 'required:max:100',
             'post_image' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg,video/mp4|max:5160', // Maximum file size is 1 MB
         ], [
             'post.required' => 'The caption field is required.',
+            'post.max'=>'Caption is within the 100 character limit.',
             'post_image.mimetypes' => 'Photo/video must be a JPEG or PNG image or MP4 video.',
             'post_image.max' => 'The photo/video must not exceed 5 MB in size.',
         ]);

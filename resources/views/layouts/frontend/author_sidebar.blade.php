@@ -40,6 +40,24 @@
             Dashboard
         </a>
     </li>
+     <li class="tab-item">
+                        <a href="{{ url('author/membership-plan') }}"
+                            class="tab-link @if (request()->is('author/membership-plan')) active-link @endif">
+                            <span class="icon">
+                                <svg width="23" height="22" viewBox="0 0 23 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="7.75" y="0.75" width="3.5" height="19.5" rx="1.25"
+                                        stroke="#3E3E3E" stroke-width="1.5" />
+                                    <rect x="13.8999" y="1.68966" width="3.5" height="19.5" rx="1.25"
+                                        transform="rotate(-13.0409 13.8999 1.68966)" stroke="#3E3E3E"
+                                        stroke-width="1.5" />
+                                    <rect x="0.75" y="0.75" width="3.5" height="19.5" rx="1.25"
+                                        stroke="#3E3E3E" stroke-width="1.5" />
+                                </svg>
+                            </span>
+                            Membership
+                        </a>
+                    </li>
     <li class="tab-item">
         <a href="{{url('author/library')}}" class="tab-link {{ request()->is('author/library') ? 'active-link' : ''}}">
             <span class="icon">
