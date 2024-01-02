@@ -12,7 +12,7 @@
                         @if(session('type') == 'USER')
                         @include('layouts.frontend.user_sidebar')
                         @elseif (session('type') == 'AUTHOR')
-                        <ul class="tab-list">
+                        {{-- <ul class="tab-list">
                             <li class="tab-item">
                                 <a href="{{url('author/dashboard')}}" class="tab-link">
                                     <span class="icon">
@@ -209,7 +209,7 @@
                                     Events
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                         @endif
                     </nav>
                 </div>

@@ -24,8 +24,8 @@
                             </label>
                         </div>
                     </div>
-                    @if (session('msg'))
-                        {{ session('msg') }}
+                     @if (session('msg'))
+                        <p style="margin-top: 15px;color:red;font-weight:bold"> {{ session('msg') }} </p>
                     @endif
                     <div class="plans">
                         <!-- cards -->
