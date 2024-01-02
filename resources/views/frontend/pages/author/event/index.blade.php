@@ -23,7 +23,11 @@
                       <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
                     <div class="form-field">
                         <label for="isbn" class="label">ISBN*</label>
-                        <input type="text" name="isbn" id="#isbn" class="input" onblur="handleInput()" required/>
+                        <div class="has-loader">
+                            <span class="loader" style="display: none;"></span>
+                            <input type="text" name="isbn" id="#isbn" class="input" onblur="handleInput()"
+                                required />
+                        </div>
                     </div>
 
                     <div class="form-field">
@@ -100,7 +104,7 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="attach-file" class="attach-btn btn-lite btn">
+                        <label for="attach-file" class="attach-btn btn-lite btn button-hint">
                             <span class="icon">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -109,9 +113,12 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach File(Max 512 KB)*
+                            <span class="text">
+                                Attach File(Max 512 KB)*
+                                <span class="inner">(Recommanded: 400x600 px)</span>
+                            </span>
                         </label>
-                         (Recommanded: 400x600 px)
+
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
                     </div>
@@ -490,7 +497,8 @@
 
             console.log(isbn);
             $("#invalid-isbn").empty();
-            showCalimaticLoader();
+            // showCalimaticLoader();
+            $('.has-loader .loader').css('display', 'block');
 
             // Make an API call
             var apiUrl = "https://api2.isbndb.com/book/" + isbn;
@@ -506,7 +514,8 @@
                 success: function(response) {
                     // Request was successful, process the response
                     console.log(response);
-                    HideCalimaticLoader();
+                    // HideCalimaticLoader();
+                    $('.has-loader .loader').css('display', 'none');
                     // Process the bookData here
                 },
                 error: function(xhr) {
@@ -517,7 +526,8 @@
                             'color': 'red',
                             'display': 'block'
                         });
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     } else if (xhr.status == 429) {
                         // Too Many Requests error
                         console.log("Error: Limit Exceeded");
@@ -525,7 +535,8 @@
                             'color': 'red',
                             'display': 'block'
                         });;
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     } else {
                         // Handle other status codes
                         console.log("Error: Unexpected status code " + xhr.status);
@@ -533,12 +544,13 @@
                             'color': 'red',
                             'display': 'block'
                         });;
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     }
                 },
-                
+
             });
-            
+
         }
     </script>
 

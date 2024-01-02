@@ -39,7 +39,8 @@
         }
 
         .conf-top li img{
-            height: 100px;
+            max-height: 100px;
+            max-width: 100%;
         }
         .conf-top li{
             padding: 22px;

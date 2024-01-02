@@ -109,7 +109,7 @@
 @endif
                     <!-- Content Block -->
                     <div class="profile-banner">
-                        <img src="@if($author->author_profile_picture) {{asset($author->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile-banner.png @endif" alt="" />
+                        <img src="@if($author->author_profile_picture) {{asset($author->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/cover.jpg @endif" alt="" />
                     </div>
                     <div class="block-wrap bg-none">
                         <div class="block-component">
@@ -129,7 +129,7 @@
 
                                         <div class="event-card">
                                             <figure class="figure">
-                                                <img height="60px" width="60px" src="@if($author->author_profile_picture) {{asset($author->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile-banner.png @endif" alt="" />
+                                                <img height="60px" width="60px" src="@if($author->author_profile_picture) {{asset($author->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile.jpg @endif" alt="" />
                                             </figure>
                                             <div class="content">
                                                 <div class="event-card__row flex-wrap">

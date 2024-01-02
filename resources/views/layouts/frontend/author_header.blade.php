@@ -56,7 +56,7 @@
                 <div class="user-profile">
                     <span class="btn-trigger" data-target="#profile-dropdown">
                         <img height="60px" width="60px"
-                            src="@if (get_author_data()->author_profile_picture) {{ asset(get_author_data()->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                            src="@if (get_author_data()->author_profile_picture) {{ asset(get_author_data()->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                             alt="" />
                         <span class="icon">
                             <svg width="16" height="9" viewBox="0 0 16 9" fill="none"

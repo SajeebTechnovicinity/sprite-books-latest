@@ -16,11 +16,8 @@
                 No Blog Available!
 
             @endif
-
-            @foreach ($list as $row)
-
-
             <div class="card-wrap">
+            @foreach ($list as $row)
               {{-- <div class="card-heading">Author of the Month</div> --}}
               <div class="card">
                 <a href="{{url('blogs/'.$row->id)}}" class="figure">
@@ -40,9 +37,9 @@
                   <a href="{{url('blogs/'.$row->id)}}" class="card-link">View</a>
                 </div>
               </div>
-            </div>
 
             @endforeach
+          </div>
           </div>
         </div>
       </section>

@@ -10,7 +10,7 @@
                         <img src="{{ asset('public/frontend_asset') }}/imgs/placeholder-1.png" alt="" />
                     </figure>
                     {{-- <div class="review-card card-1">
-                       
+
                         <div class="card-content">
                             <h3 class="card-title">SPIRIT BOOK READER</h3>
                             <p class="card-dsc">
@@ -440,8 +440,8 @@
                             <a href="#" class="name"></a>
                             <p class="bio">{{ $author->author_name }}</p>
                             <p class="dsc">
-        
-                                {{ $author->author_description }} 
+
+                                {{ $author->author_description }}
 
                             </p>
                             <a href="#" class="card-link" onclick="confirmLogin(event)">Follow</a>
@@ -490,7 +490,7 @@
                     <a href="{{ $globalSetting->section4_button_url }}" class="sign-up-btn"
                         >{{ $globalSetting->section4_button_text }}</a>
                 @endif
-                
+
             </div>
         </div>
     </section>

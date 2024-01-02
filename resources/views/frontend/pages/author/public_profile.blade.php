@@ -334,7 +334,7 @@
                                         <div class="event-card" style="padding: 0px 0px;">
                                             <figure class="figure">
                                                 <img height="60px" width="60px"
-                                                    src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-banner.png @endif"
+                                                    src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                     alt="" />
                                             </figure>
                                             <div class="content">

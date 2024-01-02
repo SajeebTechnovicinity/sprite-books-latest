@@ -67,7 +67,11 @@
                     <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
                     <div class="form-field">
                         <label for="isbn" class="label">ISBN*</label>
-                        <input type="text" name="isbn" id="#isbn" class="input" onblur="handleInput()" required/>
+                        <div class="has-loader">
+                            <span class="loader" style="display: none;"></span>
+                            <input type="text" name="isbn" id="#isbn" class="input" onblur="handleInput()"
+                                required />
+                        </div>
                     </div>
                     {{-- <div class="form-field">
                             <label for="isbn" class="label">ISBN 10*</label>
@@ -132,7 +136,7 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="attach-file" class="attach-btn btn-lite btn">
+                        <label for="attach-file" class="attach-btn btn-lite btn button-hint">
                             <span class="icon">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -141,9 +145,12 @@
                                         fill="black" />
                                 </svg>
                             </span>
-                            Attach File(Max 512 KB)*
+                            <span class="text">
+                                Attach File(Max 512 KB)*
+                                <span class="inner">(Recommanded: 400x600 px)</span>
+                            </span>
                         </label>
-                        (Recommanded: 400x600 px)
+
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
                     </div>
@@ -386,8 +393,9 @@
                     @endif
                     <!-- Content Block -->
                     <div class="profile-banner">
-                        <img src="@if ($author->author_cover_picture) {{ asset($author->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-banner.png @endif"
+                        <img src="@if ($author->author_cover_picture) {{ asset($author->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/cover.jpg @endif"
                             alt="" />
+
                             <a href="{{ url('settings') }}" class="edit-banner">
                             <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 528.899 528.899" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z"></path> </g> </g></svg>
                          </a>
@@ -397,9 +405,11 @@
                             <div class="author-summary">
                                 <div class="author-bio unit">
                                     <div class="author-profile-pic">
-                                        <img src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                        <img src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                             alt="" />
-                                            <a href="{{ url('settings') }}" class="edit">Edit</a>
+                                            <a href="{{ url('settings') }}" class="edit">
+                                                <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 528.899 528.899" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z"></path> </g> </g></svg>
+                                            </a>
                                     </div>
 
                                     <h3 class="author-name">
@@ -1100,7 +1110,8 @@
 
             console.log(isbn);
             $("#invalid-isbn").empty();
-            showCalimaticLoader();
+            // showCalimaticLoader();
+            $('.has-loader .loader').css('display', 'block');
 
             // Make an API call
             var apiUrl = "https://api2.isbndb.com/book/" + isbn;
@@ -1116,7 +1127,8 @@
                 success: function(response) {
                     // Request was successful, process the response
                     console.log(response);
-                    HideCalimaticLoader();
+                    // HideCalimaticLoader();
+                    $('.has-loader .loader').css('display', 'none');
                     // Process the bookData here
                 },
                 error: function(xhr) {
@@ -1127,7 +1139,8 @@
                             'color': 'red',
                             'display': 'block'
                         });
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     } else if (xhr.status == 429) {
                         // Too Many Requests error
                         console.log("Error: Limit Exceeded");
@@ -1135,7 +1148,8 @@
                             'color': 'red',
                             'display': 'block'
                         });;
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     } else {
                         // Handle other status codes
                         console.log("Error: Unexpected status code " + xhr.status);
@@ -1143,7 +1157,8 @@
                             'color': 'red',
                             'display': 'block'
                         });;
-                        HideCalimaticLoader();
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
                     }
                 },
 

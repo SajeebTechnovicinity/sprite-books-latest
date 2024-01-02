@@ -2,7 +2,7 @@
   --base-font: 'EB Garamond', serif;
   --secondary-font: 'Cinzel Decorative', serif;
   --color-highlight: #5763EA;
-  --color-dark: #1d1d23;
+  --color-dark: rgb(11, 48, 86);
   --color-dark_lite: #8d8d9b;
   --light-color: #ffffff;
   --color-gray: #3e3e3e;
@@ -1050,14 +1050,14 @@ figure {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: var(--color-gray);
   padding: 10px 30px;
   border-radius: 32px;
-  background-color: var(--color-highlight);
+  background-color: var(--color-dark);
   display: block;
   text-align: center;
   transition: 0.3s;
   margin-top: 15px;
+  color: #ffffff;
 }
 
 .card .card-link:hover {
@@ -1842,8 +1842,19 @@ figure {
   display: none;
 }
 
+.button-hint span.text .inner{
+  display: block;
+  font-size: 80%;
+  padding-left: 30px;
+}
+
 .modal .btn:hover {
   background-color: var(--color-highlight);
+  color: #ffffff;
+}
+
+.modal .btn:hover path{
+  fill: #ffffff;
 }
 
 @media (max-width: 991px) {
@@ -1921,7 +1932,7 @@ figure {
 .btn-solid {
   border: none;
   padding: 13px 26px;
-  background-color: var(--color-gray);
+  background-color: var(--color-dark);
   border-radius: 8px;
   font-weight: 500;
   font-size: 16px;
@@ -2952,12 +2963,13 @@ figure {
 
 .tab-btn {
   padding: 9px 8px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   color: var(--color-gray);
   display: inline-block;
   position: relative;
   white-space: nowrap;
+  font-weight: 700;
 }
 
 .tab-btn::after {
@@ -3062,7 +3074,7 @@ figure {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: #3e3e3e;
+  color: #ffffff;
   padding: 6px 38px;
   border-radius: 8px;
   background-color: var(--color-highlight);
@@ -3472,7 +3484,7 @@ figure {
   position: absolute;
   right: 20px;
   top: 20px;
-  background-color: var(--color-highlight);
+  background-color: var(--color-dark);
   height: 40px;
   width: 40px;
   display: flex;
@@ -3480,6 +3492,11 @@ figure {
   justify-content: center;
   border-radius: 50px;
   font-weight: 700;
+  border: 1px solid rgba(255,255,255,.2);
+}
+
+.profile-banner:hover .edit-banner{
+  background-color: var(--color-highlight);
 }
 
 .profile-banner .edit-banner svg{
@@ -3492,39 +3509,44 @@ figure {
 }
 
 .author-profile-pic {
+  margin: -130px auto 0;
+  position: relative;
   height: 148px;
   width: 148px;
   border-radius: 50%;
-  margin: -130px auto 0;
-  overflow: hidden;
-  border-radius: 50%;
-  position: relative;
-  border: 5px solid #efefef;
 }
 
 .author-profile-pic img {
-  height: 100%;
+  height: 148px;
+  width: 148px;
+  border-radius: 50%;
   object-fit: cover;
+  border: 5px solid #efefef;
+}
+
+.author-profile-pic .edit svg{
+  width: 14px;
+  height: auto;
 }
 
 .author-profile-pic .edit{
   position: absolute;
   z-index: 99;
-  height: 100%;
-  width: 100%;
+  height: 32px;
+  width: 32px;
   justify-content: center;
   align-items: center;
   display: flex;
-  top: 0;
-  left: 0;
-  background-color: rgba(0,0,0,.7);
+  top: 8px;
+  right: 6px;
+  background-color: var(--color-dark);
   color: #ffffff;
-  opacity: 0;
-  transition: .2s;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
 }
 
 .author-profile-pic:hover .edit{
-  opacity: 1;
+  background-color: var(--color-highlight);
 }
 
 .author-name {
@@ -5060,10 +5082,10 @@ label.pseudo-checkbox {
 
 .plans .plan-amount {
   align-items: center;
+  gap: 0;
 }
 
 .plans .amount {
-  margin-right: 10px;
   font-weight: 700;
   font-size: 26px;
   line-height: 1.5;
@@ -6148,9 +6170,9 @@ body .form textarea{
 }
 
 .table-responsive::-webkit-scrollbar-thumb {
-  background-color: var(--color-gray);
+  background-color: var(--color-dark);
   border-radius: 4px;
-  border: 1px solid var(--color-gray);
+  border: 1px solid var(--color-dark);
 }
 
 .table {
@@ -6183,7 +6205,7 @@ body .form textarea{
 .table-actions a{
   display: inline-flex;
   width: 30px;
-  background-color: #1d1d23;
+  background-color: var(--color-dark);
   height: 30px;
   border-radius: 4px;
   justify-content: center;
@@ -6209,7 +6231,7 @@ body .form textarea{
 .authors-list .head button{
   border: none;
   padding: 11px 20px;
-  background-color: var(--color-gray);
+  background-color: var(--color-dark);
   border-radius: 8px;
   font-weight: 500;
   font-size: 14px;
@@ -6312,6 +6334,7 @@ body .form textarea{
   border-radius: 4px;
   font-size: 13px;
   text-align: center;
+  color: #ffffff;
 }
 
 div#shareButtons {
@@ -6335,12 +6358,11 @@ div#shareButtons a{
 }
 
 .buy-buttons-group a:nth-child(1){
-  background-color: var(--color-highlight);
+  background-color: var(--color-dark);
 }
 
 .buy-buttons-group a:nth-child(2){
-  background-color: #333333;
-  color: #ffffff;
+  background-color: var(--color-highlight);;
 }
 
 figure.media-item {
@@ -6698,7 +6720,7 @@ iframe{
 }
 
 .author-type ul li.active{
-  background-color: #333333;
+  background-color: var(--color-dark);
   color: #ffffff;
   border: 0!important;
   border-radius: 50px;

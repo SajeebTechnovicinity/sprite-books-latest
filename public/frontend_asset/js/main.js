@@ -1,35 +1,47 @@
 $(document).ready(function () {
-    $(".cards-carousel").slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
+    let cartCarouselItems = $('.cards-carousel .card');
+
+    if(cartCarouselItems.length > 2){
+        $(".cards-carousel").slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 2,
+                    },
                 },
-            },
-            {
-                breakpoint: 1023,
-                settings: {
-                    slidesToShow: 3,
+                {
+                    breakpoint: 1023,
+                    settings: {
+                        slidesToShow: 3,
+                    },
                 },
-            },
-            {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 2,
+                {
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 2,
+                    },
                 },
-            },
-            {
-                breakpoint: 575,
-                settings: {
-                    slidesToShow: 1,
+                {
+                    breakpoint: 575,
+                    settings: {
+                        slidesToShow: 1,
+                    },
                 },
-            },
-        ],
-    });
+            ],
+        });
+    } else {
+        $(".cards-carousel").css({
+            "display": 'flex',
+            "gap" : '20px'
+        });
+        $(".cards-carousel .card").css({
+            "max-width": '31%',
+        });
+    }
 
     // Product Count
     $(".quantity-field").on("keyup", function () {
