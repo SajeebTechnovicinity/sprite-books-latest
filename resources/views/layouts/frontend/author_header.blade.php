@@ -115,7 +115,7 @@
 
                                 @if (session('type') == 'AUTHOR' || session('type') == 'PUBLISHER')
                                     <li>
-                                        <a href="{{ url('cancel-current-membership-plan') }}" class="link">
+                                        <a href="{{ url('cancel-current-membership-plan') }}" class="link" onclick="confirmCancellation(event)">
                                             <span class="icon">
                                                 <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -247,3 +247,25 @@
         </ul>
     </div>
 @endif
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function confirmCancellation(event) {
+            event.preventDefault(); // Prevent the default action of the link
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You won\'t be able to revert this!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, cancel it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user clicks "Yes," proceed with the cancellation
+                    window.location.href = "{{ url('cancel-current-membership-plan') }}";
+                }
+            });
+        }
+    </script>
