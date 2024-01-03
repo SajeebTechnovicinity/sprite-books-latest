@@ -258,7 +258,7 @@
                                 <div class="block-content__row">
                                     <div class="user">
                                         <img class="user__img" height="60px" width="60px"
-                                            src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                            src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                             alt="" />
                                         <h5 class="user__name">
                                             {{ $book->bookAuthor->author_name }}
@@ -459,7 +459,7 @@
                                     <div class="author-info">
                                         <div class="author-info__row">
                                             <div class="profile-img">
-                                                <img src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                                <img src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                     alt="" />
                                             </div>
                                             <div class="author-name">

@@ -58,7 +58,7 @@ class CommunityPostController extends Controller
         if ($user->author_profile_picture) {
             $postArray['user_profile_picture'] = url('/') . $user->author_profile_picture;
         } else {
-            $postArray['user_profile_picture'] = asset('public/frontend_asset') . '/imgs/profile-img.png';
+            $postArray['user_profile_picture'] = asset('public/frontend_asset') . '/imgs/profile.jpg';
         }
 
         event(new SendPostEvent($postArray));
@@ -95,7 +95,7 @@ class CommunityPostController extends Controller
         if ($user->author_profile_picture) {
             $postArray['user_profile_picture'] = url('/') . $user->author_profile_picture;
         } else {
-            $postArray['user_profile_picture'] = asset('public/frontend_asset') . '/imgs/profile-img.png';
+            $postArray['user_profile_picture'] = asset('public/frontend_asset') . '/imgs/profile.jpg';
         }
 
 
