@@ -718,9 +718,9 @@
                                     @endforeach
                                 @endif
 
-                                <p class="member-status unit">
+                                <!-- <p class="member-status unit">
                                     Member since {{ date('Y', strtotime($author->created_at)) }}
-                                </p>
+                                </p> -->
                             </div>
                             <div class="tabs-wrap space-0">
                                 <div class="tabs-btns-row">

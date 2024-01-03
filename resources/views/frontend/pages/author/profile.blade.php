@@ -597,6 +597,7 @@
                                 @endif
 
                                 @if (count($podcasts))
+                                <div class="prodcast-aside">
                                     <h3>Podcasts</h3>
                                     @foreach ($podcasts as $row)
                                         <style>
@@ -632,11 +633,12 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    </div>
                                 @endif
 
-                                <p class="member-status unit">
+                                <!-- <p class="member-status unit">
                                     Member since {{ date('Y', strtotime($author->created_at)) }}
-                                </p>
+                                </p> -->
                             </div>
                             <div class="tabs-wrap space-0">
                                 <div class="tabs-btns-row">

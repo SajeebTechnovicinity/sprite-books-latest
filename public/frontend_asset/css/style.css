@@ -6915,12 +6915,14 @@ iframe{
 }
 
 @media (max-width: 767px){
+  .prodcast-grid,
   .author-grid{
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
 @media  (min-width: 768px) and (max-width: 1000px){
+  .prodcast-grid,
   .author-grid{
     grid-template-columns: repeat(2, 1fr);
   }
@@ -6930,4 +6932,42 @@ label .text .inner{
   display: block;
   font-size: 80%;
   padding-left: 25px;
+}
+
+.prodcast-grid  iframe{
+  width: 100%;
+  border: 0;
+  height: 200px;
+  vertical-align: middle;
+}
+
+.prodcast-grid .event-card{
+  padding: 25px 20px;
+}
+
+.prodcast-grid{
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 767px){
+  .prodcast-grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media  (min-width: 768px) and (max-width: 1000px){
+  .prodcast-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.prodcast-aside {
+  padding-top: 20px;
+}
+
+.prodcast-aside .event-card{
+  background-color: transparent;
+  margin-bottom: 25px;
 }
