@@ -55,7 +55,7 @@
                     />
                   </svg>
                 </span>
-                Edit Cover Image (Max: 512 KB) 
+                Edit Cover Image (Max: 512 KB)
               </label>
               <br>
               <br>
@@ -293,7 +293,7 @@
                                         <div class="author flex gp-20">
                                             <div class="autho_img">
                                                 <img height="60px" width="60px"
-                                                    src="@if ($community->communityAuthor->author_profile_picture) {{ asset($community->communityAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset/imgs/profile-img.png') }} @endif"
+                                                    src="@if ($community->communityAuthor->author_profile_picture) {{ asset($community->communityAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset/imgs/profile.jpg') }} @endif"
                                                     alt="No Image available" />
                                             </div>
                                             <div class="author_name">{{ $community->communityAuthor->author_name }}</div>
@@ -344,12 +344,12 @@
                                                             <span id="charCount" style="margin-left:100px;">0</span>/100
 
                                                             <div class="input-area flex">
-                                                            
+
                                                                 <figure class="img">
-                                                                    <img src="@if ($current_user->author_cover_picture) {{ asset($current_user->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                                                    <img src="@if ($current_user->author_cover_picture) {{ asset($current_user->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                                         alt="" />
                                                                 </figure>
-                                                                
+
                                                                 <input class="input"
                                                                     placeholder="Share what on your mind?" type="text"
                                                                     name="post" id="postInput"/>
@@ -400,7 +400,7 @@
                                                         <div class="post__header flex-equal">
                                                             <div class="author__info flex">
                                                                 <div class="author_img">
-                                                                    <img src="@if ($rowPost->Author->author_profile_picture) {{ asset($rowPost->Author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                                                    <img src="@if ($rowPost->Author->author_profile_picture) {{ asset($rowPost->Author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                                         alt="" />
                                                                 </div>
                                                                 <div class="info">
@@ -491,7 +491,7 @@
                                                                         <!-- Start List Comment 1 -->
                                                                         <li class="box_result row">
                                                                             <div class="avatar_comment col-md-1">
-                                                                                <img src="@if ($rowComment->Author->author_cover_picture) {{ asset($rowComment->Author->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                                                                <img src="@if ($rowComment->Author->author_cover_picture) {{ asset($rowComment->Author->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                                                     alt="avatar" />
                                                                             </div>
                                                                             <div class="result_comment col-md-11">
@@ -527,7 +527,7 @@
 
 
                                                         <div class="comments_input flex">
-                                                            <img src="@if ($current_user->author_cover_picture) {{ asset($current_user->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                                            <img src="@if ($current_user->author_cover_picture) {{ asset($current_user->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                                 alt="" />
                                                             <input type="text" placeholder="Write your comment"
                                                                 class="writeComment" data-id="{{ $rowPost->id }}"
@@ -564,7 +564,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-body__inner author-media d-none" id="Mycommunity">
-                                        <div>
+                                        <div class="author-grid">
 
                                             @if (count(get_user_community_list_by_user_id(session('author_id'))))
                                                 @foreach (get_user_community_list_by_user_id(session('author_id')) as $rowCommunity)
@@ -572,7 +572,7 @@
                                                         <div class="grid-item author-item">
                                                             <a
                                                                 href="{{ url('community/' . $rowCommunity->Community->id) }}">
-                                                                <img src="@if ($rowCommunity->Community->community_cover_image) {{ asset($rowCommunity->Community->community_cover_image) }} @else {{ asset('public/frontend_asset/imgs/profile-img.png') }} @endif"
+                                                                <img src="@if ($rowCommunity->Community->community_cover_image) {{ asset($rowCommunity->Community->community_cover_image) }} @else {{ asset('public/frontend_asset/imgs/profile.jpg') }} @endif"
                                                                     alt="" />
                                                                 <div class="title">
                                                                     {{ $rowCommunity->Community->community_name }}
@@ -583,7 +583,7 @@
                                                     @else
                                                         <div class="grid-item author-item">
                                                             <a href="{{ url('community/' . $rowCommunity->id) }}">
-                                                                <img src="@if ($rowCommunity->community_cover_image) {{ asset($rowCommunity->community_cover_image) }} @else {{ asset('public/frontend_asset/imgs/profile-img.png') }} @endif"
+                                                                <img src="@if ($rowCommunity->community_cover_image) {{ asset($rowCommunity->community_cover_image) }} @else {{ asset('public/frontend_asset/imgs/profile.jpg') }} @endif"
                                                                     alt="" />
                                                                 <div class="title">{{ $rowCommunity->community_name }}
                                                                 </div>
@@ -604,7 +604,7 @@
                                                 @if (count($community_members))
                                                     @foreach ($community_members as $rowMember)
                                                         <div class="grid-item author-item">
-                                                            <img src="@if ($rowMember->Follower->author_profile_picture) {{ asset($rowMember->Follower->author_profile_picture) }} @else {{ asset('public/frontend_asset/imgs/profile-img.png') }} @endif"
+                                                            <img src="@if ($rowMember->Follower->author_profile_picture) {{ asset($rowMember->Follower->author_profile_picture) }} @else {{ asset('public/frontend_asset/imgs/profile.jpg') }} @endif"
                                                                 alt="" />
                                                             <div class="title">{{ $rowMember->Follower->author_name }}
                                                             </div>

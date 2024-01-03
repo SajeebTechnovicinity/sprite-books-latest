@@ -99,7 +99,7 @@
                                             @if (
                                                 $current_membership_plans[0]->membership_plan_monthly_price != '0' &&
                                                     $current_membership_plans[0]->membership_plan_yearly_price != '0')
-                                                <a style="background-color: #d40808;" class="switch__btn" href="{{ url('cancel-current-membership-plan') }}"
+                                                <a style="background-color: #d40808;" class="switch__btn cancle" href="{{ url('cancel-current-membership-plan') }}"
                                                     onclick="confirmCancellation(event)">Cancel?</a>
                                             @endif
                                         </div>
@@ -152,16 +152,15 @@
                                         </ul>
                                     </div>
                                     @if ($row->id == $current_membership_plans[0]->membership_plan_id && $current_membership_plans[0]->duration == 'Yearly')
-                                        <button class="switch__btn current">
-                                            This is your current plan
-                                            <br>
+                                        <div class="switch__btn current">
+                                            <p style="margin: 0; text-align: center;">This is your current plan</p>
                                             @if (
                                                 $current_membership_plans[0]->membership_plan_monthly_price != '0' &&
                                                     $current_membership_plans[0]->membership_plan_yearly_price != '0')
-                                                <a href="{{ url('cancel-current-membership-plan') }}"
+                                                <a class="switch__btn" href="{{ url('cancel-current-membership-plan') }}"
                                                     onclick="confirmCancellation(event)">Cancel?</a>
                                             @endif
-                                        </button>
+                                        </div>
                                     @else
                                         @if ($row->membership_plan_name == 'Free')
                                             <a href="{{ url('select-membership-plan/' . $row->membership_plan_slug . '/Yearly') }}"

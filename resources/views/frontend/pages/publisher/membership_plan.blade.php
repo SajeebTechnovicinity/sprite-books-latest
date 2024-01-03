@@ -93,15 +93,15 @@
                                         </ul>
                                     </div>
                                     @if ($row->id == $current_membership_plans[0]->membership_plan_id && $current_membership_plans[0]->duration=="Monthly")
-                                        <button class="switch__btn current">
-                                            This is your current plan
+                                        <div class="switch__btn-wrap">
+                                            <p style="margin: 0; text-align: center;">This is your current plan</p>
                                             @if (
                                                 $current_membership_plans[0]->membership_plan_monthly_price != '0' &&
                                                     $current_membership_plans[0]->membership_plan_yearly_price != '0')
-                                                <a href="{{ url('cancel-current-membership-plan') }}"
+                                                <a class="switch__btn cancle" href="{{ url('cancel-current-membership-plan') }}"
                                                     onclick="confirmCancellation(event)">Cancel?</a>
                                             @endif
-                                        </button>
+                                        </div>
                                     @elseif($row->membership_plan_name == 'Free')
                                         <a href="{{ url('select-membership-plan/' . $row->membership_plan_slug."/Monthly") }}"
                                             class="switch__btn Switch to Essentials">

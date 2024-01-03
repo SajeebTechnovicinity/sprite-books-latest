@@ -19,7 +19,6 @@
 <div class="form-field">
     <label for="title" class="label">Blog Image (Max 512 KB) (Recommanded: 300x300 px)*</label>
     <input type="file" name="blog_image" id="title" class="input" />
-    <hr>
-    Current Image
+    <label style="display: block; font-weight: 600; font-size: 16px; margin: 15px 0 10px;">Current Image</label>
     <img src="{{asset($blog->blog_image)}}">
 </div>

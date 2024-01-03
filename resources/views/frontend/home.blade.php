@@ -451,7 +451,7 @@
                         No Data Found!
                     @endif
                 </div>
-                <div class="card-wrap">
+                <div class="card-wrap mt-60" >
                     <div class="card-heading">Book of the Month</div>
                     @if($book!=null)
                     <div class="card">

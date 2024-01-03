@@ -753,12 +753,11 @@
                                                 <table class="table table-striped">
                                                     <thead>
                                                         <tr>
-                                                            <th>Sl</th>
+                                                            <!-- <th>Sl</th> -->
                                                             {{-- <th>Code</th> --}}
-                                                            <th>First Name</th>
-                                                            <th>Last Name</th>
+                                                            <th>Name</th>
                                                             <th>Email</th>
-                                                            <th>Phone</th>
+                                                            <!-- <th>Phone</th> -->
                                                             {{-- <th>Country</th> --}}
                                                             <th>Action</th>
                                                         </tr>
@@ -766,25 +765,22 @@
                                                     <tbody>
                                                         @foreach ($author_created_list as $list)
                                                             <tr>
-                                                                <td>
+                                                                <!-- <td>
                                                                     {{ $loop->iteration }}
-                                                                </td>
+                                                                </td> -->
 
                                                                 {{-- <td>
                                                                     {{ $list->author_code }}
                                                                 </td> --}}
                                                                 <td>
-                                                                    {{ $list->author_name }}
-                                                                </td>
-                                                                <td>
-                                                                    {{ $list->author_last_name }}
+                                                                    {{ $list->author_name }} {{ $list->author_last_name }}
                                                                 </td>
                                                                 <td>
                                                                     {{ $list->author_email }}
                                                                 </td>
-                                                                <td>
+                                                                <!-- <td>
                                                                     {{ $list->author_phone }}
-                                                                </td>
+                                                                </td> -->
                                                                 {{-- <td>
                                                                     {{ $list->author_country }}
                                                                 </td> --}}
@@ -934,7 +930,7 @@
                                                 <div class="event-card">
                                                     <figure class="figure">
                                                         <img height="60px" width="60px"
-                                                            src="@if ($row->Author->author_profile_picture) {{ asset($row->Author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-img.png @endif"
+                                                            src="@if ($row->Author->author_profile_picture) {{ asset($row->Author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                             alt="" />
                                                     </figure>
                                                     <div class="content">

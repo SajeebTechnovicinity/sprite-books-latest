@@ -38,7 +38,7 @@
 
 
             <div class="form-field">
-              <label for="attach-file" class="attach-btn btn-lite btn">
+              <label for="attach-file" class="attach-btn btn-lite btn" style="width: 100%;">
                 <span class="icon">
                   <svg
                     width="22"
@@ -53,7 +53,13 @@
                     />
                   </svg>
                 </span>
-                Cover Image (Max: 512KB) (Recommanded: 300x300 px)
+                <span class="text">
+                Cover Image (Max: 512KB)
+                  <span class="inner">
+                  (Recommanded: 300x300 px)
+                  </span>
+                </span>
+
               </label>
               <input
                 class="attach-input"

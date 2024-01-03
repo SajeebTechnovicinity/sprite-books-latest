@@ -16,7 +16,7 @@
                     @foreach ($events as $row)
                         <div class="event-card">
                             <figure class="figure">
-                                <img style="height: 60px;width:60px" src="@if($row->Author->author_profile_picture) {{asset($row->Author->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile-img.png @endif" alt="" />
+                                <img style="height: 60px;width:60px" src="@if($row->Author->author_profile_picture) {{asset($row->Author->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile.jpg @endif" alt="" />
                             </figure>
                             <div class="content">
                                 <div class="event-card__row flex-wrap">

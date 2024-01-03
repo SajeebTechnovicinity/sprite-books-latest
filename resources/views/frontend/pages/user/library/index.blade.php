@@ -28,7 +28,7 @@
                                 @foreach ($mylibraries as $rowLibrary)
                                     <div class="author-d-block">
                                         <div class="inner__author-block">
-                                            <div class="author-block__header flex-wrap">
+                                            <div class="author-block__header flex-wrap gp-27">
                                                 <div class="author_info flex gp-27">
                                                     {{-- <img src="{{asset($row->bookDocuments[0]->path)}}" alt="" class="author-img" /> --}}
                                                     <div class="author_deteals">
@@ -47,9 +47,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button class="follower-btn" id="AddedBook{{ $rowLibrary->id }}"
+                                                <button title="Remove From Library" class="follower-btn follower-remove-btn" id="AddedBook{{ $rowLibrary->id }}"
                                                     onclick="RemoveFromLibrary({{ $rowLibrary->id }})">
-                                                    Remove From Library
+                                                    Remove
                                                 </button>
                                             </div>
                                             <div class="author-block__body flex-equal">
@@ -95,7 +95,7 @@
                     </div>
 
                     <!-- Cards Author Area -->
-                    <div class="Authors-holder">
+                    <div class="Authors-holder mt-40">
                         <h2 class="title">Latest Books</h2>
                         <div class="inner-authors">
                             <div class="autors-blocks">
@@ -107,7 +107,7 @@
                                 @foreach ($books as $row)
                                     <div class="author-d-block">
                                         <div class="inner__author-block">
-                                            <div class="author-block__header flex-wrap">
+                                            <div class="author-block__header flex-wrap gp-27">
                                                 <div class="author_info flex gp-27">
                                                     {{-- <img src="{{asset($row->bookDocuments[0]->path)}}" alt="" class="author-img" /> --}}
                                                     <div class="author_deteals">
