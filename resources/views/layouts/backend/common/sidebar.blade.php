@@ -75,8 +75,60 @@
                       </ul>
                   </li>
 
+
                   <!--Roles-->
-?
+
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Role
+                              <i class="fas fa-angle-left right"></i>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{{ url('admin/roles/create') }}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Create Role</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ url('admin/roles') }}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>List of Role</p>
+                              </a>
+                          </li>
+
+                      </ul>
+                  </li>
+
+                  <!--Permission-->
+
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Permission
+                              <i class="fas fa-angle-left right"></i>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{{ url('admin/permissions/create') }}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Create Permission</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ url('admin/permissions') }}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>List of Permission</p>
+                              </a>
+                          </li>
+
+                      </ul>
+                  </li>
                   <!--Change to Author-->
 
                   <li class="nav-item">
