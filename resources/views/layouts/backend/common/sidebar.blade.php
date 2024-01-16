@@ -50,35 +50,38 @@
 
                   <li class="nav-header">Modules</li>
 
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="nav-icon fas fa-book"></i>
-                          <p>
-                              User
-                              <i class="fas fa-angle-left right"></i>
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="{{ url('admin/users/create') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Create user</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="{{ url('admin/users') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>List of user</p>
-                              </a>
-                          </li>
+                  @if(!DB::table('users_roles')->where('user_id',Auth::user()->id)->where('role_id',1)->exists())
 
-                      </ul>
-                  </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                User 
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ url('admin/users/create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create user</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('admin/users') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List of user</p>
+                                </a>
+                            </li>
 
+                        </ul>
+                    </li>
+
+                  @endif
 
                   <!--Roles-->
 
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-book"></i>
                           <p>
@@ -128,7 +131,7 @@
                           </li>
 
                       </ul>
-                  </li>
+                  </li> --}}
                   <!--Change to Author-->
 
                   <li class="nav-item">
