@@ -24,7 +24,7 @@ if (!function_exists('get_author_total_books_count')) {
 
     function get_author_total_books_count() {
 
-     return Book::whereAuthorId(session('author_id'))->count();
+     return Book::whereAuthorId(session('author_id'))->where('is_delete',0)->count();
 
     }
 }
@@ -33,7 +33,7 @@ if (!function_exists('get_author_total_books_count_by_author_id')) {
 
     function get_author_total_books_count_by_author_id($authorId) {
 
-     return Book::whereAuthorId($authorId)->count();
+     return Book::whereAuthorId($authorId)->where('is_delete',0)->count();
 
     }
 }
@@ -85,7 +85,7 @@ if (!function_exists('get_author_last_two_books_by_author_id')) {
 
     function get_author_last_two_books_by_author_id($authorId) {
 
-     return Book::whereAuthorId($authorId)->latest()->take(2)->get();
+     return Book::whereAuthorId($authorId)->where('is_delete',0)->latest()->take(2)->get();
 
     }
 }
@@ -165,7 +165,7 @@ if (!function_exists('check_user_max_book_by_user_id')) {
         }
 
 
-        $userCountBooks = Book::whereAuthorId($userId)->count();
+        $userCountBooks = Book::whereAuthorId($userId)->where('is_delete',0)->count();
 
 
 
@@ -198,7 +198,7 @@ if (!function_exists('check_publisher_max_book_by_user_id')) {
         $maxBook=$userPlan[0]->MembershipPlan->max_no_of_books+$userPlan[0]->MembershipPlan->max_author_account*$userPlan[0]->MembershipPlan->author_max_no_of_books;
 
 
-        $userCountBooks = Book::wherePublisherId($userId)->count();
+        $userCountBooks = Book::wherePublisherId($userId)->where('is_delete',0)->count();
 
 
 

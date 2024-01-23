@@ -120,8 +120,8 @@ class AuthorController extends Controller
         if (session('author_id')) {
             //return(check_user_max_book_by_user_id(session('author_id')));
             //  echo '<pre>';print_r(check_user_max_book_by_user_id(session('author_id')));die;
-            $data['books'] = Book::whereAuthorId(session('author_id'))->get();
-            $data['events'] = Event::whereAuthorId(session('author_id'))->get();
+            $data['books'] = Book::whereAuthorId(session('author_id'))->where('is_delete',0)->get();
+            $data['events'] = Event::whereAuthorId(session('author_id'))->where('is_delete',0)->get();
             $data['author'] = Author::find(session('author_id'));
             $data['generes'] = Genere::all();
             $data['podcasts'] = Podcast::whereAuthorId(session('author_id'))->get();
@@ -134,8 +134,8 @@ class AuthorController extends Controller
     public function author_public_profile($authorId)
     {
         if ($authorId) {
-            $data['books'] = Book::whereAuthorId($authorId)->get();
-            $data['events'] = Event::whereAuthorId($authorId)->get();
+            $data['books'] = Book::whereAuthorId($authorId)->where('is_delete',0)->get();
+            $data['events'] = Event::whereAuthorId($authorId)->where('is_delete',0)->get();
             $data['author'] = Author::find($authorId);
             $data['author_followers'] = AuthorFollower::whereAuthorId($authorId)->get();
             $data['feature_media'] = FeatureMedia::whereAuthorId(session('author_id'))->get();
@@ -147,7 +147,7 @@ class AuthorController extends Controller
     public function author_public_events($authorId)
     {
         if ($authorId) {
-            $data['events'] = Event::whereAuthorId($authorId)->get();
+            $data['events'] = Event::whereAuthorId($authorId)->where('is_delete',0)->get();
             // echo '<pre>';print_r($data['events'] );die;
             $data['author'] = Author::find($authorId);
             return view('frontend.pages.author.public_events', $data);

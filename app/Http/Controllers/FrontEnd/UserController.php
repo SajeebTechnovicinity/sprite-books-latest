@@ -54,6 +54,10 @@ class UserController extends Controller
         {
             return redirect()->back()->with('msg',"Last Name is required.");
         }
+        if(!$request->name && $request->type=="PUBLISHER")
+        {
+            return redirect()->back()->with('msg',"Publisher Name is required.");
+        }
         $authorInfo= Author::where('author_email',$request->email)->first();
         if($request->password != $request->confirm_password)
         {
@@ -75,6 +79,7 @@ class UserController extends Controller
         $authorId=rand(10000,999999);
 
         $author = Author::create([
+            'name'=>$request->name,
             'author_name' => $request->author_name,
             'type'=>$request->type,
             'author_code' => 10000+$authorId,
@@ -124,7 +129,7 @@ if($author->type == 'USER'){
 
 
 
-        $author = Author::where('author_email', $request->email)->where('author_email_verification',1)->first();
+        $author = Author::where('author_email', $request->email)->where('author_email_verification',1)->where('is_delete',0)->first();
 
         if(!$author){
             return redirect()->back()->with('msg','No user found with this credential');
@@ -259,7 +264,7 @@ if($author->type == 'USER'){
         if(session('author_id') && session('type') == 'USER'){
             $readerGeneres = ReaderGenere::whereReaderId(session('author_id'))->get('genere_id');
             // echo '<pre>';print_r($readerGeneresArray);die;
-            $data['books'] = Book::whereIn('genere_id', $readerGeneres)->orderBy('id','desc')->paginate(10);
+            $data['books'] = Book::whereIn('genere_id', $readerGeneres)->where('is_delete',0)->orderBy('id','desc')->paginate(10);
             $data['mylibraries'] = BookLibraries::whereType('USER')->whereAddedBy(session('author_id'))->orderBy('id','desc')->get();
 
             return view('frontend.pages.user.library.index',$data);
@@ -268,7 +273,7 @@ if($author->type == 'USER'){
 
      public function event(){
         if(session('author_id') && session('type') == 'USER'){
-            $data['events'] = Event::orderBy('id','desc')->get();
+            $data['events'] = Event::where('is_delete',0)->orderBy('id','desc')->get();
             // echo '<pre>';print_r( $data['followed_authors']);die;
             return view('frontend.pages.user.event.index',$data);
         }

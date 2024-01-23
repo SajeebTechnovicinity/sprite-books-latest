@@ -15,7 +15,7 @@ class SuggestedBooksController extends Controller
     {
         // if(Auth::user()->can('view-author')) {
             $data['list'] = SuggestedBook::orderBy('id','desc')->get();
-            $data['books'] = Book::orderBy('id','desc')->get();
+            $data['books'] = Book::where('is_delete',0)->orderBy('id','desc')->get();
             $data['authors'] = Author::whereType('AUTHOR')->get();
             return view("backend.pages.suggested_book.index", $data);
         // }
@@ -32,7 +32,7 @@ class SuggestedBooksController extends Controller
     }
 
     public function get_author_generes_by_author_id(Request $request){
-        $data = Book::whereAuthorId($request->id)->get();
+        $data = Book::whereAuthorId($request->id)->where('is_delete',0)->get();
         // print_r($data);
         $output = ' <option value="">Select</option>';
         foreach($data as $row){
@@ -43,7 +43,7 @@ class SuggestedBooksController extends Controller
     }
 
     public function get_author_books_by_genere_id(Request $request){
-        $data = Book::whereAuthorId($request->author_id)->whereGenereId($request->id)->get();
+        $data = Book::whereAuthorId($request->author_id)->where('is_delete',0)->whereGenereId($request->id)->get();
         $output = ' <option value="">Select</option>';
         foreach($data as $row){
             $output .= ' <option value="'.$row->id.'">'.$row->book_name.'</option>';

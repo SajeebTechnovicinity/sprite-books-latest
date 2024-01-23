@@ -20,7 +20,7 @@ class AuthorController extends Controller
     public function index()
     {
         // if(Auth::user()->can('view-author')) {
-            $data['list'] = Author::whereType('AUTHOR')->orderBy('id','desc')->get();
+            $data['list'] = Author::whereType('AUTHOR')->where('is_delete',0)->orderBy('id','desc')->get();
             $data['country_list'] = Country::all();
             return view("backend.pages.author.index", $data);
         // }
@@ -60,6 +60,22 @@ class AuthorController extends Controller
         }
 
         return redirect('author/profile');
+    }
+    public function delete($id)
+    {
+
+        $author = Author::where('id', $id)->first();
+
+        if(!$author){
+            return redirect()->back()->with('msg','No user found with this credential');
+        }
+
+        Author::where('id',$id)->update([
+            'is_delete'=>1
+        ]);
+
+        return redirect()->back()->with('success', ucfirst(strtolower($author->type)).' delete successfully');
+
     }
     
 

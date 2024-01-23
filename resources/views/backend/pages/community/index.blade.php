@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Book List</h4>
+                <h4 class="card-title">Community List</h4>
 
                 {{-- <div class="card-tools">
                               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-modal">
@@ -24,15 +24,11 @@
                     <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Name</th>
-                            <th>Author</th>
-                            <th>Description</th>
                             <th>Image</th>
-                            <th>Price</th>
-                            <th>Hardbook Price</th>
-                            <th>Ebook Price</th>
-                            <th>Discount</th>
-                            <th>Added</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Creator</th>
+                            <th>Date of Creator</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,42 +40,29 @@
                                 </td>
 
                                 <td>
-                                    {{ $row->book_name }}
-                                </td>
-                                <td>
-                                    @if ($row->bookAuthor)
-                                        {{ $row->bookAuthor->author_name }}
+                                    @if (isset($row->community_cover_image))
+                                        <img height="60px" width="60px" src="{{ asset($row->community_cover_image) }}">
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $row->book_description }}
+                                    {{ $row->community_name }}
                                 </td>
                                 <td>
-                                    @if (isset($row->bookDocuments[0]))
-                                        <img height="60px" width="60px" src="{{ asset($row->bookDocuments[0]->path) }}">
+                                    {{ $row->community_description }}
+                                </td>
+                                <td>
+                                    @if ($row->communityAuthor)
+                                        {{ $row->communityAuthor->author_name }} {{ $row->communityAuthor->author_last_name }}
                                     @endif
-                                </td>
-                                <td>
-                                    {{ $row->book_price }}
-                                </td>
-                                <td>
-                                    {{ $row->hard_book_price }}
-                                </td>
-                                <td>
-                                    {{ $row->ebook_price }}
-                                </td>
-                                <td>
-                                    {{ $row->book_discount_in_percentage }}%
                                 </td>
                                 <td>
                                     {{ $row->created_at }}
-                                    
                                 </td>
 
                                 <td>
-                                    <a class="btn btn-success btn-sm" href="{{url('admin/books')}}/{{ $row->id }}/edit">
+                                    {{-- <a class="btn btn-success btn-sm" href="{{url('admin/authors')}}/{{ $row->id }}/edit">
                            Edit
-                           </a>
+                           </a> --}}
                                     <a class="btn btn-danger btn-sm text-white"
                                         onclick="confirmCancellation(event,{{ $row->id }})">
                                         Delete
@@ -152,7 +135,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If the user clicks "Yes," proceed with the cancellation
-                    window.location.href = "{{ url('book/delete/') }}" + "/" + id;
+                    window.location.href = "{{ url('/admin/delete-community/') }}" + "/" + id;
                 }
             });
         }
