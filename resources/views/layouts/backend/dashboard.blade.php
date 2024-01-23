@@ -1,7 +1,38 @@
 @extends('layouts.backend.master')
 @section('content')
+
+  <style>
+    .dashboard-head{
+      background-color: #5763ea;
+      padding-bottom: 70px;
+    }
+    .content-header h1{
+      color: #ffffff;
+    }
+    .breadcrumb li a,
+    .breadcrumb li{
+      color: #ffffff!important;
+    }
+    .breadcrumb-item+.breadcrumb-item::before{
+      color: #ffffff;
+    }
+    .content{
+      transform: translateY(-50px);
+    }
+    .content .small-box{
+      background-color: #ffffff!important;
+
+    }
+    .content .small-box{
+      color: #333333!important;
+    }
+    .small-box>.small-box-footer{
+      background-color: #5763ea!important;
+    }
+  </style>
+
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <div class="content-header dashboard-head">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -58,7 +89,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box">
               <div class="inner">
                 <h3>{{ $readers }}</h3>
 

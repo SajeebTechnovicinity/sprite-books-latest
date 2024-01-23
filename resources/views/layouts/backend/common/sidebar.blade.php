@@ -1,9 +1,44 @@
+
+  <style>
+    .layout-fixed .main-sidebar{
+        background-color: #ffffff;
+    }
+
+    [class*=sidebar-dark-] .nav-header,
+    [class*=sidebar-dark-] .sidebar a,
+    [class*=sidebar-dark] .brand-link, [class*=sidebar-dark] .brand-link .pushmenu{
+        color: #333333!important;
+        font-weight: 500;
+    }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+        background-color: #5763ea;
+        color: #ffffff!important;
+    }
+
+    .nav-sidebar ul{
+        padding-left: 20px!important;
+        position: relative;
+    }
+
+    .nav-sidebar ul:before{
+        content: "";
+        height: 100%;
+        width: 2px;
+        background-color: #ddd;
+        position: absolute;
+        left: 20px;
+        top: 0;
+    }
+  </style>
+
+
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="{{ url('/admin') }}" class="brand-link">
           <img src="{{ asset('public/backend_asset') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
               class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light">{{ $globalSetting->app_name }}</span>
+          <span class="brand-text">{{ $globalSetting->app_name }}</span>
       </a>
 
       <!-- Sidebar -->
