@@ -321,6 +321,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('community', AdminCommunityController::class)->middleware('auth');
     Route::get('delete-event/{id}', [AdminEventController::class, 'delete_event']);
     Route::get('delete-community/{id}', [AdminCommunityController::class, 'delete_community']);
+    Route::post('community/update/{id}', [AdminCommunityController::class,'update_community'])->middleware('auth');
+    Route::get('edit-community/{id}', [AdminCommunityController::class, 'edit_community']);
 
     //event
     Route::resource('event', AdminEventController::class)->middleware('auth');
