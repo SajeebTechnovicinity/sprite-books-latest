@@ -60,9 +60,9 @@
                                 </td>
 
                                 <td>
-                                    {{-- <a class="btn btn-success btn-sm" href="{{url('admin/authors')}}/{{ $row->id }}/edit">
+                                    <a class="btn btn-success btn-sm" href="{{url('admin/edit-community')}}/{{ $row->id }}">
                            Edit
-                           </a> --}}
+                           </a>
                                     <a class="btn btn-danger btn-sm text-white"
                                         onclick="confirmCancellation(event,{{ $row->id }})">
                                         Delete
