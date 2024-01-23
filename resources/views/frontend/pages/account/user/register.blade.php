@@ -15,17 +15,17 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('public/frontend_asset') }}/css/style.css" />
-    <title>create account</title>
+    <title>Create account</title>
     <script>
-    window.Userback = window.Userback || {};
-    Userback.access_token = '3546|87888|ImQNwGVYOAE8Mskgmyn1BqRNELZMj5Sj1ibaMuH8oDWxMVjZgG';
-    (function(d) {
-        var s = d.createElement('script');
-        s.async = true;
-        s.src = 'https://static.userback.io/widget/v1.js';
-        (d.head || d.body).appendChild(s);
-    })(document);
-</script>
+        window.Userback = window.Userback || {};
+        Userback.access_token = '3546|87888|ImQNwGVYOAE8Mskgmyn1BqRNELZMj5Sj1ibaMuH8oDWxMVjZgG';
+        (function(d) {
+            var s = d.createElement('script');
+            s.async = true;
+            s.src = 'https://static.userback.io/widget/v1.js';
+            (d.head || d.body).appendChild(s);
+        })(document);
+    </script>
 
 </head>
 
@@ -74,6 +74,13 @@
                             </select>
                         </div>
 
+                        <div class="label-field" id="name">
+                            <label class="name" for="first-name">Name</label>
+                            <input type="text" class="input name-in" name="name"
+                                value="{{ Session::get('name') }}" />
+                            <br>
+                            <br>
+                        </div>
 
 
                         <div class="name-field row">
@@ -88,16 +95,16 @@
                                     value="{{ Session::get('author_last_name') }}" id="last-name" />
                             </div>
                         </div>
-                     
+
                         <div class="label">
                             <label for="email">Email</label>
                         </div>
                         <input class="input" type="email" value="{{ Session::get('email') }}" name="email"
                             id="email" />
                         <?php
-                            Session::put('author_name',null);
-                            Session::put('author_last_name',null);
-                            Session::put('email',null);
+                        Session::put('author_name', null);
+                        Session::put('author_last_name', null);
+                        Session::put('email', null);
                         ?>
                         <div class="password-field">
                             <div class="label">
@@ -123,7 +130,8 @@
                     </form>
                     <div class="page-user-meta cr-account-meta">
                         By signing up, you agree to our company’s
-                        <a target="_blank" href="{{ url('terms-and-conditions') }}" target="__blank">Term and Conditions</a> and
+                        <a target="_blank" href="{{ url('terms-and-conditions') }}" target="__blank">Term and
+                            Conditions</a> and
                         <a target="_blank" href="{{ url('privacy') }}" target="__blank">Privacy Policy</a>
                     </div>
                 </div>
@@ -136,5 +144,25 @@
         </div>
     </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Hide the "Name" field initially
+        $("#name").hide();
+
+        // Show/hide the "Name" field based on the selected option
+        $("#type").change(function() {
+            if ($(this).val() == "PUBLISHER") {
+                $("#name").show();
+            } else {
+                $("#name").hide();
+            }
+        });
+
+        // Trigger the change event on page load to handle pre-filled values
+        $("#type").trigger("change");
+    });
+</script>
 
 </html>

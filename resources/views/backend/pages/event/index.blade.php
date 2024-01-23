@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Book List</h4>
+                <h4 class="card-title">Event List</h4>
 
                 {{-- <div class="card-tools">
                               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-modal">
@@ -25,14 +25,11 @@
                         <tr>
                             <th>Sl</th>
                             <th>Name</th>
-                            <th>Author</th>
                             <th>Description</th>
-                            <th>Image</th>
-                            <th>Price</th>
-                            <th>Hardbook Price</th>
-                            <th>Ebook Price</th>
-                            <th>Discount</th>
-                            <th>Added</th>
+                            <th>Location</th>
+                            <th>Link</th>
+                            <th>Date</th>
+                            <th>Duration</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,47 +41,31 @@
                                 </td>
 
                                 <td>
-                                    {{ $row->book_name }}
+                                    {{ $row->event_name }}
                                 </td>
                                 <td>
-                                    @if ($row->bookAuthor)
-                                        {{ $row->bookAuthor->author_name }}
-                                    @endif
+                                    {{ $row->event_description }}
                                 </td>
                                 <td>
-                                    {{ $row->book_description }}
+                                    {{ $row->event_location }}
                                 </td>
                                 <td>
-                                    @if (isset($row->bookDocuments[0]))
-                                        <img height="60px" width="60px" src="{{ asset($row->bookDocuments[0]->path) }}">
-                                    @endif
+                                    {{ $row->event_link }}
                                 </td>
                                 <td>
-                                    {{ $row->book_price }}
+                                    {{ $row->event_date }}
                                 </td>
                                 <td>
-                                    {{ $row->hard_book_price }}
-                                </td>
-                                <td>
-                                    {{ $row->ebook_price }}
-                                </td>
-                                <td>
-                                    {{ $row->book_discount_in_percentage }}%
-                                </td>
-                                <td>
-                                    {{ $row->created_at }}
-                                    
+                                    {{ $row->event_starting_time }} - {{ $row->event_ending_time }}
                                 </td>
 
                                 <td>
-                                    <a class="btn btn-success btn-sm" href="{{url('admin/books')}}/{{ $row->id }}/edit">
-                           Edit
-                           </a>
                                     <a class="btn btn-danger btn-sm text-white"
                                         onclick="confirmCancellation(event,{{ $row->id }})">
                                         Delete
                                     </a>
                                 </td>
+
                             </tr>
                         @endforeach
 
@@ -152,7 +133,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If the user clicks "Yes," proceed with the cancellation
-                    window.location.href = "{{ url('book/delete/') }}" + "/" + id;
+                    window.location.href = "{{ url('/admin/delete-event/') }}" + "/" + id;
                 }
             });
         }

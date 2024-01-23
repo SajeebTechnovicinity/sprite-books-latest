@@ -25,7 +25,7 @@
                         <th>Name</th>
                         <th>Membership Plan</th>
                         <th>Amount</th>
-                        <th>Strype Token</th>
+                        <th>Stripe Token</th>
                         <th>Date</th>
                         {{-- <th>Action</th> --}}
                     </tr>

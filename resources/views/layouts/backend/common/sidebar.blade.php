@@ -48,35 +48,33 @@
 
                   </li>
 
-                  <li class="nav-header">Modules</li>
+                  <li class="nav-header">User Management</li>
 
-                  @if(!DB::table('users_roles')->where('user_id',Auth::user()->id)->where('role_id',1)->exists())
+                  @if (!DB::table('users_roles')->where('user_id', Auth::user()->id)->where('role_id', 1)->exists())
+                      <li class="nav-item">
+                          <a href="#" class="nav-link">
+                              <i class="nav-icon fas fa-book"></i>
+                              <p>
+                                  User
+                                  <i class="fas fa-angle-left right"></i>
+                              </p>
+                          </a>
+                          <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                  <a href="{{ url('admin/users/create') }}" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Create user</p>
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a href="{{ url('admin/users') }}" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>List of user</p>
+                                  </a>
+                              </li>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                User 
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ url('admin/users/create') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create user</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('admin/users') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>List of user</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
+                          </ul>
+                      </li>
                   @endif
 
                   <!--Roles-->
@@ -145,7 +143,7 @@
 
                   </li>
 
-                   <li class="nav-item">
+                  <li class="nav-item">
                       <a href="{{ url('admin/readers') }}" class="nav-link">
                           <i class="nav-icon fas fa-book"></i>
                           <p>
@@ -167,7 +165,7 @@
 
                   </li>
 
-
+                  <li class="nav-header">Resource Management</li>
 
 
                   <li class="nav-item">
@@ -175,51 +173,6 @@
                           <i class="nav-icon fas fa-book"></i>
                           <p>
                               Book
-                              <i class="fas fa-angle-right right"></i>
-                          </p>
-                      </a>
-
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ url('admin/frequent-questions') }}" class="nav-link">
-                          <i class="nav-icon fas fa-book"></i>
-                          <p>
-                              Frequent Question
-                              <i class="fas fa-angle-right right"></i>
-                          </p>
-                      </a>
-
-                  </li>
-
-
-                  <li class="nav-item">
-                      <a href="{{ url('admin/contacts') }}" class="nav-link">
-                          <i class="nav-icon fas fa-book"></i>
-                          <p>
-                              Contact
-                              <i class="fas fa-angle-right right"></i>
-                          </p>
-                      </a>
-
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ url('admin/subscribe/list') }}" class="nav-link">
-                          <i class="nav-icon fas fa-book"></i>
-                          <p>
-                              Subscribe
-                              <i class="fas fa-angle-right right"></i>
-                          </p>
-                      </a>
-
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ url('admin/payments') }}" class="nav-link">
-                          <i class="nav-icon fas fa-book"></i>
-                          <p>
-                              Payments
                               <i class="fas fa-angle-right right"></i>
                           </p>
                       </a>
@@ -249,6 +202,81 @@
                           </li>
 
                       </ul>
+                  </li>
+
+                  <li class="nav-item">
+                      <a href="{{ url('admin/event') }}" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Event
+                              <i class="fas fa-angle-right right"></i>
+                          </p>
+                      </a>
+
+                  </li>
+
+                  <li class="nav-item">
+                      <a href="{{ url('admin/community') }}" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Community
+                              <i class="fas fa-angle-right right"></i>
+                          </p>
+                      </a>
+
+                  </li>
+
+                  <li class="nav-header">Content Management</li>
+
+                  <li class="nav-item">
+                      <a href="{{ url('admin/frequent-questions') }}" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Frequent Question
+                              <i class="fas fa-angle-right right"></i>
+                          </p>
+                      </a>
+
+                  </li>
+
+
+                  <li class="nav-item">
+                      <a href="{{ url('admin/contacts') }}" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Contact
+                              <i class="fas fa-angle-right right"></i>
+                          </p>
+                      </a>
+
+                  </li>
+
+
+
+                  <li class="nav-item">
+                      <a href="{{ url('admin/subscribe/list') }}" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Subscribe
+                              <i class="fas fa-angle-right right"></i>
+                          </p>
+                      </a>
+
+                  </li>
+
+
+
+                  <li class="nav-header">Payment Module</li>
+
+                  <li class="nav-item">
+                      <a href="{{ url('admin/payments') }}" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Payments
+                              <i class="fas fa-angle-right right"></i>
+                          </p>
+                      </a>
+
                   </li>
 
                   <li class="nav-item">

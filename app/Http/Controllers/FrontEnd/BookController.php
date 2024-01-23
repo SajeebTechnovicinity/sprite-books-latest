@@ -62,7 +62,7 @@ class BookController extends Controller
         $name = $request->input('name');
 
         // Use Eloquent to query books based on the 'book_name'
-        $data['books'] = Book::where('book_name', 'like', "%$name%")->get();
+        $data['books'] = Book::where('book_name', 'like', "%$name%")->where('is_delete',0)->get();
         $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
         $data['generes'] = Genere::all();
 
@@ -83,5 +83,13 @@ class BookController extends Controller
         BookDocuments::where('id',$id)->delete();
         Session::flash('success','Doccument deleted successfully');
         return back();
+    }
+    public function delete($id)
+    {
+        Book::where('id',$id)->update([
+            'is_delete'=>1
+        ]);
+
+        return redirect()->back()->with('success', 'Book delete successfully');
     }
 }

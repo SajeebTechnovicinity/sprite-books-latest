@@ -15,4 +15,12 @@ class Author extends Model
     protected $guarded = [];  
 
     protected $table = 'author';
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
+    public function userMembershipPlan(){
+        return $this->hasOne(AuthorMembershipPlan::class);
+    }
 }

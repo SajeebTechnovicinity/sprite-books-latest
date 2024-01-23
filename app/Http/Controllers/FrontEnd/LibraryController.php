@@ -12,21 +12,21 @@ use Illuminate\Http\Request;
 class LibraryController extends Controller
 {
     public function index(){
-        $data['books'] = Book::whereAuthorId(session('author_id'))->get();
+        $data['books'] = Book::whereAuthorId(session('author_id'))->where('is_delete',0)->get();
         $data['suggested_books'] = SuggestedBook::all();
         $data['generes'] = Genere::all();
         $data['type']=3;
         return view('frontend.pages.author.library.index',$data);
      }
      public function recent(){
-        $data['books'] = Book::whereAuthorId(session('author_id'))->orderBy('id','desc')->get();
+        $data['books'] = Book::whereAuthorId(session('author_id'))->where('is_delete',0)->orderBy('id','desc')->get();
         $data['suggested_books'] = SuggestedBook::orderBy('id','desc')->get();
         $data['generes'] = Genere::all();
         $data['type']=2;
         return view('frontend.pages.author.library.index',$data);
      }
      public function popular(){
-        $data['books'] = Book::whereAuthorId(session('author_id'))->get();
+        $data['books'] = Book::whereAuthorId(session('author_id'))->where('is_delete',0)->get();
         $data['suggested_books'] = SuggestedBook::orderBy('id','desc')->get();
         $data['generes'] = Genere::all();
         $data['type']=1;

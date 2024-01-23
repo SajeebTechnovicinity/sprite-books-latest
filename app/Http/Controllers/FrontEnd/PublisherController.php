@@ -25,8 +25,8 @@ class PublisherController extends Controller
     public function publisher_profile(){
         if(session('author_id')){
             // echo '<pre>';print_r(check_user_max_book_by_user_id(session('author_id')));die;
-            $data['books'] = Book::wherePublisherId(session('author_id'))->get();
-            $data['events'] = Event::wherePublisherId(session('author_id'))->get();
+            $data['books'] = Book::wherePublisherId(session('author_id'))->where('is_delete',0)->get();
+            $data['events'] = Event::wherePublisherId(session('author_id'))->where('is_delete',0)->get();
             $data['author'] = Author::find(session('author_id'));
             $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
             $data['generes'] = Genere::all();
