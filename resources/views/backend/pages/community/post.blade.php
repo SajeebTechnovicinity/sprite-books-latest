@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Community List</h4>
+                <h4 class="card-title">Post List</h4>
 
                 {{-- <div class="card-tools">
                               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-modal">
@@ -18,9 +18,9 @@
                 </button>
             </div> --}}
 
-                <a class="btn btn-default" style="float:right;" href="{{ url('admin/create-community') }}">
+                {{-- <a class="btn btn-default" style="float:right;" href="{{ url('admin/create-community') }}">
                     Create
-                </a>
+                </a> --}}
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -28,9 +28,8 @@
                     <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Image</th>
+                            <th>Post Image</th>
                             <th>Title</th>
-                            <th>Description</th>
                             <th>Creator</th>
                             <th>Date of Creator</th>
                             <th>Action</th>
@@ -44,20 +43,18 @@
                                 </td>
 
                                 <td>
-                                    @if (isset($row->community_cover_image))
-                                        <img height="60px" width="60px" src="{{ asset($row->community_cover_image) }}">
+                                    @if (isset($row->post_image))
+                                        <img height="60px" width="60px" src="{{ asset($row->post_image) }}">
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $row->community_name }}
+                                    {{ $row->post }}
                                 </td>
+                              
                                 <td>
-                                    {{ $row->community_description }}
-                                </td>
-                                <td>
-                                    @if ($row->communityAuthor)
-                                        {{ $row->communityAuthor->author_name }}
-                                        {{ $row->communityAuthor->author_last_name }}
+                                    @if ($row->Author)
+                                        {{ $row->Author->author_name }}
+                                        {{ $row->Author->author_last_name }}
                                     @endif
                                 </td>
                                 <td>
@@ -66,7 +63,7 @@
 
                                 <td>
                                     <a class="btn btn-success btn-sm"
-                                        href="{{ url('admin/edit-community') }}/{{ $row->id }}">
+                                        href="{{ url('admin/edit-post') }}/{{ $row->id }}">
                                         Edit
                                     </a>
                                     <a class="btn btn-danger btn-sm text-white"
@@ -74,8 +71,8 @@
                                         Delete
                                     </a>
                                      <a class="btn btn-success btn-sm"
-                                        href="{{ url('admin/community/post') }}/{{ $row->id }}">
-                                        All Post
+                                        href="{{ url('admin/community/comment') }}/{{ $row->id }}">
+                                        All Comment
                                     </a>
                                 </td>
                             </tr>
@@ -145,7 +142,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If the user clicks "Yes," proceed with the cancellation
-                    window.location.href = "{{ url('/admin/delete-community/') }}" + "/" + id;
+                    window.location.href = "{{ url('/admin/delete-post/') }}" + "/" + id;
                 }
             });
         }

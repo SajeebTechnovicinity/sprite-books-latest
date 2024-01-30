@@ -27,6 +27,9 @@ use App\Http\Controllers\FrontEnd\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StripeController;
+
+use App\Http\Controllers\SubscriptionController;
+
 //use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +48,11 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
+Route::get('/subscription/create', [SubscriptionController::class, 'createSubscription']);
+Route::get('/subscription/view', [SubscriptionController::class, 'viewSubscription']);
+Route::get('/subscription/success', [SubscriptionController::class, 'subscriptionSuccess'])->name('subscription.success');
+Route::get('/subscription/cancel', [SubscriptionController::class, 'subscriptionCancel'])->name('subscription.cancel');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -292,6 +300,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class)->middleware('auth');
     //    Client
     Route::resource('authors', App\Http\Controllers\Admin\AuthorController::class)->middleware('auth');
+    Route::get('publisher-author', [App\Http\Controllers\Admin\AuthorController::class, 'publisher_author'])->middleware('auth');
     Route::resource('readers', App\Http\Controllers\Admin\ReaderController::class)->middleware('auth');
 
     //    Client
@@ -319,10 +328,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('book/update/{id}', [AdminBookController::class,'update'])->middleware('auth');
     //community
     Route::resource('community', AdminCommunityController::class)->middleware('auth');
-    Route::get('delete-event/{id}', [AdminEventController::class, 'delete_event']);
-    Route::get('delete-community/{id}', [AdminCommunityController::class, 'delete_community']);
+    Route::get('delete-event/{id}', [AdminEventController::class, 'delete_event'])->middleware('auth');
+    Route::get('delete-community/{id}', [AdminCommunityController::class, 'delete_community'])->middleware('auth');
     Route::post('community/update/{id}', [AdminCommunityController::class,'update_community'])->middleware('auth');
-    Route::get('edit-community/{id}', [AdminCommunityController::class, 'edit_community']);
+    Route::get('create-community', [AdminCommunityController::class, 'create_community'])->middleware('auth');
+    Route::post('store-community', [AdminCommunityController::class, 'store_community'])->middleware('auth');
+    Route::get('edit-community/{id}', [AdminCommunityController::class, 'edit_community'])->middleware('auth');
+    Route::get('community/post/{id}', [AdminCommunityController::class, 'community_post'])->middleware('auth');
+    Route::get('community/comment/{id}', [AdminCommunityController::class, 'community_comment'])->middleware('auth');
+    Route::get('edit-post/{id}', [AdminCommunityController::class, 'edit_post'])->middleware('auth');
+    Route::post('community/post/update/{id}', [AdminCommunityController::class,'update_post'])->middleware('auth');
+    Route::get('delete-post/{id}', [AdminCommunityController::class, 'delete_post'])->middleware('auth');
+    Route::get('edit-comment/{id}', [AdminCommunityController::class, 'edit_comment'])->middleware('auth');
+    Route::post('community/comment/update/{id}', [AdminCommunityController::class,'update_comment'])->middleware('auth');
+    Route::get('delete-comment/{id}', [AdminCommunityController::class, 'delete_comment'])->middleware('auth');
 
     //event
     Route::resource('event', AdminEventController::class)->middleware('auth');

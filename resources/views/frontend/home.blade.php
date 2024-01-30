@@ -167,12 +167,13 @@
                 </p>
                 <div id="success_msg"></div>
                 <div id="error_msg"></div>
-                <form id="add_form" class="hero__form">
+                <form action="{{ url('search/books') }}" class="hero__form">
+                    @csrf
                     <div class="form-field">
-                        <input type="email" class="input" name="email" placeholder="Email address" />
+                        <input type="text" class="input" name="name" placeholder="Search Book" />
                     </div>
                     <div class="form-btn">
-                        <button type="button" id="add_btn" class="btn">Subscribe</button>
+                        <button type="submit"  class="btn">Search</button>
                     </div>
                 </form>
                 {{-- <p class="message">

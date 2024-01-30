@@ -15,60 +15,72 @@ use Illuminate\Support\Facades\File;
 
 class BookController extends Controller
 {
- 
-    public function view_book($id){
 
-        if(!session('author_id')){
-    
+    public function view_book($id)
+    {
+
+        if (!session('author_id')) {
+
             return redirect('/user/login');
         }
 
         $today = Carbon::now();
 
         BookView::create([
-            'book_id'=>$id,
-            'user_id'=>session('author_id')
+            'book_id' => $id,
+            'user_id' => session('author_id')
         ]);
 
         $book = Book::find($id);
 
-        $book->viewers= $book->viewers+1;
+        $book->viewers = $book->viewers + 1;
 
-        $book->view_date_time=$today;
+        $book->view_date_time = $today;
 
         $book->save();
-        
-        if($book){
+
+        if ($book) {
             $data['book'] = $book;
             $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
             $data['generes'] = Genere::all();
             $data['author_books'] = Book::where('id', '!=', $book->id)->whereAuthorId($book->author_id)->get();
-            return view('frontend.pages.book.index',$data);
+            return view('frontend.pages.book.index', $data);
         }
     }
-    public function edit_book($id){
+    public function edit_book($id)
+    {
         $book = Book::find($id);
-        
-        if($book){
+
+        if ($book) {
             $data['book'] = $book;
             $data['author_created_list'] = Author::all();
             $data['generes'] = Genere::all();
             $data['author_books'] = Book::where('id', '!=', $book->id)->whereAuthorId($book->author_id)->get();
-            return view('frontend.pages.book.edit',$data);
+            return view('frontend.pages.book.edit', $data);
         }
     }
-    public function search_book(Request $request){
+    public function search_book(Request $request)
+    {
 
         $name = $request->input('name');
 
         // Use Eloquent to query books based on the 'book_name'
-        $data['books'] = Book::where('book_name', 'like', "%$name%")->where('is_delete',0)->get();
+        $data['books'] = Book::with('bookAuthor')
+        ->where('is_delete', 0)
+        ->where(function($query) use ($name) {
+            $query->where('book_name', 'like', "%$name%")
+                  ->orWhereHas('bookAuthor', function($query) use ($name) {
+                      $query->where('author_name', 'like', "%$name%")
+                            ->orWhere('author_last_name', 'like', "%$name%");
+                  });
+        })
+        ->get();
         $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
         $data['generes'] = Genere::all();
 
         // Return the result in the response
         //return response()->json(['books' => $data]);
-        return view('frontend.pages.book.search',$data);
+        return view('frontend.pages.book.search', $data);
     }
     public function delete_book_doccunment($id)
     {
@@ -80,14 +92,14 @@ class BookController extends Controller
                 File::delete($pathToDelete);
             }
         }
-        BookDocuments::where('id',$id)->delete();
-        Session::flash('success','Doccument deleted successfully');
+        BookDocuments::where('id', $id)->delete();
+        Session::flash('success', 'Doccument deleted successfully');
         return back();
     }
     public function delete($id)
     {
-        Book::where('id',$id)->update([
-            'is_delete'=>1
+        Book::where('id', $id)->update([
+            'is_delete' => 1
         ]);
 
         return redirect()->back()->with('success', 'Book delete successfully');

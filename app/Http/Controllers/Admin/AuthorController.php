@@ -26,6 +26,16 @@ class AuthorController extends Controller
         // }
     }
 
+
+    public function publisher_author()
+    {
+        // if(Auth::user()->can('view-author')) {
+            $data['list'] = Author::whereType('AUTHOR')->where('publisher_id','!=',null)->where('is_delete',0)->orderBy('id','desc')->get();
+            $data['country_list'] = Country::all();
+            return view("backend.pages.author.publisher_author", $data);
+        // }
+    }
+
     public function support($id)
     {
 
