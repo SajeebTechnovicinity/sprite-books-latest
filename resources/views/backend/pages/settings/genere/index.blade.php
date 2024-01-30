@@ -12,7 +12,7 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Genere List</h4>
+            <h4 class="card-title">List</h4>
             
             <div class="card-tools">
 <!--                <a href="{{url('admin/genere/create')}}" class="btn btn-info btn-sm" >

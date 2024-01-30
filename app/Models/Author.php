@@ -23,4 +23,8 @@ class Author extends Model
     public function userMembershipPlan(){
         return $this->hasOne(AuthorMembershipPlan::class);
     }
+    public function Publisher()
+    {
+        return $this->belongsTo(Author::class,'publisher_id');
+    }
 }
