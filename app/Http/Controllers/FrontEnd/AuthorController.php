@@ -78,7 +78,7 @@ class AuthorController extends Controller
             'password' => 'required'
         ]);
 
-
+      
 
         $author = Author::where('author_email', $request->email)->where('author_email_verification', 1)->first();
 
@@ -91,6 +91,18 @@ class AuthorController extends Controller
 
         if ($author) {
             if (Hash::check($request->password, $author->author_password)) {
+
+                // if(!AuthorMembershipPlan::where('author_id',$author->id)->exists())
+                // {
+                //     $sData = [
+                //         'waiting_for_author_membership_id'=>$author->id,
+                //         'type'=>$author->type,
+                //     ];
+                //     session()->put($sData);
+                //     return redirect('select-membership-plan')->with('msg',"'.$author->type.' added successfully.");
+                // }
+
+                //return 1;
 
                 $sData = [
                     'author_name' => $author->author_name,
@@ -112,12 +124,29 @@ class AuthorController extends Controller
             return ['data' => $author, 'status' => 0];
         }
 
+        
+
+
         return redirect('author/profile');
     }
 
     public function author_profile()
     {
         if (session('author_id')) {
+
+            $author=Author::where('id',session('author_id'))->first();
+
+            //return $author;
+
+            if(!AuthorMembershipPlan::where('author_id',session('author_id'))->exists() && $author->type!="USER")
+            {
+                $sData = [
+                        'waiting_for_author_membership_id'=>$author->id,
+                        'type'=>$author->type,
+                ];
+                session()->put($sData);                
+                return redirect('select-membership-plan');
+            }
             //return(check_user_max_book_by_user_id(session('author_id')));
             //  echo '<pre>';print_r(check_user_max_book_by_user_id(session('author_id')));die;
             $data['books'] = Book::whereAuthorId(session('author_id'))->where('is_delete',0)->get();
