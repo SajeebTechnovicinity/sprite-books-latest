@@ -278,7 +278,7 @@
                       <a href="{{ url('admin/frequent-questions') }}" class="nav-link">
                           <i class="nav-icon fas fa-book"></i>
                           <p>
-                              Frequent Question
+                              FAQ
                               <i class="fas fa-angle-right right"></i>
                           </p>
                       </a>
