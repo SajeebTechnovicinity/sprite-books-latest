@@ -11,7 +11,7 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Frequently asked questions list</h4>
+            <h4 class="card-title">FAQ</h4>
 
             <div class="card-tools">
                               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-modal">

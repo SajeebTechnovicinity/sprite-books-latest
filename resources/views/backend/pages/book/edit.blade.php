@@ -7,6 +7,9 @@
         }
     </style>
     <br>
+    <a href="{{ url()->previous() }}" style="float:right;" class="btn btn-primary">Back</a>
+    <br>
+    <br>
     <div class="col-12">
         <div class="card">
             <div class="card-header">

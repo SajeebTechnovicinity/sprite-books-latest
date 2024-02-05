@@ -6,6 +6,7 @@
             width: 450px !important;
         }
     </style>
+    
 
     <div class="col-12">
         <div class="card">

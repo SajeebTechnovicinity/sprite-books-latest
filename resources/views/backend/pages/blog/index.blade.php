@@ -66,7 +66,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($row->author_id)
+                                    @if ($row->author)
                                         {{ $row->author->author_name }}
                                     @endif
                                 </td>
