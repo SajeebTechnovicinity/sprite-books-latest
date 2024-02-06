@@ -5,6 +5,28 @@
         span.select2.select2-container.select2-container--default {
             width: 450px !important;
         }
+        .table-des .figure img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .table-des .figure{
+            height: 70px;
+            width: 70px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .table-des .sbs span,
+        .table-des .info span{
+            display: block;
+        }
+
+        .table-des .info span i{
+            color: #777777;
+            font-size: 70%;
+            margin-right: 5px;
+        }
     </style>
 
     <div class="col-12">
@@ -20,67 +42,53 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped table-des">
                     <thead>
-                        <tr>
-                            <th>Sl</th>
+                    <tr>
                             <th>Code</th>
-                            <th>Name</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Country</th>
-                            <th>Membership Plan</th>
-                            <th>Subscribe Expire Time</th>
+                            <th>Profile</th>
+                            <th>Contact Information</th>
+                            <th>Membership</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($list as $row)
-                            <tr>
+                        <tr>
+                                <td>{{ $row->author_code }}</td>
                                 <td>
-                                    {{ $loop->iteration }}
+                                    <div class="figure">
+                                        <img src="https://coenterprises.com.au/wp-content/uploads/2018/02/male-placeholder-image.jpeg" alt="">
+                                    </div>
                                 </td>
 
                                 <td>
-                                    {{ $row->author_code }}
+                                    <div class="info">
+                                        <span><i class="fas fa-regular fa-copy"></i> {{ $row->author_name }} {{ $row->author_last_name }}</span>
+                                        <span><i class="fas fa-regular fa-copy"></i> {{ $row->author_email }}</span>
+                                        <span><i class="fas fa-regular fa-copy"></i> {{ $row->author_phone }}</span>
+                                        <span><i class="fas fa-regular fa-copy"></i> {{ $row->author_country }}</span>
+                                    </div>
                                 </td>
                                 <td>
-                                    {{ $row->name }}
+                                    <div class="sbs">
+                                        <span>Membership Plan:
+                                            @if ($row->userMembershipPlan)
+                                                {{ $row->userMembershipPlan->MembershipPlan->membership_plan_name }}
+                                                ({{ $row->userMembershipPlan->duration }})
+                                            @else
+                                                N/A
+                                            @endif
+                                        </span>
+                                        <span>Subscribe Expire Time:
+                                            @if ($row->subscription)
+                                                {{ date('Y-m-d H:i:s', $row->subscription->ends_at) }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </span>
+                                    </div>
                                 </td>
-                                <td>
-                                    {{ $row->author_name }}
-                                </td>
-                                <td>
-                                    {{ $row->author_last_name }}
-                                </td>
-                                <td>
-                                    {{ $row->author_email }}
-                                </td>
-                                <td>
-                                    {{ $row->author_phone }}
-                                </td>
-                                <td>
-                                    {{ $row->author_country }}
-                                </td>
-                                <td>
-                                    @if ($row->userMembershipPlan)
-                                        {{ $row->userMembershipPlan->MembershipPlan->membership_plan_name }}
-                                        ({{ $row->userMembershipPlan->duration }})
-                                    @else
-                                        N/A
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($row->subscription)
-                                        {{ date('Y-m-d H:i:s', $row->subscription->ends_at) }}
-                                    @else
-                                        N/A
-                                    @endif
-                                </td>
-
-
                                 <td>
                                     <a class="btn btn-success btn-sm"
                                         href="{{ url('admin/authors') }}/{{ $row->id }}/edit">
@@ -91,7 +99,6 @@
                                         Login
                                     </a>
                                     <a class="btn btn-danger btn-sm text-white"
-                                        href="{{ url('admin/app/user/delete') }}/{{ $row->id }}"
                                         onclick="confirmCancellation(event,{{ $row->id }})">
                                         Delete
                                     </a>
