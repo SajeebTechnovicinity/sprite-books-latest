@@ -6,6 +6,16 @@
     span.select2.select2-container.select2-container--default {
         width: 450px !important;
     }
+
+        .table-des .info span{
+            display: block;
+        }
+
+        .table-des .info span i{
+            color: #777777;
+            font-size: 70%;
+            margin-right: 5px;
+        }
 </style>
 <br>
 <div class="col-12">
@@ -21,18 +31,11 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped table-des">
                 <thead>
                     <tr>
                         <th>Sl</th>
-                        <th>Title</th>
-                        <th>Type</th>
-                        <th>Monthly Price</th>
-                        <th>Yearly Price</th>
-                        <th>Max Book No</th>
-                        <th>Max Event No</th>
-                        <th>Max Video Promotion</th>
-                        <th>Max Author Account</th>
+                        <th>Information</th>
                         <th>Description</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -46,31 +49,16 @@
                         </td>
 
                         <td>
-                            {{ $row->membership_plan_name  }}
-                        </td>
-                        <td>
-                            {{ $row->type }}
-                        </td>
-                        <td>
-                            {{ $row->membership_plan_monthly_price }}
-                        </td>
-                        <td>
-                            {{ $row->membership_plan_yearly_price }}
-                        </td>
-                        <td>
-                            {{ $row->max_no_of_books }}
-                        </td>
-
-                        <td>
-                            {{ $row->max_no_of_events }}
-                        </td>
-
-
-                        <td>
-                            {{ $row->max_no_of_video_promotion }}
-                        </td>
-                        <td>
-                            {{ $row->max_author_account }}
+                            <div class="info">
+                                <span><i class="fas fa-regular fa-copy"></i> Title:  {{ $row->membership_plan_name  }}</span>
+                                <span><i class="fas fa-regular fa-copy"></i> Type:  {{ $row->type }}</span>
+                                <span><i class="fas fa-regular fa-copy"></i> Monthly Price: {{ $row->membership_plan_monthly_price }}</span>
+                                <span><i class="fas fa-regular fa-copy"></i> Yearly Price:  {{ $row->membership_plan_yearly_price }}</span>
+                                <span><i class="fas fa-regular fa-copy"></i> Max Book No: {{ $row->max_no_of_books }}</span>
+                                <span><i class="fas fa-regular fa-copy"></i> Max Event No: {{ $row->max_no_of_events }}</span>
+                                <span><i class="fas fa-regular fa-copy"></i> Max Video Promotion:  {{ $row->max_no_of_video_promotion }}</span>
+                                <span><i class="fas fa-regular fa-copy"></i> Max Author Account:  {{ $row->max_author_account }}</span>
+                            </div>
                         </td>
 
                         <td>
