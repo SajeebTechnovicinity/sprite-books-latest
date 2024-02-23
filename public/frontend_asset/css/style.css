@@ -1033,13 +1033,15 @@ figure {
 
 .card {
   padding: 24px 20px;
+  overflow: hidden;
   border-radius: 8px;
   background-color: var(--bg-color_extra-lite);
 }
 
 .card .figure {
   /* display: inline-block; */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  margin: -24px -20px 20px -20px;
 }
 
 .card .name {
@@ -2601,7 +2603,7 @@ figure {
 
 .block-content .title {
   font-weight: 600;
-  font-size: 36px;
+  font-size: 20px;
   line-height: 1.18;
   letter-spacing: -0.02em;
   color: var(--color-gray);

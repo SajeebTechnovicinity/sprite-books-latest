@@ -34,6 +34,8 @@
                                 required />
                         </div>
                     </div>
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" 
+                            required />
                     <div class="form-field">
                         <label for="isbn" class="label">Role*</label>
                         @if (check_user_max_book_by_user_id(session('author_id')) == 1)
@@ -1304,6 +1306,9 @@
                     console.log(response);
                     // HideCalimaticLoader();
                     $('.has-loader .loader').css('display', 'none');
+                     $('#title').val(response.book.title);
+                    $('#dsc').val(response.book.synopsis);
+                    $('#file_updoad_isbn').val(response.book.image);
                     // Process the bookData here
                 },
                 error: function(xhr) {
