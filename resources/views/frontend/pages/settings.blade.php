@@ -31,7 +31,7 @@
 <section>
 
 <div class="container settings">
-    <h1 class="title" style="text-align: center;">Add your Informations</h1>
+    <h1 class="title" style="text-align: center;">Add your Information</h1>
     <form action="{{ url('save-informations') }}" method="post" class="modal__form" enctype="multipart/form-data">
         @csrf
         @method('post')

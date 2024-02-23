@@ -351,24 +351,24 @@ class AuthorController extends Controller
         //     Session::flash('wrong', 'Ebook Price is required');
         //     return back();
         // }
-        if (!$request->file_updoad) {
-            Session::flash('wrong', 'Image File is required');
-            return back();
-        }
+        // if (!$request->file_updoad) {
+        //     Session::flash('wrong', 'Image File is required');
+        //     return back();
+        // }
         // if (!$request->video_file_updoad) {
         //     Session::flash('wrong', 'Video File is required');
         //     return back();
         // }
 
-        $file=$request->file_updoad;
-        // Check the file size
-        $maxFileSize = 512; // Maximum file size in kilobytes (1 MB)
-        $fileSize = $file->getSize();
+        // $file=$request->file_updoad;
+        // // Check the file size
+        // $maxFileSize = 512; // Maximum file size in kilobytes (1 MB)
+        // $fileSize = $file->getSize();
 
-        if ($fileSize > $maxFileSize * 1024) {
-            Session::flash('wrong', 'Maximum image file size 512kb');
-            return back();
-        }
+        // if ($fileSize > $maxFileSize * 1024) {
+        //     Session::flash('wrong', 'Maximum image file size 512kb');
+        //     return back();
+        // }
 
         if ($request->video_file_updoad) {
 
@@ -412,21 +412,34 @@ class AuthorController extends Controller
 
         $book->save();
 
-        if ($request->file_updoad) {
+        if ($request->file_updoad_isbn) {
 
             $bookDoc = new BookDocuments;
             $bookDoc->book_id = $book->id;
             $bookDoc->type = 'IMAGE';
-            if (isset($request->file_updoad)) {
-                $file = $request->file('file_updoad');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move(public_path('uploads/'), $filename);
-                $data['path'] = 'public/uploads/' . $filename;
-                $bookDoc->path = $data['path'];
-            }
+  
+            $bookDoc->path = $request->file_updoad_isbn;
+            
             $bookDoc->save();
         }
+
+       
+
+        // if ($request->file_updoad) {
+
+        //     $bookDoc = new BookDocuments;
+        //     $bookDoc->book_id = $book->id;
+        //     $bookDoc->type = 'IMAGE';
+        //     if (isset($request->file_updoad)) {
+        //         $file = $request->file('file_updoad');
+        //         $extension = $file->getClientOriginalExtension();
+        //         $filename = time() . '.' . $extension;
+        //         $file->move(public_path('uploads/'), $filename);
+        //         $data['path'] = 'public/uploads/' . $filename;
+        //         $bookDoc->path = $data['path'];
+        //     }
+        //     $bookDoc->save();
+        // }
 
         if ($request->video_file_updoad) {
 

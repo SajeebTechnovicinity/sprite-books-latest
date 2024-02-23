@@ -40,6 +40,8 @@
                                                 required />
                                         </div>
                                     </div>
+                                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" 
+                                        required />
                                     <div class="form-field">
                                         <label for="isbn" class="label">Role*</label>
 
@@ -140,7 +142,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-field">
+                                    {{-- <div class="form-field">
                                         <label for="attach-file" class="attach-btn btn-lite btn">
                                             <span class="icon">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -158,7 +160,7 @@
 
                                         <input class="attach-input" type="file" name="file_updoad" id="attach-file"
                                             accept="image/*" required />
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-field">
                                         <label for="attach-file1" class="attach-btn1 btn-lite btn">
@@ -771,6 +773,9 @@
                     console.log(response);
                     // HideCalimaticLoader();
                     $('.has-loader .loader').css('display', 'none');
+                     $('#title').val(response.book.title);
+                    $('#dsc').val(response.book.synopsis);
+                    $('#file_updoad_isbn').val(response.book.image);
                     // Process the bookData here
                 },
                 error: function(xhr) {
