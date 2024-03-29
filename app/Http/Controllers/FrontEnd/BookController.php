@@ -19,17 +19,21 @@ class BookController extends Controller
     public function view_book($id)
     {
 
-        if (!session('author_id')) {
+        // if (!session('author_id')) {
 
-            return redirect('/user/login');
-        }
+        //     return redirect('/user/login');
+        // }
 
         $today = Carbon::now();
 
-        BookView::create([
-            'book_id' => $id,
-            'user_id' => session('author_id')
-        ]);
+        if (session('author_id') != null) {
+            BookView::create([
+                'book_id' => $id,
+                'user_id' => session('author_id')
+            ]);
+        }
+
+
 
         $book = Book::find($id);
 
@@ -66,29 +70,25 @@ class BookController extends Controller
 
         // Use Eloquent to query books based on the 'book_name'
         $data['books'] = Book::with('bookAuthor')
-        ->where('is_delete', 0)
-        ->where(function($query) use ($name) {
-            $query->where('book_name', 'like', "%$name%")
-                  ->orWhereHas('bookAuthor', function($query) use ($name) {
-                      $query->where('author_name', 'like', "%$name%")
+            ->where('is_delete', 0)
+            ->where(function ($query) use ($name) {
+                $query->where('book_name', 'like', "%$name%")
+                    ->orWhereHas('bookAuthor', function ($query) use ($name) {
+                        $query->where('author_name', 'like', "%$name%")
                             ->orWhere('author_last_name', 'like', "%$name%");
-                  });
-        })
-        ->get();
+                    });
+            })
+            ->get();
         $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
         $data['generes'] = Genere::all();
 
         // Return the result in the response
         //return response()->json(['books' => $data]);
-        if(session('author_id')==null)
-        {
+        if (session('author_id') == null) {
             return view('frontend.pages.book.search-guest', $data);
-        }
-        else
-        {
+        } else {
             return view('frontend.pages.book.search', $data);
         }
-        
     }
     public function delete_book_doccunment($id)
     {
