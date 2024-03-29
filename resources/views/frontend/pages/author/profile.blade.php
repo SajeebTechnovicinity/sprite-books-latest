@@ -403,7 +403,7 @@
                             <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 528.899 528.899" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z"></path> </g> </g></svg>
                          </a>
                     </div>
-                    <div class="block-wrap bg-none" style="padding-left: 0; padding-right: 0;">
+                    <div class="block-wrap bg-none" style="padding-left: 0; padding-right: 0;margin-top:20px;">
                         <div class="block-component">
                             <div class="author-summary">
                                 <div class="author-bio unit">
@@ -421,9 +421,22 @@
                                     <p class="author-label">
                                         {{ $author->author_bio }}
                                     </p>
-                                    <div class="author-email">
-                                        <a href="{{ $author->author_website_link }}" target="__blank" class="link">
-                                            {{ $author->author_website_link }}</a>
+                                     <div class="author-email">
+                                    @php
+                                        $links = explode(',', $author->author_website_link);
+                                    @endphp
+                                    
+                                    @foreach($links as $link)
+                                        @php
+                                            $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
+                                        @endphp
+
+                                        <a href="{{ $formattedLink }}" target="_blank" class="link">
+                                            {{ $formattedLink }}
+                                        </a><br>
+                                    @endforeach
+                            
+
                                     </div>
                                    @if($author->author_country)
                                         <p class="author-location">
@@ -563,7 +576,7 @@
                                             $countLength = strlen($firstPara);
                                             $secondPara = substr($text, strpos($text, true) + $countLength);
                                         } else {
-                                            $firstPara = $row->book_description ?? '';
+                                            $firstPara = $row->author_description ?? '';
                                         }
                                         ?>
                                     <p class="para">
@@ -571,10 +584,10 @@
                                             {{ $firstPara ?? '' }}
                                         </span>
                                         @if (strlen($text) > 30)
-                                            <span class="extended">
+                                              <span class="extended" data-index="about" style="display: none;">
                                                 {{ $secondPara }}
                                             </span>
-                                            <span class="read-more">Show More</span>
+                                             <span class="read-more" data-index="about">Show More</span>
                                         @endif
                                     </p>
                                     </p>
@@ -582,11 +595,12 @@
                                 @if ($author->author_intro_video)
                                     <a href="#" class="video unit">
                                         {{-- <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-14.png" alt="" /> --}}
-                                        <video width="320" height="240" controls>
-                                            <source src="{{ asset($author->author_intro_video) }}" type="video/mp4">
+                                        {{-- <video width="320" height="240" controls> --}}
+                                            {{-- <source src="{{ $author->author_intro_video }}" type="video/mp4"> --}}
+                                            <iframe src="{!!$author->author_intro_video!!}"></iframe>
                                             {{-- <source src="movie.ogg" type="video/ogg"> --}}
-                                            Your browser does not support the video tag.
-                                        </video>
+                                            {{-- Your browser does not support the video tag.
+                                        </video> --}}
                                         {{-- <span class="icon">
                                         <svg width="58" height="58" viewBox="0 0 58 58" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -616,7 +630,7 @@
                                             }
                                         </style>
 
-                                        <div class="event-card" style="padding: 0px 0px;">
+                                        <div class="event-card" style="padding: 0px 0px ;">
                                             <figure class="figure">
                                                 <img height="60px" width="60px"
                                                     src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-banner.png @endif"
@@ -741,7 +755,7 @@
                                                             src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                             alt="" />
                                                     </figure>
-                                                    <div class="content">
+                                                    <div class="content" style="width:50%">
                                                         <div class="event-card__row flex-wrap">
                                                             <h3 class="event-card__title">
                                                                 {{ $row->event_name }}
@@ -809,20 +823,22 @@
                                                         }
                                                         ?>
                                                         <p class="para">
-                                                            <span class="main">
-                                                                {{ $firstPara ?? '' }}
+                                                        <span class="main">
+                                                            {{ $firstPara ?? '' }}
+                                                        </span>
+                                                        @if (strlen($text) > 30)
+                                                            <span class="extended" data-index="{{ $row->id }}" style="display: none;">
+                                                                {{ $secondPara }}
+                                                                {{-- <br>
+                                                                <b> Event Location : </b> {{ $row->event_location }} --}}
                                                             </span>
-                                                            @if (strlen($text) > 30)
-                                                                <span class="extended">
-                                                                    {{ $secondPara }}
-                                                                </span>
-                                                                <span class="read-more">Show More</span>
-                                                            @endif
-                                                        </p>
+                                                            <span class="read-more" data-index="{{ $row->id }}">Show More</span>
+                                                        @endif
+                                                    
+                                                    </p>
 
                                                         <p class="para">
-                                                            <a href="{{ $row->event_link }}" target="__blank">Join
-                                                                Link</a>
+                                                            <a href="{{ $row->event_link }}" target="__blank">Join Link</a>
                                                         </p>
                                                     </div>
                                                     {{-- @endforeach --}}
@@ -1136,4 +1152,31 @@
 
         }
     </script>
+    <script>
+    // Wait for the document to be ready
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all elements with the class "read-more"
+        var readMoreButtons = document.querySelectorAll('.read-more');
+
+        // Add click event listeners to all "Show More" buttons
+        readMoreButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Get the index from the data-index attribute
+                var index = button.dataset.index;
+                // Find the corresponding extended content using the index
+                var extendedContent = document.querySelector('.extended[data-index="' + index + '"]');
+
+                // Toggle the display of the extended content
+                if (extendedContent.style.display === 'none') {
+                    extendedContent.style.display = 'inline'; // Show the extended content
+                    button.textContent = 'Show Less'; // Change the button text
+                } else {
+                    extendedContent.style.display = 'none'; // Hide the extended content
+                    button.textContent = 'Show More'; // Change the button text back
+                }
+            });
+        });
+    });
+</script>
+
 @endsection

@@ -70,7 +70,7 @@
             <input type="file" class="file" name="cover_picture" />
         </div>
         @if (session('type') == 'AUTHOR')
-        <div class="form-field">
+        {{-- <div class="form-field">
             <label for="attach-file2" class="attach-btn btn-lite btn">
                 <span class="icon">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,8 +80,13 @@
                 Intro Video
             </label>
             <input class="attach-input" type="file" name="author_intro_video" id="attach-file2" accept="video/*" />
-        </div>
+        </div> --}}
+        
         @endif
+         <div class="form-field">
+            <label for="title" class="label">Intro Video</label>
+            <input type="text" name="author_intro_video" value="{{ $author->author_intro_video }}" class="input" id="attach-file2" accept="video/*" />
+        </div>
         <div class="form-field">
             <label for="title" class="label">Your Bio</label>
             <input type="text" name="author_bio" id="title" value="@if ($author->author_bio) {{ $author->author_bio }} @endif" class="input" />
@@ -106,13 +111,35 @@
             </select>
         </div>
 
-        <div class="form-row">
-            <div class="form-field">
-                <label for="links" class="label">Website Link</label>
-                <input type="text" name="author_website_link" id="links" value="@if ($author->author_website_link) {{ $author->author_website_link }} @endif" class="input" />
-            </div>
+      <div class="author-email">
+       <label for="links" class="label">Previous Website Link</label>
+            @php
+                $links = explode(',', $author->author_website_link);
+            @endphp
+            
+            @foreach($links as $link)
+                @php
+                    $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
+                @endphp
 
+                <a href="{{ $formattedLink }}" target="_blank" class="link">
+                    {{ $formattedLink }}
+                </a><br>
+            @endforeach
+    
+
+       </div>
+
+     <div class="form-row">
+        <div id="website-links-container">
+            <div class="form-field">
+               
+                <label for="links" class="label">Change Website Link</label>
+                <input type="text" name="author_website_link[]" class="input" />
+            </div>
         </div>
+        <button type="button" id="add-link">Add Link</button>
+    </div>
 
         <div class="form-row">
             <div class="form-field">
@@ -185,4 +212,17 @@
 </div>
 
 </section>
+
+<script>
+    document.getElementById("add-link").addEventListener("click", function() {
+        var container = document.getElementById("website-links-container");
+        var newField = document.createElement("div");
+        newField.classList.add("form-field");
+        newField.innerHTML = `
+            <label for="links" class="label">Website Link</label>
+            <input type="text" name="author_website_link[]" class="input" />
+        `;
+        container.appendChild(newField);
+    });
+</script>
 @endsection

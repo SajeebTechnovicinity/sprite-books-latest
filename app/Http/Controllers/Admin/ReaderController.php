@@ -13,7 +13,7 @@ class ReaderController extends Controller
     public function index()
     {
 
-        $data['list'] = Author::whereType('USER')->orderBy('id', 'desc')->get();
+        $data['list'] = Author::whereType('USER')->where('is_delete',0)->orderBy('id', 'desc')->get();
         $data['country_list'] = Country::all();
         return view("backend.pages.reader.index", $data);
     }
