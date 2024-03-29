@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Author;
+use App\Models\AuthorMembershipPlan;
 use App\Models\Country;
 use App\Models\CountryList;
 use Illuminate\Support\Facades\Hash;
@@ -135,6 +136,13 @@ class AuthorController extends Controller
             'author_password' => Hash::make($request->password)
         ]);
 
+        AuthorMembershipPlan::create([
+            'author_id'=>$author->id,
+            'membership_plan_id'=>2,
+            'type'=>'AUTHOR',
+            'monthly_yearly'=>'1',
+            'duration'=>"Yearly"
+        ]);
 
         return ['data'=>$author,'status'=>1];
         // }
@@ -210,4 +218,16 @@ class AuthorController extends Controller
         $package->delete();
         return redirect('admin/packages');
     }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = $request->ids;
+
+        Author::whereIn('id',$ids)->update([
+            'is_delete'=>1
+        ]);
+
+        return redirect()->back()->with('success', 'Delete successfully');
+    }
+
 }

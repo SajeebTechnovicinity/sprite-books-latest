@@ -307,6 +307,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('publishers', PublisherController::class)->middleware('auth');
     Route::get('/user/support/{id}', [App\Http\Controllers\Admin\AuthorController::class, 'support']);
     Route::get('/app/user/delete/{id}', [App\Http\Controllers\Admin\AuthorController::class, 'delete']);
+    Route::post('user/delete-selected', [App\Http\Controllers\Admin\AuthorController::class,'deleteSelected'])->name('user.delete-selected');
 
     //    FAQ
     Route::resource('frequent-questions', FrequentQuestionController::class)->middleware('auth');

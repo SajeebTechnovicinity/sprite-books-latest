@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Models\AuthorMembershipPlan;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -45,6 +46,14 @@ class PublisherController extends Controller
             'author_phone' => $request->phone,
             'author_email' => $request->email,
             'author_password' => Hash::make($request->password)
+        ]);
+
+        AuthorMembershipPlan::create([
+            'author_id'=>$author->id,
+            'membership_plan_id'=>3,
+            'type'=>'PUBLISHER',
+            'monthly_yearly'=>'1',
+            'duration'=>"Yearly"
         ]);
 
 

@@ -632,14 +632,14 @@ class AuthorController extends Controller
         $request->validate([
             'file_updoad' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg|max:512', // Maximum file size is 1 MB
             'cover_picture' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg|max:512', // Maximum file size is 1 MB
-            'author_intro_video' => 'nullable|mimetypes:video/mp4,video/mpeg,video/quicktime|max:5160', // Maximum file size is 5 MB // Maximum file size is 1 MB
+            //'author_intro_video' => 'nullable|mimetypes:video/mp4,video/mpeg,video/quicktime|max:5160', // Maximum file size is 5 MB // Maximum file size is 1 MB
         ], [
             'file_updoad.mimetypes' => 'Profile picture must be a JPEG or PNG image.',
             'cover_picture.mimetypes' => 'Cover Image must be a JPEG or PNG image.',
             'file_updoad.max' => 'Profile picture must not exceed 512 KB in size.',
             'cover_picture.max' => 'Cover Image must not exceed 512 KB in size.',
             'author_intro_video.mimetypes' => 'Intro video must be in MP4, MPEG, or QuickTime format.',
-            'author_intro_video.max' => 'Intro video must not exceed 5 MB in size.',
+            //'author_intro_video.max' => 'Intro video must not exceed 5 MB in size.',
         ]);
         // echo '<pre>';print_r($request->all());die;
         $author = Author::find(session('author_id'));
@@ -655,6 +655,8 @@ class AuthorController extends Controller
         $author->author_pinterest_link = $request->author_pinterest_link;
         $author->author_spotify_link = $request->author_spotify_link;
         $author->author_podcast_link = $request->author_podcast_link;
+
+        $author->author_intro_video=$request->author_intro_video;
 
         if ($request->file_updoad) {
 
@@ -680,17 +682,17 @@ class AuthorController extends Controller
             }
         }
 
-        if ($request->author_intro_video) {
+        // if ($request->author_intro_video) {
 
-            if (isset($request->author_intro_video)) {
-                $file = $request->file('author_intro_video');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '3.' . $extension;
-                $file->move(public_path('uploads/'), $filename);
-                $data['path'] = 'public/uploads/' . $filename;
-                $author->author_intro_video = $data['path'];
-            }
-        }
+        //     if (isset($request->author_intro_video)) {
+        //         $file = $request->file('author_intro_video');
+        //         $extension = $file->getClientOriginalExtension();
+        //         $filename = time() . '3.' . $extension;
+        //         $file->move(public_path('uploads/'), $filename);
+        //         $data['path'] = 'public/uploads/' . $filename;
+        //         $author->author_intro_video = $data['path'];
+        //     }
+        // }
 
         if (session('author_id')) {
 
@@ -710,11 +712,11 @@ class AuthorController extends Controller
         $author->save();
 
         if (session('type') == 'AUTHOR') {
-            return redirect('author/profile')->with('msg', 'Informations saved successfully.');
+            return redirect('author/profile')->with('msg', 'Information saved successfully.');
         } elseif (session('type') == 'USER') {
-            return redirect('user/profile')->with('msg', 'Informations saved successfully.');
+            return redirect('user/profile')->with('msg', 'Information saved successfully.');
         } elseif (session('type') == 'PUBLISHER') {
-            return redirect('publisher/profile')->with('msg', 'Informations saved successfully.');
+            return redirect('publisher/profile')->with('msg', 'Information saved successfully.');
         }
     }
 

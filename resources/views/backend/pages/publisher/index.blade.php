@@ -1,5 +1,5 @@
 @extends('layouts.backend.master')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @section('content')
     <style>
         span.select2.select2-container.select2-container--default {
@@ -34,17 +34,23 @@
             <div class="card-header">
                 <h4 class="card-title">Publisher List</h4>
 
-                {{-- <div class="card-tools">
+                <div class="card-tools">
                               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-modal">
                   Add Publisher
                 </button>
-            </div> --}}
+            </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
                 <table class="table table-bordered table-striped table-des">
                     <thead>
+
+                        <tr>
+                            <th>Select All <br>  <input type="checkbox" id="select-all"></th>
+                            <th>Sl</th>
+
                     <tr>
+
                             <th>Code</th>
                             <th>Profile</th>
                             <th>Contact Information</th>
@@ -54,8 +60,13 @@
                     </thead>
                     <tbody>
                         @foreach ($list as $row)
+
+                            <tr>
+                                <td><input type="checkbox" class="checkbox" value="{{ $row->id }}"></td>
+
                         <tr>
                                 <td>{{ $row->author_code }}</td>
+
                                 <td>
                                     <div class="figure">
                                         <img src="https://coenterprises.com.au/wp-content/uploads/2018/02/male-placeholder-image.jpeg" alt="">
@@ -112,7 +123,8 @@
             </div>
         </div>
 
-
+        <button type="button" class="btn btn-danger" id="delete-selected">Delete Selected</button>
+        
         <!-- Add Modal-->
 
         <div class="modal fade" id="add-modal">
@@ -270,4 +282,72 @@
             });
         }
     </script>
+
+    <script>
+    $(document).ready(function() {
+        // Select/deselect all checkboxes
+        $('#select-all').click(function() {
+            $('.checkbox').prop('checked', this.checked);
+        });
+
+        // Handle multiple deletion
+        $('#delete-selected').click(function() {
+            var selectedIds = [];
+
+            $('.checkbox:checked').each(function() {
+                selectedIds.push($(this).val());
+            });
+
+            if (selectedIds.length > 0) {
+                confirmMultipleDeletion(selectedIds);
+            } else {
+                alert('Please select at least one item to delete.');
+            }
+        });
+
+        function confirmMultipleDeletion(selectedIds) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You won\'t be able to revert this!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user clicks "Yes," proceed with the deletion
+                    deleteSelectedItems(selectedIds);
+                }
+            });
+        }
+
+       function deleteSelectedItems(selectedIds) {
+            // Create a form element dynamically
+            var form = document.createElement('form');
+            form.setAttribute('method', 'POST'); // Change the method to GET
+            form.setAttribute('action', "{{ url('/admin/user/delete-selected') }}");
+
+            // Create a hidden input field for CSRF token
+            var csrfTokenInput = document.createElement('input');
+            csrfTokenInput.setAttribute('type', 'hidden');
+            csrfTokenInput.setAttribute('name', '_token');
+            csrfTokenInput.setAttribute('value', $('meta[name="csrf-token"]').attr('content'));
+            form.appendChild(csrfTokenInput);
+
+            // Create a hidden input field for each selected ID
+            selectedIds.forEach(function(id) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', 'ids[]');
+                input.setAttribute('value', id);
+                form.appendChild(input);
+            });
+
+            // Append the form to the document body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
+</script>
 @endsection

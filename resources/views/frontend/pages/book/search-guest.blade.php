@@ -167,56 +167,9 @@
                             </div>
                         </div>
                     </div>
-                    @if (session('type') != 'USER')
-                        @if (check_user_max_book_by_user_id(session('author_id')) == 1)
-                            <button class="add-btn btn-solid btn-trigger" data-target="#add-book">
-                                <span class="icon">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_2952_633)">
-                                            <path
-                                                d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z"
-                                                fill="white" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_2952_633">
-                                                <rect width="18" height="18" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </span>
-                                Add a Book
-                            </button>
-                        @else
-                            <button class="add-btn btn-solid"
-                                onclick="alert('You have crossed the limit of your current membership plan!')">
-                                <span class="icon">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_2952_633)">
-                                            <path
-                                                d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z"
-                                                fill="white" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_2952_633">
-                                                <rect width="18" height="18" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </span>
-                                Add a Book
-                            </button>
-                        @endif
-                    @endif
+            
                     <nav>
-                        @if (session('type') == 'USER')
-                            @include('layouts.frontend.user_sidebar')
-                        @elseif (session('type') == 'AUTHOR')
-                            @include('layouts.frontend.author_sidebar')
-                        @elseif (session('type') == 'PUBLISHER')
-                            @include('layouts.frontend.publisher_sidebar')
-                        @endif
+                       
                     </nav>
                 </div>
 

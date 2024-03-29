@@ -80,7 +80,15 @@ class BookController extends Controller
 
         // Return the result in the response
         //return response()->json(['books' => $data]);
-        return view('frontend.pages.book.search', $data);
+        if(session('author_id')==null)
+        {
+            return view('frontend.pages.book.search-guest', $data);
+        }
+        else
+        {
+            return view('frontend.pages.book.search', $data);
+        }
+        
     }
     public function delete_book_doccunment($id)
     {

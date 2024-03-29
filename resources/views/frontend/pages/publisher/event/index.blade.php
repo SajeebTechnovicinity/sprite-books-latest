@@ -398,20 +398,23 @@
                                             $countLength = strlen($firstPara);
                                             $secondPara = substr($text, strpos($text, true) + $countLength);
                                         } else {
-                                            $firstPara = $row->book_description ?? '';
+                                            $firstPara = $row->event_description ?? '';
                                         }
                                         ?>
-                                        <p class="para">
-                                            <span class="main">
-                                                {{ $firstPara ?? '' }}
+                                         <p class="para">
+                                        <span class="main">
+                                            {{ $firstPara ?? '' }}
+                                        </span>
+                                        @if (strlen($text) > 30)
+                                            <span class="extended" data-index="{{ $row->id }}" style="display: none;">
+                                                {{ $secondPara }}
+                                                <br>
+                                                <b> Event Location : </b> {{ $row->event_location }}
                                             </span>
-                                            @if (strlen($text) > 30)
-                                                <span class="extended">
-                                                    {{ $secondPara }}
-                                                </span>
-                                                <span class="read-more">Show More</span>
-                                            @endif
-                                        </p>
+                                             <span class="read-more" data-index="{{ $row->id }}">Show More</span>
+                                        @endif
+                                      
+                                    </p>
 
                                         <p class="para">
                                             <a href="{{ $row->event_link }}" target="__blank">Join Link</a>
@@ -561,6 +564,33 @@
 
         }
     </script>
+
+      <script>
+    // Wait for the document to be ready
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all elements with the class "read-more"
+        var readMoreButtons = document.querySelectorAll('.read-more');
+
+        // Add click event listeners to all "Show More" buttons
+        readMoreButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Get the index from the data-index attribute
+                var index = button.dataset.index;
+                // Find the corresponding extended content using the index
+                var extendedContent = document.querySelector('.extended[data-index="' + index + '"]');
+
+                // Toggle the display of the extended content
+                if (extendedContent.style.display === 'none') {
+                    extendedContent.style.display = 'inline'; // Show the extended content
+                    button.textContent = 'Show Less'; // Change the button text
+                } else {
+                    extendedContent.style.display = 'none'; // Hide the extended content
+                    button.textContent = 'Show More'; // Change the button text back
+                }
+            });
+        });
+    });
+</script>
 
 
 @endsection

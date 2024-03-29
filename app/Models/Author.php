@@ -27,4 +27,14 @@ class Author extends Model
     {
         return $this->belongsTo(Author::class,'publisher_id');
     }
+    // public function setAuthorWebsiteLinksAttribute($value)
+    // {
+    //     $this->attributes['author_website_link'] = $value;
+    // }
+
+    // // Accessor to unserialize the array when retrieving from the database
+    // public function getAuthorWebsiteLinksAttribute($value)
+    // {
+    //     return unserialize($value);
+    // }
 }
