@@ -839,8 +839,9 @@ figure {
 }
 
 .card .figure img {
-  height: 180px;
-  object-fit: cover;
+  height: 200px;
+  object-fit: contain;
+  background-color: rgb(154 171 189);
 }
 
 .fig-content .subtitle {
@@ -1086,7 +1087,7 @@ figure {
 .card .dsc {
   font-size: 16px;
   line-height: 1.5;
-  color: var(--color-gray);
+  color: #000000;
   margin: 0 0 15px;
 }
 
@@ -1108,8 +1109,9 @@ figure {
   display: block;
   text-align: center;
   transition: 0.3s;
-  margin-top: 15px;
   color: #ffffff;
+  width: 50%;
+  margin-top: 20px;
 }
 
 .card .card-link:hover {
@@ -1117,8 +1119,32 @@ figure {
 }
 
 .leading-cards .card {
-  background-color: transparent;
-  padding: 0;
+}
+
+.blog-meta {
+  border-top: 1px solid #9999997e;
+  border-bottom: 1px solid #9999997e;
+  padding: 6px 0 7px;
+  margin: 6px 0 12px;
+}
+
+.blog-meta svg{
+  width: 14px;
+  margin-right: 4px;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+
+.blog-meta svg path{
+  fill: #777777;
+}
+
+.blog-meta span{
+  vertical-align: middle;
+}
+
+.blog-meta span:first-child{
+  margin-right: 7px;
 }
 
 @media (max-width: 991px) {
