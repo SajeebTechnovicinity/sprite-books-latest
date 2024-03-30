@@ -191,9 +191,9 @@
                                 <div class="form-group">
                                     <label for="text-area">Membership Plan </label>
                                     <select name="membership_plan" id="membership_plan" class="form-control">
-                                        <option value="Monthly">Monthly</option>
-                                        <option value="Yearly">Yearly</option>
-                                        <option value="Life Time">Life Time</option>
+                                        <option value="Monthly">1 Month Free</option>
+                                        <option value="Yearly">1 Year Free</option>
+                                        <option value="Life Time">Lifetime Free</option>
                                     </select>
                                 </div>
                             </div>
