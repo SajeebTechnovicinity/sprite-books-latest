@@ -9,11 +9,13 @@ use App\Models\Author;
 use App\Models\AuthorMembershipPlan;
 use App\Models\Country;
 use App\Models\CountryList;
+use App\Models\Subscription;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthorController extends Controller
 {
-   /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -21,9 +23,9 @@ class AuthorController extends Controller
     public function index()
     {
         // if(Auth::user()->can('view-author')) {
-            $data['list'] = Author::whereType('AUTHOR')->where('is_delete',0)->orderBy('id','desc')->get();
-            $data['country_list'] = Country::all();
-            return view("backend.pages.author.index", $data);
+        $data['list'] = Author::whereType('AUTHOR')->where('is_delete', 0)->orderBy('id', 'desc')->get();
+        $data['country_list'] = Country::all();
+        return view("backend.pages.author.index", $data);
         // }
     }
 
@@ -31,9 +33,9 @@ class AuthorController extends Controller
     public function publisher_author()
     {
         // if(Auth::user()->can('view-author')) {
-            $data['list'] = Author::whereType('AUTHOR')->where('publisher_id','!=',null)->where('is_delete',0)->orderBy('id','desc')->get();
-            $data['country_list'] = Country::all();
-            return view("backend.pages.author.publisher_author", $data);
+        $data['list'] = Author::whereType('AUTHOR')->where('publisher_id', '!=', null)->where('is_delete', 0)->orderBy('id', 'desc')->get();
+        $data['country_list'] = Country::all();
+        return view("backend.pages.author.publisher_author", $data);
         // }
     }
 
@@ -42,32 +44,31 @@ class AuthorController extends Controller
 
         $author = Author::where('id', $id)->first();
 
-        if(!$author){
-            return redirect()->back()->with('msg','No user found with this credential');
+        if (!$author) {
+            return redirect()->back()->with('msg', 'No user found with this credential');
         }
 
         if ($author) {
 
-                $sData = [
-                    'author_name'=>$author->author_name,
-                    'author_phone'=>$author->author_phone,
-                    'type'=>$author->type,
-                    'author_code'=>$author->author_code,
-                    'author_email'=>$author->author_email,
-                    'author_id'=>$author->id,
-                ];
+            $sData = [
+                'author_name' => $author->author_name,
+                'author_phone' => $author->author_phone,
+                'type' => $author->type,
+                'author_code' => $author->author_code,
+                'author_email' => $author->author_email,
+                'author_id' => $author->id,
+            ];
 
-                session()->put($sData);
-                if($author->type == 'AUTHOR'){
-                    return redirect('author/profile');
-                }elseif($author->type == 'USER'){
-                    return redirect('user/profile');
-                }elseif($author->type == 'PUBLISHER'){
-                    return redirect('publisher/profile');
-                }
-
+            session()->put($sData);
+            if ($author->type == 'AUTHOR') {
+                return redirect('author/profile');
+            } elseif ($author->type == 'USER') {
+                return redirect('user/profile');
+            } elseif ($author->type == 'PUBLISHER') {
+                return redirect('publisher/profile');
+            }
         } else {
-            return ['data'=>$author,'status'=>0];
+            return ['data' => $author, 'status' => 0];
         }
 
         return redirect('author/profile');
@@ -77,18 +78,17 @@ class AuthorController extends Controller
 
         $author = Author::where('id', $id)->first();
 
-        if(!$author){
-            return redirect()->back()->with('msg','No user found with this credential');
+        if (!$author) {
+            return redirect()->back()->with('msg', 'No user found with this credential');
         }
 
-        Author::where('id',$id)->update([
-            'is_delete'=>1
+        Author::where('id', $id)->update([
+            'is_delete' => 1
         ]);
 
-        return redirect()->back()->with('success', ucfirst(strtolower($author->type)).' delete successfully');
-
+        return redirect()->back()->with('success', ucfirst(strtolower($author->type)) . ' delete successfully');
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -97,9 +97,9 @@ class AuthorController extends Controller
      */
     public function create()
     {
-//        if(Auth::user()->hasRole('super-admin')) {
-//            return view("backend.pages.permissions.add_permission");
-//        }
+        //        if(Auth::user()->hasRole('super-admin')) {
+        //            return view("backend.pages.permissions.add_permission");
+        //        }
     }
 
     /**
@@ -111,22 +111,22 @@ class AuthorController extends Controller
     public function store(Request $request)
     {
         // if(Auth::user()->can('add-author')) {
-         $request->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'password' => 'required'
         ]);
-        $authorInfo= Author::where('author_email',$request->email)->first();
-        if($authorInfo){
+        $authorInfo = Author::where('author_email', $request->email)->first();
+        if ($authorInfo) {
             return 'emailUsed';
         }
 
-            $authorId = Author::orderBy('id','desc')->first()->id;
+        $authorId = Author::orderBy('id', 'desc')->first()->id;
 
         $author = Author::create([
             'author_name' => $request->name,
-            'author_code' => 10000+$authorId,
+            'author_code' => 10000 + $authorId,
             'author_last_name' => $request->last_name,
             'type' => 'AUTHOR',
             'author_country' => $request->country,
@@ -136,15 +136,31 @@ class AuthorController extends Controller
             'author_password' => Hash::make($request->password)
         ]);
 
+        if ($request->membership_plan == 'Life Time') {
+            $membership_plain_id = 11;
+        } else {
+            $membership_plain_id = 2;
+        }
+
+
         AuthorMembershipPlan::create([
-            'author_id'=>$author->id,
-            'membership_plan_id'=>2,
-            'type'=>'AUTHOR',
-            'monthly_yearly'=>'1',
-            'duration'=>"Yearly"
+            'author_id' => $author->id,
+            'membership_plan_id' => $membership_plain_id,
+            'type' => 'AUTHOR',
+            'monthly_yearly' => '1',
+            'duration' => $request->membership_plan
         ]);
 
-        return ['data'=>$author,'status'=>1];
+
+        DB::table('subscriptions')->insert([
+            'author_id' => $author->id,
+            'name' => $author->author_name,
+            'stripe_id' => $author->id,
+            'stripe_status' => 'active',
+
+        ]);
+
+        return ['data' => $author, 'status' => 1];
         // }
     }
 
@@ -167,11 +183,11 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-//        if(Auth::user()->hasRole('super-admin')) {
-            $data['data'] = Author::find($id);
-            $data['countries']=Country::all();
-            return view("backend.pages.author.edit", $data);
-//        }
+        //        if(Auth::user()->hasRole('super-admin')) {
+        $data['data'] = Author::find($id);
+        $data['countries'] = Country::all();
+        return view("backend.pages.author.edit", $data);
+        //        }
     }
 
     /**
@@ -184,23 +200,23 @@ class AuthorController extends Controller
     public function update(Request $request, $id)
     {
         // if(Auth::user()->can('edit-package')) {
-            $request->validate([
-                'author_name'  => 'required',
-                'author_last_name'=> 'required',
-                'author_email'=> 'required|email',
-            ]);
+        $request->validate([
+            'author_name'  => 'required',
+            'author_last_name' => 'required',
+            'author_email' => 'required|email',
+        ]);
 
-            Author::where('id',$id)->update([
-                'author_name'=>$request->author_name,
-                'author_last_name'=>$request->author_last_name,
-                'author_email'=>$request->author_email,
-                'author_phone'=>$request->author_phone,
-                'author_country'=>$request->author_country,    
+        Author::where('id', $id)->update([
+            'author_name' => $request->author_name,
+            'author_last_name' => $request->author_last_name,
+            'author_email' => $request->author_email,
+            'author_phone' => $request->author_phone,
+            'author_country' => $request->author_country,
 
-            ]);
+        ]);
 
-            return redirect()->back()->with('success', 'Author updated successfully');
-        
+        return redirect()->back()->with('success', 'Author updated successfully');
+
 
 
         // }
@@ -223,11 +239,10 @@ class AuthorController extends Controller
     {
         $ids = $request->ids;
 
-        Author::whereIn('id',$ids)->update([
-            'is_delete'=>1
+        Author::whereIn('id', $ids)->update([
+            'is_delete' => 1
         ]);
 
         return redirect()->back()->with('success', 'Delete successfully');
     }
-
 }

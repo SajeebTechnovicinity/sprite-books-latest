@@ -58,6 +58,54 @@
                         </div> --}}
 
 
+                    @if($current_membership_plans[0]->membership_plan_id==11)
+                    <div id="monthly-{{ $current_membership_plans[0]->membership_plan_slug }}" class="plan__card Life Time has-price" data-monthly="{{ $current_membership_plans[0]->membership_plan_monthly_price }}" data-yearly="{{ $current_membership_plans[0]->membership_plan_yearly_price }}">
+                        <div class="inner__card flex">
+                            <h3>Life Time Free Membership</h3>
+                            {{-- <div class="card__heading">
+                                        <div class="plan-amount flex">
+                                            <span class="amount">${{ $current_membership_plans[0]->membership_plan_monthly_price }}</span>
+                            <div class="time">/month</div>
+                        </div>
+                        <div class="plan__class">
+                            {{ $current_membership_plans[0]->membership_plan_name }}
+                        </div>
+
+                    </div> --}}
+
+                    <div class="plan-card__body">
+                        <ul class="items">
+                            <li class="plan__item
+                                            ">
+
+                                Add upto {{ $current_membership_plans[0]->max_no_of_books }} Books
+                            </li>
+                            <li class="plan__item
+                                            ">
+                                Create upto {{ $current_membership_plans[0]->max_no_of_events }} Events
+                            </li>
+
+                            {{-- <li class="plan__item">
+                                                    Add Upto {{ $current_membership_plans[0]->max_no_of_video_promotion }} Video Promotion
+                            </li> --}}
+                            {!! $current_membership_plans[0]->membership_plan_description !!}
+                        </ul>
+                    </div>
+                    <div class="switch__btn-wrap">
+                        <p style="margin: 0; text-align: center;">This is your current plan</p>
+                        {{--  @if (
+                        $current_membership_plans[0]->membership_plan_monthly_price != '0' &&
+                        $current_membership_plans[0]->membership_plan_yearly_price != '0')
+                        <a class="switch__btn cancle" href="{{ url('cancel-current-membership-plan') }}" onclick="confirmCancellation(event)">Cancel?</a>
+                        @endif  --}}
+                    </div>
+                </div>
+            </div>
+
+
+            @else
+
+
 
 
                         @foreach ($membership_plans as $row)
@@ -177,6 +225,7 @@
                                 </div>
                             </div>
                         @endforeach
+                    @endif
                     </div>
                 </div>
             </div>
