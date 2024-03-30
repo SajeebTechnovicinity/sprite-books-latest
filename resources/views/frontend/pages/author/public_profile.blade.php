@@ -369,7 +369,7 @@
                                 <div class="tab-body">
                                     <div class="tab-body__inner books" id="books">
                                         <div class="grid-container">
-                                            <div class="grid-items">
+                                            <div class="grid-items grid-books">
                                                 @foreach ($books as $row)
                                                     <figure class="grid-item figure">
                                                         <a href="{{ url('book-details/' . $row->id) }}"><img

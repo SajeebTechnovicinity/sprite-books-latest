@@ -34,7 +34,7 @@
 
                   <div class="entry-content">
 
-                    {{ $blog->blog_short_description }}
+                    <p>{{ $blog->blog_short_description }}</p>
 
                     {!! $blog->blog_full_description !!}
 

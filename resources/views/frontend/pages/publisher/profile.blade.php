@@ -34,7 +34,7 @@
                                 required />
                         </div>
                     </div>
-                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" 
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"
                             required />
                     <div class="form-field">
                         <label for="isbn" class="label">Role*</label>
@@ -529,7 +529,7 @@
                                     @php
                                         $links = explode(',', $author->author_website_link);
                                     @endphp
-                                    
+
                                     @foreach($links as $link)
                                         @php
                                             $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
@@ -539,7 +539,7 @@
                                             {{ $formattedLink }}
                                         </a><br>
                                     @endforeach
-                            
+
 
                                     </div>
                                     @if($author->author_country)
@@ -693,7 +693,7 @@
                                         @endif
                                     </p>
                                 </div>
-                                
+
                                 @if ($author->author_intro_video)
                                     <a href="#" class="video unit">
                                         {{-- <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-14.png" alt="" /> --}}
@@ -851,7 +851,7 @@
 
                                     <div class="tab-body__inner books  d-none" id="books">
                                         <div class="grid-container">
-                                            <div class="grid-items">
+                                            <div class="grid-items grid-books">
                                                 @if (count($books))
                                                     @foreach ($books as $row)
                                                         <figure class="grid-item figure">
@@ -1032,7 +1032,7 @@
                                                             </span>
                                                             <span class="read-more" data-index="{{ $row->id }}">Show More</span>
                                                         @endif
-                                                    
+
                                                     </p>
 
                                                         <p class="para">

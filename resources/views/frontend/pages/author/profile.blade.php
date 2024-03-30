@@ -72,7 +72,7 @@
                         </select>
                     </div>
 
-                    
+
                     {{-- <div class="form-field">
                             <label for="isbn" class="label">ISBN 10*</label>
                             <input type="text" name="isbn_10" id="isbn_10" class="input" @readonly(true) />
@@ -155,7 +155,7 @@
                             required />
                     </div> --}}
 
-                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" 
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"
                             required />
 
                     <div class="form-field">
@@ -425,7 +425,7 @@
                                     @php
                                         $links = explode(',', $author->author_website_link);
                                     @endphp
-                                    
+
                                     @foreach($links as $link)
                                         @php
                                             $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
@@ -435,7 +435,7 @@
                                             {{ $formattedLink }}
                                         </a><br>
                                     @endforeach
-                            
+
 
                                     </div>
                                    @if($author->author_country)
@@ -670,7 +670,7 @@
                                 <div class="tab-body">
                                     <div class="tab-body__inner books" id="books">
                                         <div class="grid-container">
-                                            <div class="grid-items">
+                                            <div class="grid-items grid-books">
                                                 @if (count($books))
                                                     @foreach ($books as $row)
                                                         <div class="card grid-item">
@@ -834,7 +834,7 @@
                                                             </span>
                                                             <span class="read-more" data-index="{{ $row->id }}">Show More</span>
                                                         @endif
-                                                    
+
                                                     </p>
 
                                                         <p class="para">
@@ -1114,7 +1114,7 @@
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
 
-                    
+
                     // Process the bookData here
                 },
                 error: function(xhr) {
