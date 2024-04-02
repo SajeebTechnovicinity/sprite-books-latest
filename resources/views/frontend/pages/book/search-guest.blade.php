@@ -213,9 +213,10 @@
                                 <div class="title-bar flex-equal">
                                     <h3 class="title">Books</h3>
                                 </div>
+                                <div class="grid-items">
                                 @if ($books->isNotEmpty())
                                     @foreach ($books as $sBooks)
-                                        <div class="grid-items">
+
                                             <div class="card grid-item">
                                                 @if (isset($sBooks->bookDocuments[0]))
                                                     <a href="{{ url('book-details/' . $sBooks->id) }}" class="figure">
@@ -274,11 +275,12 @@
                                         <a href="{{ url('book-details/' . $sBooks->id) }}" class="card-link">
                                             Details</a>
                                     </div>
-                                </div>
+
                                 @endforeach
                                 @else
                                 <h5 class="title">No other books available</h5>
                                 @endif
+                                </div>
                             </div>
                         </div>
                     </div>

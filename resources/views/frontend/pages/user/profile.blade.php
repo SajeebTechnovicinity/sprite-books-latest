@@ -77,7 +77,7 @@
                                 <ul class="social-links unit">
                                     @if ($author[0]->author_facebook_link)
                                     <li>
-                                        <a href="{{$author[0]->author_facebook_link}}" class="link">
+                                        <a target="_blank"  href="{{$author[0]->author_facebook_link}}" class="link">
                                             <svg width="10" height="20" viewBox="0 0 10 20" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -89,7 +89,7 @@
                                     @endif
                                     @if($author[0]->author_twitter_link)
                                     <li>
-                                        <a href="{{$author[0]->author_twitter_link}}" class="link">
+                                        <a target="_blank"  href="{{$author[0]->author_twitter_link}}" class="link">
                                             <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -101,7 +101,7 @@
                                     @endif
                                     @if($author[0]->author_instagram_link)
                                     <li>
-                                        <a href="{{$author[0]->author_instagram_link}}" class="link">
+                                        <a target="_blank"  href="{{$author[0]->author_instagram_link}}" class="link">
                                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -117,7 +117,7 @@
                                     @endif
                                     @if($author[0]->author_linkedin_link)
                                     <li>
-                                        <a href="{{$author[0]->author_linkedin_link}}" class="link">
+                                        <a target="_blank"  href="{{$author[0]->author_linkedin_link}}" class="link">
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -134,7 +134,7 @@
                                     @endif
                                     @if($author[0]->author_youtube_link)
                                     <li>
-                                        <a href="{{$author[0]->author_youtube_link}}" class="link">
+                                        <a target="_blank"  href="{{$author[0]->author_youtube_link}}" class="link">
                                             <svg width="20" height="14" viewBox="0 0 20 14" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -146,21 +146,21 @@
                                     @endif
                                     @if($author[0]->author_pinterest_link)
                                     <li>
-                                        <a href="{{$author[0]->author_pinterest_link}}" class="link">
+                                        <a target="_blank"  href="{{$author[0]->author_pinterest_link}}" class="link">
                                             <img src="{{asset('public/frontend_asset')}}/imgs/pinterest.png" alt="" />
                                         </a>
                                     </li>
                                     @endif
                                     @if($author[0]->author_spotify_link)
                                     <li>
-                                        <a href="{{$author[0]->author_spotify_link}}" class="link">
+                                        <a target="_blank"  href="{{$author[0]->author_spotify_link}}" class="link">
                                             <img src="{{asset('public/frontend_asset')}}/imgs/spotify.png" alt="" />
                                         </a>
                                     </li>
                                     @endif
                                     @if($author[0]->author_podcast_link)
                                     <li>
-                                        <a href="{{$author[0]->author_podcast_link}}" class="link">
+                                        <a target="_blank"  href="{{$author[0]->author_podcast_link}}" class="link">
                                             <img src="{{asset('public/frontend_asset')}}/imgs/podcast.png" alt="" />
                                         </a>
                                     </li>

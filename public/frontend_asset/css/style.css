@@ -856,8 +856,8 @@ figure {
 }
 
 .card .figure img {
-  height: 220px;
-  object-fit: cover;
+  height: 430px;
+  object-fit: contain;
   background-color: rgb(154 171 189);
 }
 
@@ -2605,13 +2605,13 @@ figure {
   cursor: pointer;
   border: transparent;
   transition: 0.3s;
-  height: 65px;
 }
 
 .figure-guoup .figure img{
-  height: 65px;
-  object-fit: cover;
+  height: 97px;
+  object-fit: contain;
   width: 100%;
+  background-color: #ffffff;
 }
 
 .figure-guoup .slick-current .figure {
@@ -7045,6 +7045,10 @@ iframe{
   border-radius: 4px;
 }
 
+.prodcast-grid .figure{
+  display: none;
+}
+
 @media (max-width: 767px){
   .prodcast-grid,
   .author-grid{
@@ -7111,4 +7115,20 @@ label .text .inner{
 .books-card .card .figure img{
   height: 463px;
   object-fit: contain!important;
+}
+
+.prodcast-aside .event-card__title{
+  font-size: 18px;
+}
+
+.prodcast-aside .figure{
+  display: none;
+}
+
+#media figure.media-item{
+  background-color: #e3e8ed;
+}
+
+#media figure.media-item img{
+  object-fit: contain;
 }
