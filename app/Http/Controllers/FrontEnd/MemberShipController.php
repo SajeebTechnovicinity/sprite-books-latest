@@ -501,8 +501,9 @@ class MemberShipController extends Controller
 
 
     public function cancel_current_membership_plan(){
-        $subscription = DB::table('subscriptions')->where('author_id', session('author_id'))->latest()->take(1)->get()[0];
-        Cashier::useCustomerModel(Author::class);
+        $subscription= DB::table('subscriptions')->where('author_id', session('author_id'))->where('stripe_status','active')->latest()->take(1)->get()[0];
+
+
 
         if($subscription->stripe_id)
         {
@@ -510,6 +511,10 @@ class MemberShipController extends Controller
             $sub = Subscription::update($subscription->stripe_id, [
                 'cancel_at_period_end' => true
              ]);
+
+            DB::table('subscriptions')->where('id', $subscription->id)->update([
+                'stripe_status'=>'inactive'
+            ]);
         }
 
          if(session('type') == 'AUTHOR'){

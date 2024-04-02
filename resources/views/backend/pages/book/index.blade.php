@@ -12,11 +12,10 @@
             <div class="card-header">
                 <h4 class="card-title">Book List</h4>
 
-                {{-- <div class="card-tools">
-                              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-modal">
-                  Add Author
-                </button>
-            </div> --}}
+                <div class="card-tools">
+                              <a type="button" href="{{ url('/admin/book/create') }}" class="btn btn-default">Add Book</a>
+        
+            </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">

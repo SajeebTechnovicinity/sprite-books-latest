@@ -34,8 +34,12 @@
                                 required />
                         </div>
                     </div>
+<<<<<<< HEAD
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
+=======
                     <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"
                             required />
+>>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
                     <div class="form-field">
                         <label for="isbn" class="label">Role*</label>
                         @if (check_user_max_book_by_user_id(session('author_id')) == 1)
@@ -128,7 +132,7 @@
                         </div>
                     </div>
 
-                    <div class="form-field">
+                    {{-- <div class="form-field">
                         <label for="attach-file" class="attach-btn btn-lite btn">
                             <span class="icon">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -146,9 +150,9 @@
 
                         <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*"
                             required />
-                    </div>
+                    </div> --}}
 
-                    <div class="form-field">
+                    {{-- <div class="form-field">
                         <label for="attach-file1" class="attach-btn1 btn-lite btn">
                             <span class="icon">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -162,6 +166,14 @@
                         </label>
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
                             accept="video/*" />
+                    </div> --}}
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Video Link</label>
+                            <input type="text" name="video_file_updoad" id="links" class="input" />
+                        </div>
+
                     </div>
 
                     <div class="btn-group">
@@ -503,9 +515,21 @@
                     <div class="profile-banner">
                         <img src="@if ($author->author_cover_picture) {{ asset($author->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/cover.jpg @endif"
                             alt="" />
-                            <a href="{{ url('settings') }}" class="edit-banner">
-                                <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 528.899 528.899" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z"></path> </g> </g></svg>
-                            </a>
+                        <a href="{{ url('settings') }}" class="edit-banner">
+                            <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 528.899 528.899"
+                                xml:space="preserve">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g>
+                                        <path
+                                            d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
                     </div>
                     <div class="block-wrap bg-none" style="padding-left: 0; padding-right: 0; margin-top:20px">
                         <div class="block-component">
@@ -514,9 +538,23 @@
                                     <div class="author-profile-pic">
                                         <img src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                             alt="" />
-                                            <a href="{{ url('settings') }}" class="edit">
-                                                <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 528.899 528.899" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z"></path> </g> </g></svg>
-                                            </a>
+                                        <a href="{{ url('settings') }}" class="edit">
+                                            <svg fill="#ffffff" version="1.1" id="Capa_1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 528.899 528.899"
+                                                xml:space="preserve">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <g>
+                                                        <path
+                                                            d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z">
+                                                        </path>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </a>
                                     </div>
 
                                     <h3 class="author-name">
@@ -525,24 +563,44 @@
                                     <p class="author-label">
                                         {{ $author->author_bio }}
                                     </p>
+<<<<<<< HEAD
+                                    <div class="author-email">
+=======
                                    <div class="author-email">
                                     @php
                                         $links = explode(',', $author->author_website_link);
                                     @endphp
 
                                     @foreach($links as $link)
+>>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
                                         @php
-                                            $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
+                                            $links = explode(',', $author->author_website_link);
                                         @endphp
 
+<<<<<<< HEAD
+=======
                                         <a href="{{ $formattedLink }}" target="_blank" class="link">
                                             {{ $formattedLink }}
                                         </a><br>
                                     @endforeach
 
+>>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
 
+                                        @if (!empty($links))
+                                            @foreach ($links as $link)
+                                                @php
+                                                    $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
+                                                @endphp
+
+                                                @if ($formattedLink != 'null')
+                                                    <a href="{{ $formattedLink }}" target="_blank" class="link">
+                                                        {{ $formattedLink }}
+                                                    </a><br>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     </div>
-                                    @if($author->author_country)
+                                    @if ($author->author_country)
                                         <p class="author-location">
                                             <span class="icon">
                                                 <svg width="12" height="17" viewBox="0 0 12 17" fill="none"
@@ -671,42 +729,37 @@
                                 {{-- <a href="#" class="follow-btn unit btn-solid">Follow</a> --}}
                                 <div class="discribe-author unit">
                                     <h4 class="title">About me</h4>
-                                      <?php
-                                        $text = $author->author_description;
-                                        if (strlen($text) > 30) {
-                                            $firstPara = substr($text, 0, strpos($text, ' ', 30));
-                                            $countLength = strlen($firstPara);
-                                            $secondPara = substr($text, strpos($text, true) + $countLength);
-                                        } else {
-                                            $firstPara = $row->author_description ?? '';
-                                        }
-                                        ?>
+                                    <?php
+                                    $text = $author->author_description;
+                                    if (strlen($text) > 30) {
+                                        $firstPara = substr($text, 0, strpos($text, ' ', 30));
+                                        $countLength = strlen($firstPara);
+                                        $secondPara = substr($text, strpos($text, true) + $countLength);
+                                    } else {
+                                        $firstPara = $row->author_description ?? '';
+                                    }
+                                    ?>
                                     <p class="para">
                                         <span class="main">
                                             {{ $firstPara ?? '' }}
                                         </span>
                                         @if (strlen($text) > 30)
-                                              <span class="extended" data-index="about" style="display: none;">
+                                            <span class="extended" data-index="about" style="display: none;">
                                                 {{ $secondPara }}
                                             </span>
-                                             <span class="read-more" data-index="about">Show More</span>
+                                            <span class="read-more" data-index="about">Show More</span>
                                         @endif
                                     </p>
                                 </div>
 
                                 @if ($author->author_intro_video)
                                     <a href="#" class="video unit">
-                                        {{-- <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-14.png" alt="" /> --}}
-                                         <iframe src="{!!$author->author_intro_video!!}"></iframe>
-                                        {{-- <span class="icon">
-                                        <svg width="58" height="58" viewBox="0 0 58 58" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="29" cy="29" r="28.5" stroke="#3E3E3E" />
-                                            <path
-                                                d="M40 26.7679C41.3333 27.5378 41.3333 29.4623 40 30.2321L24.25 39.3253C22.9167 40.0951 21.25 39.1329 21.25 37.5933L21.25 19.4067C21.25 17.8671 22.9167 16.9049 24.25 17.6747L40 26.7679Z"
-                                                fill="#656565" />
-                                        </svg>
-                                    </span> --}}
+
+                                        {{-- <iframe src="{!!$author->author_intro_video!!}"></iframe> --}}
+                                        <iframe
+                                            src="https://www.youtube.com/embed/{{ getYoutubeVideoId($author->author_intro_video) }}"
+                                            frameborder="0" allowfullscreen></iframe>
+
                                     </a>
                                 @endif
 
@@ -741,7 +794,7 @@
                                                 </div>
 
                                                 <p class="para">
-                                                    <iframe {!!$row->podcast_embed_code!!}</iframe>
+                                                    <iframe {!! $row->podcast_embed_code !!}</iframe>
                                                 </p>
                                             </div>
                                         </div>
@@ -749,8 +802,8 @@
                                 @endif
 
                                 <!-- <p class="member-status unit">
-                                    Member since {{ date('Y', strtotime($author->created_at)) }}
-                                </p> -->
+                                            Member since {{ date('Y', strtotime($author->created_at)) }}
+                                        </p> -->
                             </div>
                             <div class="tabs-wrap space-0">
                                 <div class="tabs-btns-row">
@@ -796,8 +849,8 @@
                                                         @foreach ($author_created_list as $list)
                                                             <tr>
                                                                 <!-- <td>
-                                                                    {{ $loop->iteration }}
-                                                                </td> -->
+                                                                            {{ $loop->iteration }}
+                                                                        </td> -->
 
                                                                 {{-- <td>
                                                                     {{ $list->author_code }}
@@ -809,8 +862,8 @@
                                                                     {{ $list->author_email }}
                                                                 </td>
                                                                 <!-- <td>
-                                                                    {{ $list->author_phone }}
-                                                                </td> -->
+                                                                            {{ $list->author_phone }}
+                                                                        </td> -->
                                                                 {{-- <td>
                                                                     {{ $list->author_country }}
                                                                 </td> --}}
@@ -1020,23 +1073,49 @@
                                                                 {{ $row->event_ending_time }}
                                                             </span><span>{{ $row->event_location }}</span>
                                                         </p>
-                                                         <p class="para">
-                                                        <span class="main">
-                                                            {{ $firstPara ?? '' }}
-                                                        </span>
-                                                        @if (strlen($text) > 30)
-                                                            <span class="extended" data-index="{{ $row->id }}" style="display: none;">
-                                                                {{ $secondPara }}
-                                                                {{-- <br>
-                                                                <b> Event Location : </b> {{ $row->event_location }} --}}
+                                                         @if (strlen($row->event_description) < 100)
+                                                                {{ $row->event_description }}
+                                                            @endif
+
+                                                            <?php
+                                                        $text = $row->event_description;
+                                                        if (strlen($text) > 100) {
+                                                            $firstPara = substr($text, 0, strpos($text, ' ', 30));
+                                                            $countLength = strlen($firstPara);
+                                                            $secondPara = substr($text, strpos($text, true) + $countLength);
+                                                        } else {
+                                                            $firstPara = $row->book_description ?? '';
+                                                        }
+                                                        ?>
+                                                        <p class="para">
+                                                            <span class="main">
+                                                                {{ $firstPara ?? '' }}
                                                             </span>
+<<<<<<< HEAD
+                                                            
+                                                           
+                                                            @if (strlen($text) > 100)
+                                                                <span class="extended" data-index="{{ $row->id }}"
+                                                                    style="display: none;">
+                                                                    {{ $secondPara }}
+                                                                    {{-- <br>
+                                                                <b> Event Location : </b> {{ $row->event_location }} --}}
+                                                                </span>
+                                                                <span class="read-more"
+                                                                    data-index="{{ $row->id }}">Show More</span>
+                                                            @endif
+
+                                                        </p>
+=======
                                                             <span class="read-more" data-index="{{ $row->id }}">Show More</span>
                                                         @endif
 
                                                     </p>
+>>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
 
                                                         <p class="para">
-                                                            <a href="{{ $row->event_link }}" target="__blank">Join Link</a>
+                                                            <a href="{{ $row->event_link }}" target="__blank">Join
+                                                                Link</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1345,7 +1424,7 @@
                     console.log(response);
                     // HideCalimaticLoader();
                     $('.has-loader .loader').css('display', 'none');
-                     $('#title').val(response.book.title);
+                    $('#title').val(response.book.title);
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
                     // Process the bookData here
@@ -1398,31 +1477,32 @@
             // The radio button will be checked before the alert is triggered
         }
     </script>
-        <script>
-    // Wait for the document to be ready
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get all elements with the class "read-more"
-        var readMoreButtons = document.querySelectorAll('.read-more');
+    <script>
+        // Wait for the document to be ready
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all elements with the class "read-more"
+            var readMoreButtons = document.querySelectorAll('.read-more');
 
-        // Add click event listeners to all "Show More" buttons
-        readMoreButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                // Get the index from the data-index attribute
-                var index = button.dataset.index;
-                // Find the corresponding extended content using the index
-                var extendedContent = document.querySelector('.extended[data-index="' + index + '"]');
+            // Add click event listeners to all "Show More" buttons
+            readMoreButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Get the index from the data-index attribute
+                    var index = button.dataset.index;
+                    // Find the corresponding extended content using the index
+                    var extendedContent = document.querySelector('.extended[data-index="' + index +
+                        '"]');
 
-                // Toggle the display of the extended content
-                if (extendedContent.style.display === 'none') {
-                    extendedContent.style.display = 'inline'; // Show the extended content
-                    button.textContent = 'Show Less'; // Change the button text
-                } else {
-                    extendedContent.style.display = 'none'; // Hide the extended content
-                    button.textContent = 'Show More'; // Change the button text back
-                }
+                    // Toggle the display of the extended content
+                    if (extendedContent.style.display === 'none') {
+                        extendedContent.style.display = 'inline'; // Show the extended content
+                        button.textContent = 'Show Less'; // Change the button text
+                    } else {
+                        extendedContent.style.display = 'none'; // Hide the extended content
+                        button.textContent = 'Show More'; // Change the button text back
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 
 @endsection

@@ -1,22 +1,27 @@
 @extends('master')
 
 @section('content')
-<!-- Add Book Modal -->
-<div class="add-book-modal modal d-none" id="add-book">
-    <div class="modal__wrap">
-        <div class="modal__inner" style="margin-top: 250px">
-            <div class="modal__close">
-                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.42191 14.5725C1.05416 14.5936 0.692485 14.4734 0.413161 14.2372C-0.13772 13.6923 -0.13772 12.8122 0.413161 12.2673L12.4757 0.405807C13.0486 -0.1214 13.9477 -0.0920931 14.4838 0.471323C14.9687 0.980817 14.9969 1.76392 14.55 2.3059L2.41643 14.2372C2.14071 14.4699 1.78484 14.5899 1.42191 14.5725Z" fill="#8D8D9B" />
-                    <path d="M13.4702 14.5726C13.0975 14.571 12.7403 14.4255 12.4757 14.1674L0.413108 2.30588C-0.0972546 1.71983 -0.0278681 0.837855 0.568117 0.335952C1.10005 -0.111984 1.88454 -0.111984 2.41643 0.335952L14.55 12.1975C15.1228 12.7248 15.1524 13.6089 14.6162 14.1722C14.5948 14.1946 14.5728 14.2163 14.55 14.2373C14.2529 14.4913 13.8619 14.6127 13.4702 14.5726Z" fill="#8D8D9B" />
-                </svg>
-            </div>
-            <h3 class="title">Add your Book</h3>
-            <form action="{{ url('author/add-books') }}" method="post" class="modal__form" enctype="multipart/form-data">
-                @csrf
-                @method('post')
+    <!-- Add Book Modal -->
+    <div class="add-book-modal modal d-none" id="add-book">
+        <div class="modal__wrap">
+            <div class="modal__inner" style="margin-top: 250px">
+                <div class="modal__close">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.42191 14.5725C1.05416 14.5936 0.692485 14.4734 0.413161 14.2372C-0.13772 13.6923 -0.13772 12.8122 0.413161 12.2673L12.4757 0.405807C13.0486 -0.1214 13.9477 -0.0920931 14.4838 0.471323C14.9687 0.980817 14.9969 1.76392 14.55 2.3059L2.41643 14.2372C2.14071 14.4699 1.78484 14.5899 1.42191 14.5725Z"
+                            fill="#8D8D9B" />
+                        <path
+                            d="M13.4702 14.5726C13.0975 14.571 12.7403 14.4255 12.4757 14.1674L0.413108 2.30588C-0.0972546 1.71983 -0.0278681 0.837855 0.568117 0.335952C1.10005 -0.111984 1.88454 -0.111984 2.41643 0.335952L14.55 12.1975C15.1228 12.7248 15.1524 13.6089 14.6162 14.1722C14.5948 14.1946 14.5728 14.2163 14.55 14.2373C14.2529 14.4913 13.8619 14.6127 13.4702 14.5726Z"
+                            fill="#8D8D9B" />
+                    </svg>
+                </div>
+                <h3 class="title">Add your Book</h3>
+                <form action="{{ url('author/add-books') }}" method="post" class="modal__form"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('post')
 
-                <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
+                    <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
                     <div class="form-field">
                         <label for="isbn" class="label">ISBN*</label>
                         <div class="has-loader">
@@ -26,44 +31,43 @@
                         </div>
                     </div>
 
-                <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" 
-                            required />
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
 
 
-                <div class="form-field">
-                    <label for="dsc" class="label">Select Genre*</label>
-                    <select class="input form-control" name="genere_id" required>
-                        @foreach ($generes as $row)
-                        <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="form-field">
-                    <label for="title" class="label">Book Title*</label>
-                    <input type="text" name="book_name" id="title" class="input" required/>
-                </div>
-
-                <div class="form-field">
-                    <label for="dsc" class="label">Book Description*</label>
-                    <textarea name="book_description" id="dsc" class="textarea" required></textarea>
-                </div>
-
-                <div class="form-row">
                     <div class="form-field">
-                        <label for="links" class="label">Book Amazon Links</label>
-                        <input type="text" name="book_amazon_link" id="links" class="input" />
+                        <label for="dsc" class="label">Select Genre*</label>
+                        <select class="input form-control" name="genere_id" required>
+                            @foreach ($generes as $row)
+                                <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
-                </div>
-
-
-                <div class="form-row">
                     <div class="form-field">
-                        <label for="links" class="label">Book Ebay Links</label>
-                        <input type="text" name="book_ebay_link" id="links" class="input" />
+                        <label for="title" class="label">Book Title*</label>
+                        <input type="text" name="book_name" id="title" class="input" required />
                     </div>
-                    {{-- <div class="add">
+
+                    <div class="form-field">
+                        <label for="dsc" class="label">Book Description*</label>
+                        <textarea name="book_description" id="dsc" class="textarea" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Book Amazon Links</label>
+                            <input type="text" name="book_amazon_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Book Ebay Links</label>
+                            <input type="text" name="book_ebay_link" id="links" class="input" />
+                        </div>
+                        {{-- <div class="add">
                       <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                           xmlns="http://www.w3.org/2000/svg">
                           <g clip-path="url(#clip0_954_2055)">
@@ -78,33 +82,33 @@
                           </defs>
                       </svg>
                   </div> --}}
-                </div>
-
-                <div class="form-row">
-                    <div class="form-field">
-                        <label class="label">Book Discount in Percentage</label>
-                        <input type="number" name="book_discount_in_percentage" class="input" placeholder=""/>
                     </div>
 
-                </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="label">Book Discount in Percentage</label>
+                            <input type="number" name="book_discount_in_percentage" class="input" placeholder="" />
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-field">
-                        <label class="label">Main Price to Show*</label>
-                        <input type="number" name="book_price" class="input" placeholder="Price" required/>
                     </div>
 
-                    <div class="form-field">
-                        <label class="label">Book Price</label>
-                        <input type="number" name="hard_book_price" class="input" placeholder="HardBook" />
-                    </div>
-                    <div class="form-field">
-                    <label class="label">EBook Price</label>
-                        <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
-                    </div>
-                </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="label">Main Price to Show*</label>
+                            <input type="number" name="book_price" class="input" placeholder="Price" required />
+                        </div>
 
-                {{-- <div class="form-field">
+                        <div class="form-field">
+                            <label class="label">Book Price</label>
+                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook" />
+                        </div>
+                        <div class="form-field">
+                            <label class="label">EBook Price</label>
+                            <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
+                        </div>
+                    </div>
+
+                    {{-- <div class="form-field">
                     <label for="attach-file" class="attach-btn btn-lite btn">
                         <span class="icon">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,7 +124,7 @@
                     <input class="attach-input" type="file" name="file_updoad" id="attach-file" accept="image/*" required />
                 </div> --}}
 
-                <div class="form-field">
+                    {{-- <div class="form-field">
                     <label for="attach-file1" class="attach-btn1 btn-lite btn">
                         <span class="icon">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,146 +134,164 @@
                         Attach Video(Max 5 MB)
                     </label>
                     <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1" accept="video/*"/>
-                </div>
+                </div> --}}
 
-                <div class="btn-group">
-                    <button class="btn btn-lite">Cancel</button>
-                    <button class="btn btn-solid">Add Book</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-</div>
-
-
-<!-- Content Block -->
-<section class="body-content">
-    <div class="container">
-        <div class="inner-content">
-            <div class="tab-panel">
-                @if (check_user_max_book_by_user_id(session('author_id')) == '1')
-                <button class="add-btn btn-solid btn-trigger" data-target="#add-book">
-                    <span class="icon">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_2952_633)">
-                                <path d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z" fill="white" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_2952_633">
-                                    <rect width="18" height="18" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </span>
-                    Add a Book
-                </button>
-                @else
-                <button class="add-btn btn-solid" onclick="alert('You have crossed the limit of your current membership plan!')">
-                    <span class="icon">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_2952_633)">
-                                <path d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z" fill="white" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_2952_633">
-                                    <rect width="18" height="18" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </span>
-                    Add a Book
-                </button>
-                @endif
-                <nav>
-                    @include('layouts.frontend.author_sidebar')
-                </nav>
-            </div>
-            <div class="tab-content">
-                <div class="grid-container">
-                    <div class="title-bar flex-equal">
-                        <h3 class="title">My Library</h3>
-                        <div class="select-wrap">
-                            <select name="type" id="libraryDropdown" class="select">
-                                <option value="3" @if($type==3) selected @endif>All</option>
-                                {{-- <option value="1">Popular</option> --}}
-                                <option value="2" @if($type==2) selected @endif>Recent</option>
-                            </select>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Video Link</label>
+                            <input type="text" name="video_file_updoad" id="links" class="input" />
                         </div>
+
                     </div>
-                    <div class="grid-items">
-                        @if($books->count() <=0)
-                            No Books available
-                        @endif
-                        @foreach ($books as $row)
-                        <div class="card grid-item">
-                            <a href="{{ url('book-details/' . $row->id) }}" class="figure">
-                                <img src="{{ asset($row->bookDocuments[0]->path ?? '') }}" alt="" />
-                            </a>
-                            <div class="text-wrap">
-                                <h5 class="subtitle">PAPERBACK</h5>
-                                <a href="{{ url('book-details/' . $row->id) }}" class="title">{{ $row->book_name }}</a>
-                                <p class="dsc">
 
-                                    {{ Illuminate\Support\Str::of($row->book_description)->words(10, ' ...') }}
-                                </p>
-
-
-                                <a href="{{ url('book-details/' . $row->id) }}" class="card-link">View Details</a>
-                            </div>
-                        </div>
-                        @endforeach
+                    <div class="btn-group">
+                        <button class="btn btn-lite">Cancel</button>
+                        <button class="btn btn-solid">Add Book</button>
                     </div>
-                </div>
-
-                <!-- Cards Carousel Area -->
-                <div class="carousel-holder">
-                    <div class="title-bar flex-equal">
-                        <h3 class="title">Suggested Books</h3>
-                    </div>
-                    <div class="cards-carousel">
-                        @foreach ($suggested_books as $suggested)
-                        @isset($suggested->Book->book_name)
-                        <div class="card">
-                            <a href="{{ url('book-details/' . $suggested->book_id) }}" class="figure">
-                                <img src="{{ asset($suggested->Book->bookDocuments[0]->path ?? '') }}" alt="" />
-                            </a>
-                            <div class="text-wrap">
-                                <h5 class="subtitle">PAPERBACK</h5>
-                                <a href="#" class="title">{{ $suggested->Book->book_name }}</a>
-                                <p class="dsc">
-                                    {{ Illuminate\Support\Str::of($suggested->Book->book_description)->words(10, ' ...') }}
-                                </p>
-
-                                <a href="{{ url('book-details/' . $suggested->book_id) }}" class="card-link">View
-                                    Details</a>
-                            </div>
-                        </div>
-                        @endisset
-                        @endforeach
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-    </div>
-</section>
-<script>
-    document.getElementById("libraryDropdown").onchange = function() {
-        var selectedValue = this.value;
-        if (selectedValue === "1") {
-            // Redirect to the "Popular" URL
-            window.location.href = "{{ url('author/library/popular') }}";
-        } else if (selectedValue === "2") {
-            // Redirect to the "Recent" URL
-            window.location.href = "{{ url('author/library/recent') }}";
-        } else if (selectedValue === "3") {
-            // Redirect to the "All" URL
-            window.location.href = "{{ url('author/library') }}";
-        }
-    };
-</script>
 
- <script>
+    </div>
+
+
+    <!-- Content Block -->
+    <section class="body-content">
+        <div class="container">
+            <div class="inner-content">
+                <div class="tab-panel">
+                    @if (check_user_max_book_by_user_id(session('author_id')) == '1')
+                        <button class="add-btn btn-solid btn-trigger" data-target="#add-book">
+                            <span class="icon">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2952_633)">
+                                        <path
+                                            d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z"
+                                            fill="white" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_2952_633">
+                                            <rect width="18" height="18" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </span>
+                            Add a Book
+                        </button>
+                    @else
+                        <button class="add-btn btn-solid"
+                            onclick="alert('You have crossed the limit of your current membership plan!')">
+                            <span class="icon">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2952_633)">
+                                        <path
+                                            d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z"
+                                            fill="white" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_2952_633">
+                                            <rect width="18" height="18" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </span>
+                            Add a Book
+                        </button>
+                    @endif
+                    <nav>
+                        @include('layouts.frontend.author_sidebar')
+                    </nav>
+                </div>
+                <div class="tab-content">
+                    <div class="grid-container">
+                        <div class="title-bar flex-equal">
+                            <h3 class="title">My Library</h3>
+                            <div class="select-wrap">
+                                <select name="type" id="libraryDropdown" class="select">
+                                    <option value="3" @if ($type == 3) selected @endif>All</option>
+                                    {{-- <option value="1">Popular</option> --}}
+                                    <option value="2" @if ($type == 2) selected @endif>Recent
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid-items">
+                            @if ($books->count() <= 0)
+                                No Books available
+                            @endif
+                            @foreach ($books as $row)
+                                <div class="card grid-item">
+                                    <a href="{{ url('book-details/' . $row->id) }}" class="figure">
+                                        <img src="{{ asset($row->bookDocuments[0]->path ?? '') }}" alt="" />
+                                    </a>
+                                    <div class="text-wrap">
+                                        <h5 class="subtitle">PAPERBACK</h5>
+                                        <a href="{{ url('book-details/' . $row->id) }}"
+                                            class="title">{{ $row->book_name }}</a>
+                                        <p class="dsc">
+
+                                            {{ Illuminate\Support\Str::of($row->book_description)->words(10, ' ...') }}
+                                        </p>
+
+
+                                        <a href="{{ url('book-details/' . $row->id) }}" class="card-link">View Details</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <!-- Cards Carousel Area -->
+                    <div class="carousel-holder">
+                        <div class="title-bar flex-equal">
+                            <h3 class="title">Suggested Books</h3>
+                        </div>
+                        <div class="cards-carousel">
+                            @foreach ($suggested_books as $suggested)
+                                @isset($suggested->Book->book_name)
+                                    <div class="card">
+                                        <a href="{{ url('book-details/' . $suggested->book_id) }}" class="figure">
+                                            <img src="{{ asset($suggested->Book->bookDocuments[0]->path ?? '') }}"
+                                                alt="" />
+                                        </a>
+                                        <div class="text-wrap">
+                                            <h5 class="subtitle">PAPERBACK</h5>
+                                            <a href="#" class="title">{{ $suggested->Book->book_name }}</a>
+                                            <p class="dsc">
+                                                {{ Illuminate\Support\Str::of($suggested->Book->book_description)->words(10, ' ...') }}
+                                            </p>
+
+                                            <a href="{{ url('book-details/' . $suggested->book_id) }}" class="card-link">View
+                                                Details</a>
+                                        </div>
+                                    </div>
+                                @endisset
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById("libraryDropdown").onchange = function() {
+            var selectedValue = this.value;
+            if (selectedValue === "1") {
+                // Redirect to the "Popular" URL
+                window.location.href = "{{ url('author/library/popular') }}";
+            } else if (selectedValue === "2") {
+                // Redirect to the "Recent" URL
+                window.location.href = "{{ url('author/library/recent') }}";
+            } else if (selectedValue === "3") {
+                // Redirect to the "All" URL
+                window.location.href = "{{ url('author/library') }}";
+            }
+        };
+    </script>
+
+    <script>
         function handleInput() {
             // Your JavaScript logic goes here
             // Get the ISBN value from the input field
@@ -296,7 +318,7 @@
                     console.log(response);
                     // HideCalimaticLoader();
                     $('.has-loader .loader').css('display', 'none');
-                     $('#title').val(response.book.title);
+                    $('#title').val(response.book.title);
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
                     // Process the bookData here
@@ -336,5 +358,4 @@
 
         }
     </script>
-
 @endsection
