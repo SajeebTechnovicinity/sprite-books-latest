@@ -126,7 +126,7 @@ figure {
 
 .leading-cards .card-wrap{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
 }
 
@@ -838,9 +838,27 @@ figure {
   border-radius: 8px;
 }
 
+.entry-content p{
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000000;
+  font-family: 'EB Garamond', serif!important;
+}
+
+.entry-content p span{
+  font-family: 'EB Garamond', serif!important;
+}
+
+.blog-details figure img{
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
 .card .figure img {
-  height: 180px;
+  height: 220px;
   object-fit: cover;
+  background-color: rgb(154 171 189);
 }
 
 .fig-content .subtitle {
@@ -1039,8 +1057,6 @@ figure {
 }
 
 .card .figure {
-  /* display: inline-block; */
-  /* margin-bottom: 20px; */
   margin: -24px -20px 20px -20px;
 }
 
@@ -1086,7 +1102,7 @@ figure {
 .card .dsc {
   font-size: 16px;
   line-height: 1.5;
-  color: var(--color-gray);
+  color: #000000;
   margin: 0 0 15px;
 }
 
@@ -1099,17 +1115,17 @@ figure {
 
 .card .card-link {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  padding: 10px 30px;
+  padding: 13px 58px;
   border-radius: 32px;
   background-color: var(--color-dark);
-  display: block;
+  display: inline-block;
   text-align: center;
   transition: 0.3s;
-  margin-top: 15px;
   color: #ffffff;
+  margin-top: 20px;
 }
 
 .card .card-link:hover {
@@ -1117,8 +1133,32 @@ figure {
 }
 
 .leading-cards .card {
-  background-color: transparent;
-  padding: 0;
+}
+
+.blog-meta {
+  border-top: 1px solid #9999997e;
+  border-bottom: 1px solid #9999997e;
+  padding: 6px 0 7px;
+  margin: 6px 0 12px;
+}
+
+.blog-meta svg{
+  width: 14px;
+  margin-right: 4px;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+
+.blog-meta svg path{
+  fill: #777777;
+}
+
+.blog-meta span{
+  vertical-align: middle;
+}
+
+.blog-meta span:first-child{
+  margin-right: 7px;
 }
 
 @media (max-width: 991px) {
@@ -2230,11 +2270,6 @@ figure {
   letter-spacing: 0.3px;
   color: var(--color-gray_extra-lite);
   margin-left: 10px;
-}
-
-.cards-carousel .card-link,
-.grid-item .card-link {
-  border-radius: 8px;
 }
 
 @media (max-width: 1200px) {
@@ -6972,4 +7007,14 @@ label .text .inner{
 .prodcast-aside .event-card{
   background-color: transparent;
   margin-bottom: 25px;
+}
+
+.grid-books .card .figure img{
+  height: 430px;
+  object-fit: contain!important;
+}
+
+.books-card .card .figure img{
+  height: 463px;
+  object-fit: contain!important;
 }

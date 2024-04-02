@@ -34,7 +34,12 @@
                                 required />
                         </div>
                     </div>
+<<<<<<< HEAD
                     <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
+=======
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"
+                            required />
+>>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
                     <div class="form-field">
                         <label for="isbn" class="label">Role*</label>
                         @if (check_user_max_book_by_user_id(session('author_id')) == 1)
@@ -558,11 +563,28 @@
                                     <p class="author-label">
                                         {{ $author->author_bio }}
                                     </p>
+<<<<<<< HEAD
                                     <div class="author-email">
+=======
+                                   <div class="author-email">
+                                    @php
+                                        $links = explode(',', $author->author_website_link);
+                                    @endphp
+
+                                    @foreach($links as $link)
+>>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
                                         @php
                                             $links = explode(',', $author->author_website_link);
                                         @endphp
 
+<<<<<<< HEAD
+=======
+                                        <a href="{{ $formattedLink }}" target="_blank" class="link">
+                                            {{ $formattedLink }}
+                                        </a><br>
+                                    @endforeach
+
+>>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
 
                                         @if (!empty($links))
                                             @foreach ($links as $link)
@@ -882,7 +904,7 @@
 
                                     <div class="tab-body__inner books  d-none" id="books">
                                         <div class="grid-container">
-                                            <div class="grid-items">
+                                            <div class="grid-items grid-books">
                                                 @if (count($books))
                                                     @foreach ($books as $row)
                                                         <figure class="grid-item figure">
@@ -1069,6 +1091,7 @@
                                                             <span class="main">
                                                                 {{ $firstPara ?? '' }}
                                                             </span>
+<<<<<<< HEAD
                                                             
                                                            
                                                             @if (strlen($text) > 100)
@@ -1083,6 +1106,12 @@
                                                             @endif
 
                                                         </p>
+=======
+                                                            <span class="read-more" data-index="{{ $row->id }}">Show More</span>
+                                                        @endif
+
+                                                    </p>
+>>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
 
                                                         <p class="para">
                                                             <a href="{{ $row->event_link }}" target="__blank">Join

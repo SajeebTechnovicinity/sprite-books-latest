@@ -73,6 +73,7 @@
                     </div>
 
 
+
                     {{-- <div class="form-field">
                             <label for="isbn" class="label">ISBN 10*</label>
                             <input type="text" name="isbn_10" id="isbn_10" class="input" @readonly(true) />
@@ -154,7 +155,7 @@
                             required />
                     </div> --}}
 
-                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"required />
 
                     {{-- <div class="form-field">
                         <label for="attach-file1" class="attach-btn1 btn-lite btn">
@@ -702,7 +703,7 @@
                                 <div class="tab-body">
                                     <div class="tab-body__inner books" id="books">
                                         <div class="grid-container">
-                                            <div class="grid-items">
+                                            <div class="grid-items grid-books">
                                                 @if (count($books))
                                                     @foreach ($books as $row)
                                                         <div class="card grid-item">
@@ -882,12 +883,11 @@
                                                                     {{ $secondPara }}
                                                                     {{-- <br>
                                                                 <b> Event Location : </b> {{ $row->event_location }} --}}
-                                                                </span>
-                                                                <span class="read-more"
-                                                                    data-index="{{ $row->id }}">Show More</span>
-                                                            @endif
-
-                                                        </p>
+                                                            </span>
+                                                            <span class="read-more" data-index="{{ $row->id }}">Show More</span>
+                                                        @endif
+                                                    
+                                                    </p>
 
                                                         <p class="para">
                                                             <a href="{{ $row->event_link }}" target="__blank">Join

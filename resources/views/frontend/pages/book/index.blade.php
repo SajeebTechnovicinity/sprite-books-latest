@@ -46,18 +46,23 @@
                                                 onblur="handleInput()" required />
                                         </div>
                                     </div>
-                                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
+                                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"required />
                                     @if (session('type') != 'AUTHOR')
                                         <div class="form-field">
                                             <label for="isbn" class="label">Role*</label>
 
-                                            @if (check_user_max_book_by_user_id(session('author_id')) == 1)
-                                                <label><input type="radio" value="Publisher" name="author_define"
+                                        @if(session('author_id')!=null)
+
+                                               @if (check_user_max_book_by_user_id(session('author_id')) == 1)
+                                                    <label><input type="radio" value="Publisher" name="author_define"
                                                         required> Publisher</label>
-                                            @else
-                                                <label><input type="radio" value="Publisher" name="author_define"
-                                                        onclick="showAlert(this)" required> Publisher</label>
-                                            @endif
+                                                @else
+                                                    <label><input type="radio" value="Publisher" name="author_define"
+                                                            onclick="showAlert(this)" required> Publisher</label>
+                                                @endif
+                                        @endif
+
+
 
 
                                             <input type="radio" value="Author" name="author_define" required>
@@ -203,6 +208,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(session('author_id')!=null)
                     @if (session('type') != 'USER')
                         @if (session('type') != 'PUBLISHER')
                             @if (check_user_max_book_by_user_id(session('author_id')) == 1)
@@ -287,6 +293,7 @@
                                 </button>
                             @endif
                         @endif
+                    @endif
                     @endif
                     <nav>
                         @if (session('type') == 'USER')
