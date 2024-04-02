@@ -58,10 +58,10 @@ class MemberShipController extends Controller
             $pressentPrice = $plan->membership_plan_monthly_price;
             $previousPrice = $check_user_has_previous_plan[0]->MembershipPlan->membership_plan_monthly_price;
         }else{
-            
+
             $pressentPrice = $plan->membership_plan_yearly_price;
             $previousPrice = $check_user_has_previous_plan[0]->MembershipPlan->membership_plan_yearly_price;
-        } 
+        }
 
         if(($previousPrice >= $pressentPrice)){
             // echo 1;
@@ -501,7 +501,7 @@ class MemberShipController extends Controller
 
 
     public function cancel_current_membership_plan(){
-        $subscription = DB::table('subscriptions')->where('author_id', session('author_id'))->latest()->take(1)->get()[0];
+    $subscription = DB::table('subscriptions')->where('author_id', session('author_id'))->latest()->get()[1];
         Cashier::useCustomerModel(Author::class);
 
         if($subscription->stripe_id)
