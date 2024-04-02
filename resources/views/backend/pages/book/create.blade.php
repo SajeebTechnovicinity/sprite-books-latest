@@ -13,55 +13,58 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Book Edit</h4>
+                <h4 class="card-title">Book Create</h4>
 
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form action="{{ url('admin/book/update/' . $book->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('admin/book/store/') }}" method="post" enctype="multipart/form-data">
 
                     @csrf
 
-                    <input type="hidden" name="book_id" value="{{ $book->id }}">
+                    {{-- <input type="hidden" name="book_id" value="{{ $book->id }}"> --}}
                     <div class="form-row">
 
 
-
                         <div class="form-group col-md-12">
-                            <label for="title" class="label">Book Name*</label>
-                            <input type="text" name="book_name" id="title" value="{{ $book->book_name }}"
-                                class="form-control" />
-                        </div>
-
-                        <div class="form-group col-md-12">
-                            <label for="title" class="label">ISBN*</label>
-                            <input type="text" name="isbn" id="title" value="{{ $book->isbn }}"
-                                class="form-control" required />
-                        </div>
-
-                        {{-- <div class="form-group col-md-12">
                             <label for="dsc" class="label">Select Author*</label>
                             <select class="input form-control" name="author_id">
                                 @foreach ($authors as $row)
-                                    <option value="{{ $row->id }}" @if ($row->id == $book->author_id) selected @endif>
-                                        {{ $row->bookAuthor->author_name }} {{ $row->bookAuthor->author_last_name }}</option>
+                                    <option value="{{ $row->id }}">
+                                        {{ $row->author_name }} {{ $row->author_last_name }}</option>
                                 @endforeach
                             </select>
-                        </div> --}}
+                        </div>
 
+
+
+                        <div class="mypanel"></div>
+                        <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
+                        <div class="form-group col-md-12">
+                            <label for="isbn" class="label">ISBN*</label>
+                            <div class="has-loader">
+                                {{-- <span class="loader" style="display: none;"></span> --}}
+                                <input type="text" name="isbn" id="#isbn" class="form-control"
+                                    onblur="handleInput()" required />
+                            </div>
+                        </div>
 
 
                         <div class="form-group col-md-12">
-                            <label for="title" class="label">Description*</label>
-                            <textarea name="book_description" class="form-control" required>{!! $book->book_description !!}</textarea>
+                            <label for="title" class="label">Book Title*</label>
+                            <input type="text" name="book_name" id="title" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="title" class="label">Book Description*</label>
+                            <textarea name="book_description" id="dsc" class="form-control" required></textarea>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="dsc" class="label">Select Genre*</label>
                             <select class="input form-control" name="genere_id">
                                 @foreach ($generes as $row)
-                                    <option value="{{ $row->id }}" @if ($row->id == $book->genere_id) selected @endif
-                                        required>
+                                    <option value="{{ $row->id }}" required>
                                         {{ $row->genere_name }}</option>
                                 @endforeach
                             </select>
@@ -70,32 +73,27 @@
 
                         <div class="form-group col-md-12">
                             <label for="title" class="label">Book Amazon Link</label>
-                            <input type="text" name="book_amazon_link" id="title" class="form-control"
-                                value="{{ $book->book_amazon_link }}">
+                            <input type="text" name="book_amazon_link" id="title" class="form-control">
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="title" class="label">Book Ebay Link</label>
-                            <input type="text" name="book_ebay_link" id="title" class="form-control"
-                                value="{{ $book->book_ebay_link }}">
+                            <input type="text" name="book_ebay_link" id="title" class="form-control">
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="title" class="label">Book Price*</label>
-                            <input type="text" name="book_price" id="title" class="form-control"
-                                value="{{ $book->book_price }}" required>
+                            <input type="text" name="book_price" id="title" class="form-control" required>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="title" class="label">Hard Book Price</label>
-                            <input type="text" name="hard_book_price" id="title" class="form-control"
-                                value="{{ $book->hard_book_price }}">
+                            <input type="text" name="hard_book_price" id="title" class="form-control">
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="title" class="label">EBook Price</label>
-                            <input type="text" name="ebook_price" id="title" class="form-control"
-                                value="{{ $book->ebook_price }}">
+                            <input type="text" name="ebook_price" id="title" class="form-control">
                         </div>
 
                         <div class="form-group col-md-12">
@@ -128,20 +126,169 @@
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
                             accept="video/*" /> --}}
 
-                        <div class="form-row">
+        
                             <div class="form-group col-md-12">
                                 <label for="links" class="label">Video Link</label>
                                 <input type="text" name="video_file_updoad" id="links" class="form-control" />
                             </div>
-
-                        </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
                 </form>
             </div>
         </div>
 
 
     </div>
+
+    <script>
+        function editEvent(id) {
+            showCalimaticLoader();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method: "POST",
+                url: "{{ url('authors-get-event') }}",
+                data: {
+                    id: id
+                },
+                success: function(data, textStatus, jqXHR) {
+                    $('#editEventInputs').html(data);
+                    $('#edit-event').removeClass('d-none');
+                    $('#edit-event').modal('toggle');
+                    $(".success_msg").html("Data Save Successfully");
+                    $(".success_msg").show();
+                }
+            }).fail(function(data, textStatus, jqXHR) {
+                var json_data = JSON.parse(data.responseText);
+                $.each(json_data.errors, function(key, value) {
+                    //                console.log(key);
+                    $("#" + key).after("<span class='error_msg' style='color: red;font-weigh: 600'>" +
+                        value + "</span>");
+                });
+            });
+            HideCalimaticLoader();
+
+
+        }
+
+
+        var typingTimer; //timer identifier
+        var doneTypingInterval = 500; //time in ms (5 seconds)
+
+        //on input change, start the countdown
+
+        $('#isbn').on("input", function() {
+            console.log('hello3');
+            showCalimaticLoader();
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(function() {
+                $.getJSON('https://openlibrary.org/books/OL7353617M.json', function(data) {
+                    HideCalimaticLoader();
+                    //$('#isbn_10').val(data.isbn_10);
+                    //$('#isbn_13').val(data.isbn_13);
+                    // console.log(data.isbn_10);
+                    // $(".mypanel").text(JSON. stringify(data) );
+                });
+            }, doneTypingInterval);
+        });
+    </script>
+    <script>
+        function handleInput() {
+            // Your JavaScript logic goes here
+            // Get the ISBN value from the input field
+            var isbn = document.getElementById("#isbn").value;
+
+            console.log(isbn);
+            $("#invalid-isbn").empty();
+            // showCalimaticLoader();
+            $('.has-loader .loader').css('display', 'block');
+
+            // Make an API call
+            var apiUrl = "https://api2.isbndb.com/book/" + isbn;
+
+            $.ajax({
+                url: apiUrl,
+                type: "GET",
+                headers: {
+                    'Authorization': '51099_4d7a81aeab0d75869e85e1ea60561a9b',
+                    'User-Agent': 'insomnia/5.12.4',
+                    'Accept': '*/*'
+                },
+                success: function(response) {
+                    // Request was successful, process the response
+                    console.log(response);
+                    // HideCalimaticLoader();
+                    $('.has-loader .loader').css('display', 'none');
+                    $('#title').val(response.book.title);
+                    $('#dsc').val(response.book.synopsis);
+                    $('#file_updoad_isbn').val(response.book.image);
+
+
+                    // Process the bookData here
+                },
+                error: function(xhr) {
+                    if (xhr.status == 404) {
+                        // Not Found error
+                        console.log("Error: Not Found");
+                        $("#invalid-isbn").text("Invalid Isbn").css({
+                            'color': 'red',
+                            'display': 'block'
+                        });
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
+                    } else if (xhr.status == 429) {
+                        // Too Many Requests error
+                        console.log("Error: Limit Exceeded");
+                        $("#invalid-isbn").text("Limit Exceeded").css({
+                            'color': 'red',
+                            'display': 'block'
+                        });;
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
+                    } else {
+                        // Handle other status codes
+                        console.log("Error: Unexpected status code " + xhr.status);
+                        $("#invalid-isbn").text("Network error").css({
+                            'color': 'red',
+                            'display': 'block'
+                        });;
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
+                    }
+                },
+
+            });
+
+        }
+    </script>
+    <script>
+        // Wait for the document to be ready
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all elements with the class "read-more"
+            var readMoreButtons = document.querySelectorAll('.read-more');
+
+            // Add click event listeners to all "Show More" buttons
+            readMoreButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Get the index from the data-index attribute
+                    var index = button.dataset.index;
+                    // Find the corresponding extended content using the index
+                    var extendedContent = document.querySelector('.extended[data-index="' + index +
+                        '"]');
+
+                    // Toggle the display of the extended content
+                    if (extendedContent.style.display === 'none') {
+                        extendedContent.style.display = 'inline'; // Show the extended content
+                        button.textContent = 'Show Less'; // Change the button text
+                    } else {
+                        extendedContent.style.display = 'none'; // Hide the extended content
+                        button.textContent = 'Show More'; // Change the button text back
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

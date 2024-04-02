@@ -143,7 +143,7 @@
                                             accept="image/*" required />
                                     </div>
 
-                                    <div class="form-field">
+                                    {{-- <div class="form-field">
                                         <label for="attach-file1" class="attach-btn1 btn-lite btn">
                                             <span class="icon">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -157,6 +157,15 @@
                                         </label>
                                         <input class="attach-input" type="file" name="video_file_updoad"
                                             id="attach-file1" accept="video/*" required />
+                                    </div> --}}
+
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="links" class="label">Video Link</label>
+                                            <input type="text" name="video_file_updoad" id="links"
+                                                class="input" />
+                                        </div>
+
                                     </div>
 
                                     <div class="btn-group">
@@ -242,7 +251,7 @@
                     <!-- Content Block -->
                     <div class="block-wrap">
                         <div class="block-component">
-                            
+
                             <!-- Grid Items -->
                             <div class="grid-container author-inheritance">
                                 <div class="title-bar flex-equal">

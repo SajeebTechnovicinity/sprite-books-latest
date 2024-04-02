@@ -30,8 +30,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" 
-                            required />
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
 
                     <div class="form-field">
                         <label for="title" class="label">Book Title*</label>
@@ -89,8 +88,7 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
-                            <input type="number" name="book_discount_in_percentage" class="input" placeholder=""
-                              />
+                            <input type="number" name="book_discount_in_percentage" class="input" placeholder="" />
                         </div>
 
                     </div>
@@ -103,11 +101,11 @@
 
                         <div class="form-field">
                             <label class="label">Book Price</label>
-                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook"  />
+                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook" />
                         </div>
                         <div class="form-field">
                             <label class="label">Ebook Price</label>
-                            <input type="number" name="ebook_price" class="input" placeholder="Ebook"  />
+                            <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
                         </div>
                     </div>
 
@@ -132,7 +130,7 @@
                             required />
                     </div> --}}
 
-                    <div class="form-field">
+                    {{-- <div class="form-field">
                         <label for="attach-file1" class="attach-btn1 btn-lite btn">
                             <span class="icon">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -146,6 +144,14 @@
                         </label>
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
                             accept="video/*" />
+                    </div> --}}
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Video Link</label>
+                            <input type="text" name="video_file_updoad" id="links" class="input" />
+                        </div>
+
                     </div>
 
                     <div class="btn-group">
@@ -259,9 +265,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <button class="follower-btn" id="author{{ $row->id }}" onclick="followedAuthor({{ $row->id }})">
-    Follow
-</button>
+                                                <button class="follower-btn" id="author{{ $row->id }}"
+                                                    onclick="followedAuthor({{ $row->id }})">
+                                                    Follow
+                                                </button>
                                             </div>
                                             <div class="author-block__body flex-equal">
                                                 <div class="author-block__imgs flex-wrap">
@@ -347,9 +354,9 @@
         </div>
         </div>
     </section>
-<script>
-    function followedAuthor(authorId) {
-        $('.loader').show();
+    <script>
+        function followedAuthor(authorId) {
+            $('.loader').show();
             $(".error_msg").html('');
             var data = new FormData($('#add_form')[0]);
 
@@ -382,11 +389,9 @@
                 });
             });
             $('.loader').hide();
-    }
-</script>
+        }
+    </script>
     <script>
-
-
         function UnfollowAuthor(Id) {
             $('.loader').show();
             $(".error_msg").html('');
@@ -432,7 +437,7 @@
             $("#invalid-isbn").empty();
             // showCalimaticLoader();
             $('.has-loader .loader').css('display', 'block');
-           
+
 
             // Make an API call
             var apiUrl = "https://api2.isbndb.com/book/" + isbn;
@@ -449,7 +454,7 @@
                     // Request was successful, process the response
                     console.log(response);
                     HideCalimaticLoader();
-                      $('#title').val(response.book.title);
+                    $('#title').val(response.book.title);
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
                     // Process the bookData here

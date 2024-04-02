@@ -370,19 +370,19 @@ class AuthorController extends Controller
         //     return back();
         // }
 
-        if ($request->video_file_updoad) {
+        // if ($request->video_file_updoad) {
 
-            $file=$request->video_file_updoad;
-            // Check the file size
-            $maxFileSize = 5160; // Maximum file size in kilobytes (5 MB)
-            $fileSize = $file->getSize();
+        //     $file=$request->video_file_updoad;
+        //     // Check the file size
+        //     $maxFileSize = 5160; // Maximum file size in kilobytes (5 MB)
+        //     $fileSize = $file->getSize();
 
-            if ($fileSize > $maxFileSize * 1024) {
-                Session::flash('wrong', 'Maximum video file size 5MB');
-                return back();
-            }
+        //     if ($fileSize > $maxFileSize * 1024) {
+        //         Session::flash('wrong', 'Maximum video file size 5MB');
+        //         return back();
+        //     }
 
-        }
+        // }
         // echo '<pre>';print_r($request->all());die;
         $book = new Book;
         $book->book_name = $request->book_name;
@@ -408,6 +408,7 @@ class AuthorController extends Controller
         $book->ebook_price = $request->ebook_price;
         $book->book_price = $request->book_price;
         $book->genere_id = $request->genere_id;
+        $book->video_link=$request->video_file_updoad;
         $book->isbn = $request->isbn;
 
         $book->save();
@@ -441,21 +442,21 @@ class AuthorController extends Controller
         //     $bookDoc->save();
         // }
 
-        if ($request->video_file_updoad) {
+        // if ($request->video_file_updoad) {
 
-            $bookDoc = new BookDocuments;
-            $bookDoc->book_id = $book->id;
-            $bookDoc->type = 'VIDEO';
-            if (isset($request->video_file_updoad)) {
-                $file = $request->file('video_file_updoad');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move(public_path('uploads/videos/'), $filename);
-                $data['path'] = 'public/uploads/videos/' . $filename;
-                $bookDoc->path = $data['path'];
-            }
-            $bookDoc->save();
-        }
+        //     $bookDoc = new BookDocuments;
+        //     $bookDoc->book_id = $book->id;
+        //     $bookDoc->type = 'VIDEO';
+        //     if (isset($request->video_file_updoad)) {
+        //         $file = $request->file('video_file_updoad');
+        //         $extension = $file->getClientOriginalExtension();
+        //         $filename = time() . '.' . $extension;
+        //         $file->move(public_path('uploads/videos/'), $filename);
+        //         $data['path'] = 'public/uploads/videos/' . $filename;
+        //         $bookDoc->path = $data['path'];
+        //     }
+        //     $bookDoc->save();
+        // }
 
         return redirect()->back()->with('msg', 'Book added successfully.');
     }
@@ -526,10 +527,10 @@ class AuthorController extends Controller
             Session::flash('wrong', 'Hard Book Price is required');
             return back();
         }
-        if (!$request->ebook_price) {
-            Session::flash('wrong', 'Ebook Price is required');
-            return back();
-        }
+        // if (!$request->ebook_price) {
+        //     Session::flash('wrong', 'Ebook Price is required');
+        //     return back();
+        // }
         // if (!$request->video_file_updoad) {
         //     Session::flash('wrong', 'File is required');
         //     return back();
@@ -549,18 +550,18 @@ class AuthorController extends Controller
     
         }
 
-        if($request->video_file_updoad)
-        {
-            $file=$request->video_file_updoad;
-            // Check the file size
-            $maxFileSize = 5160; // Maximum file size in kilobytes (5 MB)
-            $fileSize = $file->getSize();
+        // if($request->video_file_updoad)
+        // {
+        //     $file=$request->video_file_updoad;
+        //     // Check the file size
+        //     $maxFileSize = 5160; // Maximum file size in kilobytes (5 MB)
+        //     $fileSize = $file->getSize();
     
-            if ($fileSize > $maxFileSize * 1024) {
-                Session::flash('wrong', 'Maximum video file size 5MB');
-                return back();
-            }
-        }
+        //     if ($fileSize > $maxFileSize * 1024) {
+        //         Session::flash('wrong', 'Maximum video file size 5MB');
+        //         return back();
+        //     }
+        // }
       
     
 
@@ -589,6 +590,7 @@ class AuthorController extends Controller
         $book->ebook_price = $request->ebook_price;
         $book->book_price = $request->book_price;
         $book->genere_id = $request->genere_id;
+        $book->video_link=$request->video_file_updoad;
         $book->isbn = $request->isbn;
 
         $book->save();
@@ -608,21 +610,21 @@ class AuthorController extends Controller
             $bookDoc->save();
         }
 
-        if ($request->video_file_updoad) {
+        // if ($request->video_file_updoad) {
 
-            $bookDoc = new BookDocuments;
-            $bookDoc->book_id = $book->id;
-            $bookDoc->type = 'VIDEO';
-            if (isset($request->video_file_updoad)) {
-                $file = $request->file('video_file_updoad');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move(public_path('uploads/videos/'), $filename);
-                $data['path'] = 'public/uploads/videos/' . $filename;
-                $bookDoc->path = $data['path'];
-            }
-            $bookDoc->save();
-        }
+        //     $bookDoc = new BookDocuments;
+        //     $bookDoc->book_id = $book->id;
+        //     $bookDoc->type = 'VIDEO';
+        //     if (isset($request->video_file_updoad)) {
+        //         $file = $request->file('video_file_updoad');
+        //         $extension = $file->getClientOriginalExtension();
+        //         $filename = time() . '.' . $extension;
+        //         $file->move(public_path('uploads/videos/'), $filename);
+        //         $data['path'] = 'public/uploads/videos/' . $filename;
+        //         $bookDoc->path = $data['path'];
+        //     }
+        //     $bookDoc->save();
+        // }
 
         return redirect()->back()->with('success', 'Book updated successfully.');
     }
@@ -630,14 +632,14 @@ class AuthorController extends Controller
     public function save_informations(Request $request)
     {
         $request->validate([
-            'file_updoad' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg|max:512', // Maximum file size is 1 MB
-            'cover_picture' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg|max:512', // Maximum file size is 1 MB
+            'file_updoad' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg|max:2048', // Maximum file size is 2 MB
+            'cover_picture' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg|max:3172', // Maximum file size is 3 MB
             //'author_intro_video' => 'nullable|mimetypes:video/mp4,video/mpeg,video/quicktime|max:5160', // Maximum file size is 5 MB // Maximum file size is 1 MB
         ], [
             'file_updoad.mimetypes' => 'Profile picture must be a JPEG or PNG image.',
             'cover_picture.mimetypes' => 'Cover Image must be a JPEG or PNG image.',
-            'file_updoad.max' => 'Profile picture must not exceed 512 KB in size.',
-            'cover_picture.max' => 'Cover Image must not exceed 512 KB in size.',
+            'file_updoad.max' => 'Profile picture must not exceed 2 MB in size.',
+            'cover_picture.max' => 'Cover Image must not exceed 3 MB in size.',
             'author_intro_video.mimetypes' => 'Intro video must be in MP4, MPEG, or QuickTime format.',
             //'author_intro_video.max' => 'Intro video must not exceed 5 MB in size.',
         ]);
