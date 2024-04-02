@@ -34,7 +34,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <div>
             <a href="/">
-                <img src="{{ url($globalSetting->app_logo) }}" width="600px;">
+                <img src="{{ url($globalSetting->app_logo) }}" width="360px;" style="margin-bottom: 15px">
             </a>
         </div>
 
