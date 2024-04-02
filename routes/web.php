@@ -288,6 +288,8 @@ Route::get('/membership-plan-success', [MemberShipController::class, 'success'])
 //Backend
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/book/create', [App\Http\Controllers\Admin\BookController::class, 'create']);
+    Route::post('/book/store', [App\Http\Controllers\Admin\BookController::class, 'store']);
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('.dashboard')->middleware('auth');
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
 
@@ -307,6 +309,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('publishers', PublisherController::class)->middleware('auth');
     Route::get('/user/support/{id}', [App\Http\Controllers\Admin\AuthorController::class, 'support']);
     Route::get('/app/user/delete/{id}', [App\Http\Controllers\Admin\AuthorController::class, 'delete']);
+    
     Route::post('user/delete-selected', [App\Http\Controllers\Admin\AuthorController::class,'deleteSelected'])->name('user.delete-selected');
 
     //    FAQ

@@ -20,7 +20,7 @@
                     enctype="multipart/form-data">
                     @csrf
                     @method('post')
-                      <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
+                    <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
                     <div class="form-field">
                         <label for="isbn" class="label">ISBN*</label>
                         <div class="has-loader">
@@ -30,12 +30,11 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" 
-                            required />
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
 
                     <div class="form-field">
                         <label for="title" class="label">Book Title*</label>
-                        <input type="text" name="book_name" id="title" class="input" required/>
+                        <input type="text" name="book_name" id="title" class="input" required />
                     </div>
 
                     <div class="form-field">
@@ -83,23 +82,23 @@
                   </div> --}}
                     </div>
 
-              <div class="form-row">
-                  <div class="form-field">
-                      <label class="label">Book Discount in Percentage</label>
-                      <input type="number" name="book_discount_in_percentage" class="input" placeholder="" />
-                  </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="label">Book Discount in Percentage</label>
+                            <input type="number" name="book_discount_in_percentage" class="input" placeholder="" />
+                        </div>
 
                     </div>
 
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show*</label>
-                            <input type="number" name="book_price" class="input" placeholder="Price" required/>
+                            <input type="number" name="book_price" class="input" placeholder="Price" required />
                         </div>
 
                         <div class="form-field">
                             <label class="label">Book Price</label>
-                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook"  />
+                            <input type="number" name="hard_book_price" class="input" placeholder="HardBook" />
                         </div>
                         <div class="form-field">
                             <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
@@ -126,7 +125,7 @@
                             required />
                     </div>
 
-                    <div class="form-field">
+                    {{-- <div class="form-field">
                         <label for="attach-file1" class="attach-btn1 btn-lite btn">
                             <span class="icon">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -140,6 +139,14 @@
                         </label>
                         <input class="attach-input" type="file" name="video_file_updoad" id="attach-file1"
                             accept="video/*"  />
+                    </div> --}}
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Video Link</label>
+                            <input type="text" name="video_file_updoad" id="links" class="input" />
+                        </div>
+
                     </div>
 
                     <div class="btn-group">
@@ -168,68 +175,68 @@
                 </svg>
             </div>
             <h3 class="title">Add Event</h3>
-           <form action="{{ url('author/add-event') }}" method="post" class="modal__form"
-                    enctype="multipart/form-data">
-                    @csrf
-                    @method('post')
+            <form action="{{ url('author/add-event') }}" method="post" class="modal__form"
+                enctype="multipart/form-data">
+                @csrf
+                @method('post')
 
+                {{--  <div class="form-field">
+                    <label for="text-area">Author </label>
+                    <select name="event_author" id="event_author" class="input">
+                        @foreach ($author_created_list as $listA)
+                            <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
+                        @endforeach
+                    </select>
+                </div>  --}}
+
+                <div class="form-field">
+                    <label for="title" class="label">Event Name*</label>
+                    <input type="text" name="event_name" id="title" class="input" />
+                </div>
+
+                <div class="form-field">
+                    <label for="dsc" class="label">Event Description*</label>
+                    <textarea name="event_description" id="dsc" class="textarea"></textarea>
+                </div>
+
+                <div class="form-row">
                     <div class="form-field">
-                        <label for="text-area">Author </label>
-                        <select name="event_author" id="event_author" class="input">
-                            @foreach ($author_created_list as $listA)
-                                <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
-                            @endforeach
-                        </select>
+                        <label class="label">Event Location*</label>
+                        <input type="text" name="event_location" class="input" placeholder="Location" />
                     </div>
+                </div>
 
+                <div class="form-row">
                     <div class="form-field">
-                        <label for="title" class="label">Event Name*</label>
-                        <input type="text" name="event_name" id="title" class="input" />
+                        <label class="label">Event Date*</label>
+                        <input type="date" name="event_date" class="input" placeholder="Date" />
                     </div>
+                </div>
 
+                <div class="form-row">
                     <div class="form-field">
-                        <label for="dsc" class="label">Event Description*</label>
-                        <textarea name="event_description" id="dsc" class="textarea"></textarea>
+                        <label class="label">Event Link</label>
+                        <input type="text" name="event_link" class="input" placeholder="Link" />
                     </div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label class="label">Event Location*</label>
-                            <input type="text" name="event_location" class="input" placeholder="Location" />
-                        </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="label">Time Start & Ending*</label>
+                        <input type="time" name="event_starting_time" class="input" placeholder="Time start" />
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label class="label">Event Date*</label>
-                            <input type="date" name="event_date" class="input" placeholder="Date" />
-                        </div>
+                    <div class="form-field">
+                        <input type="time" name="event_ending_time" class="input" placeholder="Time End" />
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label class="label">Event Link</label>
-                            <input type="text" name="event_link" class="input" placeholder="Link" />
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label class="label">Time Start & Ending*</label>
-                            <input type="time" name="event_starting_time" class="input" placeholder="Time start" />
-                        </div>
-                        <div class="form-field">
-                            <input type="time" name="event_ending_time" class="input" placeholder="Time End" />
-                        </div>
-                    </div>
+                </div>
 
 
 
-                    <div class="btn-group">
-                        <button class="btn btn-lite">Cancel</button>
-                        <button class="btn btn-solid">Add Event</button>
-                    </div>
-                </form>
+                <div class="btn-group">
+                    <button class="btn btn-lite">Cancel</button>
+                    <button class="btn btn-solid">Add Event</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -324,14 +331,14 @@
                     <div class="tab-body__inner" id="events">
                         @if (count($events))
                             @foreach ($events as $row)
-                                <div class="event-card" >
+                                <div class="event-card">
                                     <figure class="figure">
                                         <img style="height: 60px;width:60px"
                                             src="@if ($row->Author->author_profile_picture) {{ asset($row->Author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                             alt="" />
                                     </figure>
                                     <div class="content" style="width:50%">
-                                        <div class="event-card__row flex-wrap" >
+                                        <div class="event-card__row flex-wrap">
                                             <h3 class="event-card__title">
                                                 {{ $row->event_name }}
                                             </h3>
@@ -381,14 +388,17 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <p class="event-card__timezone flex-wrap" >
+                                        <p class="event-card__timezone flex-wrap">
                                             {{ $row->event_date }}<span class="center">{{ $row->event_starting_time }}-
                                                 {{ $row->event_ending_time }}
                                             </span><span>{{ $row->event_location }}</span>
                                         </p>
+                                         @if (strlen($row->event_description) < 100)
+                                            {{ $row->event_description }}
+                                        @endif
                                         <?php
                                         $text = $row->event_description;
-                                        if (strlen($text) > 30) {
+                                        if (strlen($text) > 100) {
                                             $firstPara = substr($text, 0, strpos($text, ' ', 30));
                                             $countLength = strlen($firstPara);
                                             $secondPara = substr($text, strpos($text, true) + $countLength);
@@ -396,20 +406,21 @@
                                             $firstPara = $row->book_description ?? '';
                                         }
                                         ?>
-                                      <p class="para">
-                                        <span class="main">
-                                            {{ $firstPara ?? '' }}
-                                        </span>
-                                        @if (strlen($text) > 30)
-                                            <span class="extended" data-index="{{ $row->id }}" style="display: none;">
-                                                {{ $secondPara }}
-                                                <br>
-                                                <b> Event Location : </b> {{ $row->event_location }}
+                                        <p class="para">
+                                            <span class="main">
+                                                {{ $firstPara ?? '' }}
                                             </span>
-                                             <span class="read-more" data-index="{{ $row->id }}">Show More</span>
-                                        @endif
-                                      
-                                    </p>
+                                            @if (strlen($text) > 100)
+                                                <span class="extended" data-index="{{ $row->id }}"
+                                                    style="display: none;">
+                                                    {{ $secondPara }}
+                                                    <br>
+                                                    <b> Event Location : </b> {{ $row->event_location }}
+                                                </span>
+                                                <span class="read-more" data-index="{{ $row->id }}">Show More</span>
+                                            @endif
+
+                                        </p>
 
                                         <p class="para">
                                             <a href="{{ $row->event_link }}" target="__blank">Join Link</a>
@@ -495,7 +506,7 @@
         });
     </script>
 
-     <script>
+    <script>
         function handleInput() {
             // Your JavaScript logic goes here
             // Get the ISBN value from the input field
@@ -522,7 +533,7 @@
                     console.log(response);
                     // HideCalimaticLoader();
                     $('.has-loader .loader').css('display', 'none');
-                     $('#title').val(response.book.title);
+                    $('#title').val(response.book.title);
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
                     // Process the bookData here
@@ -562,32 +573,33 @@
 
         }
     </script>
-<script>
-    // Wait for the document to be ready
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get all elements with the class "read-more"
-        var readMoreButtons = document.querySelectorAll('.read-more');
+    <script>
+        // Wait for the document to be ready
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all elements with the class "read-more"
+            var readMoreButtons = document.querySelectorAll('.read-more');
 
-        // Add click event listeners to all "Show More" buttons
-        readMoreButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                // Get the index from the data-index attribute
-                var index = button.dataset.index;
-                // Find the corresponding extended content using the index
-                var extendedContent = document.querySelector('.extended[data-index="' + index + '"]');
+            // Add click event listeners to all "Show More" buttons
+            readMoreButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Get the index from the data-index attribute
+                    var index = button.dataset.index;
+                    // Find the corresponding extended content using the index
+                    var extendedContent = document.querySelector('.extended[data-index="' + index +
+                        '"]');
 
-                // Toggle the display of the extended content
-                if (extendedContent.style.display === 'none') {
-                    extendedContent.style.display = 'inline'; // Show the extended content
-                    button.textContent = 'Show Less'; // Change the button text
-                } else {
-                    extendedContent.style.display = 'none'; // Hide the extended content
-                    button.textContent = 'Show More'; // Change the button text back
-                }
+                    // Toggle the display of the extended content
+                    if (extendedContent.style.display === 'none') {
+                        extendedContent.style.display = 'inline'; // Show the extended content
+                        button.textContent = 'Show Less'; // Change the button text
+                    } else {
+                        extendedContent.style.display = 'none'; // Hide the extended content
+                        button.textContent = 'Show More'; // Change the button text back
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 
 
 @endsection

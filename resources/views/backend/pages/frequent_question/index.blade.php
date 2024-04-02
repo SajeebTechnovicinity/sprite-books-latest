@@ -26,8 +26,8 @@
                     <tr>
                         <th>Sl</th>
                         <th>Question</th>
-                        <th>Answer</th>
-                        {{--<th>Action</th>--}}
+                        <th width="50%">Answer</th>
+                        {{--  <th>Action</th>  --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -45,14 +45,14 @@
                            </td>
 
 
-                           <td>
-                           {{-- <a class="btn btn-success btn-sm" href="{{url('admin/authors')}}/{{ $row->id }}/edit">
+                           {{--  <td>
+                           <a class="btn btn-success btn-sm" href="{{url('admin/authors')}}/{{ $row->id }}/edit">
                            Edit
-                           </a> --}}
-                           {{-- <a class="btn btn-danger btn-sm text-white">
+                           </a>
+                           <a class="btn btn-danger btn-sm text-white">
                            Delete
-                           </a> --}}
-                           </td>
+                           </a>
+                           </td>  --}}
                        </tr>
                    @endforeach
 
@@ -94,7 +94,7 @@
               <input type="text" name="answer" id="last_name" placeholder="Answer" class="form-control">
             </div>
             </div>
-               
+
 
 
                 </div>

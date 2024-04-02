@@ -85,7 +85,7 @@ if (!function_exists('get_author_last_two_books_by_author_id')) {
 
     function get_author_last_two_books_by_author_id($authorId) {
 
-     return Book::whereAuthorId($authorId)->where('is_delete',0)->latest()->take(2)->get();
+     return Book::whereAuthorId($authorId)->where('is_delete',0)->latest()->take(1)->get();
 
     }
 }
@@ -332,7 +332,19 @@ if (!function_exists('get_post_dislike_count')) {
     }
 }
 
-
+function getYoutubeVideoId($url) {
+    $video_id = '';
+    $parsed_url = parse_url($url);
+    if (isset($parsed_url['query'])) {
+        parse_str($parsed_url['query'], $query_params);
+        if (isset($query_params['v'])) {
+            $video_id = $query_params['v'];
+        }
+    } elseif (preg_match("/\/embed\/([a-zA-Z0-9\-_]+)/", $url, $matches)) {
+        $video_id = $matches[1];
+    }
+    return $video_id;
+}
 
 
 ?>
