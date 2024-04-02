@@ -7132,3 +7132,7 @@ label .text .inner{
 #media figure.media-item img{
   object-fit: contain;
 }
+
+.author-block__imgs  img{
+  height: 150px;
+}
