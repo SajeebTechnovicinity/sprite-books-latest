@@ -208,7 +208,7 @@
                 @endif
                 <!-- Content Block -->
                 <div class="profile-banner">
-                    <img src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-banner.png @endif" alt="" />
+                    <img src="{{ asset('public/frontend_asset') }}/imgs/blog.jpg" alt="" />
                 </div>
                 <div class="block-wrap bg-none">
                     <div class="block-component">

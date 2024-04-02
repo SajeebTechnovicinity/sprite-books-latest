@@ -77,7 +77,7 @@ class UserController extends Controller
         {
             $authorId = 1;
         }
-        
+
         $authorId=rand(10000,999999);
 
         $author = Author::create([
@@ -152,6 +152,76 @@ if($author->type == 'USER'){
                     'author_id'=>$author->id,
                 ];
 
+                if(AuthorMembershipPlan::where('author_id',$author->id)->count()==0 && $author->type!="USER")
+                {
+
+                    $sData = [
+                        'waiting_for_author_membership_id' => $author->id,
+                        'type' => $author->type,
+                    ];
+                    session()->put($sData);
+                    return redirect('select-membership-plan');
+                }
+
+
+                if(AuthorMembershipPlan::where('author_id',$author->id)->exists() && $author->type!="USER")
+                {
+
+
+
+                    $authorMembership=AuthorMembershipPlan::where('author_id',$author->id)->first();
+
+                    $expireCondition=0;
+
+                    $subscription_count= DB::table('subscriptions')->where('author_id', $author->id)->where('stripe_status','inactive')->count();
+
+
+                    //$subscription= DB::table('subscriptions')->where('author_id', $author->id)->where('stripe_status','inactive')->latest()->take(1)->get()[0];
+
+                    if($subscription_count>0 || ($authorMembership->membership_plan_id==2 || $authorMembership->membership_plan_id==3 || $authorMembership->membership_plan_id==11 || $authorMembership->membership_plan_id==12) )
+                    {
+                        $expireCondition=1;
+                    }
+
+
+
+
+                    if ( $expireCondition==1) {
+                        if ($authorMembership->duration == "Monthly") {
+                            // Calculate one month after the membership creation date
+                            $oneMonthAfter = $authorMembership->created_at->addMonth();
+
+                            // Check if the current date is after one month after membership creation
+                            if (now() > $oneMonthAfter) {
+                                // Membership has expired, redirect to select a new membership plan
+                                $sData = [
+                                    'waiting_for_author_membership_id' => $author->id,
+                                    'type' => $author->type,
+                                ];
+                                session()->put($sData);
+                                AuthorMembershipPlan::where('author_id',$author->id)->delete();
+                                return redirect('select-membership-plan');
+                            }
+                        } elseif ($authorMembership->duration == "Yearly") {
+                            // Calculate one year after the membership creation date
+                            $oneYearAfter = $authorMembership->created_at->addYear();
+
+                            // Check if the current date is after one year after membership creation
+                            if (now() > $oneYearAfter) {
+                                // Membership has expired, redirect to select a new membership plan
+                                $sData = [
+                                    'waiting_for_author_membership_id' => $author->id,
+                                    'type' => $author->type,
+                                ];
+                                session()->put($sData);
+                                AuthorMembershipPlan::where('author_id',$author->id)->delete();
+                                return redirect('select-membership-plan');
+                            }
+                        }
+                    }
+
+                }
+
                 session()->put($sData);
                 if($author->type == 'AUTHOR'){
                     return redirect('author/profile');
@@ -170,57 +240,7 @@ if($author->type == 'USER'){
             return ['data'=>$author,'status'=>0];
         }
 
-        if(AuthorMembershipPlan::where('author_id',session('author_id'))->exists() && $author->type!="USER")
-        {
 
-
-            $authorMembership=AuthorMembershipPlan::where('author_id',session('author_id'))->first();
-
-            $expireCondition=0;
-
-            $subscription= DB::table('subscriptions')->where('author_id', session('author_id'))->where('stripe_status','inactive')->latest()->take(1)->get()[0];
-
-            if($subscription->stripe_id || ($authorMembership->membership_plan_id==2 || $authorMembership->membership_plan_id==3 || $authorMembership->membership_plan_id==11 || $authorMembership->membership_plan_id==12) )
-            {
-                $expireCondition=1;
-            }
-    
-
-            if ( $expireCondition==1) {
-                if ($authorMembership->duration == "Monthly") {
-                    // Calculate one month after the membership creation date
-                    $oneMonthAfter = $authorMembership->created_at->addMonth();
-            
-                    // Check if the current date is after one month after membership creation
-                    if (now() > $oneMonthAfter) {
-                        // Membership has expired, redirect to select a new membership plan
-                        $sData = [
-                            'waiting_for_author_membership_id' => $author->id,
-                            'type' => $author->type,
-                        ];
-                        session()->put($sData);
-                        AuthorMembershipPlan::where('author_id',session('author_id'))->delete();
-                        return redirect('select-membership-plan');
-                    }
-                } elseif ($authorMembership->duration == "Yearly") {
-                    // Calculate one year after the membership creation date
-                    $oneYearAfter = $authorMembership->created_at->addYear();
-            
-                    // Check if the current date is after one year after membership creation
-                    if (now() > $oneYearAfter) {
-                        // Membership has expired, redirect to select a new membership plan
-                        $sData = [
-                            'waiting_for_author_membership_id' => $author->id,
-                            'type' => $author->type,
-                        ];
-                        session()->put($sData);
-                        AuthorMembershipPlan::where('author_id',session('author_id'))->delete();
-                        return redirect('select-membership-plan');
-                    }
-                }
-            }
-
-        }
 
         return redirect('author/profile');
 
@@ -336,7 +356,7 @@ if($author->type == 'USER'){
 
 
      public function book_add_to_library(Request $request){
-       
+
         if($request->book_id){
             $BookLibraries = new BookLibraries;
             $BookLibraries->type = 'USER';
