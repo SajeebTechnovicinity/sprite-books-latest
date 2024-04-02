@@ -23,7 +23,7 @@
 
             <div class="form-field">
                 <label for="title" class="label">Podcast embed Code*</label>
-                <textarea name="podcast_embed_code" class="input" placeholder="https://www.youtube.com/embed/dcicL7Nmahg?si=xI2OXI4Aqt3QZtsV"></textarea>
+                <textarea name="podcast_embed_code" class="input" placeholder="Enter video link"></textarea>
             </div>
 
 

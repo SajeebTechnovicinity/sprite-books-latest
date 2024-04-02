@@ -227,7 +227,9 @@
                                         <img src="{{ asset($row->bookDocuments[0]->path ?? '') }}" alt="" />
                                     </a>
                                     <div class="text-wrap">
-                                        <h5 class="subtitle">PAPERBACK</h5>
+                                        @if($row->Genere)
+                                        <h5 class="subtitle">{{ $row->Genere->genere_name }}</h5>
+                                    @endif
                                         <a href="{{ url('book-details/' . $row->id) }}"
                                             class="title">{{ $row->book_name }}</a>
                                         <p class="dsc">
@@ -257,7 +259,10 @@
                                                 alt="" />
                                         </a>
                                         <div class="text-wrap">
-                                            <h5 class="subtitle">PAPERBACK</h5>
+
+                                            @if($suggested->Book)
+                                                <h5 class="subtitle">{{ $suggested->Book->Genere->genere_name }}</h5>
+                                            @endif
                                             <a href="#" class="title">{{ $suggested->Book->book_name }}</a>
                                             <p class="dsc">
                                                 {{ Illuminate\Support\Str::of($suggested->Book->book_description)->words(10, ' ...') }}

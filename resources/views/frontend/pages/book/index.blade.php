@@ -1,117 +1,109 @@
 @extends('master')
 
 @section('content')
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
-    <!-- Content Block -->
+<style>
+    .hidden {
+        display: none;
+    }
 
-    @if (session('msg'))
-        <div class="alert alert-success">
-            {{ session('msg') }}
-        </div>
-    @endif
-    <section class="body-content alt-content book-details">
-        <div class="container">
-            <div class="inner-content">
-                <div class="tab-panel">
+</style>
+<!-- Content Block -->
 
-                    <div class="add-book-modal modal d-none" id="add-book">
-                        <div class="modal__wrap">
-                            <div class="modal__inner">
-                                <div class="modal__close">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1.42191 14.5725C1.05416 14.5936 0.692485 14.4734 0.413161 14.2372C-0.13772 13.6923 -0.13772 12.8122 0.413161 12.2673L12.4757 0.405807C13.0486 -0.1214 13.9477 -0.0920931 14.4838 0.471323C14.9687 0.980817 14.9969 1.76392 14.55 2.3059L2.41643 14.2372C2.14071 14.4699 1.78484 14.5899 1.42191 14.5725Z"
-                                            fill="#8D8D9B" />
-                                        <path
-                                            d="M13.4702 14.5726C13.0975 14.571 12.7403 14.4255 12.4757 14.1674L0.413108 2.30588C-0.0972546 1.71983 -0.0278681 0.837855 0.568117 0.335952C1.10005 -0.111984 1.88454 -0.111984 2.41643 0.335952L14.55 12.1975C15.1228 12.7248 15.1524 13.6089 14.6162 14.1722C14.5948 14.1946 14.5728 14.2163 14.55 14.2373C14.2529 14.4913 13.8619 14.6127 13.4702 14.5726Z"
-                                            fill="#8D8D9B" />
-                                    </svg>
-                                </div>
-                                <h3 class="title">Add your Book</h3>
-                                <form action="{{ url('author/add-books') }}" method="post" class="modal__form"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    @method('post')
-                                    <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
-                                    <div class="form-field">
-                                        <label for="isbn" class="label">ISBN*</label>
-                                        <div class="has-loader">
-                                            <span class="loader" style="display: none;"></span>
-                                            <input type="text" name="isbn" id="#isbn" class="input"
-                                                onblur="handleInput()" required />
-                                        </div>
+@if (session('msg'))
+<div class="alert alert-success">
+    {{ session('msg') }}
+</div>
+@endif
+<section class="body-content alt-content book-details">
+    <div class="container">
+        <div class="inner-content">
+            <div class="tab-panel">
+
+                <div class="add-book-modal modal d-none" id="add-book">
+                    <div class="modal__wrap">
+                        <div class="modal__inner">
+                            <div class="modal__close">
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.42191 14.5725C1.05416 14.5936 0.692485 14.4734 0.413161 14.2372C-0.13772 13.6923 -0.13772 12.8122 0.413161 12.2673L12.4757 0.405807C13.0486 -0.1214 13.9477 -0.0920931 14.4838 0.471323C14.9687 0.980817 14.9969 1.76392 14.55 2.3059L2.41643 14.2372C2.14071 14.4699 1.78484 14.5899 1.42191 14.5725Z" fill="#8D8D9B" />
+                                    <path d="M13.4702 14.5726C13.0975 14.571 12.7403 14.4255 12.4757 14.1674L0.413108 2.30588C-0.0972546 1.71983 -0.0278681 0.837855 0.568117 0.335952C1.10005 -0.111984 1.88454 -0.111984 2.41643 0.335952L14.55 12.1975C15.1228 12.7248 15.1524 13.6089 14.6162 14.1722C14.5948 14.1946 14.5728 14.2163 14.55 14.2373C14.2529 14.4913 13.8619 14.6127 13.4702 14.5726Z" fill="#8D8D9B" />
+                                </svg>
+                            </div>
+                            <h3 class="title">Add your Book</h3>
+                            <form action="{{ url('author/add-books') }}" method="post" class="modal__form" enctype="multipart/form-data">
+                                @csrf
+                                @method('post')
+                                <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
+                                <div class="form-field">
+                                    <label for="isbn" class="label">ISBN*</label>
+                                    <div class="has-loader">
+                                        <span class="loader" style="display: none;"></span>
+                                        <input type="text" name="isbn" id="#isbn" class="input" onblur="handleInput()" required />
                                     </div>
-                                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"required />
-                                    @if (session('type') != 'AUTHOR')
-                                        <div class="form-field">
-                                            <label for="isbn" class="label">Role*</label>
+                                </div>
+                                <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
+                                @if (session('type') != 'AUTHOR')
+                                <div class="form-field">
+                                    <label for="isbn" class="label">Role*</label>
 
-                                        @if(session('author_id')!=null)
+                                    @if(session('author_id')!=null)
 
-                                               @if (check_user_max_book_by_user_id(session('author_id')) == 1)
-                                                    <label><input type="radio" value="Publisher" name="author_define"
-                                                        required> Publisher</label>
-                                                @else
-                                                    <label><input type="radio" value="Publisher" name="author_define"
-                                                            onclick="showAlert(this)" required> Publisher</label>
-                                                @endif
-                                        @endif
-
-
-
-
-                                            <input type="radio" value="Author" name="author_define" required>
-                                            <label for="html">Author</label>
-                                        </div>
-                                        <div class="form-field">
-                                            <label for="text-area" id="author_text">Author </label>
-                                            <select name="book_author" id="book_author" class="input">
-                                                @foreach ($author_created_list as $listA)
-                                                    <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                    @if (check_user_max_book_by_user_id(session('author_id')) == 1)
+                                    <label><input type="radio" value="Publisher" name="author_define" required> Publisher</label>
+                                    @else
+                                    <label><input type="radio" value="Publisher" name="author_define" onclick="showAlert(this)" required> Publisher</label>
+                                    @endif
                                     @endif
 
+
+
+
+                                    <input type="radio" value="Author" name="author_define" required>
+                                    <label for="html">Author</label>
+                                </div>
+                                <div class="form-field">
+                                    <label for="text-area" id="author_text">Author </label>
+                                    <select name="book_author" id="book_author" class="input">
+                                        @foreach ($author_created_list as $listA)
+                                        <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @endif
+
+                                <div class="form-field">
+                                    <label for="title" class="label">Book Title*</label>
+                                    <input type="text" name="book_name" id="title" class="input" required />
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="dsc" class="label">Book Description*</label>
+                                    <textarea name="book_description" id="dsc" class="textarea" required></textarea>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="dsc" class="label">Select Genre*</label>
+                                    <select class="input form-control" name="genere_id" required>
+                                        @foreach ($generes as $row)
+                                        <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-row">
                                     <div class="form-field">
-                                        <label for="title" class="label">Book Title*</label>
-                                        <input type="text" name="book_name" id="title" class="input" required />
+                                        <label for="links" class="label">Book Amazon Links</label>
+                                        <input type="text" name="book_amazon_link" id="links" class="input" />
                                     </div>
 
+                                </div>
+
+
+                                <div class="form-row">
                                     <div class="form-field">
-                                        <label for="dsc" class="label">Book Description*</label>
-                                        <textarea name="book_description" id="dsc" class="textarea" required></textarea>
+                                        <label for="links" class="label">Book Ebay Links</label>
+                                        <input type="text" name="book_ebay_link" id="links" class="input" />
                                     </div>
-
-                                    <div class="form-field">
-                                        <label for="dsc" class="label">Select Genre*</label>
-                                        <select class="input form-control" name="genere_id" required>
-                                            @foreach ($generes as $row)
-                                                <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label for="links" class="label">Book Amazon Links</label>
-                                            <input type="text" name="book_amazon_link" id="links" class="input" />
-                                        </div>
-
-                                    </div>
-
-
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label for="links" class="label">Book Ebay Links</label>
-                                            <input type="text" name="book_ebay_link" id="links" class="input" />
-                                        </div>
-                                        {{-- <div class="add">
+                                    {{-- <div class="add">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_954_2055)">
@@ -126,37 +118,33 @@
                             </defs>
                         </svg>
                     </div> --}}
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label class="label">Book Discount in Percentage</label>
+                                        <input type="number" name="book_discount_in_percentage" class="input" placeholder="" />
                                     </div>
 
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label class="label">Book Discount in Percentage</label>
-                                            <input type="number" name="book_discount_in_percentage" class="input"
-                                                placeholder="" />
-                                        </div>
+                                </div>
 
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label class="label">Main Price to Show*</label>
+                                        <input type="number" name="book_price" class="input" placeholder="Price" required />
                                     </div>
 
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label class="label">Main Price to Show*</label>
-                                            <input type="number" name="book_price" class="input" placeholder="Price"
-                                                required />
-                                        </div>
-
-                                        <div class="form-field">
-                                            <label class="label">Book Price</label>
-                                            <input type="number" name="hard_book_price" class="input"
-                                                placeholder="HardBook" />
-                                        </div>
-                                        <div class="form-field">
-                                            <label class="label">Ebook Price</label>
-                                            <input type="number" name="ebook_price" class="input"
-                                                placeholder="Ebook" />
-                                        </div>
+                                    <div class="form-field">
+                                        <label class="label">Book Price</label>
+                                        <input type="number" name="hard_book_price" class="input" placeholder="HardBook" />
                                     </div>
+                                    <div class="form-field">
+                                        <label class="label">Ebook Price</label>
+                                        <input type="number" name="ebook_price" class="input" placeholder="Ebook" />
+                                    </div>
+                                </div>
 
-                                    {{-- <div class="form-field">
+                                {{-- <div class="form-field">
                                         <label for="attach-file" class="attach-btn btn-lite btn">
                                             <span class="icon">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -176,7 +164,7 @@
                                             accept="image/*" required />
                                     </div> --}}
 
-                                    {{-- <div class="form-field">
+                                {{-- <div class="form-field">
                                         <label for="attach-file1" class="attach-btn1 btn-lite btn">
                                             <span class="icon">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -192,123 +180,109 @@
                                             id="attach-file1" accept="video/*" />
                                     </div> --}}
 
-                                      <div class="form-row">
-                                        <div class="form-field">
-                                            <label for="links" class="label">Video Link</label>
-                                            <input type="text" name="video_file_updoad" id="links" class="input" />
-                                        </div>
-
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="links" class="label">Video Link</label>
+                                        <input type="text" name="video_file_updoad" id="links" class="input" />
                                     </div>
 
-                                    <div class="btn-group">
-                                        <button class="btn btn-lite">Cancel</button>
-                                        <button class="btn btn-solid">Add Book</button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+
+                                <div class="btn-group">
+                                    <button class="btn btn-lite">Cancel</button>
+                                    <button class="btn btn-solid">Add Book</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    @if(session('author_id')!=null)
-                    @if (session('type') != 'USER')
-                        @if (session('type') != 'PUBLISHER')
-                            @if (check_user_max_book_by_user_id(session('author_id')) == 1)
-                                <button class="add-btn btn-solid btn-trigger" data-target="#add-book">
-                                    <span class="icon">
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2952_633)">
-                                                <path
-                                                    d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z"
-                                                    fill="white" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_2952_633">
-                                                    <rect width="18" height="18" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </span>
-                                    Add a Book
-                                </button>
-                            @else
-                                <button class="add-btn btn-solid"
-                                    onclick="alert('You have crossed the limit of your current membership plan!')">
-                                    <span class="icon">
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2952_633)">
-                                                <path
-                                                    d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z"
-                                                    fill="white" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_2952_633">
-                                                    <rect width="18" height="18" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </span>
-                                    Add a Book
-                                </button>
-                            @endif
-                        @else
-                            @if (check_publisher_max_book_by_user_id(session('author_id')) == 1)
-                                <button class="add-btn btn-solid btn-trigger" data-target="#add-book">
-                                    <span class="icon">
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2952_633)">
-                                                <path
-                                                    d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z"
-                                                    fill="white" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_2952_633">
-                                                    <rect width="18" height="18" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </span>
-                                    Add a Book
-                                </button>
-                            @else
-                                <button class="add-btn btn-solid"
-                                    onclick="alert('You have crossed the limit of your current membership plan!')">
-                                    <span class="icon">
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2952_633)">
-                                                <path
-                                                    d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z"
-                                                    fill="white" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_2952_633">
-                                                    <rect width="18" height="18" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </span>
-                                    Add a Book
-                                </button>
-                            @endif
-                        @endif
-                    @endif
-                    @endif
-                    <nav>
-                        @if (session('type') == 'USER')
-                            @include('layouts.frontend.user_sidebar')
-                        @elseif (session('type') == 'AUTHOR')
-                            @include('layouts.frontend.author_sidebar')
-                        @elseif (session('type') == 'PUBLISHER')
-                            @include('layouts.frontend.publisher_sidebar')
-                        @endif
-                    </nav>
                 </div>
+                @if(session('author_id')!=null)
+                @if (session('type') != 'USER')
+                @if (session('type') != 'PUBLISHER')
+                @if (check_user_max_book_by_user_id(session('author_id')) == 1)
+                <button class="add-btn btn-solid btn-trigger" data-target="#add-book">
+                    <span class="icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2952_633)">
+                                <path d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z" fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2952_633">
+                                    <rect width="18" height="18" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </span>
+                    Add a Book
+                </button>
+                @else
+                <button class="add-btn btn-solid" onclick="alert('You have crossed the limit of your current membership plan!')">
+                    <span class="icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2952_633)">
+                                <path d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z" fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2952_633">
+                                    <rect width="18" height="18" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </span>
+                    Add a Book
+                </button>
+                @endif
+                @else
+                @if (check_publisher_max_book_by_user_id(session('author_id')) == 1)
+                <button class="add-btn btn-solid btn-trigger" data-target="#add-book">
+                    <span class="icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2952_633)">
+                                <path d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z" fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2952_633">
+                                    <rect width="18" height="18" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </span>
+                    Add a Book
+                </button>
+                @else
+                <button class="add-btn btn-solid" onclick="alert('You have crossed the limit of your current membership plan!')">
+                    <span class="icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2952_633)">
+                                <path d="M16.3929 7.39286H10.9286C10.7511 7.39286 10.6071 7.24894 10.6071 7.07143V1.60714C10.6071 0.719604 9.88754 0 9 0C8.11246 0 7.39286 0.719604 7.39286 1.60714V7.07143C7.39286 7.24894 7.24894 7.39286 7.07143 7.39286H1.60714C0.719604 7.39286 0 8.11246 0 9C0 9.88754 0.719604 10.6071 1.60714 10.6071H7.07143C7.24894 10.6071 7.39286 10.7511 7.39286 10.9286V16.3929C7.39286 17.2804 8.11246 18 9 18C9.88754 18 10.6071 17.2804 10.6071 16.3929V10.9286C10.6071 10.7511 10.7511 10.6071 10.9286 10.6071H16.3929C17.2804 10.6071 18 9.88754 18 9C18 8.11246 17.2804 7.39286 16.3929 7.39286Z" fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2952_633">
+                                    <rect width="18" height="18" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </span>
+                    Add a Book
+                </button>
+                @endif
+                @endif
+                @endif
+                @endif
+                <nav>
+                    @if (session('type') == 'USER')
+                    @include('layouts.frontend.user_sidebar')
+                    @elseif (session('type') == 'AUTHOR')
+                    @include('layouts.frontend.author_sidebar')
+                    @elseif (session('type') == 'PUBLISHER')
+                    @include('layouts.frontend.publisher_sidebar')
+                    @endif
+                </nav>
+            </div>
 
-                <div class="tab-content">
-                    <!-- Breadcrumb -->
-                    {{-- <ul class="breadcrumb">
+            <div class="tab-content">
+                <!-- Breadcrumb -->
+                {{-- <ul class="breadcrumb">
                         <li class="breadcrumb__item">
                             <a href="#" class="breadcrumb__link">Feed</a>
                             <span class="separator">/</span>
@@ -325,41 +299,39 @@
                         </li>
                         <li class="breadcrumb__item">In Code</li>
                     </ul> --}}
-                    <!-- Content Block -->
-                    <div class="block-wrap">
-                        <div class="block-component">
-                            <div class="media">
-                                <div class="main-figure-group">
-                                    @foreach ($book->bookDocuments as $row)
-                                        <figure class="figure main-figure">
-                                            <img src="{{ asset($row->path) }}" alt="" />
-                                        </figure>
-                                    @endforeach
+                <!-- Content Block -->
+                <div class="block-wrap">
+                    <div class="block-component">
+                        <div class="media">
+                            <div class="main-figure-group">
+                                @foreach ($book->bookDocuments as $row)
+                                <figure class="figure main-figure">
+                                    <img src="{{ asset($row->path) }}" alt="" />
+                                </figure>
+                                @endforeach
 
-                                </div>
-                                   
-                                <div class="figure-guoup">
-                             
-                                    @foreach ($book->bookDocuments as $row1)
-                                        <figure class="figure">
-                                            <img src="{{ asset($row1->path) }}" alt="" />
-                                        </figure>
-                                    @endforeach
-                                </div>
                             </div>
-                            <div class="block-content">
-                                <h5 class="subtitle">{{ $book->Genere->genere_name }}</h5>
-                                <h2 class="title">{{ $book->book_name }}</h2>
-                                <div class="block-content__row">
-                                    <div class="user">
-                                        <img class="user__img" height="60px" width="60px"
-                                            src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
-                                            alt="" />
-                                        <h5 class="user__name">
-                                            {{ $book->bookAuthor->author_name }}
-                                        </h5>
-                                    </div>
-                                    {{-- <div class="ratting-wrap">
+
+                            <div class="figure-guoup">
+
+                                @foreach ($book->bookDocuments as $row1)
+                                <figure class="figure">
+                                    <img src="{{ asset($row1->path) }}" alt="" />
+                                </figure>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="block-content">
+                            <h5 class="subtitle">{{ $book->Genere->genere_name }}</h5>
+                            <h2 class="title">{{ $book->book_name }}</h2>
+                            <div class="block-content__row">
+                                <div class="user">
+                                    <img class="user__img" height="60px" width="60px" src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif" alt="" />
+                                    <h5 class="user__name">
+                                        {{ $book->bookAuthor->author_name }}
+                                    </h5>
+                                </div>
+                                {{-- <div class="ratting-wrap">
                                         <ul class="ratting">
                                             <li>
                                                 <svg width="8" height="7" viewBox="0 0 8 7" fill="none"
@@ -448,38 +420,50 @@
                                     <p class="text-gray ratting-poing">
                                         5.0
                                     </p> --}}
-                                    {{-- <p class="text-gray divider">|</p>
+                                {{-- <p class="text-gray divider">|</p>
                                     <p class="text-gray status">100 sold</p> --}}
+                            </div>
+                            <div class="block-content__row">
+                                <span class="unique-no">ISBN : {{ $book->isbn }}</span>
+                                {{-- <span class="unique-no">ISBN : 9785041286736</span> --}}
+                            </div>
+                            <h3 class="totoal-price">
+                                ${{ $book->book_price }}<span class="savings">{{ $book->book_discount_in_percentage }}% OFF</span>
+                            </h3>
+                            <div class="block-content__row category">
+                                @if($book->hard_book_price)
+                                <div class="category__item">
+                                    <p class="label">Hardcover</p>
+                                    <p class="price">$ {{ $book->hard_book_price }}</p>
                                 </div>
-                                <div class="block-content__row">
-                                    <span class="unique-no">ISBN : {{ $book->isbn }}</span>
-                                    {{-- <span class="unique-no">ISBN : 9785041286736</span> --}}
+                                @endif
+                                @if($book->ebook_price)
+                                <div class="category__item">
+                                    <p class="label">Ebook</p>
+                                    <p class="price">${{ $book->ebook_price }}</p>
                                 </div>
-                                <h3 class="totoal-price">
-                                    ${{ $book->book_price }}<span
-                                        class="savings">{{ $book->book_discount_in_percentage }}% OFF</span>
-                                </h3>
-                                <div class="block-content__row category">
-                                    <div class="category__item">
-                                        <p class="label">Hardcover</p>
-                                        <p class="price">$ {{ $book->hard_book_price }}</p>
-                                    </div>
-                                    <div class="category__item">
-                                        <p class="label">Ebook</p>
-                                        <p class="price">${{ $book->ebook_price }}</p>
-                                    </div>
+                                @endif
 
-                                </div>
-                                <div class="block-content__row buy-buttons-group">
-                                    {{-- <form class="quantity-form btn">
+
+                            </div>
+                            <div class="block-content__row buy-buttons-group">
+                                {{-- <form class="quantity-form btn">
                                         <span class="decrement">-</span>
                                         <input type="text" class="quantity-field" value="1" />
                                         <span class="increment">+</span>
                                     </form> --}}
-                                    <a href="{{ $book->book_amazon_link }}" target="__blank">Buy in Amazon</a>
-                                    <a href="{{ $book->book_ebay_link }}" target="__blank">Buy in Ebay</a>
-                                    <a href="#." class="share-btn" onclick="showShareButton()">
-                                        <!-- <span class="icon">
+                                @if($book->book_amazon_link)
+                                <a href="{{ $book->book_amazon_link }}" target="__blank">Buy in Amazon</a>
+                                @else
+                                <a href="#." @disabled(true) style="background:gray">Buy in Amazon</a>
+                                @endif
+                                @if($book->book_ebay_link)
+                                <a href="{{ $book->book_ebay_link }}" target="__blank">Buy in Ebay</a>
+                                @else
+                                <a href="#." @disabled(true) style="background:gray">Buy in Ebay</a>
+                                @endif
+                                <a href="#." class="share-btn" onclick="showShareButton()">
+                                    <!-- <span class="icon">
                                                                         <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
                                                                             xmlns="http://www.w3.org/2000/svg">
                                                                             <path
@@ -487,70 +471,61 @@
                                                                                 fill="black" />
                                                                         </svg>
                                                                     </span> -->
-                                        Share</a>
-                                    <div style="display: none" id="shareButtons">
-                                        <a href="#" class="review-btn">
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
-                                                target="_blank">
-                                                Share on Facebook
-                                            </a>
-
-                                            <a class="twitter-share-button"
-                                                href="https://twitter.com/share?url={{ url()->current() }}"
-                                                target="__blank">
-                                                Tweet</a>
+                                    Share</a>
+                                <div style="display: none" id="shareButtons">
+                                    <a href="#" class="review-btn">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank">
+                                            Share on Facebook
                                         </a>
-                                    </div>
+
+                                        <a class="twitter-share-button" href="https://twitter.com/share?url={{ url()->current() }}" target="__blank">
+                                            Tweet</a>
+                                    </a>
                                 </div>
-                                <div class="ensure-text block-content__row">
-                                    <p class="para">
-                                        <span class="icon">
-                                            <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M11.8348 17.9999L11.7739 10.4657L15.3242 10.4362L15.3925 17.9778L13.6912 16.7581L11.8348 17.9999Z"
-                                                    fill="#FCC71B" />
-                                                <path
-                                                    d="M16.1511 10.7352C15.413 9.79406 14.0032 9.77746 13.7061 9.77376C13.1957 9.75028 12.6877 9.85695 12.2299 10.0838C11.8528 10.2711 11.5181 10.5336 11.2463 10.8551C10.0709 12.2723 11.2463 13.7706 10.2591 15.1749C9.33647 16.4887 7.41 16.5625 7.14243 16.5662C5.98175 16.5755 4.321 16.0994 3.65302 14.7468C3.45262 14.3366 3.34968 13.8857 3.35224 13.4293C1.80405 13.1617 0.81498 11.7464 1.02903 10.427C1.20249 9.37334 2.12513 8.49499 3.31164 8.31046C3.31164 8.28647 3.31164 8.25326 3.31164 8.21266C3.3264 7.93218 3.38545 6.85085 4.11064 6.10536C4.96132 5.23438 6.2161 5.34879 6.38587 5.36724C6.55748 2.86874 8.81425 0.942273 11.3847 1.00132C13.8279 1.06591 15.8983 2.91303 16.092 5.28236C16.9036 5.28013 17.6872 5.57858 18.2916 6.12012C18.578 6.38127 18.8077 6.6985 18.9664 7.05211C19.1251 7.40573 19.2095 7.78819 19.2142 8.17576C19.2142 9.28292 19.2204 10.3901 19.2327 11.4973C19.255 11.6886 19.2393 11.8825 19.1864 12.0678C19.1335 12.253 19.0445 12.426 18.9245 12.5767C18.4226 13.1488 17.4317 13.1303 16.9187 12.7317C16.3042 12.2575 16.7766 11.5415 16.1511 10.7352Z"
-                                                    stroke="#3E3E3E" stroke-width="2" stroke-miterlimit="10" />
-                                            </svg> </span>SpiritBooks Guarantee
-                                    </p>
-                                    <p class="para">
-                                        <span class="icon">
-                                            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <g clip-path="url(#clip0_954_845)">
-                                                    <path
-                                                        d="M7.5 0C3.36433 0 0 3.36433 0 7.5C0 11.6357 3.36433 15 7.5 15C11.6357 15 15 11.6357 15 7.5C15 3.36433 11.6357 0 7.5 0ZM11.3013 5.91064L7.23873 9.97307C7.11685 10.0949 6.95686 10.1563 6.79688 10.1563C6.63689 10.1563 6.4769 10.0949 6.35502 9.97307L4.32381 7.94186C4.07936 7.69753 4.07936 7.30247 4.32381 7.05814C4.56814 6.8137 4.96307 6.8137 5.20752 7.05814L6.79688 8.6475L10.4176 5.02693C10.6619 4.78249 11.0568 4.78249 11.3013 5.02693C11.5456 5.27126 11.5456 5.6662 11.3013 5.91064Z"
-                                                        fill="#3E3E3E" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_954_845">
-                                                        <rect width="15" height="15" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg> </span>Verified Author
-                                    </p>
-                                </div>
+                            </div>
+                            <div class="ensure-text block-content__row">
+                                <p class="para">
+                                    <span class="icon">
+                                        {{--  <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11.8348 17.9999L11.7739 10.4657L15.3242 10.4362L15.3925 17.9778L13.6912 16.7581L11.8348 17.9999Z" fill="#FCC71B" />
+                                            <path d="M16.1511 10.7352C15.413 9.79406 14.0032 9.77746 13.7061 9.77376C13.1957 9.75028 12.6877 9.85695 12.2299 10.0838C11.8528 10.2711 11.5181 10.5336 11.2463 10.8551C10.0709 12.2723 11.2463 13.7706 10.2591 15.1749C9.33647 16.4887 7.41 16.5625 7.14243 16.5662C5.98175 16.5755 4.321 16.0994 3.65302 14.7468C3.45262 14.3366 3.34968 13.8857 3.35224 13.4293C1.80405 13.1617 0.81498 11.7464 1.02903 10.427C1.20249 9.37334 2.12513 8.49499 3.31164 8.31046C3.31164 8.28647 3.31164 8.25326 3.31164 8.21266C3.3264 7.93218 3.38545 6.85085 4.11064 6.10536C4.96132 5.23438 6.2161 5.34879 6.38587 5.36724C6.55748 2.86874 8.81425 0.942273 11.3847 1.00132C13.8279 1.06591 15.8983 2.91303 16.092 5.28236C16.9036 5.28013 17.6872 5.57858 18.2916 6.12012C18.578 6.38127 18.8077 6.6985 18.9664 7.05211C19.1251 7.40573 19.2095 7.78819 19.2142 8.17576C19.2142 9.28292 19.2204 10.3901 19.2327 11.4973C19.255 11.6886 19.2393 11.8825 19.1864 12.0678C19.1335 12.253 19.0445 12.426 18.9245 12.5767C18.4226 13.1488 17.4317 13.1303 16.9187 12.7317C16.3042 12.2575 16.7766 11.5415 16.1511 10.7352Z" stroke="#3E3E3E" stroke-width="2" stroke-miterlimit="10" />
+                                        </svg>  --}}
+                                        <img src="{{ asset('public/assets/backend/settings/1363804363.png') }}" alt="" width="50px" height="18px">
+                                     </span>Book Tree Guarantee
+                                </p>
+                                <p class="para">
+                                    <span class="icon">
+                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_954_845)">
+                                                <path d="M7.5 0C3.36433 0 0 3.36433 0 7.5C0 11.6357 3.36433 15 7.5 15C11.6357 15 15 11.6357 15 7.5C15 3.36433 11.6357 0 7.5 0ZM11.3013 5.91064L7.23873 9.97307C7.11685 10.0949 6.95686 10.1563 6.79688 10.1563C6.63689 10.1563 6.4769 10.0949 6.35502 9.97307L4.32381 7.94186C4.07936 7.69753 4.07936 7.30247 4.32381 7.05814C4.56814 6.8137 4.96307 6.8137 5.20752 7.05814L6.79688 8.6475L10.4176 5.02693C10.6619 4.78249 11.0568 4.78249 11.3013 5.02693C11.5456 5.27126 11.5456 5.6662 11.3013 5.91064Z" fill="#3E3E3E" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_954_845">
+                                                    <rect width="15" height="15" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg> </span>Verified Author
+                                </p>
                             </div>
                         </div>
-                        <div class="tabs-wrap">
-                            <div class="tabs-btns-row">
-                                <a href="#book-dsc" class="tab-btn btn-active">
-                                    Book Description</a>
-                                <a href="#author-details" class="tab-btn">
-                                    Author Details</a>
-                                <a href="#media" class="tab-btn">Media</a>
-                                {{-- <a href="#reviews" class="tab-btn">Reviews (1900)
+                    </div>
+                    <div class="tabs-wrap">
+                        <div class="tabs-btns-row">
+                            <a href="#book-dsc" class="tab-btn btn-active">
+                                Book Description</a>
+                            <a href="#author-details" class="tab-btn">
+                                Author Details</a>
+                            <a href="#media" class="tab-btn">Media</a>
+                            {{-- <a href="#reviews" class="tab-btn">Reviews (1900)
                                 </a> --}}
-                            </div>
-                            <div class="tab-body">
-                                <div class="tab-body__inner" id="book-dsc">
-                                    <?php
+                        </div>
+                        <div class="tab-body">
+                            <div class="tab-body__inner" id="book-dsc">
+                                <?php
                                     $li_class = '';
-                                    
+
                                     $paragraphs = explode("\n", $book->book_description);
-                                    
+
                                     for ($i = 0; $i < count($paragraphs); $i++) {
                                         if (ord($paragraphs[$i][0]) !== 13) {
                                             $paragraphs[$i] = '<p>' . $paragraphs[$i] . '</p>';
@@ -562,43 +537,42 @@
                                         $li_class = 'no-list';
                                     }
                                     ?>
-                                    {!! $content !!}
-                                </div>
-                                <div class="tab-body__inner author-details-body d-none" id="author-details">
-                                    <div class="author-info">
-                                        <div class="author-info__row">
-                                            <div class="profile-img">
-                                                <img src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
-                                                    alt="" />
-                                            </div>
-                                            <div class="author-name">
-                                                <h2 class="name">
-                                                    {{ $book->bookAuthor->author_name }}
-                                                </h2>
-                                                <p class="tagname">
-                                                    Author
-                                                </p>
-                                            </div>
+                                {!! $content !!}
+                            </div>
+                            <div class="tab-body__inner author-details-body d-none" id="author-details">
+                                <div class="author-info">
+                                    <div class="author-info__row">
+                                        <div class="profile-img">
+                                            <img src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif" alt="" />
                                         </div>
-                                        <!-- <div class="row-wrap"> -->
-                                        <div class="author-info__row">
-                                            <div class="item">
-                                                <p class="item__label">
-                                                    Books
-                                                </p>
-                                                <h2 class="item__no">
-                                                    {{ get_author_total_books_count_by_author_id($book->bookAuthor->id) }}
-                                                </h2>
-                                            </div>
-                                            <div class="item">
-                                                <p class="item__label">
-                                                    Followers
-                                                </p>
-                                                <h2 class="item__no">
-                                                    {{ get_author_total_followers_count_by_author_id($book->bookAuthor->id) }}
-                                                </h2>
-                                            </div>
-                                            {{-- <div class="item">
+                                        <div class="author-name">
+                                            <h2 class="name">
+                                                {{ $book->bookAuthor->author_name }}
+                                            </h2>
+                                            <p class="tagname">
+                                                Author
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row-wrap"> -->
+                                    <div class="author-info__row">
+                                        <div class="item">
+                                            <p class="item__label">
+                                                Books
+                                            </p>
+                                            <h2 class="item__no">
+                                                {{ get_author_total_books_count_by_author_id($book->bookAuthor->id) }}
+                                            </h2>
+                                        </div>
+                                        <div class="item">
+                                            <p class="item__label">
+                                                Followers
+                                            </p>
+                                            <h2 class="item__no">
+                                                {{ get_author_total_followers_count_by_author_id($book->bookAuthor->id) }}
+                                            </h2>
+                                        </div>
+                                        {{-- <div class="item">
                                                 <p class="item__label">
                                                     Rating
                                                 </p>
@@ -606,96 +580,86 @@
                                                     4.5
                                                 </h2>
                                             </div> --}}
-                                        </div>
-                                        <div class="author-info__row links">
-                                            <a href="{{ url('author-events/' . $book->bookAuthor->id) }}"
-                                                class="link">Events</a>
-                                            @if ($book->bookAuthor->id == session('author_id'))
-                                                <a href="#." class="link solid-btn"
-                                                    onclick="alert('You can not follow yourself !')">Follow</a>
-                                            @else
-                                                <a href="#." class="link solid-btn followAuthorNow"
-                                                    id="author{{ session('author_id') }}_{{ $book->bookAuthor->id }}"
-                                                    data-user="@if (session('type') == 'USER') {{ session('author_id') }} @endif"
-                                                    data-author="{{ $book->bookAuthor->id }}">Follow</a>
-                                            @endif
-                                        </div>
-                                        <!-- </div> -->
                                     </div>
-                                    <div class="author-dsc">
-                                        <p class="dsc">
-                                            {{ $book->bookAuthor->author_description }}
-                                        </p>
+                                    <div class="author-info__row links">
+                                        <a href="{{ url('author-events/' . $book->bookAuthor->id) }}" class="link">Events</a>
+                                        @if ($book->bookAuthor->id == session('author_id'))
+                                        <a href="#." class="link solid-btn" onclick="alert('You can not follow yourself !')">Follow</a>
+                                        @else
+                                        <a href="#." class="link solid-btn followAuthorNow" id="author{{ session('author_id') }}_{{ $book->bookAuthor->id }}" data-user="@if (session('type') == 'USER') {{ session('author_id') }} @endif" data-author="{{ $book->bookAuthor->id }}">Follow</a>
+                                        @endif
                                     </div>
+                                    <!-- </div> -->
                                 </div>
-                                <div class="tab-body__inner media d-none" id="media">
-                                   <iframe  src="https://www.youtube.com/embed/{{ getYoutubeVideoId($book->video_link) }}" frameborder="0" allowfullscreen></iframe>
-                                    @foreach ($book->bookDocuments as $bookDocs)
-                                        <figure class="media-item image">
-                                            <a href="{{ url('book-details/' . $row1->id) }}">
-                                                @if ($bookDocs->type == 'IMAGE')
-                                                    <img src="{{ asset($bookDocs->path ?? '') }}" alt="" />
-                                                @elseif($bookDocs->type == 'VIDEO')
-                                                    <video width="320" height="240" controls>
-                                                        <source src="{{ asset($bookDocs->path ?? '') }}"
-                                                            type="video/mp4">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                @endif
-                                            </a>
-                                        </figure>
-                                    @endforeach
-                                    {{-- <a href="#" class="media__item video space-bottom">
-                                        <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-11.png" alt="" />
-                                        <span class="icon">
-                                            <svg width="58" height="58" viewBox="0 0 58 58" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="29" cy="29" r="28.5" stroke="#3E3E3E" />
-                                                <path
-                                                    d="M40 26.7679C41.3333 27.5378 41.3333 29.4623 40 30.2321L24.25 39.3253C22.9167 40.0951 21.25 39.1329 21.25 37.5933L21.25 19.4067C21.25 17.8671 22.9167 16.9049 24.25 17.6747L40 26.7679Z"
-                                                    fill="#656565" />
-                                            </svg>
-                                        </span>
-                                        <div class="video__text">
-                                            <p class="text">
-                                                Jane Doe Prologue : In Code
-                                            </p>
-                                        </div>
-                                    </a>
-                                    <figure class="media__item figure">
-                                        <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-19.png" alt="" />
-                                    </figure>
-                                    <figure class="media__item figure">
-                                        <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-19.png" alt="" />
-                                    </figure> --}}
+                                <div class="author-dsc">
+                                    <p class="dsc">
+                                        {{ $book->bookAuthor->author_description }}
+                                    </p>
                                 </div>
-
                             </div>
+                            <div class="tab-body__inner media d-none" id="media">
+                                <iframe src="https://www.youtube.com/embed/{{ getYoutubeVideoId($book->video_link) }}" frameborder="0" allowfullscreen></iframe>
+                                @foreach ($book->bookDocuments as $bookDocs)
+                                <figure class="media-item image">
+                                    <a href="{{ url('book-details/' . $row1->id) }}">
+                                        @if ($bookDocs->type == 'IMAGE')
+                                        <img src="{{ asset($bookDocs->path ?? '') }}" alt="" />
+                                        @elseif($bookDocs->type == 'VIDEO')
+                                        <video width="320" height="240" controls>
+                                            <source src="{{ asset($bookDocs->path ?? '') }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        @endif
+                                    </a>
+                                </figure>
+                                @endforeach
+                                {{-- <a href="#" class="media__item video space-bottom">
+                                        <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-11.png" alt="" />
+                                <span class="icon">
+                                    <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="29" cy="29" r="28.5" stroke="#3E3E3E" />
+                                        <path d="M40 26.7679C41.3333 27.5378 41.3333 29.4623 40 30.2321L24.25 39.3253C22.9167 40.0951 21.25 39.1329 21.25 37.5933L21.25 19.4067C21.25 17.8671 22.9167 16.9049 24.25 17.6747L40 26.7679Z" fill="#656565" />
+                                    </svg>
+                                </span>
+                                <div class="video__text">
+                                    <p class="text">
+                                        Jane Doe Prologue : In Code
+                                    </p>
+                                </div>
+                                </a>
+                                <figure class="media__item figure">
+                                    <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-19.png" alt="" />
+                                </figure>
+                                <figure class="media__item figure">
+                                    <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-19.png" alt="" />
+                                </figure> --}}
+                            </div>
+
                         </div>
                     </div>
-                    <!-- Grid Items -->
-                    <div class="grid-container author-inheritance">
-                        <div class="title-bar flex-equal">
-                            <h3 class="title">From the same Author</h3>
-                        </div>
-                        <div class="grid-items">
-                            @if ($author_books->isNotEmpty())
-                                @foreach ($author_books as $sBooks)
-                                    <div class="card grid-item">
-                                        @if (isset($sBooks->bookDocuments[0]))
-                                            <a href="{{ url('book-details/' . $sBooks->id) }}" class="figure">
-                                                <img src="{{ asset($sBooks->bookDocuments[0]->path) }}" alt="" />
-                                            </a>
-                                        @endif
-                                        <div class="text-wrap">
-                                            <h5 class="subtitle">PAPERBACK</h5>
-                                            <a href="{{ url('book-details/' . $sBooks->id) }}"
-                                                class="title">{{ $sBooks->book_name }}</a>
+                </div>
+                <!-- Grid Items -->
+                <div class="grid-container author-inheritance">
+                    <div class="title-bar flex-equal">
+                        <h3 class="title">From the same Author</h3>
+                    </div>
+                    <div class="grid-items">
+                        @if ($author_books->isNotEmpty())
+                        @foreach ($author_books as $sBooks)
+                        <div class="card grid-item">
+                            @if (isset($sBooks->bookDocuments[0]))
+                            <a href="{{ url('book-details/' . $sBooks->id) }}" class="figure">
+                                <img src="{{ asset($sBooks->bookDocuments[0]->path) }}" alt="" />
+                            </a>
+                            @endif
+                            <div class="text-wrap">
 
-                                            <?php
+                                <a href="{{ url('book-details/' . $sBooks->id) }}" class="title">{{ $sBooks->book_name }}</a>
+
+                                <?php
                                             $text = $sBooks->book_description;
-                                            if (strlen($text) > 30) {
-                                                $firstPara = substr($text, 0, strpos($text, ' ', 30));
+                                            if (strlen($text) > 100) {
+                                                $firstPara = substr($text, 0, strpos($text, ' ', 100));
                                                 $countLength = strlen($firstPara);
                                                 $secondPara = substr($text, strpos($text, true) + $countLength);
                                             } else {
@@ -703,153 +667,153 @@
                                             }
                                             ?>
 
-                                            <p class="para">
-                                                <span class="main">
-                                                    {{ $firstPara }}
-                                                </span>
-                                                @if (strlen($text) > 30)
-                                                    <span class="extended">
-                                                        {{ $secondPara }}
-                                                    </span>
-                                                    <span class="read-more">Show More</span>
-                                                @endif
-                                            </p>
+                                <p class="para">
+                                    <span class="main">
+                                        {{ $firstPara }} {{ strlen($text) > 100 ? '...' : '' }}
+                                    </span>
 
-                                            {{-- <p class="dsc">
+                                </p>
+
+                                {{-- <p class="dsc">
                                         {{Illuminate\Support\Str::of($sBooks->book_description ?? '')->words(10, ' ...')}}
-                                    </p> --}}
+                                </p> --}}
 
-                                            {{-- <span class="ratting-poing">8.9</span> --}}
-                                            <a href="{{ url('book-details/' . $sBooks->id) }}" class="card-link">View
-                                                Details</a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @else
-                                <h5 class="title">No other books available</h5>
-                            @endif
+                                {{-- <span class="ratting-poing">8.9</span> --}}
+                                <a href="{{ url('book-details/' . $sBooks->id) }}" class="card-link">View
+                                    Details</a>
+                            </div>
                         </div>
+                        @endforeach
+                        @else
+                        <h5 class="title">No other books available</h5>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <script>
-        function showShareButton() {
-            $('#shareButtons').show();
-        }
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Initially hide the book_author field and disable the author label
-            $('#book_author, #author_label, #author_text').addClass('hidden');
+    </div>
+</section>
+<script>
+    function showShareButton() {
+        $('#shareButtons').show();
+    }
 
-            // On radio button change
-            $('input[name="author_define"]').change(function() {
-                if ($(this).val() === 'Author') {
-                    // If Author is selected, show the book_author field and enable the author label
-                    $('#book_author, #author_label, #author_text').removeClass('hidden');
-                } else {
-                    // If Publisher is selected, hide the book_author field and disable the author label
-                    $('#book_author, #author_label, #author_text').addClass('hidden');
-                }
-            });
-        });
-    </script>
-    <script>
-        function validateForm() {
-            var authorDefine = document.querySelector('input[name="author_define"]:checked');
+</script>
+<script>
+    $(document).ready(function() {
+        // Initially hide the book_author field and disable the author label
+        $('#book_author, #author_label, #author_text').addClass('hidden');
 
-            if (!authorDefine) {
-                alert('Please select a role (Publisher or Author).');
-                return;
+        // On radio button change
+        $('input[name="author_define"]').change(function() {
+            if ($(this).val() === 'Author') {
+                // If Author is selected, show the book_author field and enable the author label
+                $('#book_author, #author_label, #author_text').removeClass('hidden');
+            } else {
+                // If Publisher is selected, hide the book_author field and disable the author label
+                $('#book_author, #author_label, #author_text').addClass('hidden');
             }
+        });
+    });
 
-            // Additional validation logic can be added here if needed
+</script>
+<script>
+    function validateForm() {
+        var authorDefine = document.querySelector('input[name="author_define"]:checked');
 
-            // If the form is valid, you can submit it
-            document.getElementById('myForm').submit();
+        if (!authorDefine) {
+            alert('Please select a role (Publisher or Author).');
+            return;
         }
-    </script>
-    <script>
-        function handleInput() {
-            // Your JavaScript logic goes here
-            // Get the ISBN value from the input field
-            var isbn = document.getElementById("#isbn").value;
 
-            console.log(isbn);
-            $("#invalid-isbn").empty();
-            // showCalimaticLoader();
-            $('.has-loader .loader').css('display', 'block');
+        // Additional validation logic can be added here if needed
 
-            // Make an API call
-            var apiUrl = "https://api2.isbndb.com/book/" + isbn;
+        // If the form is valid, you can submit it
+        document.getElementById('myForm').submit();
+    }
 
-            $.ajax({
-                url: apiUrl,
-                type: "GET",
-                headers: {
-                    'Authorization': '51099_4d7a81aeab0d75869e85e1ea60561a9b',
-                    'User-Agent': 'insomnia/5.12.4',
-                    'Accept': '*/*'
-                },
-                success: function(response) {
-                    // Request was successful, process the response
-                    console.log(response);
+</script>
+<script>
+    function handleInput() {
+        // Your JavaScript logic goes here
+        // Get the ISBN value from the input field
+        var isbn = document.getElementById("#isbn").value;
+
+        console.log(isbn);
+        $("#invalid-isbn").empty();
+        // showCalimaticLoader();
+        $('.has-loader .loader').css('display', 'block');
+
+        // Make an API call
+        var apiUrl = "https://api2.isbndb.com/book/" + isbn;
+
+        $.ajax({
+            url: apiUrl
+            , type: "GET"
+            , headers: {
+                'Authorization': '51099_4d7a81aeab0d75869e85e1ea60561a9b'
+                , 'User-Agent': 'insomnia/5.12.4'
+                , 'Accept': '*/*'
+            }
+            , success: function(response) {
+                // Request was successful, process the response
+                console.log(response);
+                // HideCalimaticLoader();
+                $('.has-loader .loader').css('display', 'none');
+                $('#title').val(response.book.title);
+                $('#dsc').val(response.book.synopsis);
+                $('#file_updoad_isbn').val(response.book.image);
+                // Process the bookData here
+            }
+            , error: function(xhr) {
+                if (xhr.status == 404) {
+                    // Not Found error
+                    console.log("Error: Not Found");
+                    $("#invalid-isbn").text("Invalid Isbn").css({
+                        'color': 'red'
+                        , 'display': 'block'
+                    });
                     // HideCalimaticLoader();
                     $('.has-loader .loader').css('display', 'none');
-                    $('#title').val(response.book.title);
-                    $('#dsc').val(response.book.synopsis);
-                    $('#file_updoad_isbn').val(response.book.image);
-                    // Process the bookData here
-                },
-                error: function(xhr) {
-                    if (xhr.status == 404) {
-                        // Not Found error
-                        console.log("Error: Not Found");
-                        $("#invalid-isbn").text("Invalid Isbn").css({
-                            'color': 'red',
-                            'display': 'block'
-                        });
-                        // HideCalimaticLoader();
-                        $('.has-loader .loader').css('display', 'none');
-                    } else if (xhr.status == 429) {
-                        // Too Many Requests error
-                        console.log("Error: Limit Exceeded");
-                        $("#invalid-isbn").text("Limit Exceeded").css({
-                            'color': 'red',
-                            'display': 'block'
-                        });;
-                        // HideCalimaticLoader();
-                        $('.has-loader .loader').css('display', 'none');
-                    } else {
-                        // Handle other status codes
-                        console.log("Error: Unexpected status code " + xhr.status);
-                        $("#invalid-isbn").text("Network error").css({
-                            'color': 'red',
-                            'display': 'block'
-                        });;
-                        // HideCalimaticLoader();
-                        $('.has-loader .loader').css('display', 'none');
-                    }
-                },
+                } else if (xhr.status == 429) {
+                    // Too Many Requests error
+                    console.log("Error: Limit Exceeded");
+                    $("#invalid-isbn").text("Limit Exceeded").css({
+                        'color': 'red'
+                        , 'display': 'block'
+                    });;
+                    // HideCalimaticLoader();
+                    $('.has-loader .loader').css('display', 'none');
+                } else {
+                    // Handle other status codes
+                    console.log("Error: Unexpected status code " + xhr.status);
+                    $("#invalid-isbn").text("Network error").css({
+                        'color': 'red'
+                        , 'display': 'block'
+                    });;
+                    // HideCalimaticLoader();
+                    $('.has-loader .loader').css('display', 'none');
+                }
+            },
 
-            });
+        });
 
-        }
-    </script>
+    }
 
-    <script>
-        function showAlert(radioButton) {
+</script>
 
-            radioButton.disabled = true;
-            radioButton.checked = false;
-            // Delay the alert by a short amount of time (e.g., 100 milliseconds)
-            setTimeout(function() {
-                alert('You have crossed the limit of your current membership plan!');
-            }, 100);
+<script>
+    function showAlert(radioButton) {
 
-            // The radio button will be checked before the alert is triggered
-        }
-    </script>
+        radioButton.disabled = true;
+        radioButton.checked = false;
+        // Delay the alert by a short amount of time (e.g., 100 milliseconds)
+        setTimeout(function() {
+            alert('You have crossed the limit of your current membership plan!');
+        }, 100);
+
+        // The radio button will be checked before the alert is triggered
+    }
+
+</script>
 @endsection
