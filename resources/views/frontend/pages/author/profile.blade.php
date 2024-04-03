@@ -634,7 +634,7 @@
                                         {{-- <video width="320" height="240" controls> --}}
                                         {{-- <source src="{{ $author->author_intro_video }}" type="video/mp4"> --}}
                                         <iframe
-                                            src="https://www.youtube.com/embed/{{ getYoutubeVideoId($author->author_intro_video) }}"
+                                            src="{{ getVideoEmbededLink($author->author_intro_video) }}"
                                             frameborder="0" allowfullscreen></iframe>
                                         {{-- <source src="movie.ogg" type="video/ogg"> --}}
                                         {{-- Your browser does not support the video tag.
@@ -677,7 +677,7 @@
                                                     <p class="para">
                                                         {{-- <iframe src="{!!$row->podcast_embed_code!!}"></iframe> --}}
                                                         <iframe
-                                                            src="https://www.youtube.com/embed/{{ getYoutubeVideoId($row->podcast_embed_code) }}"
+                                                            src="{{ getVideoEmbededLink($row->podcast_embed_code) }}"
                                                             frameborder="0" allowfullscreen></iframe>
                                                     </p>
                                                 </div>
