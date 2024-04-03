@@ -58,10 +58,10 @@ class MemberShipController extends Controller
             $pressentPrice = $plan->membership_plan_monthly_price;
             $previousPrice = $check_user_has_previous_plan[0]->MembershipPlan->membership_plan_monthly_price;
         }else{
-            
+
             $pressentPrice = $plan->membership_plan_yearly_price;
             $previousPrice = $check_user_has_previous_plan[0]->MembershipPlan->membership_plan_yearly_price;
-        } 
+        }
 
         if(($previousPrice >= $pressentPrice)){
             // echo 1;

@@ -245,7 +245,7 @@
                                                 <div class="author_info flex gp-27">
                                                     <a href="{{ url('author-details/' . $row->id) }}"><img height="60px"
                                                             width="60px"
-                                                            src="{{ asset($row->author_profile_picture ?? '') }}"
+                                                            src="{{ asset($row->author_profile_picture ?? 'public/frontend_asset/imgs/profile.jpg ') }}"
                                                             alt="" class="author-img" /> </a>
                                                     <div class="author_deteals">
                                                         <a href="{{ url('author-details/' . $row->id) }}">

@@ -180,14 +180,14 @@
                 @csrf
                 @method('post')
 
-                <div class="form-field">
+                {{--  <div class="form-field">
                     <label for="text-area">Author </label>
                     <select name="event_author" id="event_author" class="input">
                         @foreach ($author_created_list as $listA)
                             <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div>  --}}
 
                 <div class="form-field">
                     <label for="title" class="label">Event Name*</label>
@@ -393,7 +393,7 @@
                                                 {{ $row->event_ending_time }}
                                             </span><span>{{ $row->event_location }}</span>
                                         </p>
-                                         @if (strlen($row->event_description) < 100) 
+                                         @if (strlen($row->event_description) < 100)
                                             {{ $row->event_description }}
                                         @endif
                                         <?php

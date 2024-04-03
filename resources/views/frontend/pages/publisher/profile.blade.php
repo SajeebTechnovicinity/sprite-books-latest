@@ -34,12 +34,8 @@
                                 required />
                         </div>
                     </div>
-<<<<<<< HEAD
-                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
-=======
                     <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"
                             required />
->>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
                     <div class="form-field">
                         <label for="isbn" class="label">Role*</label>
                         @if (check_user_max_book_by_user_id(session('author_id')) == 1)
@@ -563,28 +559,12 @@
                                     <p class="author-label">
                                         {{ $author->author_bio }}
                                     </p>
-<<<<<<< HEAD
-                                    <div class="author-email">
-=======
                                    <div class="author-email">
                                     @php
                                         $links = explode(',', $author->author_website_link);
                                     @endphp
 
-                                    @foreach($links as $link)
->>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
-                                        @php
-                                            $links = explode(',', $author->author_website_link);
-                                        @endphp
 
-<<<<<<< HEAD
-=======
-                                        <a href="{{ $formattedLink }}" target="_blank" class="link">
-                                            {{ $formattedLink }}
-                                        </a><br>
-                                    @endforeach
-
->>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
 
                                         @if (!empty($links))
                                             @foreach ($links as $link)
@@ -595,7 +575,7 @@
                                                 @if ($formattedLink != 'null')
                                                     <a href="{{ $formattedLink }}" target="_blank" class="link">
                                                         {{ $formattedLink }}
-                                                    </a><br>
+                                                    </a>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -630,7 +610,7 @@
                                 <ul class="social-links unit">
                                     @if ($author->author_facebook_link)
                                         <li>
-                                            <a href="{{ $author->author_facebook_link }}" target="_blank"
+                                            <a target="_blank"  href="{{ $author->author_facebook_link }}" target="_blank"
                                                 class="link">
                                                 <svg width="10" height="20" viewBox="0 0 10 20" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -643,7 +623,7 @@
                                     @endif
                                     @if ($author->author_twitter_link)
                                         <li>
-                                            <a href="{{ $author->author_twitter_link }}" target="_blank" class="link">
+                                            <a target="_blank"  href="{{ $author->author_twitter_link }}" target="_blank" class="link">
                                                 <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -655,7 +635,7 @@
                                     @endif
                                     @if ($author->author_instagram_link)
                                         <li>
-                                            <a href="{{ $author->author_instagram_link }}" target="_blank"
+                                            <a target="_blank"  href="{{ $author->author_instagram_link }}" target="_blank"
                                                 class="link">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -672,7 +652,7 @@
                                     @endif
                                     @if ($author->author_linkedin_link)
                                         <li>
-                                            <a href="{{ $author->author_linkedin_link }}" target="_blank"
+                                            <a target="_blank"  href="{{ $author->author_linkedin_link }}" target="_blank"
                                                 class="link">
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -690,7 +670,7 @@
                                     @endif
                                     @if ($author->author_youtube_link)
                                         <li>
-                                            <a href="{{ $author->author_youtube_link }}" target="_blank" class="link">
+                                            <a target="_blank"  href="{{ $author->author_youtube_link }}" target="_blank" class="link">
                                                 <svg width="20" height="14" viewBox="0 0 20 14" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -702,8 +682,8 @@
                                     @endif
                                     @if ($author->author_pinterest_link)
                                         <li>
-                                            <a href="{{ $author->author_pinterest_link }}" target="_blank"
-                                                class="link">
+                                            <a target="_blank"  href="{{ $author->author_pinterest_link }}" target="_blank"
+                                                 class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/pinterest.png"
                                                     alt="" />
                                             </a>
@@ -711,7 +691,7 @@
                                     @endif
                                     @if ($author->author_spotify_link)
                                         <li>
-                                            <a href="{{ $author->author_spotify_link }}" target="_blank" class="link">
+                                            <a target="_blank"  href="{{ $author->author_spotify_link }}" target="_blank" class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/spotify.png"
                                                     alt="" />
                                             </a>
@@ -719,7 +699,7 @@
                                     @endif
                                     @if ($author->author_podcast_link)
                                         <li>
-                                            <a href="{{ $author->author_podcast_link }}" target="_blank" class="link">
+                                            <a target="_blank"  href="{{ $author->author_podcast_link }}" target="_blank" class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/podcast.png"
                                                     alt="" />
                                             </a>
@@ -1091,27 +1071,10 @@
                                                             <span class="main">
                                                                 {{ $firstPara ?? '' }}
                                                             </span>
-<<<<<<< HEAD
-                                                            
-                                                           
-                                                            @if (strlen($text) > 100)
-                                                                <span class="extended" data-index="{{ $row->id }}"
-                                                                    style="display: none;">
-                                                                    {{ $secondPara }}
-                                                                    {{-- <br>
-                                                                <b> Event Location : </b> {{ $row->event_location }} --}}
-                                                                </span>
-                                                                <span class="read-more"
-                                                                    data-index="{{ $row->id }}">Show More</span>
-                                                            @endif
-
-                                                        </p>
-=======
                                                             <span class="read-more" data-index="{{ $row->id }}">Show More</span>
-                                                        @endif
+
 
                                                     </p>
->>>>>>> fb3103e0c58df9ce55953d1b26eb4e8c6185d99f
 
                                                         <p class="para">
                                                             <a href="{{ $row->event_link }}" target="__blank">Join

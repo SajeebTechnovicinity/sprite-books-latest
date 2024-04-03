@@ -170,4 +170,10 @@ $(document).ready(function () {
          var filename = $(this).val().replace(/.*(\/|\\)/, '');
          $(this).parent().append(`<p style="margin-top: 10px;" class="media-file-name">${filename}</p>`);
      });
+
+  // FAQ
+  $(".faq-trigger").on("click", function () {
+    $(this).parents(".faq__item").toggleClass("active-item");
+    $(this).next(".faq__item-body").slideToggle();
+  });
 });

@@ -60,9 +60,8 @@
                         onchange="previewImage('profile-picture-input', 'profile-picture-preview', '{{ $author->author_profile_picture }}')" />
 
                 </div>
-                <div class="form-field">
-                    <img id="profile-picture-preview" class="preview-image" src="{{ $author->author_profile_picture }}"
-                        alt="Preview Profile Picture" />
+                 <div class="form-field">
+                    <img id="profile-picture-preview" class="preview-image" src="{{ $author->author_profile_picture }}" alt="Preview Profile Picture" />
                 </div>
 
                 <div class="form-field">
@@ -129,11 +128,13 @@
                         @php
                             $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
                         @endphp
-                        @if ($formattedLink != 'null')
+                        @if($formattedLink!="null")
+                        
                             {{-- <a href="{{ $formattedLink }}" target="_blank" class="link">
-                                {{ $formattedLink }}
-                            </a><br> --}}
+                                                        {{ $formattedLink }}
+                                                    </a><br> --}}
                         @endif
+                      
                     @endforeach
 
 
@@ -255,6 +256,7 @@
         });
     </script>
     <script>
+    
         function previewImage(inputId, imageId, defaultSrc) {
             const input = document.getElementById(inputId);
             const image = document.getElementById(imageId);
