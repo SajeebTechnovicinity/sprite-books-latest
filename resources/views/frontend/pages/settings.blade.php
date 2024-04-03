@@ -38,15 +38,13 @@
     <section>
 
         <?php
-            if($author->author_profile_picture==null)
-            {
-                $author->author_profile_picture='public/frontend_asset/imgs/profile.jpg';
-            }
-             if($author->author_cover_picture==null)
-            {
-                $author->author_cover_picture='public/frontend_asset/imgs/cover.jpg';
-            }
-
+        if ($author->author_profile_picture == null) {
+            $author->author_profile_picture = 'public/frontend_asset/imgs/profile.jpg';
+        }
+        if ($author->author_cover_picture == null) {
+            $author->author_cover_picture = 'public/frontend_asset/imgs/cover.jpg';
+        }
+        
         ?>
 
         <div class="container settings">
@@ -62,8 +60,9 @@
                         onchange="previewImage('profile-picture-input', 'profile-picture-preview', '{{ $author->author_profile_picture }}')" />
 
                 </div>
-                 <div class="form-field">      
-                    <img id="profile-picture-preview" class="preview-image" src="{{ $author->author_profile_picture }}" alt="Preview Profile Picture" />
+                <div class="form-field">
+                    <img id="profile-picture-preview" class="preview-image" src="{{ $author->author_profile_picture }}"
+                        alt="Preview Profile Picture" />
                 </div>
 
                 <div class="form-field">
@@ -73,7 +72,8 @@
                 </div>
 
                 <div class="form-field">
-                    <img id="cover-picture-preview" class="preview-image" src="{{ $author->author_cover_picture }}" alt="Preview Cover Picture" />
+                    <img id="cover-picture-preview" class="preview-image" src="{{ $author->author_cover_picture }}"
+                        alt="Preview Cover Picture" />
                 </div>
                 @if (session('type') == 'AUTHOR')
                     {{-- <div class="form-field">
@@ -120,7 +120,7 @@
                 </div>
 
                 <div class="author-email">
-                    <label for="links" class="label">Previous Website Link</label>
+                    {{-- <label for="links" class="label">Previous Website Link</label> --}}
                     @php
                         $links = explode(',', $author->author_website_link);
                     @endphp
@@ -129,13 +129,11 @@
                         @php
                             $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
                         @endphp
-                        @if($formattedLink!="null")
-                        
-                            <a href="{{ $formattedLink }}" target="_blank" class="link">
-                                                        {{ $formattedLink }}
-                                                    </a><br>
+                        @if ($formattedLink != 'null')
+                            {{-- <a href="{{ $formattedLink }}" target="_blank" class="link">
+                                {{ $formattedLink }}
+                            </a><br> --}}
                         @endif
-                      
                     @endforeach
 
 
@@ -143,15 +141,19 @@
 
                 <div class="form-row">
                     <div id="website-links-container">
-                        <div class="form-field">
-
-                            <label for="links" class="label">Change Website Link</label>
-                            <input type="text" name="author_website_link[]" class="input" />
-                        </div>
+                        @foreach ($links as $link)
+                         @php
+                            $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
+                        @endphp
+                            <div class="form-field">
+                                <label for="links" class="label">Website Link</label>
+                                <input type="text" name="author_website_link[]" class="input"
+                                    value="{{ $formattedLink }}" />
+                            </div>
+                        @endforeach
                     </div>
                     <button type="button" id="add-link">Add Link</button>
                 </div>
-
                 <div class="form-row">
                     <div class="form-field">
                         <label for="links" class="label">Youtube Link</label>
@@ -246,14 +248,13 @@
             var newField = document.createElement("div");
             newField.classList.add("form-field");
             newField.innerHTML = `
-            <label for="links" class="label">Website Link</label>
-            <input type="text" name="author_website_link[]" class="input" />
+            <label for="new-link" class="label">Website Link</label>
+            <input type="text" name="author_website_link[]" class="input new-link" />
         `;
             container.appendChild(newField);
         });
     </script>
     <script>
-    
         function previewImage(inputId, imageId, defaultSrc) {
             const input = document.getElementById(inputId);
             const image = document.getElementById(imageId);
