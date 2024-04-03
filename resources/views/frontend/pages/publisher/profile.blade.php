@@ -737,7 +737,7 @@
 
                                         {{-- <iframe src="{!!$author->author_intro_video!!}"></iframe> --}}
                                         <iframe
-                                            src="https://www.youtube.com/embed/{{ getYoutubeVideoId($author->author_intro_video) }}"
+                                            src="{{ getVideoEmbededLink($author->author_intro_video) }}"
                                             frameborder="0" allowfullscreen></iframe>
 
                                     </a>

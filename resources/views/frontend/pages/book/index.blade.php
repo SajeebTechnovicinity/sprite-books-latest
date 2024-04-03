@@ -598,7 +598,7 @@
                                 </div>
                             </div>
                             <div class="tab-body__inner media d-none" id="media">
-                                <iframe src="https://www.youtube.com/embed/{{ getYoutubeVideoId($book->video_link) }}" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="{{ getVideoEmbededLink($book->video_link) }}" frameborder="0" allowfullscreen></iframe>
                                 @foreach ($book->bookDocuments as $bookDocs)
                                 <figure class="media-item image">
                                     <a href="{{ url('book-details/' . $row1->id) }}">

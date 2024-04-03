@@ -332,18 +332,39 @@ if (!function_exists('get_post_dislike_count')) {
     }
 }
 
-function getYoutubeVideoId($url) {
-    $video_id = '';
+function getVideoEmbededLink($url) {
     $parsed_url = parse_url($url);
-    if (isset($parsed_url['query'])) {
-        parse_str($parsed_url['query'], $query_params);
-        if (isset($query_params['v'])) {
-            $video_id = $query_params['v'];
-        }
-    } elseif (preg_match("/\/embed\/([a-zA-Z0-9\-_]+)/", $url, $matches)) {
-        $video_id = $matches[1];
+    
+    if ($parsed_url === false || !isset($parsed_url['host'])) {
+        return "Invalid URL";
     }
-    return $video_id;
+
+    // Check if it's a YouTube link
+    if ($parsed_url['host'] === 'www.youtube.com' || $parsed_url['host'] === 'youtube.com') {
+        $video_id = '';
+        if (isset($parsed_url['query'])) {
+            parse_str($parsed_url['query'], $query_params);
+            if (isset($query_params['v'])) {
+                $video_id = $query_params['v'];
+            }
+        } elseif (preg_match("/\/embed\/([a-zA-Z0-9\-_]+)/", $url, $matches)) {
+            $video_id = $matches[1];
+        }
+        if (!empty($video_id)) {
+            return "https://www.youtube.com/embed/$video_id";
+        } else {
+            return "Invalid YouTube URL";
+        }
+    }
+
+    // Check if it's a Vimeo link
+    if ($parsed_url['host'] === 'vimeo.com') {
+        $path_components = explode('/', $parsed_url['path']);
+        $video_id = $path_components[count($path_components) - 1];
+        return "https://player.vimeo.com/video/$video_id";
+    }
+
+    return "Not a YouTube or Vimeo URL";
 }
 
 
