@@ -24,4 +24,27 @@ class FrequentQuestionController extends Controller
         $data = $request->except('_token');
         FrequentQuestion::create($data);
     }
+
+    public function edit($id){
+
+        $data['faq']= FrequentQuestion::where('id',$id)->first();
+        return view("backend.pages.frequent_question.edit", $data);
+    }
+
+    public function update(Request $request,$id){
+        $request->validate([
+            'question' => 'required',
+            'answer' => 'required'
+        ]);
+        $data = $request->except('_token');
+        FrequentQuestion::where('id',$id)->update($data);
+
+        return redirect('admin/frequent-questions');
+    }
+    public function delete($id)
+    {
+        FrequentQuestion::where('id',$id)->delete();
+
+        return redirect()->back()->with('success','Delete successfully');
+    }
 }

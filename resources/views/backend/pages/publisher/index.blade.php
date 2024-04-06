@@ -50,9 +50,7 @@
 
                     <tr>
                         <th>Select All <br> <input type="checkbox" id="select-all"></th>
-                        <th>Sl</th>
 
-                    <tr>
 
                         <th>Code</th>
                         <th>Profile</th>
@@ -67,7 +65,7 @@
                     <tr>
                         <td><input type="checkbox" class="checkbox" value="{{ $row->id }}"></td>
 
-                    <tr>
+                   
                         <td>{{ $row->author_code }}</td>
 
                         <td>

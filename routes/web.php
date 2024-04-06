@@ -314,6 +314,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     //    FAQ
     Route::resource('frequent-questions', FrequentQuestionController::class)->middleware('auth');
+    Route::get('faq/edit/{id}', [FrequentQuestionController::class,'edit'])->middleware('auth');
+    Route::post('faq/update/{id}', [FrequentQuestionController::class,'update'])->middleware('auth');
+    Route::get('faq/delete/{id}', [FrequentQuestionController::class,'delete'])->middleware('auth');
 
     //    Blog
     Route::resource('blogs', AdminBlogController::class)->middleware('auth');

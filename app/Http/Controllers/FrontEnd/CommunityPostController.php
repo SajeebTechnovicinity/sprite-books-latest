@@ -20,7 +20,8 @@ class CommunityPostController extends Controller
     {
 
         $request->validate([
-            'post' => 'required:max:100',
+            'post' => 'required',
+            'title'=>'nullable',
             'post_image' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg,video/mp4|max:5160', // Maximum file size is 1 MB
         ], [
             'post.required' => 'The caption field is required.',
@@ -32,6 +33,7 @@ class CommunityPostController extends Controller
         // echo '<pre>';print_r($request->all());die;
         $post = new CommunityPost;
         $post->post = $request->post;
+        $post->title = $request->title;
         $post->user_id = session('author_id');
         $post->date = date('Y-m-d');
         $post->status = 1;

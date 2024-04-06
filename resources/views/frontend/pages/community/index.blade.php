@@ -333,7 +333,7 @@
                                                     <div class="create-post_body">
                                                         <form id="add_post_form" enctype="multipart/form-data">
 
-                                                            <span id="charCount" style="margin-left:100px;">0</span>/100
+                                                            {{-- <span id="charCount" style="margin-left:100px;">0</span>/100 --}}
 
                                                             <div class="input-area flex">
 
@@ -341,6 +341,14 @@
                                                                     <img src="@if ($current_user->author_cover_picture) {{ asset($current_user->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                                                         alt="" />
                                                                 </figure>
+                                                                
+
+                                                                <input class="input"
+                                                                    placeholder="Enter your title" type="text"
+                                                                    name="title" id="postInput" />
+
+                                                                
+                                                          
 
                                                                 <input class="input"
                                                                     placeholder="Share what on your mind?" type="text"
@@ -379,7 +387,7 @@
 
 
                                                                 <button class="btn btn-success" type='submit'
-                                                                    id="postButton" disabled>Post</button>
+                                                                    >Post</button>
 
                                                             </div>
                                                         </form>
@@ -414,6 +422,9 @@
                                                                         fill="#C0C0C0" />
                                                                 </svg>
                                                             </a>
+                                                        </div>
+                                                         <div class="post__dec">
+                                                            <b>{{ $rowPost->title }}</b>
                                                         </div>
                                                         <div class="post__dec">
                                                             {{ $rowPost->post }}
