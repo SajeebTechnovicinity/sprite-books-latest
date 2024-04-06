@@ -47,10 +47,10 @@
 
                         <tr>
                             <th>Select All <br>  <input type="checkbox" id="select-all"></th>
-
+{{-- 
                             <th>Sl</th>
 
-                    <tr>
+                    <tr> --}}
 
                             <th>Code</th>
                             <th>Profile</th>

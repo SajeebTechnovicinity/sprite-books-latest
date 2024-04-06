@@ -27,7 +27,7 @@
                         <th>Sl</th>
                         <th>Question</th>
                         <th width="50%">Answer</th>
-                        {{--  <th>Action</th>  --}}
+                         <th>Action</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -45,14 +45,14 @@
                            </td>
 
 
-                           {{--  <td>
-                           <a class="btn btn-success btn-sm" href="{{url('admin/authors')}}/{{ $row->id }}/edit">
+                            <td>
+                           <a class="btn btn-success btn-sm" href="{{url('admin/faq/edit')}}/{{ $row->id }}">
                            Edit
                            </a>
-                           <a class="btn btn-danger btn-sm text-white">
-                           Delete
-                           </a>
-                           </td>  --}}
+                           <a class="btn btn-danger btn-sm text-white" onclick="confirmCancellation(event,{{ $row->id }})">
+                                Delete
+                            </a>
+                           </td> 
                        </tr>
                    @endforeach
 
@@ -155,6 +155,29 @@
         $('.loader').hide();
     });
 
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function confirmCancellation(event, id) {
+        event.preventDefault(); // Prevent the default action of the link
+        Swal.fire({
+            title: 'Are you sure?'
+            , text: 'You won\'t be able to revert this!'
+            , icon: 'warning'
+            , showCancelButton: true
+            , confirmButtonColor: '#3085d6'
+            , cancelButtonColor: '#d33'
+            , confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user clicks "Yes," proceed with the cancellation
+                window.location.href = "{{ url('admin/faq/delete/') }}" + "/" + id;
+            }
+        });
+    }
 
 </script>
 @endsection
