@@ -185,7 +185,7 @@
                     </nav>
                 </div>
 
-                <div class="tab-content">
+                <div class="content-wrap">
                     <!-- Breadcrumb -->
                     {{-- <ul class="breadcrumb">
                         <li class="breadcrumb__item">
@@ -210,14 +210,14 @@
 
                             <!-- Grid Items -->
                             <div class="grid-container author-inheritance">
-                                <div class="title-bar flex-equal">
+                                <div class="title-bar flex-equal" style="padding-top: 0; padding-bottom: 35px;">
                                     <h3 class="title">Books</h3>
                                 </div>
-                                <div class="grid-items">
+                                <div class="grid-items card-wrap books-card">
                                 @if ($books->isNotEmpty())
                                     @foreach ($books as $sBooks)
 
-                                            <div class="card grid-item">
+                                        <div class="card grid-item">
                                                 @if (isset($sBooks->bookDocuments[0]))
                                                     <a href="{{ url('book-details/' . $sBooks->id) }}" class="figure">
                                                         <img src="{{ asset($sBooks->bookDocuments[0]->path) }}"
@@ -228,21 +228,6 @@
                                                     <h5 class="subtitle">PAPERBACK</h5>
                                                     <a href="{{ url('book-details/' . $sBooks->id) }}"
                                                         class="title">{{ $sBooks->book_name }}</a>
-
-                                        <div class="blog-meta">
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                    <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                                                </svg> Book Tree Admin
-                                            </span>
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                    <path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z" />
-                                                </svg>
-
-                                                20 December 2024
-                                            </span>
-                                        </div>
 
                                         <?php
                                         $text = $sBooks->book_description;
@@ -274,6 +259,7 @@
                                         {{-- <span class="ratting-poing">8.9</span> --}}
                                         <a href="{{ url('book-details/' . $sBooks->id) }}" class="card-link">
                                             Details</a>
+                                    </div>
                                     </div>
 
                                 @endforeach

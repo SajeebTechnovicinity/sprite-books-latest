@@ -126,8 +126,35 @@ figure {
 
 .leading-cards .card-wrap{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
   grid-gap: 30px;
+}
+
+.card-wrap.col-4{
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.card-wrap.books-card .card{
+  padding: 0;
+  background-color: transparent;
+  text-align: center;
+}
+
+.card-wrap.books-card .card .para{
+  border-top: 1px solid #dddddd;
+  margin: 0;
+  padding-top: 12px;
+}
+
+.card-wrap.books-card .card img{
+  width: 181px;
+  height: 257px !important;
+}
+
+.books-card .card .figure{
+  margin: 0;
+  margin-bottom: 15px;
+  display: inline-block;
 }
 
 @media (max-width: 575px){
@@ -828,10 +855,6 @@ figure {
   gap: 130px;
 }
 
-.card .figure {
-  display: block;
-}
-
 .fig-content .figure img,
 .card .figure img {
   width: 100%;
@@ -858,7 +881,6 @@ figure {
 .card .figure img {
   height: 250px;
   object-fit: contain;
-  background-color: rgb(154 171 189 / 17%);
 }
 
 .Community-body-content .card .figure img {
@@ -1216,10 +1238,6 @@ figure {
   .card-wrap .card-heading {
     font-size: 18px;
     margin-bottom: 10px;
-  }
-
-  .card .figure {
-    /* margin-bottom: 15px; */
   }
 
   .card .name {

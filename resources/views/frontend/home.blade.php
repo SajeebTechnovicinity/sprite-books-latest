@@ -421,11 +421,13 @@
         <div class="container">
             <div class="title">
                 {{-- <h4 class="title__sub">Is Now In Your Pocket!</h4> --}}
-                <h2 class="title__main">Our Communities</h2>
+                <!-- <h2 class="title__main">Our Communities</h2> -->
+                <h2 class="title__main">Author of the Month</h2>
             </div>
             <div class="cards leading-cards">
-                <div class="card-wrap">
-                    <div class="card-heading">Author of the Month</div>
+                <!-- <h2 style="text-align: center;" class="card-heading">Author of the Month</h2> -->
+                <div class="card-wrap col-4 books-card">
+
                      @if($author!=null)
                     <div class="card">
                         @if($author->profile_picture)
@@ -452,8 +454,12 @@
                         No Data Found!
                     @endif
                 </div>
-                <div class="card-wrap mt-60 books-card">
-                    <div class="card-heading">Book of the Month</div>
+                <div class="title">
+                    <h2 class="title__main">Book of the Month</h2>
+                </div>
+                <!-- <h2 class="card-heading" style="text-align: center;">Book of the Month</h2> -->
+                <div class="card-wrap mt-60 books-card col-4">
+
                     @if($book!=null)
                     <div class="card">
                         <a href="#" class="figure">
