@@ -301,6 +301,7 @@
                                                         class="card-link">View
                                                         Details</a>
                                                 </div>
+                                            </div>
 
                                     @endforeach
                                 @else

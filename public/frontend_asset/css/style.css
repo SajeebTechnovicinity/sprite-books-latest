@@ -5,9 +5,9 @@
   --color-dark: rgb(11, 48, 86);
   --color-dark_lite: #8d8d9b;
   --light-color: #ffffff;
-  --color-gray: #3e3e3e;
-  --color-gray_lite: #656565;
-  --color-gray_extra-lite: #c0c0c0;
+  --color-gray: #000000;
+  --color-gray_lite: #000000;
+  --color-gray_extra-lite: #000000;
   --bg-color: #f0f0f0;
   --bg-color_lite: #f2f2f2;
   --bg-color_extra-lite: #f9f9f9;
@@ -59,7 +59,7 @@ li {
 a {
   text-decoration: none;
   transition: 0.3s;
-  color: #333333;
+  color: #000000;
 }
 
 img,
@@ -856,9 +856,14 @@ figure {
 }
 
 .card .figure img {
-  height: 430px;
+  height: 250px;
   object-fit: contain;
-  background-color: rgb(154 171 189);
+  background-color: rgb(154 171 189 / 17%);
+}
+
+.Community-body-content .card .figure img {
+  height: 250px;
+  object-fit: cover;
 }
 
 .fig-content .subtitle {
@@ -1118,7 +1123,7 @@ figure {
   font-size: 17px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  padding: 13px 58px;
+  padding: 8px 30px;
   border-radius: 32px;
   background-color: var(--color-dark);
   display: inline-block;
@@ -1899,7 +1904,7 @@ figure {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.56;
-  color: var(--color-dark_lite);
+  color: #000000;
   padding: 9px 20px;
   outline-color: var(--color-highlight);
   width: 100%;
@@ -2202,7 +2207,7 @@ figure {
 }
 
 .community-cards-carousel .slick-slide {
-  width: 400px;
+  width: 300px;
 }
 
 .cards-carousel .slick-prev {
@@ -2461,7 +2466,7 @@ figure {
 ***************************/
 .grid-items {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px 30px;
 }
 
@@ -3592,8 +3597,6 @@ border-radius: 50%;
 
 .profile-banner img {
   width: 100%;
-  object-fit: cover;
-  height: 330px;
 }
 
 .profile-banner .edit-banner{
@@ -3823,10 +3826,6 @@ border-radius: 50%;
   object-fit: cover;
 }
 
-#books .grid-items {
-  grid-template-columns: repeat(2, 1fr);
-}
-
 .event-card video,
 .event-card iframe{
   max-width: 100%!important;
@@ -3851,7 +3850,7 @@ border-radius: 50%;
 .event-card__timezone {
   font-size: 14px;
   line-height: 1.79;
-  color: #656565;
+  color: #000000;
   margin: 0 0 20px;
   position: relative;
 }
@@ -3879,7 +3878,7 @@ border-radius: 50%;
   font-size: 16px;
   line-height: 1.8;
 
-  color: #656565;
+  color: #000000;
 }
 
 .panel-body form button{
@@ -5646,7 +5645,7 @@ label.pseudo-checkbox {
   font-size: 16px;
   line-height: 16px;
   letter-spacing: 0.3px;
-  color: #c0c0c0;
+  color: #000000;
   flex: 1;
 }
 
@@ -7107,13 +7106,17 @@ label .text .inner{
   margin-bottom: 25px;
 }
 
+.grid-items.grid-books {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .grid-books .card .figure img{
-  height: 430px;
+  height: 190px;
   object-fit: contain!important;
 }
 
 .books-card .card .figure img{
-  height: 463px;
+  height: 250px;
   object-fit: contain!important;
 }
 
@@ -7135,4 +7138,38 @@ label .text .inner{
 
 .author-block__imgs  img{
   height: 150px;
+}
+
+.inpts{
+  flex: 1;
+}
+
+.inpts .input{
+  width: 100%;
+  display: block;
+}
+
+.Author-Blogs .card .figure img{
+  object-fit: cover;
+}
+
+.settings-form{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+
+@media (max-width: 767px){
+  .settings-form{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.preview-image{
+  width: auto;
+}
+
+.file{
+  width: 100%;
 }

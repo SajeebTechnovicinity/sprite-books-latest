@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     if(cartCarouselItems.length > 2){
         $(".cards-carousel").slick({
-            slidesToShow: 3,
+            slidesToShow: 4,
             slidesToScroll: 1,
             autoplay: true,
             responsive: [

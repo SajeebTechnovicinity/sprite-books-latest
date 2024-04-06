@@ -2,9 +2,6 @@
 
 @section('content')
     <style>
-        .settings .form-field {
-            margin-bottom: 15px;
-        }
 
         .settings .title {
             background-color: #efefef;
@@ -44,12 +41,12 @@
         if ($author->author_cover_picture == null) {
             $author->author_cover_picture = 'public/frontend_asset/imgs/cover.jpg';
         }
-        
+
         ?>
 
         <div class="container settings">
             <h1 class="title" style="text-align: center;">Add your Information</h1>
-            <form action="{{ url('save-informations') }}" method="post" class="modal__form" enctype="multipart/form-data">
+            <form action="{{ url('save-informations') }}" method="post" class="modal__form settings-form" enctype="multipart/form-data">
                 @csrf
                 @method('post')
 
@@ -58,22 +55,23 @@
                     Profile Picture (Size: 300x300)
                     <input class="file" type="file" name="file_updoad" id="profile-picture-input"
                         onchange="previewImage('profile-picture-input', 'profile-picture-preview', '{{ $author->author_profile_picture }}')" />
+                        <div class="img-preview-wrap">
+                    <img  height="150" id="profile-picture-preview" class="preview-image" src="{{ $author->author_profile_picture }}" alt="Preview Profile Picture" />
+                </div>
+                </div>
 
-                </div>
-                 <div class="form-field">
-                    <img id="profile-picture-preview" class="preview-image" src="{{ $author->author_profile_picture }}" alt="Preview Profile Picture" />
-                </div>
 
                 <div class="form-field">
-                    Cover Picture (Size: 1000x330)
+                    Cover Picture (Size: 1000x450)
                     <input type="file" class="file" name="cover_picture" id="cover-picture-input"
                         onchange="previewImage('cover-picture-input', 'cover-picture-preview', '')" />
-                </div>
-
-                <div class="form-field">
+                        <div class="img-preview-wrap">
                     <img id="cover-picture-preview" class="preview-image" src="{{ $author->author_cover_picture }}"
                         alt="Preview Cover Picture" />
                 </div>
+                </div>
+
+
                 @if (session('type') == 'AUTHOR')
                     {{-- <div class="form-field">
             <label for="attach-file2" class="attach-btn btn-lite btn">
@@ -118,6 +116,7 @@
                     </select>
                 </div>
 
+                <!--
                 <div class="author-email">
                     {{-- <label for="links" class="label">Previous Website Link</label> --}}
                     @php
@@ -129,19 +128,19 @@
                             $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
                         @endphp
                         @if($formattedLink!="null")
-                        
+
                             {{-- <a href="{{ $formattedLink }}" target="_blank" class="link">
                                                         {{ $formattedLink }}
                                                     </a><br> --}}
                         @endif
-                      
+
                     @endforeach
 
 
-                </div>
+                </div> -->
 
                 <div class="form-row">
-                    <div id="website-links-container">
+                    <div id="website-links-container" style="margin-bottom: 15px;">
                         @foreach ($links as $link)
                          @php
                             $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
@@ -249,14 +248,14 @@
             var newField = document.createElement("div");
             newField.classList.add("form-field");
             newField.innerHTML = `
-            <label for="new-link" class="label">Website Link</label>
+            <label for="new-link" class="label" style="margin-top: 15px">Website Link</label>
             <input type="text" name="author_website_link[]" class="input new-link" />
         `;
             container.appendChild(newField);
         });
     </script>
     <script>
-    
+
         function previewImage(inputId, imageId, defaultSrc) {
             const input = document.getElementById(inputId);
             const image = document.getElementById(imageId);

@@ -3,7 +3,7 @@
 @section('content')
 
       <!-- Cards Holder -->
-      <section class="cards-holder">
+      <section class="cards-holder Author-Blogs">
         <div class="container">
           <div class="title">
             <h4 class="title__sub">Blog post from author</h4>

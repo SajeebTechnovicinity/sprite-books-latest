@@ -741,7 +741,7 @@
 
 
                                                                 <a href="{{ url('book-details/' . $row->id) }}"
-                                                                    class="card-link">View Details</a>
+                                                                    class="card-link">Details</a>
                                                             </div>
                                                         </div>
                                                     @endforeach
