@@ -35,7 +35,7 @@
                         Author: {{$row->author->author_name}}
                   </p>
                   @endif
-                  <a href="{{url('blogs/'.$row->id)}}" class="card-link">View</a>
+                  <a href="{{url('blogs/'.$row->id)}}" class="card-link">Read More</a>
                 </div>
               </div>
 

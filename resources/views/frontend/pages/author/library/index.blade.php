@@ -217,7 +217,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="grid-items">
+                        <div class="grid-items my-library">
                             @if ($books->count() <= 0)
                                 No Books available
                             @endif

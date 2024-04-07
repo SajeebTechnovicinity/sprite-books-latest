@@ -130,6 +130,10 @@ figure {
   grid-gap: 30px;
 }
 
+.Author-Blogs .card-wrap{
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .card-wrap.col-4{
   grid-template-columns: repeat(5, 1fr);
 }
@@ -858,7 +862,6 @@ figure {
 .fig-content .figure img,
 .card .figure img {
   width: 100%;
-  border-radius: 8px;
 }
 
 .entry-content p{
@@ -884,7 +887,7 @@ figure {
 }
 
 .Community-body-content .card .figure img {
-  height: 250px;
+  height: 150px;
   object-fit: cover;
 }
 
@@ -1231,7 +1234,7 @@ figure {
   }
 
   .leading-cards .card {
-    max-width: 400px;
+   width: 100%;
     margin: 0 auto;
   }
 
@@ -1576,6 +1579,7 @@ figure {
 
   .footer__logo img {
     width: 140px;
+    height: auto;
   }
 
   .widget-list .list-item {
@@ -3067,7 +3071,7 @@ figure {
 @media (max-width: 575px) {
   .alt-content .grid-items,
   .books .grid-items{
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr)!important;
   }
 
   .block-component .media {
@@ -3434,6 +3438,7 @@ border-radius: 50%;
 @media (max-width: 1023px) {
   .author-details-page .tabs-wrap{
     width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -3615,6 +3620,8 @@ border-radius: 50%;
 
 .profile-banner img {
   width: 100%;
+  object-fit: cover;
+  height: 310px;
 }
 
 .profile-banner .edit-banner{
@@ -3654,8 +3661,8 @@ border-radius: 50%;
 }
 
 .author-profile-pic img {
-  height: 148px;
-  width: 148px;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid #efefef;
@@ -4294,12 +4301,6 @@ border-radius: 50%;
 
   .member-status{
     margin: 0;
-  }
-
-  .author-profile-pic{
-    height: 70px;
-    width: 70px;
-    margin-top: -60px;
   }
 
   .event-card{
@@ -7128,9 +7129,21 @@ label .text .inner{
   grid-template-columns: repeat(3, 1fr);
 }
 
+.grid-items.grid-books .card {
+  text-align: center;
+  padding: 0;
+  background-color: transparent;
+}
+
+.grid-items.grid-books .card .figure{
+  margin: 0 0 15px;
+  display: inline-block;
+}
+
 .grid-books .card .figure img{
-  height: 190px;
-  object-fit: contain!important;
+  height: 192px;
+  object-fit: contain !important;
+  width: 130px;
 }
 
 .books-card .card .figure img{
@@ -7190,4 +7203,21 @@ label .text .inner{
 
 .file{
   width: 100%;
+}
+
+.grid-items.my-library .card{
+  background-color: transparent;
+  text-align: center;
+  padding: 0;
+}
+
+.grid-items.my-library .card .figure{
+  margin: 0;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.grid-items.my-library .card .figure img{
+  width: 130px;
+  height: 192px;
 }
