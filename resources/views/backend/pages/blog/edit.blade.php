@@ -38,6 +38,10 @@
                             <label for="title" class="label">Blog Description*</label>
                             <textarea name="blog_full_description" class="form-control" id="summernote">{!! $blog->blog_full_description !!}</textarea>
                         </div>
+                        <div class="form-group col-md-12">
+                            <label for="title" class="label">Blog Current Image</label>
+                             <img height="60px" width="60px" src="{{ asset($blog->blog_image) }}">
+                        </div>
 
                         <div class="form-group col-md-12">
                             <label for="title" class="label">Blog Image*</label>

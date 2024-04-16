@@ -27,8 +27,12 @@
 
             <div class="form-field">
                 <label for="title" class="label">Blog Description*</label>
-                <textarea name="blog_full_description" class="input"></textarea>
+                  <textarea id="editor1" class="textarea" name="blog_full_description" placeholder="Enter some text here"
+                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+             
             </div>
+
+              
 
             <div class="form-field">
                 <label for="title" class="label">Blog Image (Max 512 KB) (Recommanded: 300x300 px)*</label>
@@ -59,7 +63,11 @@
         <form action="{{ url('author/update-blog') }}" method="POST" class="modal__form" enctype="multipart/form-data">
             @csrf
             @method('POST')
-            <div id="editBlogInputs"></div>
+            <div id="editBlogInputs">
+            
+            
+
+            </div>
 
 
             <div class="btn-group">
@@ -68,6 +76,8 @@
             </div>
         </form>
     </div>
+
+    
 </div>
 
 
@@ -283,6 +293,26 @@
     </div>
 </section>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+    <script>
+        $(function() {
+            // Replace the <textarea id="editor1"> with a CKEditor instance
+            CKEDITOR.replace('editor1');
+            // Replace the <textarea id="editor2"> with another CKEditor instance
+            CKEDITOR.replace('editor2');
+            CKEDITOR.replace('editor3');
+            CKEDITOR.replace('editor4');
+            CKEDITOR.replace('editor5');
+            CKEDITOR.replace('editor6');
+            CKEDITOR.replace('editor7');
+            CKEDITOR.replace('editor8');
+            CKEDITOR.replace('editor9');
+            CKEDITOR.replace('editor10');
+            // Bootstrap WYSIHTML5 - text editor
+            $(".textarea").wysihtml5();
+        });
+    </script>
 <script>
     function editBlog(id) {
         showCalimaticLoader();
@@ -313,4 +343,6 @@
 
     }
 </script>
+
+
 @endsection

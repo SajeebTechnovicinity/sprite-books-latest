@@ -33,7 +33,8 @@ class EventController extends Controller
  public function add_events(Request $request){
     $request->validate([
         'event_name' => 'required',
-        'event_date' => 'required'
+        'event_date' => 'required',
+        'image'=>'required|max:512'
     ]);
 
     $event = new Event;
@@ -51,6 +52,19 @@ class EventController extends Controller
     $event->event_link = $request->event_link;
     $event->event_starting_time = $request->event_starting_time;
     $event->event_ending_time = $request->event_ending_time;
+
+    if ($request->image) {
+
+        if (isset($request->image)) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('uploads/'), $filename);
+            $event->image = 'public/uploads/' . $filename;
+        }
+    }
+
+
     $event->save();
 
     return redirect()->back()->with('msg','Event added successfully.');
@@ -59,8 +73,10 @@ class EventController extends Controller
  public function update_event(Request $request){
     $request->validate([
         'event_name' => 'required',
-        'event_id' => 'required'
+        'event_id' => 'required',
+        'image'=>'nullable|max:512'
     ]);
+
 
     $event = Event::find($request->event_id);
     $event->event_name = $request->event_name;
@@ -76,6 +92,16 @@ class EventController extends Controller
     $event->event_link = $request->event_link;
     $event->event_starting_time = $request->event_starting_time;
     $event->event_ending_time = $request->event_ending_time;
+
+    if ($request->image) {
+        if (isset($request->image)) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('uploads/'), $filename);
+            $event->image = 'public/uploads/' . $filename;
+        }
+    }
     $event->save();
 
     return redirect()->back()->with('msg','Event Updated successfully.');

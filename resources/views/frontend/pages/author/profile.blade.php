@@ -854,6 +854,9 @@
                                                                 </svg>
                                                             </a>
                                                         </div>
+                                                         <p class="event-card__timezone flex-wrap">
+                                                            <img src="{{ asset($row->image) }}"> 
+                                                            </p>
                                                         <p class="event-card__timezone flex-wrap">
                                                             {{ $row->event_date }}<span
                                                                 class="center">{{ $row->event_starting_time }}-
