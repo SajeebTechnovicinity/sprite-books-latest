@@ -224,7 +224,7 @@
 
                                 <div class="tab-body__inner" id="books">
                                     @foreach ($blogs as $row)
-                                    <div class="event-card">
+                                    <div class="event-card blog-card">
                                         <figure class="figure">
                                             <img height="60px" width="60px" src="@if ($row->blog_image) {{ asset($row->blog_image) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-banner.png @endif" alt="" />
                                         </figure>

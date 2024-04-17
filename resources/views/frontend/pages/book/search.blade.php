@@ -253,11 +253,11 @@
                         <div class="block-component">
 
                             <!-- Grid Items -->
-                            <div class="grid-container author-inheritance">
-                                <div class="title-bar flex-equal">
+                            <div class="grid-container">
+                                <div class="title-bar flex-equal" style="padding-top: 0; padding-bottom: 15px;">
                                     <h3 class="title">Books</h3>
                                 </div>
-                                <div class="grid-items">
+                                <div class="grid-items card-wrap books-card">
                                 @if ($books->isNotEmpty())
                                     @foreach ($books as $sBooks)
 

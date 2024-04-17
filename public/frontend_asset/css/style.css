@@ -2637,12 +2637,13 @@ figure {
 .figure-guoup .figure img{
   height: 97px;
   object-fit: contain;
-  width: 100%;
+  width: auto;
   background-color: #ffffff;
+  margin: 0 auto;
 }
 
-.figure-guoup .slick-current .figure {
-  border: 1px solid var(--color-highlight);
+.figure-guoup .slick-current .figure img{
+  border: 2px solid var(--color-highlight);
 }
 
 .block-content {
@@ -3621,7 +3622,7 @@ border-radius: 50%;
 .profile-banner img {
   width: 100%;
   object-fit: cover;
-  height: 310px;
+  height: 385px;
 }
 
 .profile-banner .edit-banner{
@@ -3653,7 +3654,7 @@ border-radius: 50%;
 }
 
 .author-profile-pic {
-  margin: -130px auto 0;
+  margin: -90px auto 0;
   position: relative;
   height: 148px;
   width: 148px;
@@ -3845,8 +3846,20 @@ border-radius: 50%;
   border-radius: 50%;
 }
 
+.event-card.blog-card figure {
+  width: 160px;
+  height: initial;
+  border-radius: 0;
+}
+
 .event-card figure img{
   height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.event-card.blog-card figure img{
+  height: auto;
   width: 100%;
   object-fit: cover;
 }
@@ -4212,7 +4225,7 @@ border-radius: 50%;
   }
 
   .profile-banner img{
-    height: 170px;
+    height: 220px;
   }
 
   .profile-banner img{
@@ -4227,7 +4240,7 @@ border-radius: 50%;
   .author-profile-pic{
     height: 100px;
     width: 100px;
-    margin-top: -80px;
+    margin-top: -70px;
   }
 
   .author-name{
@@ -4292,7 +4305,7 @@ border-radius: 50%;
   }
 
   .profile-banner img{
-    height: 140px;
+    height: 185px;
   }
 
   .author-summary .dsc{
@@ -7090,7 +7103,7 @@ label .text .inner{
 .prodcast-grid  iframe{
   width: 100%;
   border: 0;
-  height: 200px;
+  aspect-ratio: 3 / 1.75;
   vertical-align: middle;
 }
 
@@ -7220,4 +7233,21 @@ label .text .inner{
 .grid-items.my-library .card .figure img{
   width: 130px;
   height: 192px;
+}
+
+.same-author .card{
+  text-align: center;
+    padding: 0;
+    background-color: transparent;
+}
+
+.same-author .card .figure {
+  margin: 0 0 15px;
+  display: inline-block;
+}
+
+.same-author .card .figure img {
+  height: 192px;
+  object-fit: contain !important;
+  width: 130px;
 }
