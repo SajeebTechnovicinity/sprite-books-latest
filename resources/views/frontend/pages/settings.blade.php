@@ -62,7 +62,7 @@
 
 
                 <div class="form-field">
-                    Cover Picture (Size: 1000x450)
+                    Cover Picture (Size: 1000x400)
                     <input type="file" class="file" name="cover_picture" id="cover-picture-input"
                         onchange="previewImage('cover-picture-input', 'cover-picture-preview', '')" />
                         <div class="img-preview-wrap">
