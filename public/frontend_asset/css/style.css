@@ -3921,7 +3921,6 @@ border-radius: 50%;
 .event-card .para {
   padding-top: 10px;
   margin: 0;
-  border-top: 1px solid #e1e1e1;
   font-size: 16px;
   line-height: 1.8;
 
@@ -7246,4 +7245,21 @@ label .text .inner{
   height: 192px;
   object-fit: contain !important;
   width: 130px;
+}
+
+.event-content{
+  display: flex;
+  gap: 15px;
+  border-top: 1px solid #dddddd;
+}
+
+.event-content .event-figure{
+  flex: 0 0 150px;
+  padding-top: 15px;
+}
+
+@media (max-width: 575px){
+  .event-content{
+    display: block;
+  }
 }

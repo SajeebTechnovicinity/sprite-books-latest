@@ -854,9 +854,7 @@
                                                                 </svg>
                                                             </a>
                                                         </div>
-                                                         <p class="event-card__timezone flex-wrap">
-                                                            <img src="{{ asset($row->image) }}"> 
-                                                            </p>
+
                                                         <p class="event-card__timezone flex-wrap">
                                                             {{ $row->event_date }}<span
                                                                 class="center">{{ $row->event_starting_time }}-
@@ -876,6 +874,11 @@
                                                             $firstPara = $row->book_description ?? '';
                                                         }
                                                         ?>
+                                                        <div class="event-content">
+                                                        <div class="event-figure">
+                                                            <img src="{{ asset($row->image) }}">
+                                                        </div>
+                                                        <div>
                                                         <p class="para">
                                                             <span class="main">
                                                                 {{ $firstPara ?? '' }}
@@ -896,6 +899,8 @@
                                                             <a href="{{ $row->event_link }}" target="__blank">Join
                                                                 Link</a>
                                                         </p>
+                                                    </div>
+                                                    </div>
                                                     </div>
                                                     {{-- @endforeach --}}
 
