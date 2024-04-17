@@ -56,7 +56,7 @@
                 <span class="text">
                 Cover Image (Max: 512KB)
                   <span class="inner">
-                  (Recommanded: 300x300 px)
+                  (Recommended: 300x300 px)
                   </span>
                 </span>
 

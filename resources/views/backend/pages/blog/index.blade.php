@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Users List</h4>
+                <h4 class="card-title">Blog List</h4>
 
                 <div class="card-tools">
                     <a href="{{ url('admin/users/create') }}" class="btn btn-info btn-sm">

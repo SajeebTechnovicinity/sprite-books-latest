@@ -324,7 +324,7 @@
                                                                     <path d="M6.5 7.35538C7.32843 7.35538 8 6.74565 8 5.99352C8 5.24138 7.32843 4.63165 6.5 4.63165C5.67157 4.63165 5 5.24138 5 5.99352C5 6.74565 5.67157 7.35538 6.5 7.35538Z" stroke="#E8922D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                                     <path d="M19 11.8949L14 7.35538L3 17.3424" stroke="#E8922D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                                 </svg>
-                                                                Photo/Video(Max: 5 MB) (Recommanded: 850x450 px)
+                                                                Photo/Video(Max: 5 MB) (Recommended: 750x450 px)
                                                             </label>
 
 
