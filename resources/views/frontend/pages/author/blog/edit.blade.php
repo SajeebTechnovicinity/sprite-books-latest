@@ -4,7 +4,7 @@
     <!-- Your head content goes here -->
 </head>
 <body>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <div class="form-field">
         <label for="title" class="label">Blog Title*</label>
         <input type="text" name="blog_name" id="title" value="{{ $blog->blog_name }}" class="input" />
@@ -18,7 +18,7 @@
 
     <div class="form-field">
         <label for="title" class="label">Blog Description*</label>
-        <textarea id="editor5" class="textarea" name="blog_full_description" placeholder="Enter some text here"
+        <textarea id="editor2" class="textarea" name="blog_full_description" placeholder="Enter some text here"
             style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $blog->blog_full_description }}</textarea>
     </div>
 
@@ -45,15 +45,28 @@
     </div>
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
     <!-- CKEditor -->
-    <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         $(function() {
-            // Replace the <textarea id="editor5"> with a CKEditor instance
-            CKEDITOR.replace('editor5');
-        });
+            $('#editor2').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 100,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+      });
+
     </script>
 
 </body>

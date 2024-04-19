@@ -1,6 +1,8 @@
 @extends('master')
 
 @section('content')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
 <!-- Add Blog Modal -->
 <div class="aadd-blog-modal modal d-none" id="add-blog">
     <div class="modal__inner">
@@ -26,13 +28,13 @@
             </div>
 
             <div class="form-field">
-                <label for="title" class="label">Blog Description*</label>
-                  <textarea id="editor1" class="textarea" name="blog_full_description" placeholder="Enter some text here"
+                <label for="title" class="label">Blog Description* </label>
+                  <textarea id="editor" class="textarea" name="blog_full_description" placeholder="Enter some text here"
                         style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-             
+
             </div>
 
-              
+
 
             <div class="form-field">
                 <label for="title" class="label">Blog Image (Max 512 KB) (Recommanded: 300x300 px)*</label>
@@ -79,8 +81,8 @@
             @csrf
             @method('POST')
             <div id="editBlogInputs">
-            
-            
+
+
 
             </div>
 
@@ -92,7 +94,7 @@
         </form>
     </div>
 
-    
+
 </div>
 
 
@@ -293,7 +295,7 @@
                                             <p class="para">
                                                 {{ \Illuminate\Support\Str::limit($row->blog_short_description, 100, '...') }}
                                             </p>
-                                          
+
                                         </div>
                                     </div>
                                     @endforeach
@@ -312,24 +314,25 @@
 </section>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         $(function() {
-            // Replace the <textarea id="editor1"> with a CKEditor instance
-            CKEDITOR.replace('editor1');
-            // Replace the <textarea id="editor2"> with another CKEditor instance
-            CKEDITOR.replace('editor2');
-            CKEDITOR.replace('editor3');
-            CKEDITOR.replace('editor4');
-            CKEDITOR.replace('editor5');
-            CKEDITOR.replace('editor6');
-            CKEDITOR.replace('editor7');
-            CKEDITOR.replace('editor8');
-            CKEDITOR.replace('editor9');
-            CKEDITOR.replace('editor10');
-            // Bootstrap WYSIHTML5 - text editor
-            $(".textarea").wysihtml5();
-        });
+            $('#editor').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 100,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+      });
+
     </script>
 <script>
     function editBlog(id) {
