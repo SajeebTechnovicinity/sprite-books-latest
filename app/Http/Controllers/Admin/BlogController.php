@@ -50,6 +50,9 @@ class BlogController extends Controller
         $blog->author_id = session('author_id');
         $blog->blog_short_description = $request->blog_short_description;
         $blog->blog_full_description = $request->blog_full_description;
+        $blog->meta_title=$request->meta_title;
+        $blog->meta_description=$request->meta_description;
+        $blog->meta_keyword=$request->meta_keyword;
 
         
 
@@ -118,6 +121,9 @@ class BlogController extends Controller
         $blog->author_id = session('author_id');
         $blog->blog_short_description = $request->blog_short_description;
         $blog->blog_full_description = $request->blog_full_description;
+        $blog->meta_title=$request->meta_title;
+        $blog->meta_description=$request->meta_description;
+        $blog->meta_keyword=$request->meta_keyword;
 
         
 

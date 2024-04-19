@@ -75,6 +75,8 @@
                   document.getElementById('custom__ripple_Loader').classList.add("not-show")
               }
               </script> 
+
+              
     </head>
     <body>
         <div id="fb-root"></div>
