@@ -11,7 +11,7 @@
             </svg>
         </div>
         <h3 class="title">Add Blog</h3>
-        <form action="{{ url('author/blogs') }}" method="post" class="modal__form" enctype="multipart/form-data">
+        <form action="{{ url('author/blogs') }}" method="post" class="modal__form" enctype="multipart/form-data" >
             @csrf
             @method('post')
 
@@ -38,6 +38,21 @@
                 <label for="title" class="label">Blog Image (Max 512 KB) (Recommanded: 300x300 px)*</label>
                 <input type="file" name="blog_image" id="title" class="input" />
 
+            </div>
+
+             <div class="form-field">
+                <label for="title" class="label">Meta Title*</label>
+                <input type="text" name="meta_title" id="title" class="input" required />
+            </div>
+
+             <div class="form-field">
+                <label for="title" class="label">Meta Description*</label>
+                <input type="text" name="meta_description" id="title" class="input" required />
+            </div>
+
+              <div class="form-field">
+                <label for="title" class="label">Meta Keyword*</label>
+                <input type="text" name="meta_keyword" id="title" class="input" required />
             </div>
 
 
@@ -236,7 +251,7 @@
                                     @foreach ($blogs as $row)
                                     <div class="event-card blog-card">
                                         <figure class="figure">
-                                            <img height="60px" width="60px" src="@if ($row->blog_image) {{ asset($row->blog_image) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-banner.png @endif" alt="" />
+                                          <a href="{{url('blogs/'.$row->id)}}">  <img height="60px" width="60px" src="@if ($row->blog_image) {{ asset($row->blog_image) }} @else {{ asset('public/frontend_asset') }}/imgs/profile-banner.png @endif" alt="" /> </a>
                                         </figure>
                                         <div class="content">
                                             <div class="event-card__row flex-wrap">
@@ -264,18 +279,21 @@
                                                         <path fill="rgb(141, 141, 155)" d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path>
                                                     </svg></a>
                                             </div>
-
-                                            <p class="para">
-                                                {{ \Illuminate\Support\Str::limit($row->blog_short_description, 100, '...') }}
-                                            </p>
-                                            <p class="dsc">
+                                              <p class="dsc">
+                                                <b>
                                                 Status:
+                                                </b>
                                                 @if ($row->status == 1)
                                                 Approved
                                                 @else
                                                 Pending
                                                 @endif
                                             </p>
+
+                                            <p class="para">
+                                                {{ \Illuminate\Support\Str::limit($row->blog_short_description, 100, '...') }}
+                                            </p>
+                                          
                                         </div>
                                     </div>
                                     @endforeach

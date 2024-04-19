@@ -48,6 +48,22 @@
                             <input type="file" name="blog_image" id="title" class="form-control" />
                         </div>
 
+                          <div class="form-group col-md-12">
+                        <label for="title" class="label">Meta Title*</label>
+                        <input type="text" name="meta_title" id="title" value="{{ $blog->meta_title }}" class="form-control" required />
+                    </div>
+
+                     <div class="form-group col-md-12">
+                        <label for="title" class="label">Meta Description*</label>
+                        <input type="text" name="meta_description" id="title" value="{{ $blog->meta_description }}" class="form-control" required />
+                    </div>
+
+                     <div class="form-group col-md-12">
+                        <label for="title" class="label">Meta Keyword*</label>
+                        <input type="text" name="meta_keyword" id="title" value="{{ $blog->meta_keyword }}" class="form-control" required />
+                    </div>
+
+
                     </div>
 
                     <button type="button" id="add_btn" class="btn btn-primary">Submit</button>
