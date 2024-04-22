@@ -70,15 +70,18 @@ class BookController extends Controller
 
         // Use Eloquent to query books based on the 'book_name'
         $data['books'] = Book::with('bookAuthor')
-            ->where('is_delete', 0)
-            ->where(function ($query) use ($name) {
-                $query->where('book_name', 'like', "%$name%")
-                    ->orWhereHas('bookAuthor', function ($query) use ($name) {
-                        $query->where('author_name', 'like', "%$name%")
-                            ->orWhere('author_last_name', 'like', "%$name%");
-                    });
-            })
-            ->get();
+        ->where('is_delete', 0)
+        ->where(function ($query) use ($name) {
+            $query->where('book_name', 'like', "%$name%")
+                ->orWhereHas('bookAuthor', function ($query) use ($name) {
+                    $query->where('author_name', 'like', "%$name%")
+                        ->orWhere('author_last_name', 'like', "%$name%");
+                })
+                ->orWhereHas('Genere', function ($query) use ($name) {
+                    $query->where('genere_name', 'like', "%$name%");
+                });
+        })
+        ->get();
         $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
         $data['generes'] = Genere::all();
 

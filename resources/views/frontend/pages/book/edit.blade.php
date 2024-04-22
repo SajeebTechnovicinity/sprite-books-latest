@@ -161,28 +161,29 @@
 
                                     <div class="form-row">
                                         <div class="form-field">
-                                            <label class="label">Book Discount in Percentage*</label>
-                                            <input type="number" name="book_discount_in_percentage" class="input"
-                                                placeholder="" />
+                                            <label class="label">Book Discount in Percentage</label>
+                                            <input type="text" name="book_discount_in_percentage" class="input"
+                                                placeholder="" pattern="\d+(\.\d+)?" title="Enter a valid number" />
                                         </div>
 
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-field">
-                                            <label class="label">Main Price to Show</label>
-                                            <input type="number" name="book_price" class="input" placeholder="Price" />
+                                            <label class="label">Main Price to Show*</label>
+                                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?"
+                                                placeholder="Price" required />
                                         </div>
 
                                         <div class="form-field">
-                                            <label class="label">Book Price*</label>
-                                            <input type="number" name="hard_book_price" class="input"
-                                                placeholder="HardBook" />
+                                            <label class="label">Book Price</label>
+                                            <input type="text" name="hard_book_price" class="input"
+                                                pattern="\d+(\.\d+)?" placeholder="HardBook" />
                                         </div>
                                         <div class="form-field">
-                                            <label class="label">Ebook Price*</label>
-                                            <input type="number" name="ebook_price" class="input"
-                                                placeholder="Ebook" />
+                                            <label class="label">Ebook Price</label>
+                                            <input type="text" name="ebook_price" class="input"
+                                                pattern="\d+(\.\d+)?" placeholder="Ebook" />
                                         </div>
                                     </div>
 
@@ -401,9 +402,9 @@
                             <div class="form-row">
                                 <div class="form-field">
                                     <label class="label">Book Discount in Percentage</label>
-                                    <input type="number" name="book_discount_in_percentage"
-                                        value="{{ $book->book_discount_in_percentage }}" class="input"
-                                        placeholder="" />
+                                    <input type="text" name="book_discount_in_percentage"
+                                        value="{{ $book->book_discount_in_percentage }}" placeholder="" pattern="\d+(\.\d+)?"
+                                        class="input" placeholder="" />
                                 </div>
 
                             </div>
@@ -411,19 +412,20 @@
                             <div class="form-row">
                                 <div class="form-field">
                                     <label class="label">Main Price to Show*</label>
-                                    <input type="number" name="book_price" class="input"
-                                        value="{{ $book->hard_book_price }}" required placeholder="Price" />
+                                    <input type="text" name="book_price" class="input"
+                                        value="{{ $book->hard_book_price }}"  required
+                                        placeholder="Price" placeholder="" pattern="\d+(\.\d+)?"/>
                                 </div>
 
                                 <div class="form-field">
                                     <label class="label">Book Price</label>
-                                    <input type="number" name="hard_book_price" value="{{ $book->book_price }}"
-                                        class="input" placeholder="HardBook" />
+                                    <input type="text" name="hard_book_price" placeholder="" pattern="\d+(\.\d+)?"
+                                        value="{{ $book->book_price }}" class="input" placeholder="HardBook" />
                                 </div>
                                 <div class="form-field">
                                     <label class="label">Ebook Price</label>
-                                    <input type="number" name="ebook_price" value="{{ $book->ebook_price }}"
-                                        class="input" placeholder="Ebook" />
+                                    <input type="text" name="ebook_price" placeholder="" pattern="\d+(\.\d+)?"
+                                        value="{{ $book->ebook_price }}" class="input" placeholder="Ebook" />
                                 </div>
                             </div>
 
@@ -514,7 +516,8 @@
                             <div class="form-row">
                                 <div class="form-field">
                                     <label for="links" class="label">Video Link</label>
-                                    <input type="text" name="video_file_updoad" value="{{ $book->video_link }}" id="links" class="input" />
+                                    <input type="text" name="video_file_updoad" value="{{ $book->video_link }}"
+                                        id="links" class="input" />
                                 </div>
 
                             </div>
