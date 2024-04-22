@@ -19,75 +19,48 @@ class GuestController extends Controller
             return 'Email is required and Email is unique';
         }
 
-        Newsteller::create([
+        $newsletter=Newsteller::create([
             'email' => $request->email
         ]);
 
-        $apiKey = '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';
+        $curl = curl_init();
 
-        $data = array(
-            'tag' => 'Books Tree',
-            'sender' => array(
-                'name' => 'Mary from MyShop',
+        curl_setopt_array($curl, [
+            CURLOPT_URL => "https://api.brevo.com/v3/contacts",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode([
                 'email' => $request->email,
-                'id' => 3
-            ),
-            'name' => 'Newsletter - May 2017',
-            'htmlContent' => '<!DOCTYPE html> <html> <body> <h1>Confirm you email</h1> <p>Please confirm your email address by clicking on the link below</p> </body> </html>',
-            'htmlUrl' => 'https://technovicinity.com/development/shahed/spirit/',
-            'templateId' => 0,
-            'scheduledAt' => '2017-06-01T12:30:00+02:00',
-            'subject' => 'Discover the New Collection !',
-            'previewText' => 'Thanks for your order!',
-            'replyTo' => 'support@myshop.com',
-            'toField' => '{FNAME} {LNAME}',
-            'recipients' => array(
-                'exclusionListIds' => array(8),
-                'listIds' => array(32),
-                'segmentIds' => array(23)
-            ),
-            'attachmentUrl' => 'https://attachment.domain.com',
-            'inlineImageActivation' => true,
-            'mirrorActive' => true,
-            'footer' => '[DEFAULT_FOOTER]',
-            'header' => '[DEFAULT_HEADER]',
-            'utmCampaign' => 'NL_05_2017',
-            'params' => array(
-                'FNAME' => 'Joe',
-                'LNAME' => 'Doe'
-            ),
-            'sendAtBestTime' => true,
-            'abTesting' => true,
-            'subjectA' => 'Discover the New Collection!',
-            'subjectB' => 'Want to discover the New Collection?',
-            'splitRule' => 50,
-            'winnerCriteria' => 'open',
-            'winnerDelay' => 50,
-            'ipWarmupEnable' => true,
-            'initialQuota' => 3000,
-            'increaseRate' => 70,
-            'unsubscriptionPageId' => '62cbb7fabbe85021021aac52',
-            'updateFormId' => '6313436b9ad40e23b371d095'
-        );
+                'ext_id' => "{{ $newsletter->id }}",
+                'attributes' => [
+                    'FNAME' => 'Elly',
+                    'LNAME' => 'Roger'
+                ],
+                'emailBlacklisted' => false,
+                'smsBlacklisted' => false,
+                'listIds' => [
+                    $newsletter->id
+                ],
+                'updateEnabled' => false,
+                'smtpBlacklistSender' => [
+                    'user@example.com'
+                ]
+            ]),
+            CURLOPT_HTTPHEADER => [
+                "accept: application/json",
+                "api-key: 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",
+                "content-type: application/json"
+            ],
+        ]);
 
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, 'https://api.brevo.com/v3/emailCampaigns');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-
-        $headers = array(
-            'accept: application/json',
-            'content-type: application/json',
-            'Authorization: Bearer ' . $apiKey // Add the Authorization header
-        );
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-        $response = curl_exec($ch);
+        $response = curl_exec($curl);
 
         //Session::flash('success','Successfully subscribed');
-        //return $response;
+        return $response;
         return 'Successfully subscribed';
     }
 }
