@@ -114,7 +114,8 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
-                           <input type="text" name="book_discount_in_percentage" class="input" placeholder="" pattern="\d+(\.\d+)?" title="Enter a valid number" />
+                            <input type="text" name="book_discount_in_percentage" class="input" placeholder=""
+                                pattern="\d+(\.\d+)?" title="Enter a valid number" />
                         </div>
 
                     </div>
@@ -122,16 +123,19 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show*</label>
-                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?" placeholder="Price" required />
+                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?" placeholder="Price"
+                                required />
                         </div>
 
                         <div class="form-field">
                             <label class="label">Book Price</label>
-                            <input type="text" name="hard_book_price" class="input" pattern="\d+(\.\d+)?" placeholder="HardBook" />
+                            <input type="text" name="hard_book_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="HardBook" />
                         </div>
                         <div class="form-field">
                             <label class="label">Ebook Price</label>
-                            <input type="text" name="ebook_price" class="input" pattern="\d+(\.\d+)?" placeholder="Ebook" />
+                            <input type="text" name="ebook_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="Ebook" />
                         </div>
                     </div>
 
@@ -177,6 +181,14 @@
                         <div class="form-field">
                             <label for="links" class="label">Video Link</label>
                             <input type="text" name="video_file_updoad" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Meta Key*</label>
+                            <input type="text" name="meta_key" class="input" required />
                         </div>
 
                     </div>
@@ -463,10 +475,10 @@
                                             @php
                                                 $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
                                             @endphp
-                                            @if($formattedLink!="null")
-                                            <a href="{{ $formattedLink }}" target="_blank" class="link">
-                                                {{ $formattedLink }}
-                                            </a>
+                                            @if ($formattedLink != 'null')
+                                                <a href="{{ $formattedLink }}" target="_blank" class="link">
+                                                    {{ $formattedLink }}
+                                                </a>
                                             @endif
                                         @endforeach
 
@@ -506,7 +518,8 @@
                                 <ul class="social-links unit">
                                     @if ($author->author_facebook_link)
                                         <li>
-                                            <a target="_blank" href="{{ $author->author_facebook_link }}" class="link">
+                                            <a target="_blank" href="{{ $author->author_facebook_link }}"
+                                                class="link">
                                                 <svg width="10" height="20" viewBox="0 0 10 20" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -530,7 +543,8 @@
                                     @endif
                                     @if ($author->author_instagram_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_instagram_link }}" class="link">
+                                            <a target="_blank" href="{{ $author->author_instagram_link }}"
+                                                class="link">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -546,7 +560,8 @@
                                     @endif
                                     @if ($author->author_linkedin_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_linkedin_link }}" class="link">
+                                            <a target="_blank" href="{{ $author->author_linkedin_link }}"
+                                                class="link">
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -563,7 +578,7 @@
                                     @endif
                                     @if ($author->author_youtube_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_youtube_link }}" class="link">
+                                            <a target="_blank" href="{{ $author->author_youtube_link }}" class="link">
                                                 <svg width="20" height="14" viewBox="0 0 20 14" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -575,7 +590,8 @@
                                     @endif
                                     @if ($author->author_pinterest_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_pinterest_link }}" class="link">
+                                            <a target="_blank" href="{{ $author->author_pinterest_link }}"
+                                                class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/pinterest.png"
                                                     alt="" />
                                             </a>
@@ -583,7 +599,7 @@
                                     @endif
                                     @if ($author->author_spotify_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_spotify_link }}" class="link">
+                                            <a target="_blank" href="{{ $author->author_spotify_link }}" class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/spotify.png"
                                                     alt="" />
                                             </a>
@@ -591,7 +607,7 @@
                                     @endif
                                     @if ($author->author_podcast_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_podcast_link }}" class="link">
+                                            <a target="_blank" href="{{ $author->author_podcast_link }}" class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/podcast.png"
                                                     alt="" />
                                             </a>
@@ -633,8 +649,7 @@
                                         {{-- <img src="{{asset('public/frontend_asset')}}/imgs/placeholder-14.png" alt="" /> --}}
                                         {{-- <video width="320" height="240" controls> --}}
                                         {{-- <source src="{{ $author->author_intro_video }}" type="video/mp4"> --}}
-                                        <iframe
-                                            src="{{ getVideoEmbededLink($author->author_intro_video) }}"
+                                        <iframe src="{{ getVideoEmbededLink($author->author_intro_video) }}"
                                             frameborder="0" allowfullscreen></iframe>
                                         {{-- <source src="movie.ogg" type="video/ogg"> --}}
                                         {{-- Your browser does not support the video tag.
@@ -675,7 +690,7 @@
                                                     </div>
 
                                                     <p class="para">
-                                                       {!!$row->podcast_embed_code!!}
+                                                        {!! $row->podcast_embed_code !!}
                                                         {{-- <iframe
                                                             src="{{ getVideoEmbededLink($row->podcast_embed_code) }}"
                                                             frameborder="0" allowfullscreen></iframe> --}}
@@ -687,8 +702,8 @@
                                 @endif
 
                                 <!-- <p class="member-status unit">
-                                        Member since {{ date('Y', strtotime($author->created_at)) }}
-                                    </p> -->
+                                            Member since {{ date('Y', strtotime($author->created_at)) }}
+                                        </p> -->
                             </div>
                             <div class="tabs-wrap space-0">
                                 <div class="tabs-btns-row">
@@ -861,7 +876,7 @@
                                                                 {{ $row->event_ending_time }}
                                                             </span><span>{{ $row->event_location }}</span>
                                                         </p>
-                                                         @if (strlen($row->event_description) < 100)
+                                                        @if (strlen($row->event_description) < 100)
                                                             {{ $row->event_description }}
                                                         @endif
                                                         <?php
@@ -875,32 +890,36 @@
                                                         }
                                                         ?>
                                                         <div class="event-content">
-                                                        <div class="event-figure">
-                                                            <img src="{{ asset($row->image) }}">
-                                                        </div>
-                                                        <div>
-                                                        <p class="para">
-                                                            <span class="main">
-                                                                {{ $firstPara ?? '' }}
-                                                            </span>
-                                                            @if (strlen($text) > 100)
-                                                                <span class="extended" data-index="{{ $row->id }}"
-                                                                    style="display: none;">
-                                                                    {{ $secondPara }}
-                                                                    {{-- <br>
+                                                            <div class="event-figure">
+                                                                <img src="{{ asset($row->image) }}">
+                                                            </div>
+                                                            <div>
+                                                                <p class="para">
+                                                                    <span class="main">
+                                                                        {{ $firstPara ?? '' }}
+                                                                    </span>
+                                                                    @if (strlen($text) > 100)
+                                                                        <span class="extended"
+                                                                            data-index="{{ $row->id }}"
+                                                                            style="display: none;">
+                                                                            {{ $secondPara }}
+                                                                            {{-- <br>
                                                                 <b> Event Location : </b> {{ $row->event_location }} --}}
-                                                            </span>
-                                                            <span class="read-more" data-index="{{ $row->id }}">Show More</span>
-                                                        @endif
+                                                                        </span>
+                                                                        <span class="read-more"
+                                                                            data-index="{{ $row->id }}">Show
+                                                                            More</span>
+                                                                    @endif
 
-                                                    </p>
+                                                                </p>
 
-                                                        <p class="para">
-                                                            <a href="{{ $row->event_link }}" target="__blank">Join
-                                                                Link</a>
-                                                        </p>
-                                                    </div>
-                                                    </div>
+                                                                <p class="para">
+                                                                    <a href="{{ $row->event_link }}"
+                                                                        target="__blank">Join
+                                                                        Link</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     {{-- @endforeach --}}
 

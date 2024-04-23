@@ -73,6 +73,7 @@ class BookController extends Controller
         ->where('is_delete', 0)
         ->where(function ($query) use ($name) {
             $query->where('book_name', 'like', "%$name%")
+                ->orWhere('meta_key', 'like', "%$name%") // Search in meta_key
                 ->orWhereHas('bookAuthor', function ($query) use ($name) {
                     $query->where('author_name', 'like', "%$name%")
                         ->orWhere('author_last_name', 'like', "%$name%");

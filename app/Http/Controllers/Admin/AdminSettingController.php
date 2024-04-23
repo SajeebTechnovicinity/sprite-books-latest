@@ -183,6 +183,8 @@ class AdminSettingController extends Controller
             'hero_title'=>$request->hero_title,
             'hero_description'=>$request->hero_description,
             'refund_policy'=>$request->refund_policy,
+            'section2_image_link'=>$request->section2_image_link,
+            'section3_image_link'=>$request->section3_image_link,
 
             'hero_image'=>$settings->hero_image,
 

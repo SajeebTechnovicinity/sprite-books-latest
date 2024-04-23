@@ -98,7 +98,7 @@
                 @endif
                 <!-- Content Block -->
                 <div class="profile-banner">
-                    <img src="@if($author->author_profile_picture) {{asset($author->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/cover.jpg @endif" alt="" />
+                    <img src="@if($author->author_cover_picture) {{asset($author->author_cover_picture)}} @else {{asset('public/frontend_asset')}}/imgs/cover.jpg @endif" alt="" />
                 </div>
                 <div class="prodcast-wrap">
                     <h2 class="main-title">Podcast</h2>

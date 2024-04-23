@@ -84,10 +84,11 @@
                   </div> --}}
                     </div>
 
-                   <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
-                           <input type="text" name="book_discount_in_percentage" class="input" placeholder="" pattern="\d+(\.\d+)?" title="Enter a valid number" />
+                            <input type="text" name="book_discount_in_percentage" class="input" placeholder=""
+                                pattern="\d+(\.\d+)?" title="Enter a valid number" />
                         </div>
 
                     </div>
@@ -95,16 +96,19 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show*</label>
-                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?" placeholder="Price" required />
+                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?" placeholder="Price"
+                                required />
                         </div>
 
                         <div class="form-field">
                             <label class="label">Book Price</label>
-                            <input type="text" name="hard_book_price" class="input" pattern="\d+(\.\d+)?" placeholder="HardBook" />
+                            <input type="text" name="hard_book_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="HardBook" />
                         </div>
                         <div class="form-field">
                             <label class="label">Ebook Price</label>
-                            <input type="text" name="ebook_price" class="input" pattern="\d+(\.\d+)?" placeholder="Ebook" />
+                            <input type="text" name="ebook_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="Ebook" />
                         </div>
                     </div>
 
@@ -140,6 +144,14 @@
                         <div class="form-field">
                             <label for="links" class="label">Video Link</label>
                             <input type="text" name="video_file_updoad" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Meta Key*</label>
+                            <input type="text" name="meta_key" class="input" required />
                         </div>
 
                     </div>
@@ -227,9 +239,9 @@
                                         <img src="{{ asset($row->bookDocuments[0]->path ?? '') }}" alt="" />
                                     </a>
                                     <div class="text-wrap">
-                                        @if($row->Genere)
-                                        <h5 class="subtitle">{{ $row->Genere->genere_name }}</h5>
-                                    @endif
+                                        @if ($row->Genere)
+                                            <h5 class="subtitle">{{ $row->Genere->genere_name }}</h5>
+                                        @endif
                                         <a href="{{ url('book-details/' . $row->id) }}"
                                             class="title">{{ $row->book_name }}</a>
                                         <p class="dsc">
@@ -260,7 +272,7 @@
                                         </a>
                                         <div class="text-wrap">
 
-                                            @if($suggested->Book)
+                                            @if ($suggested->Book)
                                                 <h5 class="subtitle">{{ $suggested->Book->Genere->genere_name }}</h5>
                                             @endif
                                             <a href="#" class="title">{{ $suggested->Book->book_name }}</a>
