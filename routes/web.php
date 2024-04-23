@@ -66,6 +66,8 @@ Route::post('community-submit-comment-post', [\App\Http\Controllers\FrontEnd\Com
 
 Route::get('/subscribe/now', [App\Http\Controllers\FrontEnd\GuestController::class, 'subscribe']);
 
+Route::get('/plan', [App\Http\Controllers\FrontEnd\GuestController::class, 'plan']);
+
 // Route::get('/t', function () {
 //     event(new \App\Events\SendPostEvent());
 //     dd('Event Run Successfully.');

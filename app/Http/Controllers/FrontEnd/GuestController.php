@@ -63,4 +63,9 @@ class GuestController extends Controller
         return $response;
         return 'Successfully subscribed';
     }
+
+    public function plan()
+    {
+        return view('plan');
+    }
 }
