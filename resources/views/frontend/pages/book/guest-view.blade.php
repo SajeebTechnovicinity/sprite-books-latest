@@ -162,6 +162,14 @@
 
                                 </div>
 
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="links" class="label">Meta Key*</label>
+                                        <input type="text" name="meta_key" class="input" required />
+                                    </div>
+
+                                </div>
+
                                 <div class="btn-group">
                                     <button class="btn btn-lite">Cancel</button>
                                     <button class="btn btn-solid">Add Book</button>

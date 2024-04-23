@@ -206,6 +206,11 @@
                             <input type="file" class="form-control" name="section2_image" id="email"
                                 placeholder="Enter section2 image">
                         </div>
+                         <div class="form-group col-md-6">
+                            <label for="Name">Section2 Image Link</label>
+                            <input type="text" class="form-control" name="section2_image_link" id="name"
+                                placeholder="Enter section2 image link" value="{{ $globalSetting->section2_image_link }}">
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -297,6 +302,11 @@
                             <label for="Name">New Section3 Image</label>
                             <input type="file" class="form-control" name="section3_image" id="email"
                                 placeholder="Enter section3 image">
+                        </div>
+                          <div class="form-group col-md-6">
+                            <label for="Name">Section3 Image Link</label>
+                            <input type="text" class="form-control" name="section3_image_link" id="name"
+                                placeholder="Enter section3 image link" value="{{ $globalSetting->section3_image_link }}">
                         </div>
                     </div>
                     <div class="form-row">

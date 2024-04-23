@@ -34,8 +34,7 @@
                                 required />
                         </div>
                     </div>
-                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn"
-                            required />
+                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
                     <div class="form-field">
                         <label for="isbn" class="label">Role*</label>
                         @if (check_user_max_book_by_user_id(session('author_id')) == 1)
@@ -105,10 +104,11 @@
                     </div> --}}
                     </div>
 
-                   <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
-                           <input type="text" name="book_discount_in_percentage" class="input" placeholder="" pattern="\d+(\.\d+)?" title="Enter a valid number" />
+                            <input type="text" name="book_discount_in_percentage" class="input" placeholder=""
+                                pattern="\d+(\.\d+)?" title="Enter a valid number" />
                         </div>
 
                     </div>
@@ -116,16 +116,19 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show*</label>
-                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?" placeholder="Price" required />
+                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="Price" required />
                         </div>
 
                         <div class="form-field">
                             <label class="label">Book Price</label>
-                            <input type="text" name="hard_book_price" class="input" pattern="\d+(\.\d+)?" placeholder="HardBook" />
+                            <input type="text" name="hard_book_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="HardBook" />
                         </div>
                         <div class="form-field">
                             <label class="label">Ebook Price</label>
-                            <input type="text" name="ebook_price" class="input" pattern="\d+(\.\d+)?" placeholder="Ebook" />
+                            <input type="text" name="ebook_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="Ebook" />
                         </div>
                     </div>
 
@@ -169,6 +172,14 @@
                         <div class="form-field">
                             <label for="links" class="label">Video Link</label>
                             <input type="text" name="video_file_updoad" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Meta Key*</label>
+                            <input type="text" name="meta_key" class="input" required />
                         </div>
 
                     </div>
@@ -560,10 +571,10 @@
                                     <p class="author-label">
                                         {{ $author->author_bio }}
                                     </p>
-                                   <div class="author-email">
-                                    @php
-                                        $links = explode(',', $author->author_website_link);
-                                    @endphp
+                                    <div class="author-email">
+                                        @php
+                                            $links = explode(',', $author->author_website_link);
+                                        @endphp
 
 
 
@@ -611,8 +622,8 @@
                                 <ul class="social-links unit">
                                     @if ($author->author_facebook_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_facebook_link }}" target="_blank"
-                                                class="link">
+                                            <a target="_blank" href="{{ $author->author_facebook_link }}"
+                                                target="_blank" class="link">
                                                 <svg width="10" height="20" viewBox="0 0 10 20" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -624,7 +635,8 @@
                                     @endif
                                     @if ($author->author_twitter_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_twitter_link }}" target="_blank" class="link">
+                                            <a target="_blank" href="{{ $author->author_twitter_link }}" target="_blank"
+                                                class="link">
                                                 <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -636,8 +648,8 @@
                                     @endif
                                     @if ($author->author_instagram_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_instagram_link }}" target="_blank"
-                                                class="link">
+                                            <a target="_blank" href="{{ $author->author_instagram_link }}"
+                                                target="_blank" class="link">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -653,8 +665,8 @@
                                     @endif
                                     @if ($author->author_linkedin_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_linkedin_link }}" target="_blank"
-                                                class="link">
+                                            <a target="_blank" href="{{ $author->author_linkedin_link }}"
+                                                target="_blank" class="link">
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -671,7 +683,8 @@
                                     @endif
                                     @if ($author->author_youtube_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_youtube_link }}" target="_blank" class="link">
+                                            <a target="_blank" href="{{ $author->author_youtube_link }}" target="_blank"
+                                                class="link">
                                                 <svg width="20" height="14" viewBox="0 0 20 14" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -683,8 +696,8 @@
                                     @endif
                                     @if ($author->author_pinterest_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_pinterest_link }}" target="_blank"
-                                                 class="link">
+                                            <a target="_blank" href="{{ $author->author_pinterest_link }}"
+                                                target="_blank" class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/pinterest.png"
                                                     alt="" />
                                             </a>
@@ -692,7 +705,8 @@
                                     @endif
                                     @if ($author->author_spotify_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_spotify_link }}" target="_blank" class="link">
+                                            <a target="_blank" href="{{ $author->author_spotify_link }}" target="_blank"
+                                                class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/spotify.png"
                                                     alt="" />
                                             </a>
@@ -700,7 +714,8 @@
                                     @endif
                                     @if ($author->author_podcast_link)
                                         <li>
-                                            <a target="_blank"  href="{{ $author->author_podcast_link }}" target="_blank" class="link">
+                                            <a target="_blank" href="{{ $author->author_podcast_link }}" target="_blank"
+                                                class="link">
                                                 <img src="{{ asset('public/frontend_asset') }}/imgs/podcast.png"
                                                     alt="" />
                                             </a>
@@ -737,8 +752,7 @@
                                     <a href="#" class="video unit">
 
                                         {{-- <iframe src="{!!$author->author_intro_video!!}"></iframe> --}}
-                                        <iframe
-                                            src="{{ getVideoEmbededLink($author->author_intro_video) }}"
+                                        <iframe src="{{ getVideoEmbededLink($author->author_intro_video) }}"
                                             frameborder="0" allowfullscreen></iframe>
 
                                     </a>
@@ -783,8 +797,8 @@
                                 @endif
 
                                 <!-- <p class="member-status unit">
-                                            Member since {{ date('Y', strtotime($author->created_at)) }}
-                                        </p> -->
+                                                Member since {{ date('Y', strtotime($author->created_at)) }}
+                                            </p> -->
                             </div>
                             <div class="tabs-wrap space-0">
                                 <div class="tabs-btns-row">
@@ -830,8 +844,8 @@
                                                         @foreach ($author_created_list as $list)
                                                             <tr>
                                                                 <!-- <td>
-                                                                            {{ $loop->iteration }}
-                                                                        </td> -->
+                                                                                {{ $loop->iteration }}
+                                                                            </td> -->
 
                                                                 {{-- <td>
                                                                     {{ $list->author_code }}
@@ -843,8 +857,8 @@
                                                                     {{ $list->author_email }}
                                                                 </td>
                                                                 <!-- <td>
-                                                                            {{ $list->author_phone }}
-                                                                        </td> -->
+                                                                                {{ $list->author_phone }}
+                                                                            </td> -->
                                                                 {{-- <td>
                                                                     {{ $list->author_country }}
                                                                 </td> --}}
@@ -1055,11 +1069,11 @@
                                                                 {{ $row->event_ending_time }}
                                                             </span><span>{{ $row->event_location }}</span>
                                                         </p>
-                                                         @if (strlen($row->event_description) < 100)
-                                                                {{ $row->event_description }}
-                                                            @endif
+                                                        @if (strlen($row->event_description) < 100)
+                                                            {{ $row->event_description }}
+                                                        @endif
 
-                                                            <?php
+                                                        <?php
                                                         $text = $row->event_description;
                                                         if (strlen($text) > 100) {
                                                             $firstPara = substr($text, 0, strpos($text, ' ', 30));
@@ -1070,25 +1084,27 @@
                                                         }
                                                         ?>
                                                         <div class="event-content">
-                                                        <div class="event-figure">
-                                                            <img src="{{ asset($row->image) }}">
+                                                            <div class="event-figure">
+                                                                <img src="{{ asset($row->image) }}">
+                                                            </div>
+                                                            <div>
+                                                                <p class="para">
+                                                                    <span class="main">
+                                                                        {{ $firstPara ?? '' }}
+                                                                    </span>
+                                                                    <span class="read-more"
+                                                                        data-index="{{ $row->id }}">Show More</span>
+
+
+                                                                </p>
+
+                                                                <p class="para">
+                                                                    <a href="{{ $row->event_link }}"
+                                                                        target="__blank">Join
+                                                                        Link</a>
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                        <p class="para">
-                                                            <span class="main">
-                                                                {{ $firstPara ?? '' }}
-                                                            </span>
-                                                            <span class="read-more" data-index="{{ $row->id }}">Show More</span>
-
-
-                                                    </p>
-
-                                                        <p class="para">
-                                                            <a href="{{ $row->event_link }}" target="__blank">Join
-                                                                Link</a>
-                                                        </p>
-                                                    </div>
-                                                    </div>
                                                     </div>
                                                 </div>
                                             @endforeach

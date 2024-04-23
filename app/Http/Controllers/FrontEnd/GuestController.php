@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Newsteller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Spatie\Sitemap\SitemapGenerator;
 
 class GuestController extends Controller
 {
@@ -19,7 +20,7 @@ class GuestController extends Controller
             return 'Email is required and Email is unique';
         }
 
-        $newsletter=Newsteller::create([
+        $newsletter = Newsteller::create([
             'email' => $request->email
         ]);
 
@@ -67,5 +68,22 @@ class GuestController extends Controller
     public function plan()
     {
         return view('plan');
+    }
+
+    // Controller method to set session variable when GDPR is accepted
+    public function acceptGDPR()
+    {
+        // Set session variable to indicate that the user has accepted GDPR
+        session(['cookie_consent' => true]);
+
+        return response()->json(['status' => 'success']);
+    }
+
+    public function sitemap_generate()
+    {
+        SitemapGenerator::create(config('app.url'))
+        ->writeToFile(public_path('sitemap.xml'));
+
+        return response('Sitemap generated successfully');
     }
 }

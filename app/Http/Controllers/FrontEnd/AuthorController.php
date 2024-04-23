@@ -410,6 +410,7 @@ class AuthorController extends Controller
         $book->genere_id = $request->genere_id;
         $book->video_link=$request->video_file_updoad;
         $book->isbn = $request->isbn;
+        $book->meta_key = $request->meta_key;
 
         $book->save();
 
@@ -592,6 +593,7 @@ class AuthorController extends Controller
         $book->genere_id = $request->genere_id;
         $book->video_link=$request->video_file_updoad;
         $book->isbn = $request->isbn;
+        $book->meta_key = $request->meta_key;
 
         $book->save();
 

@@ -235,7 +235,7 @@
                 @endif
                 <div class="btn-group" style="padding-top: 15px;">
                     <button class="btn btn-lite" style="margin-right: 7px;">Cancel</button>
-                    <button class="btn btn-solid" style="padding: 17px 25px;">Save Informations</button>
+                    <button class="btn btn-solid" style="padding: 17px 25px;">Save Information</button>
                 </div>
             </form>
         </div>

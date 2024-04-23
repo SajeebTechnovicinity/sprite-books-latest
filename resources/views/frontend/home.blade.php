@@ -331,7 +331,7 @@
         <div class="container container-alt1">
             <div class="inner-section flex-equal">
                 <figure class="figure">
-                    <img src="{{ asset($globalSetting->section2_image) }}" alt="" />
+                  <a href="{{ $globalSetting->section2_image_link }}" target="__blank">  <img src="{{ asset($globalSetting->section2_image) }}" alt="" /> </a>
                 </figure>
                 <div class="content">
                     {{-- <h6 class="subtitle">Is Now In Your Pocket!</h6> --}}
@@ -410,7 +410,7 @@
                     </p> --}}
                 </div>
                 <figure class="figure">
-                    <img src="{{ asset($globalSetting->section3_image) }}" alt="" />
+                  <a href="{{ $globalSetting->section3_image_link }}" target="__blank">  <img src="{{ asset($globalSetting->section3_image) }}" alt="" /> </a>
                 </figure>
             </div>
         </div>

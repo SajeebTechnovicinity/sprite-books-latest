@@ -225,6 +225,14 @@
 
                                     </div>
 
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="links" class="label">Meta Key*</label>
+                                            <input type="text" name="meta_key" class="input" required />
+                                        </div>
+
+                                    </div>
+
                                     <div class="btn-group">
                                         <button class="btn btn-lite">Cancel</button>
                                         <button class="btn btn-solid">Add Book</button>
@@ -403,8 +411,8 @@
                                 <div class="form-field">
                                     <label class="label">Book Discount in Percentage</label>
                                     <input type="text" name="book_discount_in_percentage"
-                                        value="{{ $book->book_discount_in_percentage }}" placeholder="" pattern="\d+(\.\d+)?"
-                                        class="input" placeholder="" />
+                                        value="{{ $book->book_discount_in_percentage }}" placeholder=""
+                                        pattern="\d+(\.\d+)?" class="input" placeholder="" />
                                 </div>
 
                             </div>
@@ -413,8 +421,8 @@
                                 <div class="form-field">
                                     <label class="label">Main Price to Show*</label>
                                     <input type="text" name="book_price" class="input"
-                                        value="{{ $book->hard_book_price }}"  required
-                                        placeholder="Price" placeholder="" pattern="\d+(\.\d+)?"/>
+                                        value="{{ $book->hard_book_price }}" required placeholder="Price" placeholder=""
+                                        pattern="\d+(\.\d+)?" />
                                 </div>
 
                                 <div class="form-field">
@@ -518,6 +526,14 @@
                                     <label for="links" class="label">Video Link</label>
                                     <input type="text" name="video_file_updoad" value="{{ $book->video_link }}"
                                         id="links" class="input" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="links" class="label">Meta Key*</label>
+                                    <input type="text" name="meta_key" class="input" value="{{ $book->meta_key }}" required />
                                 </div>
 
                             </div>
