@@ -52,7 +52,6 @@
     <script>
         $(function() {
             $('#editor2').summernote({
-        placeholder: 'Hello stand alone ui',
         tabsize: 2,
         height: 100,
         toolbar: [
