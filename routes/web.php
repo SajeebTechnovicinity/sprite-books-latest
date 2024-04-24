@@ -58,6 +58,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/accept-gdpr', [App\Http\Controllers\FrontEnd\GuestController::class, 'acceptGDPR'])->name('accept.gdpr');
 
+Route::get('/socket', [App\Http\Controllers\FrontEnd\GuestController::class, 'socket'])->name('socket');
+
 Route::get('/t', [\App\Http\Controllers\FrontEnd\CommunityPostController::class, 'create_post']);
 Route::post('community-submit-post', [\App\Http\Controllers\FrontEnd\CommunityPostController::class, 'create_post']);
 Route::post('community-submit-like-post', [\App\Http\Controllers\FrontEnd\CommunityPostController::class, 'like_post']);

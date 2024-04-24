@@ -1,102 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     <url>
-        <loc>http://localhost/sprit-books-final-latest</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/blogs</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/user/registration</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/user/login</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/user/community</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/user/registration</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/user/login</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/faq</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/faq</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/privacy</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/contact</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/terms-and-conditions</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/author/all/blogs</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/blogs/20</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/blogs</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/user/community</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/terms-and-conditions</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/contact</loc>
+        <loc>https://technovicinity.com/</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/blogs/27</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/privacy</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/author/all/blogs</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/publisher/all/blogs</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/forget-password</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/forget-password</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/publisher/all/blogs</loc>
+        <loc>https://technovicinity.com/service</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/blogs/26</loc>
+        <loc>https://technovicinity.com</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/blogs/2</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/blogs/5</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/blogs/19</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/blogs/3</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/blogs/18</loc>
+        <loc>https://technovicinity.com/development/shahed/spirit/blogs/1</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost/sprit-books-final-latest/blogs/10</loc>
+        <loc>https://technovicinity.com/contact</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>https://technovicinity.com/development/shahed/spirit/blogs/2</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>https://technovicinity.com/portfolio</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>https://technovicinity.com/quote</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>https://technovicinity.com/career</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>

@@ -214,11 +214,20 @@
                         // Session variable set successfully
                     }
                 });
+               
             });
 
               $('#gdpr-reject').click(function() {
                 $('#gdpr-notification').fadeOut();
                 $('#cookie-consent').fadeIn();
+
+                  $.ajax({
+                    url: "{{ route('accept.gdpr') }}",
+                    type: 'GET',
+                    success: function(response) {
+                        // Session variable set successfully
+                    }
+                });
 
             });
         });

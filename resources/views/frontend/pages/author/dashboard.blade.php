@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <!-- Add Book Modal -->
     <div class="add-book-modal modal d-none" id="add-book">
         <div class="modal__wrap">
@@ -38,8 +39,9 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="dsc" class="label">Book Description*</label>
-                        <textarea name="book_description" id="dsc" class="textarea" required></textarea>
+                        <label for="title" class="label">Book Description* </label>
+                      <textarea name="book_description" id="dsc" class="textarea" required></textarea>
+
                     </div>
 
                     <div class="form-field">
@@ -502,5 +504,24 @@
             });
 
         }
+    </script>
+
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <script>
+        $(function() {
+            $('#editor').summernote({
+                tabsize: 2,
+                height: 100,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
     </script>
 @endsection

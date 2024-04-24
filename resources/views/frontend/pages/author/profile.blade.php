@@ -1,6 +1,8 @@
 @extends('master')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -58,7 +60,9 @@
                         <input type="text" name="book_name" id="title" class="input" />
                     </div>
 
-                    <div class="form-field">
+
+
+                   <div class="form-field">
                         <label for="dsc" class="label">Book Description*</label>
                         <textarea name="book_description" id="dsc" class="textarea" required></textarea>
                     </div>
@@ -702,8 +706,8 @@
                                 @endif
 
                                 <!-- <p class="member-status unit">
-                                            Member since {{ date('Y', strtotime($author->created_at)) }}
-                                        </p> -->
+                                                    Member since {{ date('Y', strtotime($author->created_at)) }}
+                                                </p> -->
                             </div>
                             <div class="tabs-wrap space-0">
                                 <div class="tabs-btns-row">
@@ -746,12 +750,12 @@
                                                                     alt="" />
                                                             </a>
                                                             <div class="text-wrap">
-                                                                <h5 class="subtitle">PAPERBACK</h5>
+                                                                <h5 class="subtitle">{{ $row->Genere->genere_name }}</h5>
                                                                 <a href="{{ url('book-details/' . $row->id) }}"
                                                                     class="title">{{ $row->book_name }}</a>
                                                                 <p class="dsc">
 
-                                                                    {{ Illuminate\Support\Str::of($row->book_description)->words(10, ' ...') }}
+                                                                    {!! Illuminate\Support\Str::of($row->book_description)->words(10, ' ...') !!}
                                                                 </p>
 
 
@@ -1256,6 +1260,25 @@
                         button.textContent = 'Show More'; // Change the button text back
                     }
                 });
+            });
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <script>
+        $(function() {
+            $('#editor').summernote({
+                tabsize: 2,
+                height: 100,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
             });
         });
     </script>
