@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <!-- Add Book Modal -->
     <div class="add-community-modal modal d-none" id="add-community">
         <div class="modal__inner">
@@ -56,7 +57,7 @@
                 <span class="text">
                 Cover Image (Max: 512KB)
                   <span class="inner">
-                  (Recommended: 300x300 px)
+                  (Recommended: 1200x500 px)
                   </span>
                 </span>
 
