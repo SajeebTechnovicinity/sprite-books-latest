@@ -152,7 +152,7 @@
                         @endforeach
                     </div>
                     <div class="switch-to-plan">
-                        <a href="{{ url('/publisher-plan') }}">Switch To Publisher Plans</a>
+                        <a href="{{ url('/plan') }}">Switch To Author Plans</a>
                     </div>
                 </div>
             </div>
