@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\MembershipPlan;
 use App\Models\Newsteller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -96,7 +97,13 @@ class GuestController extends Controller
 
     public function plan()
     {
-        return view('plan');
+        $data['membership_plans'] = MembershipPlan::whereMembershipPlanStatus(1)->whereType('AUTHOR')->get();
+        return view('plan',$data);
+    }   
+    public function publisherPlan()
+    {
+        $data['membership_plans'] = MembershipPlan::whereMembershipPlanStatus(1)->whereType('PUBLISHER')->get();
+        return view('publisher-plan',$data);
     }
 
     // Controller method to set session variable when GDPR is accepted
