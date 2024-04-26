@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <style>
         .hidden {
             display: none;
@@ -32,9 +32,14 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('post')
+                                    <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
                                     <div class="form-field">
                                         <label for="isbn" class="label">ISBN*</label>
-                                        <input type="text" name="isbn" id="isbn" class="input" />
+                                        <div class="has-loader">
+                                            <span class="loader" style="display: none;"></span>
+                                            <input type="text" name="isbn" id="#isbn" class="input"
+                                                onblur="handleInput()" required />
+                                        </div>
                                     </div>
                                     <div class="form-field">
                                         <label for="isbn" class="label">Role*</label>
@@ -345,6 +350,89 @@
             });
         });
     </script>
+
+    <script>
+        function handleInput() {
+            // Your JavaScript logic goes here
+            // Get the ISBN value from the input field
+            var isbn = document.getElementById("#isbn").value;
+
+            console.log(isbn);
+            $("#invalid-isbn").empty();
+            // showCalimaticLoader();
+            $('.has-loader .loader').css('display', 'block');
+
+            // Make an API call
+            var apiUrl = "https://api2.isbndb.com/book/" + isbn;
+
+            $.ajax({
+                url: apiUrl,
+                type: "GET",
+                headers: {
+                    'Authorization': '51099_4d7a81aeab0d75869e85e1ea60561a9b',
+                    'User-Agent': 'insomnia/5.12.4',
+                    'Accept': '*/*'
+                },
+                success: function(response) {
+                    // Request was successful, process the response
+                    console.log(response);
+                    $('#dsc').summernote('destroy');
+                    // HideCalimaticLoader();
+                    $('.has-loader .loader').css('display', 'none');
+                    $('#title').val(response.book.title);
+                    $('#dsc').val(response.book.synopsis);
+
+                    $('#file_updoad_isbn').val(response.book.image);
+                    $('#dsc').summernote({
+                        tabsize: 2,
+                        height: 100,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen', 'codeview', 'help']]
+                        ]
+                    });
+                    // Process the bookData here
+                },
+                error: function(xhr) {
+                    if (xhr.status == 404) {
+                        // Not Found error
+                        console.log("Error: Not Found");
+                        $("#invalid-isbn").text("Invalid Isbn").css({
+                            'color': 'red',
+                            'display': 'block'
+                        });
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
+                    } else if (xhr.status == 429) {
+                        // Too Many Requests error
+                        console.log("Error: Limit Exceeded");
+                        $("#invalid-isbn").text("Limit Exceeded").css({
+                            'color': 'red',
+                            'display': 'block'
+                        });;
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
+                    } else {
+                        // Handle other status codes
+                        console.log("Error: Unexpected status code " + xhr.status);
+                        $("#invalid-isbn").text("Network error").css({
+                            'color': 'red',
+                            'display': 'block'
+                        });;
+                        // HideCalimaticLoader();
+                        $('.has-loader .loader').css('display', 'none');
+                    }
+                },
+
+            });
+
+        }
+    </script>
     <script>
         function validateForm() {
             var authorDefine = document.querySelector('input[name="author_define"]:checked');
@@ -360,10 +448,10 @@
             document.getElementById('myForm').submit();
         }
     </script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         $(function() {
-            $('#editor').summernote({
+            $('#dsc').summernote({
                 tabsize: 2,
                 height: 100,
                 toolbar: [
@@ -379,5 +467,3 @@
         });
     </script>
 @endsection
-
-
