@@ -20,6 +20,7 @@
             </ul>
         </div>
     @endif
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <!-- Add Book Modal -->
     <div class="add-book-modal modal d-none" id="add-book">
 
@@ -35,7 +36,7 @@
                             fill="#8D8D9B" />
                     </svg>
                 </div>
-                <h3 class="title">Add your Book</h3>
+                <h3 class="title">Add your Book </h3>
                 <form action="{{ url('author/add-books') }}" method="post" class="modal__form"
                     enctype="multipart/form-data">
                     @csrf
@@ -1163,6 +1164,8 @@
             }, doneTypingInterval);
         });
     </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         function handleInput() {
             // Your JavaScript logic goes here
@@ -1189,12 +1192,27 @@
                     // Request was successful, process the response
                     console.log(response);
                     // HideCalimaticLoader();
+
+                    $('#dsc').summernote('destroy');
+
                     $('.has-loader .loader').css('display', 'none');
                     $('#title').val(response.book.title);
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
 
-
+                    $('#dsc').summernote({
+                        tabsize: 2,
+                        height: 100,
+                        toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                        ]
+                    });
                     // Process the bookData here
                 },
                 error: function(xhr) {

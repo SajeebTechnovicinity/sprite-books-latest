@@ -5212,25 +5212,26 @@ label.pseudo-checkbox {
   border-radius: 20px;
   padding: 30px;
   padding-bottom: 35px;
-  display: grid;
-  grid-gap: 26px;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  gap: 26px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.plan__card{
+  flex: 0 0 calc(33.3333% - 26px);
 }
 
 @media (min-width: 668px) and (max-width: 980px){
-  .plans {
-    grid-template-columns: repeat(2, 1fr);
+  .plan__card{
+    flex: 0 0 calc(50% - 26px);
   }
 }
 
 @media (max-width: 667px){
-  .plans {
-    grid-template-columns: repeat(1, 1fr);
+  .plan__card{
+    flex: 0 0 calc(100% - 26px);
   }
-}
-
-.plans > div {
-  flex: 1;
 }
 
 .plans .plan__card {
