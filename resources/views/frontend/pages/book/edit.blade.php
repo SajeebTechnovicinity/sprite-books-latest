@@ -361,7 +361,7 @@
 
                             <div class="form-field">
                                 <label for="dsc" class="label">Book Description*</label>
-                                <textarea name="book_description" id="dsc" class="textarea">{{ $book->book_description }}</textarea>
+                                <textarea name="book_description" id="editor" class="textarea">{{ $book->book_description }}</textarea>
                             </div>
 
                             <div class="form-field">

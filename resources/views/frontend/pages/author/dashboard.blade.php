@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <!-- Add Book Modal -->
     <div class="add-book-modal modal d-none" id="add-book">
         <div class="modal__wrap">
@@ -40,7 +40,7 @@
 
                     <div class="form-field">
                         <label for="title" class="label">Book Description* </label>
-                      <textarea name="book_description" id="dsc" class="textarea" required></textarea>
+                        <textarea name="book_description" id="dsc" class="textarea" required></textarea>
 
                     </div>
 
@@ -467,10 +467,24 @@
                 success: function(response) {
                     // Request was successful, process the response
                     console.log(response);
+                    $('#dsc').summernote('destroy');
                     HideCalimaticLoader();
                     $('#title').val(response.book.title);
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
+                    $('#dsc').summernote({
+                        tabsize: 2,
+                        height: 100,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen', 'codeview', 'help']]
+                        ]
+                    });
                     // Process the bookData here
                 },
                 error: function(xhr) {
@@ -506,10 +520,10 @@
         }
     </script>
 
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         $(function() {
-            $('#editor').summernote({
+            $('#dsc').summernote({
                 tabsize: 2,
                 height: 100,
                 toolbar: [

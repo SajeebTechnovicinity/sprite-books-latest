@@ -812,11 +812,26 @@
                 success: function(response) {
                     // Request was successful, process the response
                     console.log(response);
+                     $('#dsc').summernote('destroy');
                     // HideCalimaticLoader();
                     $('.has-loader .loader').css('display', 'none');
                     $('#title').val(response.book.title);
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
+
+                     $('#dsc').summernote({
+                        tabsize: 2,
+                        height: 100,
+                        toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                        ]
+                    });
                     // Process the bookData here
                 },
                 error: function(xhr) {
@@ -872,7 +887,7 @@
        <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         $(function() {
-            $('#editor').summernote({
+            $('#dsc').summernote({
                 tabsize: 2,
                 height: 100,
                 toolbar: [
