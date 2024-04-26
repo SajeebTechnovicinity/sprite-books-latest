@@ -58,6 +58,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/accept-gdpr', [App\Http\Controllers\FrontEnd\GuestController::class, 'acceptGDPR'])->name('accept.gdpr');
 
+Route::get('/socket', [App\Http\Controllers\FrontEnd\GuestController::class, 'socket'])->name('socket');
+
 Route::get('/t', [\App\Http\Controllers\FrontEnd\CommunityPostController::class, 'create_post']);
 Route::post('community-submit-post', [\App\Http\Controllers\FrontEnd\CommunityPostController::class, 'create_post']);
 Route::post('community-submit-like-post', [\App\Http\Controllers\FrontEnd\CommunityPostController::class, 'like_post']);
@@ -68,6 +70,7 @@ Route::post('community-submit-comment-post', [\App\Http\Controllers\FrontEnd\Com
 Route::get('/subscribe/now', [App\Http\Controllers\FrontEnd\GuestController::class, 'subscribe']);
 
 Route::get('/plan', [App\Http\Controllers\FrontEnd\GuestController::class, 'plan']);
+Route::get('/publisher-plan', [App\Http\Controllers\FrontEnd\GuestController::class, 'publisherPlan']);
 
 Route::get('/sitemap', [App\Http\Controllers\FrontEnd\GuestController::class, 'sitemap_generate']);
 

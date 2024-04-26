@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\MembershipPlan;
 use App\Models\Newsteller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -60,6 +61,35 @@ class GuestController extends Controller
 
         $response = curl_exec($curl);
 
+        $url = 'https://api.brevo.com/v3/contacts/lists/4/contacts/add';
+
+        // Request headers
+        $headers = array(
+            'accept: application/json',
+            'api-key: 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',
+            'content-type: application/json'
+        );
+
+        // Request data
+        $data = array(
+            'emails' => array(
+                $request->email
+            )
+        );
+
+        // Initialize curl session
+        $ch = curl_init();
+
+        // Set curl options
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Execute curl request
+        $response = curl_exec($ch);
+
         //Session::flash('success','Successfully subscribed');
         return $response;
         return 'Successfully subscribed';
@@ -67,7 +97,13 @@ class GuestController extends Controller
 
     public function plan()
     {
-        return view('plan');
+        $data['membership_plans'] = MembershipPlan::whereMembershipPlanStatus(1)->whereType('AUTHOR')->get();
+        return view('plan',$data);
+    }   
+    public function publisherPlan()
+    {
+        $data['membership_plans'] = MembershipPlan::whereMembershipPlanStatus(1)->whereType('PUBLISHER')->get();
+        return view('publisher-plan',$data);
     }
 
     // Controller method to set session variable when GDPR is accepted
@@ -82,8 +118,12 @@ class GuestController extends Controller
     public function sitemap_generate()
     {
         SitemapGenerator::create(config('app.url'))
-        ->writeToFile(public_path('sitemap.xml'));
+            ->writeToFile(public_path('sitemap.xml'));
 
         return response('Sitemap generated successfully');
+    }
+    public function socket()
+    {
+        return view('socket');
     }
 }
