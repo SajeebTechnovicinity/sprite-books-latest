@@ -6,10 +6,44 @@
         .d-none {
             display: none;
         }
+
+        .plan-top-meta {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+        .plan-top-meta ul{
+            list-style: circle;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+
+        .plan-top-meta ul li{
+            list-style: circle;
+        }
     </style>
 
     <section class="body-content author-details-page alt-content">
         <div class="container">
+
+            <div class="plan-top-meta">
+                <p>Welcome to the Author Level of The Book Tree: Where Your Stories Take Root and Grow!</p>
+                <p>As an author, you know the magic of weaving tales that captivate and inspire or educating and sharing your wisdom with the world. Now, imagine a platform where your books not only find eager readers but also flourish amidst a vibrant community of fellow writers and book enthusiasts. </p>
+                <p>Welcome to The Book Tree, your author network for nurturing your authorial journey and connecting with readers, authors and publishers around the world.</p>
+                <p>What does the Author Level offer?</p>
+
+                <ul>
+                    <li><strong>Expand Your Literary Forest: </strong>Add your published books to your profile, depending on the level you choose. Add the ISBN and automatically pull in your book details. Edit your content and promote your books with your own author profile and watch your literary forest thrive. Whether you're a seasoned novelist or a budding poet, or a non fiction officionado, there's no limit to the stories you can plant and nurture.</li>
+
+                    <li><strong>Engage with Your Readers:</strong> Cultivate meaningful connections with your audience by creating a reader community Connect with your readers through interactive features like events and community discussions. Dive deep into conversations, share insights, and forge lasting bonds with fellow book lovers.</li>
+
+                    <li><strong>Illuminate Your Path: </strong>Shine a spotlight on your writing journey through our blogging and podcasting capabilities. Share your thoughts, experiences, and creative process with readers who are eager to learn from your wisdom.</li>
+
+                    <li><strong>Showcase Your Books:</strong> Craft captivating book profiles that draw readers in and leave them wanting more. Make sure your books stand out amidst the literary landscape.</li>
+                </ul>
+
+                <p>At The Book Tree, we're dedicated to helping authors like you flourish and grow. Join our community today and let your stories take root and bloom!</p>
+            </div>
+
             <div class="inner-content">
                 <div class="tab-content" style="width: 100%;">
 

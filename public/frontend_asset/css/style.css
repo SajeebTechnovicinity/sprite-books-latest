@@ -30,7 +30,7 @@ body {
   font-family: var(--base-font);
   font-weight: 400;
   overflow-x: hidden;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.6;
 }
 
@@ -470,7 +470,7 @@ figure {
 
 .hero p {
   max-width: 570px;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 138%;
   letter-spacing: 0.3px;
   color: var(--color-gray_lite);
@@ -950,7 +950,7 @@ figure {
 
 .fig-content .dsc {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 156%;
   letter-spacing: 0.3px;
   color: var(--color-gray_extra-lite);
@@ -1448,7 +1448,7 @@ figure {
 }
 
 .widget-list .link {
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.2;
   letter-spacing: -0.204545px;
   color: #000000;
