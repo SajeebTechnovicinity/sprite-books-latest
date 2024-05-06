@@ -85,6 +85,15 @@ $(document).ready(function () {
         //   $(".edit-profile").addClass("d-none");
         // }
     });
+    // offcanvas
+    $(".menu-trigger").on("click", function (e) {
+        e.preventDefault();
+        $('.offcanvas').addClass("offcanvas-active");
+    });
+    $(".offcanvas__close").on("click", function (e) {
+        e.preventDefault();
+        $('.offcanvas').removeClass("offcanvas-active");
+    });
 
     // Image Carousel
     $(".main-figure-group").slick({
