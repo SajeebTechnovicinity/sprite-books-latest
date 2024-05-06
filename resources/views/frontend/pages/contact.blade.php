@@ -1,5 +1,10 @@
 @extends('master')
-
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("contactForm").submit();
+    }
+</script>
 @section('content')
     <div class="Get-in-Touch">
         <div class="form_header">
@@ -36,7 +41,10 @@
 
                         <h3 id="showMessage"></h3>
                         <div class="btns">
-                            <button class="form_btn" type="submit">Send</button>
+                            <button class="form_btn" type="submit" class="g-recaptcha btn btn-primary btn-lg "
+                                    data-sitekey="{{ config('services.recaptcha_v3.siteKey') }}"
+                                    data-callback="onSubmit"
+                                    data-action="submitContact">Send</button>
                         </div>
                     </form>
                 </div>
@@ -111,7 +119,7 @@
                                 @endif
                                 @if ($globalSetting->instagram_link)
                                     <li class="social_link">
-                                        <a target="_blank"  href="{{ $globalSetting->instagram_link }}" target="__blank">
+                                        <a target="_blank" href="{{ $globalSetting->instagram_link }}" target="__blank">
                                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -136,7 +144,7 @@
                 </li> --}}
                                 @if ($globalSetting->twitter_link)
                                     <li class="social_link">
-                                        <a target="_blank"  href="{{ $globalSetting->twitter_link }}" target="__blank">
+                                        <a target="_blank" href="{{ $globalSetting->twitter_link }}" target="__blank">
                                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
