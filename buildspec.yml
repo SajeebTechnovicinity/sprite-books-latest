@@ -15,10 +15,20 @@ phases:
     commands:
       - composer install
       - npm install
+  build:
+    commands:
+      - echo "Build started"
+      - echo "Building your application"
+      # Add your build commands here
+  post_build:
+    commands:
+      - echo "Build completed"
 artifacts:
   files:
     - '**/*'
-  name: $(date +%Y-%m-%dT%H:%M:%S).zip
+  name: MyApplication-$(date +%Y-%m-%dT%H:%M:%S).zip
+  discard-paths: yes
+  base-directory: .
 proxy:
   upload-artifacts: yes
   logs: yes
