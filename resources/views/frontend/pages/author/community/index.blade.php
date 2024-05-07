@@ -55,7 +55,7 @@
                   </svg>
                 </span>
                 <span class="text">
-                Cover Image (Max: 512KB)
+                Cover Image (Max: 2 MB)
                   <span class="inner">
                   (Recommended: 1200x500 px)
                   </span>

@@ -21,11 +21,11 @@ class CommunityController extends Controller
 
     $request->validate([
         'community_name' => 'required',
-        'file_updoad' => 'nullable|mimes:jpg,png|max:512',
+        'file_updoad' => 'nullable|mimes:jpg,png|max:2048',
     ], [
         'community_name.required' => 'The community name field is required.',
         'file_updoad.mimes' => 'The community image must be a JPG or PNG file.',
-        'file_updoad.max' => 'The community image must not exceed 512 KB in size.',
+        'file_updoad.max' => 'The community image must not exceed 2 MB in size.',
     ]);
 
     $community = new Community;
@@ -78,11 +78,11 @@ class CommunityController extends Controller
 
     $request->validate([
         'community_name' => 'required',
-        'file_updoad' => 'nullable|mimes:jpg,png|max:512',
+        'file_updoad' => 'nullable|mimes:jpg,png|max:2048',
     ], [
         'community_name.required' => 'The community name field is required.',
         'file_updoad.mimes' => 'The community image must be a JPG or PNG file.',
-        'file_updoad.max' => 'The community image must not exceed 512 KB in size.',
+        'file_updoad.max' => 'The community image must not exceed 2 MB in size.',
     ]);
 
     $community = Community::find($communityId);
