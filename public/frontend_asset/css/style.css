@@ -30,7 +30,7 @@ body {
   font-family: var(--base-font);
   font-weight: 400;
   overflow-x: hidden;
-  font-size: 22px;
+  font-size: 24px;
   line-height: 1.6;
 }
 
@@ -348,7 +348,7 @@ figure {
 
 .main-header .link {
   font-weight: 400;
-  font-size:  22px;
+  font-size:  24px;
   line-height: 156%;
   color: var(--color-dark);
   transition: 0.3s;
@@ -588,7 +588,7 @@ figure {
 
 .hero p {
   max-width: 570px;
-  font-size: 22px;
+  font-size: 24px;
   line-height: 138%;
   letter-spacing: 0.3px;
   color: var(--color-gray_lite);
@@ -604,7 +604,7 @@ figure {
 
 .hero__form .input {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 24px;
   /* line-height: 156%; */
   letter-spacing: 0.3px;
   color: #000000;
@@ -620,7 +620,7 @@ figure {
   border: none;
   background-color: var(--color-dark);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 24px;
   letter-spacing: 0.3px;
   color: #ffffff;
   padding: 15px 27px;
@@ -1097,7 +1097,7 @@ figure {
 .fig-content .heading {
   margin: 0 0 10px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 156%;
   letter-spacing: 0.3px;
   color: var(--color-gray);
@@ -1105,7 +1105,6 @@ figure {
 
 .fig-content .dsc {
   margin: 0;
-  font-size: 22px;
   line-height: 156%;
   letter-spacing: 0.3px;
   color: var(--color-gray_extra-lite);
@@ -1263,7 +1262,7 @@ figure {
 
 .card .title {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 139%;
   letter-spacing: 0.3px;
   color: var(--color-gray);
@@ -1291,8 +1290,8 @@ figure {
 }
 
 .card .dsc {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 20px;
+  line-height: 1.4;
   color: #000000;
   margin: 0 0 15px;
 }
@@ -1603,7 +1602,7 @@ figure {
 }
 
 .widget-list .link {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.2;
   letter-spacing: -0.204545px;
   color: #000000;
@@ -1647,7 +1646,7 @@ figure {
 
 .agreement-links .link {
   font-weight: 400;
-  font-size: 19px;
+  font-size: 22px;
   line-height: 1.3;
   letter-spacing: -0.204545px;
   color: #000000;
@@ -1803,7 +1802,7 @@ figure {
   border-radius: 40px;
   padding: 13px 20px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.56;
   color: var(--color-dark_lite);
   width: 345px;
@@ -2267,7 +2266,6 @@ figure {
 .tab-panel .tab-link {
   display: block;
   font-weight: 500;
-  font-size: 18px;
   line-height: 1;
   letter-spacing: 0.3px;
   color: var(--color-gray);
@@ -3312,7 +3310,6 @@ figure {
 }
 
 .tabs-wrap .dsc {
-  line-height: 179%;
   color: var(--color-gray_lite);
   margin: 0;
 }
@@ -3932,7 +3929,7 @@ border-radius: 50%;
 .author-credit p,
 .author-summary .dsc {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.79;
   display: flex;
   align-items: center;
@@ -4072,7 +4069,7 @@ border-radius: 50%;
 }
 
 .event-card__timezone {
-  font-size: 18px;
+  font-size: 21px;
   line-height: 1.79;
   color: #000000;
   margin: 0 0 20px;
@@ -4644,7 +4641,6 @@ border-radius: 50%;
   font-family: var(--base-font);
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
   line-height: 1.42;
   letter-spacing: 0.3px;
   color: var(--color-gray_lite);
@@ -4674,6 +4670,7 @@ border-radius: 50%;
   height: 50px;
   margin-bottom: 16px;
   padding: 5px 15px;
+  font-size: 22px;
   outline-color: var(--color-highlight);
 }
 
@@ -4703,7 +4700,7 @@ border-radius: 50%;
 .regular-checkbox:checked + label.pseudo-checkbox:after {
   content: url("../imgs/checkbox.svg");
   position: absolute;
-  top: -1px;
+  top: -6px;
   left: 1px;
 }
 
@@ -4722,7 +4719,7 @@ label.pseudo-checkbox {
   font-family: var(--base-font);
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 22px;
   line-height: 1.067;
   letter-spacing: 0.3px;
   color: var(--color-gray);
@@ -4774,7 +4771,6 @@ label.pseudo-checkbox {
   width: 100%;
   border-top: 1px solid #eeeeee;
   padding-top: 24px;
-  font-size: 20px;
   line-height: 1.42;
   letter-spacing: 0.3px;
   color: #828282;
