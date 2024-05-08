@@ -956,13 +956,15 @@
                 contentType: false,
                 processData: false,
                 success: function(data, textStatus, jqXHR) {
+                     console.log(data);
                     $("#showMessage").text("Message has ben successfully send.");
-                    location.reload();
+                   location.reload();
                 }
             }).fail(function(data, textStatus, jqXHR) {
                 //console.log(data);
                 //console.log(textStatus);
                 var json_data = JSON.parse(data.responseText);
+                console.log(json_data);
                 //console.log(json_data.errors);
                 $.each(json_data.errors, function(key, value) {
                     console.log(value);
