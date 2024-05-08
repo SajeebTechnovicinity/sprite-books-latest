@@ -24,7 +24,7 @@ class BlogController extends Controller
     //   print_r($data['event']);die;
       return view('frontend.pages.author.blog.edit',$data);
     }
-    
+    //blog creation
     public function store(Request $request){
 
         $request->validate([
