@@ -1005,15 +1005,51 @@ figure {
   margin-top: 5px;
 }
 
+.card .figure{
+  display: block;
+}
+
 .card .figure img {
   height: 250px;
   object-fit: contain;
+}
+
+.Community-body-content .card .figure {
+  margin: -25px -30px 0;
 }
 
 .Community-body-content .card .figure img {
   height: initial;
   object-fit: initial;
   width: 100%;
+}
+
+.Community-body-content .text-wrap{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.Community-body-content .text-wrap .card-link{
+  margin-top: auto;
+}
+
+.Community-body-content .card{
+  display: flex!important;
+  flex-direction: column;
+}
+
+.community-cards-carousel .slick-track{
+  display: flex;
+}
+
+.community-cards-carousel .slick-track .slick-slide{
+  height: initial;
+}
+
+.community-cards-carousel .slick-track .slick-slide>div,
+.community-cards-carousel .slick-track .slick-slide .card{
+  height: 100%;
 }
 
 .fig-content .subtitle {
