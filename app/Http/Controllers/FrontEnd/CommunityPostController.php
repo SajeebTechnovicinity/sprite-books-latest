@@ -9,10 +9,14 @@ use Session;
 use App\Events\SendPostEvent;
 use App\Models\CommunityPost;
 use App\Http\Resources\CommonResource;
+use App\Mail\CommentEmail;
+use App\Mail\PostEmail;
 use App\Models\Author;
+use App\Models\Community;
 use App\Models\CommunityPostComment;
 use App\Models\DislikedCommunityPost;
 use App\Models\LikedCommunityPost;
+use Illuminate\Support\Facades\Mail;
 
 class CommunityPostController extends Controller
 {
@@ -54,6 +58,24 @@ class CommunityPostController extends Controller
 
         $post->save();
 
+        $author=Community::where('id',$request->community_id)->first();
+
+        $authorId=$author->author_id;
+
+        if($authorId!=null && session('author_id')!=$authorId)
+        {
+            $author=Author::where('id',$authorId)->first();
+
+            $mailData = [
+                'title' => 'Post Creation Email',
+                'body' => session('author_name').' create a post in your community. '
+            ];
+             
+            Mail::to($author->author_email)->send(new PostEmail($mailData));
+        }
+
+
+
         $postArray = new CommonResource($post);
         $user = Author::find(session('author_id'));
         $postArray['user_name'] = $user->author_name . ' ' . $user->author_last_name;
@@ -88,6 +110,23 @@ class CommunityPostController extends Controller
         $comment->comment = $request->comment;
 
         $comment->save();
+
+        $author=CommunityPost::where('id',$request->post_id)->first();
+
+        $authorId=$author->user_id;
+
+        if($authorId!=null && session('author_id')!=$authorId)
+        {
+            $author=Author::where('id',$authorId)->first();
+
+            $mailData = [
+                'title' => 'Comment Creation Email',
+                'body' => session('author_name').' create a comment in your post. '
+            ];
+             
+            Mail::to($author->author_email)->send(new CommentEmail($mailData));
+        }
+
 
         $postArray = new CommonResource($comment);
         $totalComments = CommunityPostComment::wherePostId($request->post_id)->whereCommunityId($request->community_id)->count();

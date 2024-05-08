@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Mail\BlogEmail;
 use App\Models\Author;
 use App\Models\Blog;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Mail;
 
 class BlogController extends Controller
 {
@@ -62,6 +66,16 @@ class BlogController extends Controller
     
         
         $blog->save();
+
+        $mailData = [
+            'title' => 'Blog Creation Email',
+            'body' => session('author_name').' create a blog. Now waiting for your approval.'
+        ];
+
+        $settings=Setting::first();
+
+         
+        Mail::to($settings->email)->send(new BlogEmail($mailData));
     
         return redirect()->back()->with('msg','Blog added successfully.');
      }
