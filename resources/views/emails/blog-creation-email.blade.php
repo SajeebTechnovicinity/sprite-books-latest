@@ -367,7 +367,7 @@
                                                                                 text-decoration: none !important;
                                                                                 text-underline: none;
                                                                             ">
-                                                                            <img src="{{ $globalSetting->app_logo }}"
+                                                                            <img src="{{ asset($globalSetting->app_logo) }}"
                                                                                 class="logo" width="150"
                                                                                 border="0"
                                                                                 style="
