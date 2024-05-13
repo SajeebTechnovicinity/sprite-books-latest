@@ -54,7 +54,7 @@ class GuestController extends Controller
             ]),
             CURLOPT_HTTPHEADER => [
                 "accept: application/json",
-                "api-key: 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",
+                'api-key: ' . env('BREVO_KEY'),
                 "content-type: application/json"
             ],
         ]);
@@ -67,10 +67,9 @@ class GuestController extends Controller
         // Request headers
         $headers = array(
             'accept: application/json',
-            'api-key: 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',
+            'api-key: ' . env('BREVO_KEY'),
             'content-type: application/json'
         );
-
         // Request data
         $data = array(
             'emails' => array(
