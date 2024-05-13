@@ -54,19 +54,20 @@ class GuestController extends Controller
             ]),
             CURLOPT_HTTPHEADER => [
                 "accept: application/json",
-                "api-key: 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",
+                "api-key: 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",
                 "content-type: application/json"
             ],
         ]);
 
         $response = curl_exec($curl);
+        
 
         $url = 'https://api.brevo.com/v3/contacts/lists/4/contacts/add';
 
         // Request headers
         $headers = array(
             'accept: application/json',
-            'api-key: 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',
+            'api-key: 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',
             'content-type: application/json'
         );
 

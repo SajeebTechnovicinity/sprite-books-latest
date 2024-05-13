@@ -17,7 +17,8 @@
         "predis/predis": "^2.2",
         "spatie/laravel-cookie-consent": "^3.2",
         "spatie/laravel-sitemap": "*",
-        "srmklive/paypal": "~3.0"
+        "srmklive/paypal": "~3.0",
+        "statikbe/laravel-cookie-consent": "^1.8"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
