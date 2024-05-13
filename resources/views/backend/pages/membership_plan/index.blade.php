@@ -48,7 +48,7 @@
                             {{ $loop->iteration }}
                         </td>
 
-                        <td>
+                        <td style="width:20%">
                             <div class="info">
                                 <span><i class="fas fa-regular fa-copy"></i> Title:  {{ $row->membership_plan_name  }}</span>
                                 <span><i class="fas fa-regular fa-copy"></i> Type:  {{ $row->type }}</span>
