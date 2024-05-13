@@ -50,7 +50,8 @@
                       alt="User Image">
               </div>
               <div class="info">
-                  <a href="#" class="d-block">{{ Illuminate\Support\Facades\Auth::user()->name }}</a>
+                  {{-- <a href="#" class="d-block">{{ Illuminate\Support\Facades\Auth::user()->name }}</a> --}}
+                  <a href="#" class="d-block">{{ $globalSetting->app_name }} Admin</a>
               </div>
           </div>
 

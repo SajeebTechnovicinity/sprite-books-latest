@@ -73,6 +73,43 @@ class AuthorController extends Controller
 
         return redirect('author/profile');
     }
+    public function communitySupport($id,$community_id)
+    {
+
+        $author = Author::where('id', $id)->first();
+
+        if (!$author) {
+            return redirect()->back()->with('msg', 'No user found with this credential');
+        }
+
+        if ($author) {
+
+            $sData = [
+                'author_name' => $author->author_name,
+                'author_phone' => $author->author_phone,
+                'type' => $author->type,
+                'author_code' => $author->author_code,
+                'author_email' => $author->author_email,
+                'author_id' => $author->id,
+            ];
+
+            session()->put($sData);
+            if ($author->type == 'AUTHOR') {
+                return redirect('community/'.$community_id);
+                //return redirect('author/profile');
+            } elseif ($author->type == 'USER') {
+                return redirect('community/'.$community_id);
+                //return redirect('user/profile');
+            } elseif ($author->type == 'PUBLISHER') {
+                return redirect('community/'.$community_id);
+                //return redirect('publisher/profile');
+            }
+        } else {
+            return ['data' => $author, 'status' => 0];
+        }
+
+        return redirect('community/'.$community_id);
+    }
     public function delete($id)
     {
 

@@ -316,6 +316,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     //    Client
     Route::resource('publishers', PublisherController::class)->middleware('auth');
     Route::get('/user/support/{id}', [App\Http\Controllers\Admin\AuthorController::class, 'support']);
+    Route::get('/community/support/{id}/{community_id}', [App\Http\Controllers\Admin\AuthorController::class, 'communitySupport']);
     Route::get('/app/user/delete/{id}', [App\Http\Controllers\Admin\AuthorController::class, 'delete']);
     
     Route::post('user/delete-selected', [App\Http\Controllers\Admin\AuthorController::class,'deleteSelected'])->name('user.delete-selected');

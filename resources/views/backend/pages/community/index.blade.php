@@ -6,7 +6,7 @@
             width: 450px !important;
         }
     </style>
-    
+
 
     <div class="col-12">
         <div class="card">
@@ -66,6 +66,10 @@
                                 </td>
 
                                 <td>
+                                    <a class="btn btn-warning btn-sm"
+                                        href="{{ url('admin/community/support') }}/{{ $row->author_id }}/{{ $row->id }}" target="_blank">
+                                        Login
+                                    </a>
                                     <a class="btn btn-success btn-sm"
                                         href="{{ url('admin/edit-community') }}/{{ $row->id }}">
                                         Edit
@@ -74,7 +78,7 @@
                                         onclick="confirmCancellation(event,{{ $row->id }})">
                                         Delete
                                     </a>
-                                     <a class="btn btn-success btn-sm"
+                                    <a class="btn btn-success btn-sm"
                                         href="{{ url('admin/community/post') }}/{{ $row->id }}">
                                         All Post
                                     </a>
