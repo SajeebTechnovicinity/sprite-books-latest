@@ -952,6 +952,7 @@
                                                             <a href="{{ url('book-details/' . $row->id) }}"><img
                                                                     src="{{ asset($row->bookDocuments[0]->path ?? '') }}"
                                                                     alt="" /></a>
+                                                                    
                                                         </figure>
                                                     @endforeach
                                                 @else
