@@ -18,7 +18,8 @@
         "spatie/laravel-cookie-consent": "^3.2",
         "spatie/laravel-sitemap": "*",
         "srmklive/paypal": "~3.0",
-        "statikbe/laravel-cookie-consent": "^1.8"
+        "statikbe/laravel-cookie-consent": "^1.8",
+        "whitecube/laravel-cookie-consent": "^1.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
