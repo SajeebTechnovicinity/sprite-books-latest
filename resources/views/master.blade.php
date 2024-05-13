@@ -175,7 +175,7 @@
         }
     </script>
 
-
+@cookieconsentscripts
 </head>
 
 <body>
@@ -249,7 +249,7 @@
     @include('layouts.frontend.footer')
 
     @include('layouts.frontend.footerlink')
-
+@cookieconsentview
 </body>
 
 </html>

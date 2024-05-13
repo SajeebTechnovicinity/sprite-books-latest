@@ -1,122 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/</loc>
+        <loc>https://booktree.app/</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit</loc>
+        <loc>https://booktree.app</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/user/community</loc>
+        <loc>https://booktree.app/privacy</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/user/login</loc>
+        <loc>https://booktree.app/user/community</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/user/registration</loc>
+        <loc>https://booktree.app/user/login</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/faq</loc>
+        <loc>https://booktree.app/user/registration</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/forget-password</loc>
+        <loc>https://booktree.app/blogs</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/publisher/all/blogs</loc>
+        <loc>https://booktree.app/publisher/all/blogs</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/blogs</loc>
+        <loc>https://booktree.app/author/all/blogs</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/contact</loc>
+        <loc>https://booktree.app/contact</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/author/all/blogs</loc>
+        <loc>https://booktree.app/faq</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/terms-and-conditions</loc>
+        <loc>https://booktree.app/terms-and-conditions</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/privacy</loc>
+        <loc>https://booktree.app/forget-password</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/</loc>
+        <loc>https://booktree.app/blogs/1</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/blogs/5</loc>
+        <loc>https://booktree.app/blogs/5</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/service</loc>
+        <loc>https://booktree.app/blogs/2</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>https://technovicinity.com/portfolio</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/blogs/2</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>https://technovicinity.com/contact</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/blogs/3</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>https://technovicinity.com/development/shahed/spirit/blogs/1</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>https://technovicinity.com</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>https://technovicinity.com/quote</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>https://technovicinity.com/career</loc>
+        <loc>https://booktree.app/blogs/3</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>

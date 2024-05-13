@@ -49,6 +49,7 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
+
 Route::get('/subscription/create', [SubscriptionController::class, 'createSubscription']);
 Route::get('/subscription/view', [SubscriptionController::class, 'viewSubscription']);
 Route::get('/subscription/success', [SubscriptionController::class, 'subscriptionSuccess'])->name('subscription.success');
@@ -377,5 +378,4 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     //  membership-plans
     Route::resource('membership-plans', MembershipPlanController::class)->middleware('auth');
 })->middleware('auth');
-
 require __DIR__ . '/auth.php';
