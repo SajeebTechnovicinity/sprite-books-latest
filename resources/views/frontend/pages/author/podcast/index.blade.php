@@ -133,7 +133,7 @@
                                 </div>
                                 <p class="para">
                                    {{-- <iframe  src="{{ getVideoEmbededLink($row->podcast_embed_code) }}" frameborder="0" allowfullscreen></iframe> --}}
-                                    {!!$row->podcast_embed_code!!}"
+                                    {!!$row->podcast_embed_code!!}
                                 </p>
                             </div>
                         </div>
