@@ -123,11 +123,11 @@ class BlogController extends Controller
      }
 
      public function delete_blog($id){
-        if(session('author_id') && session('type') == 'AUTHOR')
-        {
-        Blog::find($id)->delete();
-        return redirect()->back()->with('msg','Blog permanently  deleted successfully.');
-        }
+        // if(session('author_id') && session('type') == 'AUTHOR')
+        // {
+            Blog::find($id)->delete();
+            return redirect()->back()->with('msg','Blog permanently  deleted successfully.');
+        //}
      }
     
 }
