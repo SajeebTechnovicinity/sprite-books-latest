@@ -166,11 +166,11 @@
                                                 <div class="author-block__dec" style="margin-left: 10px;">
                                                     <p class="para">
                                                         <span class="main">
-                                                            {{ $firstPara }}
+                                                            {!! $firstPara !!}
                                                         </span>
                                                         @if (strlen($text) > 30)
                                                             <span class="extended">
-                                                                {{ $secondPara }}
+                                                                {!! $secondPara !!}
                                                             </span>
                                                             <span class="read-more">Show More</span>
                                                         @endif
