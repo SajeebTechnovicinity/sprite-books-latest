@@ -1,7 +1,7 @@
 @extends('master')
-   <meta name="keywords" content="{{ $book->meta_key }}">
+<meta name="keywords" content="{{ $book->meta_key }}">
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <style>
         .hidden {
             display: none;
@@ -33,85 +33,88 @@
                                             fill="#8D8D9B" />
                                     </svg>
                                 </div>
-                                <h3 class="title">Add your Book</h3>
-                                <form action="{{ url('author/add-books') }}" method="post" class="modal__form"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    @method('post')
-                                    <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
-                                    <div class="form-field">
-                                        <label for="isbn" class="label">ISBN*</label>
-                                        <div class="has-loader">
-                                            <span class="loader" style="display: none;"></span>
-                                            <input type="text" name="isbn" id="#isbn" class="input"
-                                                onblur="handleInput()" required />
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
-                                    @if (session('type') != 'AUTHOR')
+                                @if (session('type') != 'USER')
+                                    <h3 class="title">Add your Book</h3>
+                                    <form action="{{ url('author/add-books') }}" method="post" class="modal__form"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('post')
+                                        <div class="invalid-isbn" id="invalid-isbn" display="none"></div>
                                         <div class="form-field">
-                                            <label for="isbn" class="label">Role*</label>
+                                            <label for="isbn" class="label">ISBN*</label>
+                                            <div class="has-loader">
+                                                <span class="loader" style="display: none;"></span>
+                                                <input type="text" name="isbn" id="#isbn" class="input"
+                                                    onblur="handleInput()" required />
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="file_updoad_isbn" id="file_updoad_isbn" required />
+                                        @if (session('type') != 'AUTHOR')
+                                            <div class="form-field">
+                                                <label for="isbn" class="label">Role*</label>
 
-                                            @if (session('author_id') != null)
-                                                @if (check_user_max_book_by_user_id(session('author_id')) == 1)
-                                                    <label><input type="radio" value="Publisher" name="author_define"
-                                                            required> Publisher</label>
-                                                @else
-                                                    <label><input type="radio" value="Publisher" name="author_define"
-                                                            onclick="showAlert(this)" required> Publisher</label>
+                                                @if (session('author_id') != null)
+                                                    @if (check_user_max_book_by_user_id(session('author_id')) == 1)
+                                                        <label><input type="radio" value="Publisher" name="author_define"
+                                                                required> Publisher</label>
+                                                    @else
+                                                        <label><input type="radio" value="Publisher" name="author_define"
+                                                                onclick="showAlert(this)" required> Publisher</label>
+                                                    @endif
                                                 @endif
-                                            @endif
 
 
 
 
-                                            <input type="radio" value="Author" name="author_define" required>
-                                            <label for="html">Author</label>
-                                        </div>
+                                                <input type="radio" value="Author" name="author_define" required>
+                                                <label for="html">Author</label>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="text-area" id="author_text">Author </label>
+                                                <select name="book_author" id="book_author" class="input">
+                                                    @foreach ($author_created_list as $listA)
+                                                        <option value="{{ $listA->id }}">{{ $listA->author_name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        @endif
+
                                         <div class="form-field">
-                                            <label for="text-area" id="author_text">Author </label>
-                                            <select name="book_author" id="book_author" class="input">
-                                                @foreach ($author_created_list as $listA)
-                                                    <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
+                                            <label for="title" class="label">Book Title*</label>
+                                            <input type="text" name="book_name" id="title" class="input" required />
+                                        </div>
+
+                                        <div class="form-field">
+                                            <label for="dsc" class="label">Book Description*</label>
+                                            <textarea name="book_description" id="dsc" class="textarea" required></textarea>
+                                        </div>
+
+                                        <div class="form-field">
+                                            <label for="dsc" class="label">Select Genre*</label>
+                                            <select class="input form-control" name="genere_id" required>
+                                                @foreach ($generes as $row)
+                                                    <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                    @endif
 
-                                    <div class="form-field">
-                                        <label for="title" class="label">Book Title*</label>
-                                        <input type="text" name="book_name" id="title" class="input" required />
-                                    </div>
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label for="links" class="label">Book Amazon Links</label>
+                                                <input type="text" name="book_amazon_link" id="links"
+                                                    class="input" />
+                                            </div>
 
-                                    <div class="form-field">
-                                        <label for="dsc" class="label">Book Description*</label>
-                                        <textarea name="book_description" id="dsc" class="textarea" required></textarea>
-                                    </div>
-
-                                    <div class="form-field">
-                                        <label for="dsc" class="label">Select Genre*</label>
-                                        <select class="input form-control" name="genere_id" required>
-                                            @foreach ($generes as $row)
-                                                <option value="{{ $row->id }}">{{ $row->genere_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label for="links" class="label">Book Amazon Links</label>
-                                            <input type="text" name="book_amazon_link" id="links" class="input" />
                                         </div>
 
-                                    </div>
 
-
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label for="links" class="label">Book Ebay Links</label>
-                                            <input type="text" name="book_ebay_link" id="links" class="input" />
-                                        </div>
-                                        {{-- <div class="add">
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label for="links" class="label">Book Ebay Links</label>
+                                                <input type="text" name="book_ebay_link" id="links" class="input" />
+                                            </div>
+                                            {{-- <div class="add">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_954_2055)">
@@ -126,37 +129,37 @@
                             </defs>
                         </svg>
                     </div> --}}
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label class="label">Book Discount in Percentage</label>
-                                            <input type="text" name="book_discount_in_percentage" class="input"
-                                                placeholder="" pattern="\d+(\.\d+)?" title="Enter a valid number" />
                                         </div>
 
-                                    </div>
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label class="label">Book Discount in Percentage</label>
+                                                <input type="text" name="book_discount_in_percentage" class="input"
+                                                    placeholder="" pattern="\d+(\.\d+)?" title="Enter a valid number" />
+                                            </div>
 
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label class="label">Main Price to Show*</label>
-                                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?"
-                                                placeholder="Price" required />
                                         </div>
 
-                                        <div class="form-field">
-                                            <label class="label">Book Price</label>
-                                            <input type="text" name="hard_book_price" class="input"
-                                                pattern="\d+(\.\d+)?" placeholder="HardBook" />
-                                        </div>
-                                        <div class="form-field">
-                                            <label class="label">Ebook Price</label>
-                                            <input type="text" name="ebook_price" class="input"
-                                                pattern="\d+(\.\d+)?" placeholder="Ebook" />
-                                        </div>
-                                    </div>
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label class="label">Main Price to Show*</label>
+                                                <input type="text" name="book_price" class="input"
+                                                    pattern="\d+(\.\d+)?" placeholder="Price" required />
+                                            </div>
 
-                                    {{-- <div class="form-field">
+                                            <div class="form-field">
+                                                <label class="label">Book Price</label>
+                                                <input type="text" name="hard_book_price" class="input"
+                                                    pattern="\d+(\.\d+)?" placeholder="HardBook" />
+                                            </div>
+                                            <div class="form-field">
+                                                <label class="label">Ebook Price</label>
+                                                <input type="text" name="ebook_price" class="input"
+                                                    pattern="\d+(\.\d+)?" placeholder="Ebook" />
+                                            </div>
+                                        </div>
+
+                                        {{-- <div class="form-field">
                                         <label for="attach-file" class="attach-btn btn-lite btn">
                                             <span class="icon">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -176,7 +179,7 @@
                                             accept="image/*" required />
                                     </div> --}}
 
-                                    {{-- <div class="form-field">
+                                        {{-- <div class="form-field">
                                         <label for="attach-file1" class="attach-btn1 btn-lite btn">
                                             <span class="icon">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -192,29 +195,30 @@
                                             id="attach-file1" accept="video/*" />
                                     </div> --}}
 
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label for="links" class="label">Video Link</label>
-                                            <input type="text" name="video_file_updoad" id="links"
-                                                class="input" />
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label for="links" class="label">Video Link</label>
+                                                <input type="text" name="video_file_updoad" id="links"
+                                                    class="input" />
+                                            </div>
+
                                         </div>
 
-                                    </div>
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label for="links" class="label">Meta Key*</label>
+                                                <input type="text" name="meta_key" class="input" required />
+                                            </div>
 
-                                    <div class="form-row">
-                                        <div class="form-field">
-                                            <label for="links" class="label">Meta Key*</label>
-                                            <input type="text" name="meta_key" class="input" required />
                                         </div>
 
-                                    </div>
 
-
-                                    <div class="btn-group">
-                                        <button class="btn btn-lite">Cancel</button>
-                                        <button class="btn btn-solid">Add Book</button>
-                                    </div>
-                                </form>
+                                        <div class="btn-group">
+                                            <button class="btn btn-lite">Cancel</button>
+                                            <button class="btn btn-solid">Add Book</button>
+                                        </div>
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -505,13 +509,13 @@
                                     @endif
                                     <a href="#." class="share-btn" onclick="showShareButton()">
                                         <!-- <span class="icon">
-                                                                                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
-                                                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                                                <path
-                                                                                                    d="M0.533333 13.9995C0.492667 13.9995 0.4516 13.9948 0.410933 13.9854C0.170267 13.9275 0 13.7108 0 13.4611C0 8.56822 0.613067 4.49891 8 4.31382V0.538376C8 0.324344 8.12547 0.130907 8.31933 0.0451597C8.51253 -0.0400493 8.73907 -0.00316585 8.89533 0.143022L15.8287 6.60437C15.938 6.70573 16 6.84936 16 6.99972C16 7.15008 15.938 7.29372 15.8287 7.39521L8.89533 13.8566C8.7396 14.0027 8.51307 14.0406 8.31933 13.9544C8.12547 13.8685 8 13.6751 8 13.4611V9.69828C2.9328 9.82078 1.99787 11.708 1.0104 13.7019C0.9188 13.8875 0.731733 13.9995 0.533333 13.9995ZM8.53333 8.61506C8.82813 8.61506 9.06667 8.85588 9.06667 9.15351V12.2311L14.6803 6.99972L9.06667 1.76832V4.84594C9.06667 5.14357 8.82813 5.38439 8.53333 5.38439C2.6416 5.38439 1.37293 7.6849 1.12347 11.3594C2.22813 9.86129 4.11093 8.61506 8.53333 8.61506Z"
-                                                                                                    fill="black" />
-                                                                                            </svg>
-                                                                                        </span> -->
+                                                                                                <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                                    <path
+                                                                                                        d="M0.533333 13.9995C0.492667 13.9995 0.4516 13.9948 0.410933 13.9854C0.170267 13.9275 0 13.7108 0 13.4611C0 8.56822 0.613067 4.49891 8 4.31382V0.538376C8 0.324344 8.12547 0.130907 8.31933 0.0451597C8.51253 -0.0400493 8.73907 -0.00316585 8.89533 0.143022L15.8287 6.60437C15.938 6.70573 16 6.84936 16 6.99972C16 7.15008 15.938 7.29372 15.8287 7.39521L8.89533 13.8566C8.7396 14.0027 8.51307 14.0406 8.31933 13.9544C8.12547 13.8685 8 13.6751 8 13.4611V9.69828C2.9328 9.82078 1.99787 11.708 1.0104 13.7019C0.9188 13.8875 0.731733 13.9995 0.533333 13.9995ZM8.53333 8.61506C8.82813 8.61506 9.06667 8.85588 9.06667 9.15351V12.2311L14.6803 6.99972L9.06667 1.76832V4.84594C9.06667 5.14357 8.82813 5.38439 8.53333 5.38439C2.6416 5.38439 1.37293 7.6849 1.12347 11.3594C2.22813 9.86129 4.11093 8.61506 8.53333 8.61506Z"
+                                                                                                        fill="black" />
+                                                                                                </svg>
+                                                                                            </span> -->
                                         Share</a>
                                     <div style="display: none" id="shareButtons">
                                         <a href="#" class="review-btn">
@@ -523,7 +527,7 @@
                                             <a class="twitter-share-button"
                                                 href="https://twitter.com/share?url={{ url()->current() }}"
                                                 target="__blank">
-                                                Tweet</a>
+                                                Share on Twitter</a>
                                         </a>
                                     </div>
                                 </div>
@@ -571,9 +575,9 @@
                                 <div class="tab-body__inner" id="book-dsc">
                                     <?php
                                     $li_class = '';
-
+                                    
                                     $paragraphs = explode("\n", $book->book_description);
-
+                                    
                                     for ($i = 0; $i < count($paragraphs); $i++) {
                                         if (ord($paragraphs[$i][0]) !== 13) {
                                             $paragraphs[$i] = '<p>' . $paragraphs[$i] . '</p>';
@@ -726,7 +730,7 @@
 
                                             <p class="para">
                                                 <span class="main">
-                                                    {{ $firstPara }} {{ strlen($text) > 100 ? '...' : '' }}
+                                                    {!! $firstPara !!} {{ strlen($text) > 100 ? '...' : '' }}
                                                 </span>
 
                                             </p>
@@ -812,24 +816,24 @@
                 success: function(response) {
                     // Request was successful, process the response
                     console.log(response);
-                     $('#dsc').summernote('destroy');
+                    $('#dsc').summernote('destroy');
                     // HideCalimaticLoader();
                     $('.has-loader .loader').css('display', 'none');
                     $('#title').val(response.book.title);
                     $('#dsc').val(response.book.synopsis);
                     $('#file_updoad_isbn').val(response.book.image);
 
-                     $('#dsc').summernote({
+                    $('#dsc').summernote({
                         tabsize: 2,
                         height: 100,
                         toolbar: [
-                        ['style', ['style']],
-                        ['font', ['bold', 'underline', 'clear']],
-                        ['color', ['color']],
-                        ['para', ['ul', 'ol', 'paragraph']],
-                        ['table', ['table']],
-                        ['insert', ['link', 'picture', 'video']],
-                        ['view', ['fullscreen', 'codeview', 'help']]
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen', 'codeview', 'help']]
                         ]
                     });
                     // Process the bookData here
@@ -884,7 +888,7 @@
         }
     </script>
 
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         $(function() {
             $('#dsc').summernote({

@@ -50,7 +50,7 @@
                     <tr>
 
                         <th>Select All <br> <input type="checkbox" id="select-all"></th>
-                        <th>Sl</th>
+                        {{-- <th>Sl</th> --}}
 
                         <th>Code</th>
                         <th>Profile</th>
