@@ -1012,6 +1012,7 @@ figure {
 .card .figure img {
   height: 250px;
   object-fit: contain;
+  border-radius: 20px;
 }
 
 .Community-body-content .card .figure {
@@ -1242,7 +1243,7 @@ figure {
 .card {
   padding: 24px 20px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: var(--bg-color_extra-lite);
 }
 
@@ -7326,6 +7327,7 @@ label .text .inner{
   height: 192px;
   object-fit: contain !important;
   width: 130px;
+  border-radius: 0!important;
 }
 
 .books-card .card .figure img{
