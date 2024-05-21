@@ -70,7 +70,7 @@
                                         ?>
                                     <p class="para">
                                         <span class="main">
-                                            {{ $firstPara ?? '' }}
+                                            {!! $firstPara ?? '' !!}
                                         </span>
                                         @if (strlen($text) > 100)
                                             <span class="extended" data-index="about" style="display: none;">

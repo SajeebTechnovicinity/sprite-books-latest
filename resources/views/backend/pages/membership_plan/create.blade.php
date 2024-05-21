@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="title" class="label">Membership Plan Monthly Price Strype Key*</label>
+                            <label for="title" class="label">Membership Plan Monthly Price Stripe Key*</label>
                             <input type="text" name="membership_plan_monthly_stripe_plan"
                                 id="membership_plan_monthly_stripe_plan" required class="form-control" />
                         </div>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="title" class="label">Membership Plan Yearly Price Strype Key*</label>
+                            <label for="title" class="label">Membership Plan Yearly Price Stripe Key*</label>
                             <input type="text" name="membership_plan_yearly_stripe_plan"
                                 id="membership_plan_yearly_stripe_plan" required class="form-control" />
                         </div>
