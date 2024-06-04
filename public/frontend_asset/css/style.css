@@ -7465,3 +7465,11 @@ label .text .inner{
 .switch-to-plan a:hover{
   opacity: .7;
 }
+
+.guest .tab-content{
+  width: 100%!important;
+}
+
+.guest .tab-panel{
+  display: none;
+}

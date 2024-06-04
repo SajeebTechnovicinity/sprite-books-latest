@@ -14,11 +14,10 @@
             {{ session('msg') }}
         </div>
     @endif
-    <section class="body-content alt-content book-details">
+    <section class="body-content alt-content book-details guest">
         <div class="container">
             <div class="inner-content">
                 <div class="tab-panel">
-
                     <div class="add-book-modal modal d-none" id="add-book">
                         <div class="modal__wrap">
                             <div class="modal__inner">
@@ -114,21 +113,6 @@
                                                 <label for="links" class="label">Book Ebay Links</label>
                                                 <input type="text" name="book_ebay_link" id="links" class="input" />
                                             </div>
-                                            {{-- <div class="add">
-                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_954_2055)">
-                                <path
-                                    d="M22.7679 10.2679H15.1786C14.932 10.2679 14.7321 10.068 14.7321 9.82143V2.23214C14.7321 0.999451 13.7327 0 12.5 0C11.2673 0 10.2679 0.999451 10.2679 2.23214V9.82143C10.2679 10.068 10.068 10.2679 9.82143 10.2679H2.23214C0.999451 10.2679 0 11.2673 0 12.5C0 13.7327 0.999451 14.7321 2.23214 14.7321H9.82143C10.068 14.7321 10.2679 14.932 10.2679 15.1786V22.7679C10.2679 24.0005 11.2673 25 12.5 25C13.7327 25 14.7321 24.0005 14.7321 22.7679V15.1786C14.7321 14.932 14.932 14.7321 15.1786 14.7321H22.7679C24.0005 14.7321 25 13.7327 25 12.5C25 11.2673 24.0005 10.2679 22.7679 10.2679Z"
-                                    fill="#8D8D9B" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_954_2055">
-                                    <rect width="25" height="25" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </div> --}}
                                         </div>
 
                                         <div class="form-row">
@@ -575,9 +559,9 @@
                                 <div class="tab-body__inner" id="book-dsc">
                                     <?php
                                     $li_class = '';
-                                    
+
                                     $paragraphs = explode("\n", $book->book_description);
-                                    
+
                                     for ($i = 0; $i < count($paragraphs); $i++) {
                                         if (ord($paragraphs[$i][0]) !== 13) {
                                             $paragraphs[$i] = '<p>' . $paragraphs[$i] . '</p>';
@@ -739,7 +723,7 @@
                                         {{Illuminate\Support\Str::of($sBooks->book_description ?? '')->words(10, ' ...')}}
                                 </p> --}}
 
-                                            {{-- <span class="ratting-poing">8.9</span> --}}
+
                                             <a href="{{ url('book-details/' . $sBooks->id) }}" class="card-link">View
                                                 Details</a>
                                         </div>
