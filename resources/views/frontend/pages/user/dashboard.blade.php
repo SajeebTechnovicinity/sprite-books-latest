@@ -2,11 +2,11 @@
 
 @section('content')
     <!-- Content Block -->
+    
     <section class="body-content pb-57 alt-content">
         <div class="container">
             <div class="inner-content">
                 <div class="tab-panel">
-
                     <nav>
                         @include('layouts.frontend.user_sidebar')
                     </nav>
@@ -30,9 +30,7 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="top-authors">
-
                             @foreach ($authors as $row)
                                 <div class="inner__top-authors">
                                     <div class="author-d-block">
@@ -63,22 +61,19 @@
                                                     </div>
                                                 </div>
                                                 <button class="follower-btn" id="author{{ $row->id }}"
-                                                    onclick="followAuthor({{ $row->id }})">
+                                                    onclick="follow({{ $row->id }})">
                                                     Follow
                                                 </button>
                                             </div>
                                             <div class="author-block__body flex-equal">
                                                 <div class="author-block__imgs flex-wrap">
-
                                                     @foreach (get_author_last_two_books_by_author_id($row->id) as $rowBook1)
                                                         @if (isset($rowBook1->bookDocuments[0]))
                                                             <a href="{{ url('book-details/' . $rowBook1->id) }}">
-
-
                                                                 <img src="{{ asset($rowBook1->bookDocuments[0]->path) }}"
                                                                     alt="" class="author-block__img" />
+                                                            </a>
                                                         @endif
-                                                        </a>
                                                     @endforeach
                                                 </div>
                                                 <div class="author-block__dec">
@@ -89,7 +84,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
                     </div>
                     <!-- Cards Author Area -->
@@ -99,9 +93,7 @@
                         <div class="inner-authors">
                             <div class="autors-blocks">
                              @if(count($followed_authors)<=0)
-
                                     <div>You have no followed authors</div>
-
                                 @endif
                                 @foreach ($followed_authors as $followed)
                                     <div class="author-d-block">
@@ -131,7 +123,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button class="follower-btn" id="followingAuthor{{ $followed->id }}"
+                                                <button class="unfollow-btn" id="followingAuthor{{ $followed->id }}"
                                                     onclick="UnfollowAuthor({{ $followed->id }})">
                                                     Unfollow
                                                 </button>
@@ -140,14 +132,13 @@
                                                 <div class="author-block__imgs flex-wrap">
                                                     @foreach (get_author_last_two_books_by_author_id($followed->author_id) as $rowBook)
                                                         <a href="{{ url('book-details/' . $rowBook->id) }}">
-
-                                                            <img src="{{ asset($rowBook->bookDocuments[0]->path) ?? '' }} "
+                                                            <img src="{{ asset($rowBook->bookDocuments[0]->path ?? '') }}"
                                                                 alt="" class="author-block__img" />
                                                         </a>
                                                     @endforeach
                                                 </div>
                                                 <div class="author-block__dec">
-                                                    {{ $row->author_description }}
+                                                    {{ $followed->Author->author_description }}
                                                 </div>
                                             </div>
                                         </div>
@@ -160,12 +151,12 @@
             </div>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        function followAuthor(authorId) {
+      
+        function follow(authorId) {
             showCalimaticLoader();
             $(".error_msg").html('');
-            var data = new FormData($('#add_form')[0]);
-
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -175,32 +166,46 @@
                 data: {
                     author_id: authorId
                 },
-                success: function(data, textStatus, jqXHR) {
+                success: function(data) {
+                    
                     if (data.status == 1) {
+                        $('#author' + authorId).text('Following');
 
-                        $('#author' + authorId).text('Follwing');
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'You are now following the author.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
                     }
-
+                    else
+                    {
+                         Swal.fire({
+                            title: 'Error!',
+                            text: data.data,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function(data) {
+                    //console.log(data);
+                    var json_data = JSON.parse(data.responseText);
+                    $.each(json_data.errors, function(key, value) {
+                        $("#" + key).after("<span class='error_msg' style='color: red;font-weight: 600'>" +
+                            value + "</span>");
+                    });
+                },
+                complete: function() {
+                    HideCalimaticLoader();
                 }
-            }).done(function() {
-                $("#success_msg").html("Data Save Successfully");
-                //  window.location.href = "{{ url('admin/users') }}";
-                // location.reload();
-            }).fail(function(data, textStatus, jqXHR) {
-                var json_data = JSON.parse(data.responseText);
-                $.each(json_data.errors, function(key, value) {
-                    $("#" + key).after("<span class='error_msg' style='color: red;font-weigh: 600'>" +
-                        value + "</span>");
-                });
             });
-            HideCalimaticLoader();
         }
 
         function UnfollowAuthor(Id) {
+             alert('Author');
             showCalimaticLoader();
             $(".error_msg").html('');
-            var data = new FormData($('#add_form')[0]);
-
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -210,25 +215,22 @@
                 data: {
                     id: Id
                 },
-                success: function(data, textStatus, jqXHR) {
+                success: function(data) {
                     if (data.status == 1) {
-
                         $('#followingAuthor' + Id).text('Follow');
                     }
-
+                },
+                error: function(data) {
+                    var json_data = JSON.parse(data.responseText);
+                    $.each(json_data.errors, function(key, value) {
+                        $("#" + key).after("<span class='error_msg' style='color: red;font-weight: 600'>" +
+                            value + "</span>");
+                    });
+                },
+                complete: function() {
+                    HideCalimaticLoader();
                 }
-            }).done(function() {
-                $("#success_msg").html("Data Save Successfully");
-                //  window.location.href = "{{ url('admin/users') }}";
-                // location.reload();
-            }).fail(function(data, textStatus, jqXHR) {
-                var json_data = JSON.parse(data.responseText);
-                $.each(json_data.errors, function(key, value) {
-                    $("#" + key).after("<span class='error_msg' style='color: red;font-weigh: 600'>" +
-                        value + "</span>");
-                });
             });
-            HideCalimaticLoader();
         }
     </script>
 @endsection
