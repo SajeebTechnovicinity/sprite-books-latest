@@ -232,6 +232,7 @@
             });
         });
     </script>
+    
     <!-- Header -->
     @if (session('author_id'))
         @include('layouts.frontend.author_header')

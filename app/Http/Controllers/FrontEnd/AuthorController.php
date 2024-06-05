@@ -731,8 +731,16 @@ class AuthorController extends Controller
             return ['data' => 'Please login first.', 'status' => 0];
         }
         //return $request->author_id;
-        if (AuthorFollower::whereAuthorId($request->author_id)->whereFollowedAuthorId(session('author_id'))->orWhere('user_id', session('author_id'))->get()->isNotEmpty()) {
-            return ['data' => 'You are already following this author.', 'status' => 0];
+        if (session('type') == 'USER') {
+            if (AuthorFollower::whereAuthorId($request->author_id)->Where('user_id', session('author_id'))->get()->isNotEmpty()) {
+                return ['data' => 'You are already following this author.', 'status' => 0];
+            }
+        }
+        else
+        {
+            if (AuthorFollower::whereAuthorId($request->author_id)->whereFollowedAuthorId(session('author_id'))->get()->isNotEmpty()) {
+                return ['data' => 'You are already following this author.', 'status' => 0];
+            }
         }
 
         if ($request->author_id) {
