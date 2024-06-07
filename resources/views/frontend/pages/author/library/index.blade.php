@@ -247,7 +247,7 @@
                                             class="title">{{ $row->book_name }}</a>
                                         <p class="dsc">
 
-                                            {{ Illuminate\Support\Str::of($row->book_description)->words(10, ' ...') }}
+                                            {!! Illuminate\Support\Str::of($row->book_description)->words(10, ' ...') !!}
                                         </p>
 
 
@@ -278,7 +278,7 @@
                                             @endif
                                             <a href="#" class="title">{{ $suggested->Book->book_name }}</a>
                                             <p class="dsc">
-                                                {{ Illuminate\Support\Str::of($suggested->Book->book_description)->words(10, ' ...') }}
+                                                {!! Illuminate\Support\Str::of($suggested->Book->book_description)->words(10, ' ...') !!}
                                             </p>
 
                                             <a href="{{ url('book-details/' . $suggested->book_id) }}" class="card-link">View
