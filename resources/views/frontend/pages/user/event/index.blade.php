@@ -15,47 +15,45 @@
                 <div class="tab-body__inner">
                     @foreach ($events as $row)
                         <div class="event-card">
-                            <figure class="figure">
-                                <img style="height: 60px;width:60px" src="@if($row->Author->author_profile_picture) {{asset($row->Author->author_profile_picture)}} @else {{asset('public/frontend_asset')}}/imgs/profile.jpg @endif" alt="" />
-                            </figure>
-                            <div class="content">
-                                <div class="event-card__row flex-wrap">
-                                    <h3 class="event-card__title">
-                                        {{$row->event_name}}
-                                    </h3>
+    <figure class="figure">
+        <img style="height: 60px;width:60px" src="@if($row->Author->author_profile_picture) {{ asset($row->Author->author_profile_picture) }} @else {{ asset('public/frontend_asset/imgs/profile.jpg') }} @endif" alt="" />
+    </figure>
+    <div class="content">
+        <div class="event-card__row flex-wrap">
+            <h3 class="event-card__title">
+                {{$row->event_name}}
+            </h3>
+        </div>
+        <p class="event-card__timezone flex-wrap">
+            {{$row->event_date}}<span class="center">{{$row->event_starting_time}}- {{$row->event_ending_time}}</span><span>{{$row->event_location}}</span>
+        </p>
+        <?php
+        $text = $row->event_description;
+        if (strlen($text) > 30) {
+            $firstPara = substr($text, 0, strpos($text, ' ', 30));
+            $secondPara = substr($text, strlen($firstPara));
+        } else {
+            $firstPara = $text;
+            $secondPara = '';
+        }
+        ?>
+        <p class="para">
+            <span class="main">
+                {{$firstPara}}
+            </span>
+            @if (!empty($secondPara))
+                <span class="extended" data-index="{{ $row->id }}" style="display: none;">
+                    {{$secondPara}}
+                </span>
+                <span class="read-more" data-index="{{ $row->id }}" onclick="toggleText({{ $row->id }})">Show More</span>
+            @endif
+        </p>
+        <p class="para">
+            <a href="{{$row->event_link}}" target="__blank">Join Link</a>
+        </p>
+    </div>
+</div>
 
-                                </div>
-                                <p class="event-card__timezone flex-wrap">
-                                    {{$row->event_date}}<span class="center">{{$row->event_starting_time}}- {{$row->event_ending_time}}
-                                    </span><span>{{$row->event_location}}</span>
-                                </p>
-                                <?php
-                                                    $text = $row->event_description;
-                                                    if(strlen($text) > 30){
-
-                                                    $firstPara = substr($text, 0, strpos($text, ' ', 30));
-                                                    $countLength = strlen($firstPara);
-                                                    $secondPara = substr($text, strpos($text,true) + ($countLength));
-                                                    }else{
-                                                        $firstPara = $row->book_description ?? '';
-                                                    }
-                                                                            ?>
-                                <p class="para">
-                                    <span class="main">
-                                        {{$firstPara}}
-                                    </span>
-                                    @if(strlen($text) > 30)
-                                    <span class="extended">
-                                        {{$secondPara}}
-                                    </span>
-                                    <span class="read-more">Show More</span>
-                                    @endif
-                                </p>
-                                <p class="para">
-                                    <a href="{{$row->event_link}}" target="__blank">Join Link</a>
-                                </p>
-                            </div>
-                        </div>
                     @endforeach
 
                 </div>
@@ -66,6 +64,19 @@
     </div>
 </section>
 <script>
+function toggleText(id) {
+    var extendedText = document.querySelector('.extended[data-index="' + id + '"]');
+    var readMoreLink = document.querySelector('.read-more[data-index="' + id + '"]');
+
+    if (extendedText.style.display === "none") {
+        extendedText.style.display = "inline";
+        readMoreLink.innerText = "Show Less";
+    } else {
+        extendedText.style.display = "none";
+        readMoreLink.innerText = "Show More";
+    }
+}
+
     function addtoLibrary(bookId) {
         showCalimaticLoader();
         $(".error_msg").html('');

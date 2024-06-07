@@ -22,4 +22,8 @@ class AuthorFollower extends Model
     public function followedByAuthor(){
         return $this->belongsTo(Author::class,'followed_author_id','id');
     }
+
+    public function followedAuthor(){
+        return $this->belongsTo(Author::class,'followed_by','id');
+    }
 }

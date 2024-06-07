@@ -123,7 +123,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button class="unfollow-btn" id="followingAuthor{{ $followed->id }}"
+                                                <button class="follower-btn" id="followingAuthor{{ $followed->id }}"
                                                     onclick="UnfollowAuthor({{ $followed->id }})">
                                                     Unfollow
                                                 </button>
@@ -203,7 +203,7 @@
         }
 
         function UnfollowAuthor(Id) {
-             alert('Author');
+
             showCalimaticLoader();
             $(".error_msg").html('');
             $.ajax({
