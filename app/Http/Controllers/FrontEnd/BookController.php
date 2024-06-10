@@ -82,6 +82,15 @@ class BookController extends Controller
                     $query->where('genere_name', 'like', "%$name%");
                 });
         })
+        ->orderBy('id','desc')->get();
+
+        $data['authors'] = Author::where('author_status', 1)
+        ->where('type', 'AUTHOR')
+        ->where(function($query) use ($name) {
+            $query->where('author_name', 'like', "%$name%")
+                  ->orWhere('author_last_name', 'like', "%$name%");
+        })
+        ->orderBy('id', 'desc')
         ->get();
         $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
         $data['generes'] = Genere::all();
