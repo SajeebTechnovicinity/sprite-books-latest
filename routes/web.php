@@ -170,6 +170,7 @@ Route::get('author/library/recent', [LibraryController::class, 'recent'])->name(
 Route::get('author/library/popular', [LibraryController::class, 'popular'])->name('author-library-popular');
 Route::get('author/dashboard', [AuthorController::class, 'dashboard'])->name('author-dashboard');
 Route::get('book-details/{any}', [BookController::class, 'view_book'])->name('view-book');
+Route::get('book-details/{any}/{name}', [BookController::class, 'view_book_with_name'])->name('view-book');
 Route::get('edit-books/{any}', [BookController::class, 'edit_book'])->name('edit-books');
 Route::get('delete-book-doccunment/{any}', [BookController::class, 'delete_book_doccunment'])->name('delete-book-doccunment');
 Route::get('search/books', [BookController::class, 'search_book'])->name('search/books');

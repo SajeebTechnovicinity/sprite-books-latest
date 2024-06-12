@@ -51,6 +51,41 @@ class BookController extends Controller
             return view('frontend.pages.book.index', $data);
         }
     }
+    public function view_book_with_name($id,$name)
+    {
+
+        // if (!session('author_id')) {
+
+        //     return redirect('/user/login');
+        // }
+
+        $today = Carbon::now();
+
+        if (session('author_id') != null) {
+            BookView::create([
+                'book_id' => $id,
+                'user_id' => session('author_id')
+            ]);
+        }
+
+
+
+        $book = Book::find($id);
+
+        $book->viewers = $book->viewers + 1;
+
+        $book->view_date_time = $today;
+
+        $book->save();
+
+        if ($book) {
+            $data['book'] = $book;
+            $data['author_created_list'] = Author::wherePublisherId(session('author_id'))->latest()->get();
+            $data['generes'] = Genere::all();
+            $data['author_books'] = Book::where('id', '!=', $book->id)->whereAuthorId($book->author_id)->get();
+            return view('frontend.pages.book.index', $data);
+        }
+    }
     public function edit_book($id)
     {
         $book = Book::find($id);

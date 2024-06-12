@@ -354,7 +354,7 @@
                                             src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                             alt="" />
                                         <h5 class="user__name">
-                                            {{ $book->bookAuthor->author_name }}
+                                            {{ $book->bookAuthor->author_name }}  
                                         </h5>
                                     </div>
                                     {{-- <div class="ratting-wrap">

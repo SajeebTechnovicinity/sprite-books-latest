@@ -226,7 +226,7 @@
                                         </span>
                                         @if (strlen($text) > 100)
                                             <span class="extended" data-index="about" style="display: none;">
-                                                {{ $secondPara }}
+                                                {{ $secondPara }} 
                                             </span>
                                             <span class="read-more" data-index="about">Show More</span>
                                         @endif
@@ -790,5 +790,32 @@
             });
             HideCalimaticLoader();
         }
+    </script>
+     <script>
+        // Wait for the document to be ready
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all elements with the class "read-more"
+            var readMoreButtons = document.querySelectorAll('.read-more');
+
+            // Add click event listeners to all "Show More" buttons
+            readMoreButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Get the index from the data-index attribute
+                    var index = button.dataset.index;
+                    // Find the corresponding extended content using the index
+                    var extendedContent = document.querySelector('.extended[data-index="' + index +
+                        '"]');
+
+                    // Toggle the display of the extended content
+                    if (extendedContent.style.display === 'none') {
+                        extendedContent.style.display = 'inline'; // Show the extended content
+                        button.textContent = 'Show Less'; // Change the button text
+                    } else {
+                        extendedContent.style.display = 'none'; // Hide the extended content
+                        button.textContent = 'Show More'; // Change the button text back
+                    }
+                });
+            });
+        });
     </script>
 @endsection
