@@ -8,7 +8,7 @@
             <div class="inner-content">
                 <div class="tab-panel">
 
-                    
+
                 </div>
                      <div class="tab-content space-0">
                     @if (session('msg'))
@@ -22,22 +22,6 @@
                     <div class="profile-banner">
                         <img src="@if ($author->author_cover_picture) {{ asset($author->author_cover_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/cover.jpg @endif"
                             alt="" />
-
-                        {{-- <a href="{{ url('settings') }}" class="edit-banner">
-                            <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 528.899 528.899"
-                                xml:space="preserve">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <g>
-                                        <path
-                                            d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z">
-                                        </path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a> --}}
                     </div>
                     <div class="block-wrap bg-none" style="padding-left: 0; padding-right: 0;margin-top:20px;">
                         <div class="block-component">
@@ -46,7 +30,7 @@
                                     <div class="author-profile-pic">
                                         <img src="@if ($author->author_profile_picture) {{ asset($author->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                             alt="" />
-                                     
+
                                     </div>
 
                                     <h3 class="author-name">
@@ -226,7 +210,7 @@
                                         </span>
                                         @if (strlen($text) > 100)
                                             <span class="extended" data-index="about" style="display: none;">
-                                                {{ $secondPara }} 
+                                                {{ $secondPara }}
                                             </span>
                                             <span class="read-more" data-index="about">Show More</span>
                                         @endif
@@ -313,24 +297,7 @@
                                                 @if (count($books))
                                                     @foreach ($books as $row)
                                                         <div class="card grid-item">
-                                                            {{-- <a href="{{ url('edit-books/' . $row->id) }}" --}}
-                                                                {{-- class="edit-btn"> --}}
-                                                                <svg fill="#ffffff" version="1.1" id="Capa_1"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                    viewBox="0 0 528.899 528.899" xml:space="preserve">
-                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                                        stroke-linejoin="round"></g>
-                                                                    <g id="SVGRepo_iconCarrier">
-                                                                        <g>
-                                                                            <path
-                                                                                d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z">
-                                                                            </path>
-                                                                        </g>
-                                                                    </g>
-                                                                </svg>
-                                                            </a>
+
                                                             <a href="{{ url('book-details/' . $row->id) }}"
                                                                 class="figure">
                                                                 <img src="{{ asset($row->bookDocuments[0]->path ?? '') }}"
@@ -612,7 +579,7 @@
                                                         </h3>
                                                         <div class="follower-data__row flex-wrap">
                                                             <p class="text">
-                                                               
+
                                                             </p>
                                                             {{-- <p class="text">
                                                         <span class="icon">

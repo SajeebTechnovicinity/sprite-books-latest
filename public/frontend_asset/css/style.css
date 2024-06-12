@@ -2728,6 +2728,11 @@ figure {
 .block-component {
   display: flex;
   gap: 30px;
+  width: 100%;
+}
+
+.block-component > div {
+  width: 100%;
 }
 
 .block-component .tabs-wrap {
