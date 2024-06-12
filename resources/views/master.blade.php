@@ -4,6 +4,7 @@
 <head>
     @include('layouts.frontend.headerlink')
     <title>Mybox | Home</title>
+    <link rel="icon" type="image/png" href="{{ asset('public/icon.png')}}">
     <style>
         /* Custom CSS for GDPR notification and cookie consent popup */
 
