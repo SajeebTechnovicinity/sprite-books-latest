@@ -1,4 +1,6 @@
 @extends('master')
+<title>{{ $book->meta_title }}</title>
+<meta name="description" content={{ $book->meta_description }}>
 <meta name="keywords" content="{{ $book->meta_key }}">
 @section('content')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
@@ -196,6 +198,23 @@
 
                                         </div>
 
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label for="links" class="label">Meta Title*</label>
+                                                <input type="text" name="meta_title" class="input" required />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label for="links" class="label">Meta Description*</label>
+                                                <input type="text" name="meta_description" class="input" required />
+                                            </div>
+
+                                        </div>
+
+
 
                                         <div class="btn-group">
                                             <button class="btn btn-lite">Cancel</button>
@@ -354,7 +373,7 @@
                                             src="@if ($book->bookAuthor->author_profile_picture) {{ asset($book->bookAuthor->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
                                             alt="" />
                                         <h5 class="user__name">
-                                            {{ $book->bookAuthor->author_name }}  
+                                            {{ $book->bookAuthor->author_name }}
                                         </h5>
                                     </div>
                                     {{-- <div class="ratting-wrap">
@@ -493,13 +512,13 @@
                                     @endif
                                     <a href="#." class="share-btn" onclick="showShareButton()">
                                         <!-- <span class="icon">
-                                                                                                <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
-                                                                                                    xmlns="http://www.w3.org/2000/svg">
-                                                                                                    <path
-                                                                                                        d="M0.533333 13.9995C0.492667 13.9995 0.4516 13.9948 0.410933 13.9854C0.170267 13.9275 0 13.7108 0 13.4611C0 8.56822 0.613067 4.49891 8 4.31382V0.538376C8 0.324344 8.12547 0.130907 8.31933 0.0451597C8.51253 -0.0400493 8.73907 -0.00316585 8.89533 0.143022L15.8287 6.60437C15.938 6.70573 16 6.84936 16 6.99972C16 7.15008 15.938 7.29372 15.8287 7.39521L8.89533 13.8566C8.7396 14.0027 8.51307 14.0406 8.31933 13.9544C8.12547 13.8685 8 13.6751 8 13.4611V9.69828C2.9328 9.82078 1.99787 11.708 1.0104 13.7019C0.9188 13.8875 0.731733 13.9995 0.533333 13.9995ZM8.53333 8.61506C8.82813 8.61506 9.06667 8.85588 9.06667 9.15351V12.2311L14.6803 6.99972L9.06667 1.76832V4.84594C9.06667 5.14357 8.82813 5.38439 8.53333 5.38439C2.6416 5.38439 1.37293 7.6849 1.12347 11.3594C2.22813 9.86129 4.11093 8.61506 8.53333 8.61506Z"
-                                                                                                        fill="black" />
-                                                                                                </svg>
-                                                                                            </span> -->
+                                                                                                    <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                                                        <path
+                                                                                                            d="M0.533333 13.9995C0.492667 13.9995 0.4516 13.9948 0.410933 13.9854C0.170267 13.9275 0 13.7108 0 13.4611C0 8.56822 0.613067 4.49891 8 4.31382V0.538376C8 0.324344 8.12547 0.130907 8.31933 0.0451597C8.51253 -0.0400493 8.73907 -0.00316585 8.89533 0.143022L15.8287 6.60437C15.938 6.70573 16 6.84936 16 6.99972C16 7.15008 15.938 7.29372 15.8287 7.39521L8.89533 13.8566C8.7396 14.0027 8.51307 14.0406 8.31933 13.9544C8.12547 13.8685 8 13.6751 8 13.4611V9.69828C2.9328 9.82078 1.99787 11.708 1.0104 13.7019C0.9188 13.8875 0.731733 13.9995 0.533333 13.9995ZM8.53333 8.61506C8.82813 8.61506 9.06667 8.85588 9.06667 9.15351V12.2311L14.6803 6.99972L9.06667 1.76832V4.84594C9.06667 5.14357 8.82813 5.38439 8.53333 5.38439C2.6416 5.38439 1.37293 7.6849 1.12347 11.3594C2.22813 9.86129 4.11093 8.61506 8.53333 8.61506Z"
+                                                                                                            fill="black" />
+                                                                                                    </svg>
+                                                                                                </span> -->
                                         Share</a>
                                     <div style="display: none" id="shareButtons">
                                         <a href="#" class="review-btn">
@@ -559,9 +578,9 @@
                                 <div class="tab-body__inner" id="book-dsc">
                                     <?php
                                     $li_class = '';
-
+                                    
                                     $paragraphs = explode("\n", $book->book_description);
-
+                                    
                                     for ($i = 0; $i < count($paragraphs); $i++) {
                                         if (ord($paragraphs[$i][0]) !== 13) {
                                             $paragraphs[$i] = '<p>' . $paragraphs[$i] . '</p>';

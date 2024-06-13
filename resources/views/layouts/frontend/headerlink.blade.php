@@ -15,7 +15,7 @@
 <!-- jQuary -->
 <script src="{{asset('public/frontend_asset')}}/js/jquery-3.7.0.min.js"></script>
 
-<title>Home</title>
+<title>{{ $globalSetting->app_name }}</title>
 
 <script>
     window.Userback = window.Userback || {};

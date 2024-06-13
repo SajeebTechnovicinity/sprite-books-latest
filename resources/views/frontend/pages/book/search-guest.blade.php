@@ -185,6 +185,24 @@
 
                                             </div>
 
+                                            <div class="form-row">
+                                                <div class="form-field">
+                                                    <label for="links" class="label">Meta Title*</label>
+                                                    <input type="text" name="meta_title" class="input" required />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-field">
+                                                    <label for="links" class="label">Meta Description*</label>
+                                                    <input type="text" name="meta_description" class="input"
+                                                        required />
+                                                </div>
+
+                                            </div>
+
+
 
                                             <div class="btn-group">
                                                 <button class="btn btn-lite">Cancel</button>
@@ -272,7 +290,7 @@
                                         </p> --}}
 
                                                             {{-- <span class="ratting-poing">8.9</span> --}}
-                                                            <a href="{{ url('book-details/' . $sBooks->id.'/'. $sBooks->book_name) }}"
+                                                            <a href="{{ url('book-details/' . $sBooks->id . '/' . $sBooks->book_name) }}"
                                                                 class="card-link">
                                                                 Details</a>
                                                         </div>
@@ -299,61 +317,70 @@
                                             <h3 class="title">Authors</h3>
                                         </div>
                                         <div class="grid-items card-wrap books-card">
-    @if ($authors->isNotEmpty())
-        @foreach ($authors as $sAuthors)
-            <div class="card grid-item">
+                                            @if ($authors->isNotEmpty())
+                                                @foreach ($authors as $sAuthors)
+                                                    <div class="card grid-item">
 
-                <a href="{{ url('book-details/' . $sAuthors->id) }}" class="figure">
-                    <img src="@if ($sAuthors->author_profile_picture) {{ asset($sAuthors->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif" alt="" />
-                </a>
-                <div class="text-wrap">
-                    {{-- <h5 class="subtitle">PAPERBACK</h5> --}}
-                    <a href="{{ url('author-details/' . $sAuthors->id) }}" class="title">{{ $sAuthors->author_name }} {{ $sAuthors->author_last_name }}</a>
+                                                        <a href="{{ url('book-details/' . $sAuthors->id) }}"
+                                                            class="figure">
+                                                            <img src="@if ($sAuthors->author_profile_picture) {{ asset($sAuthors->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
+                                                                alt="" />
+                                                        </a>
+                                                        <div class="text-wrap">
+                                                            {{-- <h5 class="subtitle">PAPERBACK</h5> --}}
+                                                            <a href="{{ url('author-details/' . $sAuthors->id) }}"
+                                                                class="title">{{ $sAuthors->author_name }}
+                                                                {{ $sAuthors->author_last_name }}</a>
 
-                    @php
-                        $text = $sAuthors->book_description;
-                        if (strlen($text) > 30) {
-                            $firstPara = substr($text, 0, strpos($text, ' ', 30));
-                            $countLength = strlen($firstPara);
-                            $secondPara = substr($text, $countLength);
-                        } else {
-                            $firstPara = $sAuthors->book_description ?? '';
-                        }
-                    @endphp
+                                                            @php
+                                                                $text = $sAuthors->book_description;
+                                                                if (strlen($text) > 30) {
+                                                                    $firstPara = substr(
+                                                                        $text,
+                                                                        0,
+                                                                        strpos($text, ' ', 30),
+                                                                    );
+                                                                    $countLength = strlen($firstPara);
+                                                                    $secondPara = substr($text, $countLength);
+                                                                } else {
+                                                                    $firstPara = $sAuthors->book_description ?? '';
+                                                                }
+                                                            @endphp
 
-                    <p class="para">
-                        <span class="main">
-                            {!! $firstPara !!}
-                        </span>
-                        @if (strlen($text) > 30)
-                            <span class="extended">
-                                {!! $secondPara !!}
-                            </span>
-                            {{-- <span class="read-more">Show More</span> --}}
-                        @endif
-                    </p>
+                                                            <p class="para">
+                                                                <span class="main">
+                                                                    {!! $firstPara !!}
+                                                                </span>
+                                                                @if (strlen($text) > 30)
+                                                                    <span class="extended">
+                                                                        {!! $secondPara !!}
+                                                                    </span>
+                                                                    {{-- <span class="read-more">Show More</span> --}}
+                                                                @endif
+                                                            </p>
 
-                    {{-- <p class="dsc">
+                                                            {{-- <p class="dsc">
                         {{ Illuminate\Support\Str::of($sAuthors->book_description ?? '')->words(10, ' ...') }}
                     </p> --}}
 
-                    {{-- <span class="ratting-poing">8.9</span> --}}
-                    <a href="{{ url('author-details/' . $sAuthors->id) }}" class="card-link">Details</a>
-                </div>
-            </div>
-        @endforeach
-    @else
-        <h5 class="title">No other books available</h5>
-    @endif
-</div>
+                                                            {{-- <span class="ratting-poing">8.9</span> --}}
+                                                            <a href="{{ url('author-details/' . $sAuthors->id) }}"
+                                                                class="card-link">Details</a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <h5 class="title">No other books available</h5>
+                                            @endif
+                                        </div>
 
 
 
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
     </section>
     <script>
         function showShareButton() {

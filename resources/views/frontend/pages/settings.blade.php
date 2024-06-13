@@ -2,7 +2,6 @@
 
 @section('content')
     <style>
-
         .settings .title {
             background-color: #efefef;
             padding: 15px 25px;
@@ -41,12 +40,13 @@
         if ($author->author_cover_picture == null) {
             $author->author_cover_picture = 'public/frontend_asset/imgs/cover.jpg';
         }
-
+        
         ?>
 
         <div class="container settings">
             <h1 class="title" style="text-align: center;">Add your Information</h1>
-            <form action="{{ url('save-informations') }}" method="post" class="modal__form settings-form" enctype="multipart/form-data">
+            <form action="{{ url('save-informations') }}" method="post" class="modal__form settings-form"
+                enctype="multipart/form-data">
                 @csrf
                 @method('post')
 
@@ -55,9 +55,10 @@
                     Profile Picture (Size: 300x300)
                     <input class="file" type="file" name="file_updoad" id="profile-picture-input"
                         onchange="previewImage('profile-picture-input', 'profile-picture-preview', '{{ $author->author_profile_picture }}')" />
-                        <div class="img-preview-wrap">
-                    <img  height="150" id="profile-picture-preview" class="preview-image" src="{{ $author->author_profile_picture }}" alt="Preview Profile Picture" />
-                </div>
+                    <div class="img-preview-wrap">
+                        <img height="150" id="profile-picture-preview" class="preview-image"
+                            src="{{ $author->author_profile_picture }}" alt="Preview Profile Picture" />
+                    </div>
                 </div>
 
 
@@ -65,10 +66,10 @@
                     Cover Picture (Size: 1000x400)
                     <input type="file" class="file" name="cover_picture" id="cover-picture-input"
                         onchange="previewImage('cover-picture-input', 'cover-picture-preview', '')" />
-                        <div class="img-preview-wrap">
-                    <img id="cover-picture-preview" class="preview-image" src="{{ $author->author_cover_picture }}"
-                        alt="Preview Cover Picture" />
-                </div>
+                    <div class="img-preview-wrap">
+                        <img id="cover-picture-preview" class="preview-image" src="{{ $author->author_cover_picture }}"
+                            alt="Preview Cover Picture" />
+                    </div>
                 </div>
 
 
@@ -117,34 +118,32 @@
                 </div>
 
                 <!--
-                <div class="author-email">
-                    {{-- <label for="links" class="label">Previous Website Link</label> --}}
-                    @php
-                        $links = explode(',', $author->author_website_link);
-                    @endphp
+                        <div class="author-email">
+                            {{-- <label for="links" class="label">Previous Website Link</label> --}}
+                            @php
+                                $links = explode(',', $author->author_website_link);
+                            @endphp
 
-                    @foreach ($links as $link)
-                        @php
-                            $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
-                        @endphp
-                        @if($formattedLink!="null")
-
-                            {{-- <a href="{{ $formattedLink }}" target="_blank" class="link">
+                            @foreach ($links as $link)
+    @php
+        $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
+    @endphp
+                                @if ($formattedLink != 'null')
+    {{-- <a href="{{ $formattedLink }}" target="_blank" class="link">
                                                         {{ $formattedLink }}
                                                     </a><br> --}}
-                        @endif
+    @endif
+    @endforeach
 
-                    @endforeach
 
-
-                </div> -->
+                        </div> -->
 
                 <div class="form-row">
                     <div id="website-links-container" style="margin-bottom: 15px;">
                         @foreach ($links as $link)
-                         @php
-                            $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
-                        @endphp
+                            @php
+                                $formattedLink = trim(str_replace('\\/', '/', $link), '[]"');
+                            @endphp
                             <div class="form-field">
                                 <label for="links" class="label">Website Link</label>
                                 <input type="text" name="author_website_link[]" class="input"
@@ -233,6 +232,32 @@
                         @endforeach
                     </ul>
                 @endif
+                @if (session('type') == 'AUTHOR')
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Meta Title*</label>
+                            <input type="text" name="meta_title" id="links"
+                                value="@if ($author->meta_title) {{ $author->meta_title }} @endif"
+                                class="input" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Meta Description*</label>
+                            <input type="text" name="meta_description" id="links"
+                                value="@if ($author->meta_description) {{ $author->meta_description }} @endif"
+                                class="input" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Meta Keyword*</label>
+                            <input type="text" name="meta_keyword" id="links"
+                                value="@if ($author->meta_keyword) {{ $author->meta_keyword }} @endif"
+                                class="input" />
+                        </div>
+                    </div>
+                @endif
                 <div class="btn-group" style="padding-top: 15px;">
                     <button class="btn btn-lite" style="margin-right: 7px;">Cancel</button>
                     <button class="btn btn-solid" style="padding: 17px 25px;">Save Information</button>
@@ -255,7 +280,6 @@
         });
     </script>
     <script>
-
         function previewImage(inputId, imageId, defaultSrc) {
             const input = document.getElementById(inputId);
             const image = document.getElementById(imageId);

@@ -45,6 +45,28 @@
                   </div>
               </div>
 
+              <div class="form-row">
+                  <div class="form-field">
+                      <label class="label">Meta Title</label>
+                      <input type="text" name="meta_title" value="{{ $event->meta_title }}" class="input" placeholder="Meta Title" />
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-field">
+                      <label class="label">Meta Description</label>
+                      <input type="text" name="meta_description" class="input" value="{{ $event->meta_description }}" placeholder="Meta Description" />
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-field">
+                      <label class="label">Meta Keyword</label>
+                      <input type="text" name="meta_keyword" class="input" value="{{ $event->meta_keyword }}" placeholder="Meta Keyword" />
+                  </div>
+              </div>
+
+
 
               <div class="form-row">
                   <div class="form-field">

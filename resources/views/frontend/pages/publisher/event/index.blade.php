@@ -161,6 +161,23 @@
 
                     </div>
 
+                     <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Meta Title*</label>
+                            <input type="text" name="meta_title" class="input" required />
+                        </div>
+
+                    </div>
+
+                     <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Meta Description*</label>
+                            <input type="text" name="meta_description" class="input" required />
+                        </div>
+
+                    </div>
+
+
                     <div class="btn-group">
                         <button class="btn btn-lite">Cancel</button>
                         <button class="btn btn-solid">Add Book</button>
@@ -233,6 +250,29 @@
                         <input type="text" name="event_link" class="input" placeholder="Link" />
                     </div>
                 </div>
+
+                   <div class="form-row">
+                    <div class="form-field">
+                        <label class="label">Meta Title</label>
+                        <input type="text" name="meta_title" class="input" placeholder="Meta Title" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="label">Meta Description</label>
+                        <input type="text" name="meta_description" class="input" placeholder="Meta Description" />
+                    </div>
+                </div>
+
+                 <div class="form-row">
+                    <div class="form-field">
+                        <label class="label">Meta Keyword</label>
+                        <input type="text" name="meta_keyword" class="input" placeholder="Meta Keyword" />
+                    </div>
+                </div>
+
+                
 
                 <div class="form-row">
                     <div class="form-field">

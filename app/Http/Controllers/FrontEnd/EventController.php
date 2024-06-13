@@ -53,6 +53,10 @@ class EventController extends Controller
     $event->event_starting_time = $request->event_starting_time;
     $event->event_ending_time = $request->event_ending_time;
 
+    $event->meta_title = $request->meta_title;
+    $event->meta_description = $request->meta_description;
+    $event->meta_keyword = $request->meta_keyword;
+
     if ($request->image) {
 
         if (isset($request->image)) {
@@ -92,6 +96,10 @@ class EventController extends Controller
     $event->event_link = $request->event_link;
     $event->event_starting_time = $request->event_starting_time;
     $event->event_ending_time = $request->event_ending_time;
+
+    $event->meta_title = $request->meta_title;
+    $event->meta_description = $request->meta_description;
+    $event->meta_keyword = $request->meta_keyword;
 
     if ($request->image) {
         if (isset($request->image)) {
