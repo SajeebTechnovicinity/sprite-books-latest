@@ -411,6 +411,8 @@ class AuthorController extends Controller
         $book->video_link=$request->video_file_updoad;
         $book->isbn = $request->isbn;
         $book->meta_key = $request->meta_key;
+        $book->meta_title = $request->meta_title;
+        $book->meta_description = $request->meta_description;
 
         $book->save();
 
@@ -594,6 +596,8 @@ class AuthorController extends Controller
         $book->video_link=$request->video_file_updoad;
         $book->isbn = $request->isbn;
         $book->meta_key = $request->meta_key;
+        $book->meta_title = $request->meta_title;
+        $book->meta_description = $request->meta_description;
 
         $book->save();
 
@@ -659,6 +663,10 @@ class AuthorController extends Controller
         $author->author_pinterest_link = $request->author_pinterest_link;
         $author->author_spotify_link = $request->author_spotify_link;
         $author->author_podcast_link = $request->author_podcast_link;
+
+        $author->meta_title = $request->meta_title;
+        $author->meta_description = $request->meta_description;
+        $author->meta_keyword = $request->meta_keyword;
 
         $author->author_intro_video=$request->author_intro_video;
 
