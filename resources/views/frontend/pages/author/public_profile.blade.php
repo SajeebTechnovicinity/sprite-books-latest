@@ -1,5 +1,9 @@
 @extends('master')
 
+<title>{{ $author->meta_title }}</title>
+<meta name="description" content={{ $author->meta_description }}>
+<meta name="keywords" content={{ $author->meta_keyword }}>
+
 @section('content')
 
     <!-- Content Block -->

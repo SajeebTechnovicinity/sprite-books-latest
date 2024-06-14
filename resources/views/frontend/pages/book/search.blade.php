@@ -184,6 +184,23 @@
 
                                     </div>
 
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="links" class="label">Meta Title*</label>
+                                            <input type="text" name="meta_title" class="input" required />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="links" class="label">Meta Description*</label>
+                                            <input type="text" name="meta_description" class="input" required />
+                                        </div>
+
+                                    </div>
+
+
                                     <div class="btn-group">
                                         <button class="btn btn-lite">Cancel</button>
                                         <button class="btn btn-solid">Add Book</button>
@@ -327,72 +344,71 @@
                     </div>
 
                     <div class="block-wrap">
-                                <div class="block-component">
+                        <div class="block-component">
 
-                                    <!-- Grid Items -->
-                                    <div class="grid-container author-inheritance">
-                                        <div class="title-bar flex-equal" style="padding-top: 0; padding-bottom: 35px;">
-                                            <h3 class="title">Authors</h3>
-                                        </div>
-                                        <div class="grid-items card-wrap books-card">
-                                            @if ($authors->isNotEmpty())
-                                                @foreach ($authors as $sAuthors)
-                                                    <div class="card grid-item">
+                            <!-- Grid Items -->
+                            <div class="grid-container author-inheritance">
+                                <div class="title-bar flex-equal" style="padding-top: 0; padding-bottom: 35px;">
+                                    <h3 class="title">Authors</h3>
+                                </div>
+                                <div class="grid-items card-wrap books-card">
+                                    @if ($authors->isNotEmpty())
+                                        @foreach ($authors as $sAuthors)
+                                            <div class="card grid-item">
 
-                                                        <a href="{{ url('book-details/' . $sAuthors->id) }}"
-                                                            class="figure">
-                                                            <img src="@if ($sAuthors->author_profile_picture) {{ asset($sAuthors->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
-                                                                alt="" />
-                                                        </a>
-                                                        <div class="text-wrap">
-                                                            {{-- <h5 class="subtitle">PAPERBACK</h5> --}}
-                                                            <a href="{{ url('author-details/' . $sAuthors->id) }}"
-                                                                class="title">{{ $sAuthors->author_name }}</a>
+                                                <a href="{{ url('book-details/' . $sAuthors->id) }}" class="figure">
+                                                    <img src="@if ($sAuthors->author_profile_picture) {{ asset($sAuthors->author_profile_picture) }} @else {{ asset('public/frontend_asset') }}/imgs/profile.jpg @endif"
+                                                        alt="" />
+                                                </a>
+                                                <div class="text-wrap">
+                                                    {{-- <h5 class="subtitle">PAPERBACK</h5> --}}
+                                                    <a href="{{ url('author-details/' . $sAuthors->id) }}"
+                                                        class="title">{{ $sAuthors->author_name }}</a>
 
-                                                            <?php
-                                                            $text = $sAuthors->book_description;
-                                                            if (strlen($text) > 30) {
-                                                                $firstPara = substr($text, 0, strpos($text, ' ', 30));
-                                                                $countLength = strlen($firstPara);
-                                                                $secondPara = substr($text, strpos($text, true) + $countLength);
-                                                            } else {
-                                                                $firstPara = $row->book_description ?? '';
-                                                            }
-                                                            ?>
+                                                    <?php
+                                                    $text = $sAuthors->book_description;
+                                                    if (strlen($text) > 30) {
+                                                        $firstPara = substr($text, 0, strpos($text, ' ', 30));
+                                                        $countLength = strlen($firstPara);
+                                                        $secondPara = substr($text, strpos($text, true) + $countLength);
+                                                    } else {
+                                                        $firstPara = $row->book_description ?? '';
+                                                    }
+                                                    ?>
 
-                                                            <p class="para">
-                                                                <span class="main">
-                                                                    {{ $firstPara }}
-                                                                </span>
-                                                                @if (strlen($text) > 30)
-                                                                    <span class="extended">
-                                                                        {{ $secondPara }}
-                                                                    </span>
-                                                                    {{-- <span class="read-more">Show More</span> --}}
-                                                                @endif
-                                                            </p>
+                                                    <p class="para">
+                                                        <span class="main">
+                                                            {{ $firstPara }}
+                                                        </span>
+                                                        @if (strlen($text) > 30)
+                                                            <span class="extended">
+                                                                {{ $secondPara }}
+                                                            </span>
+                                                            {{-- <span class="read-more">Show More</span> --}}
+                                                        @endif
+                                                    </p>
 
-                                                            {{-- <p class="dsc">
+                                                    {{-- <p class="dsc">
                                         {{Illuminate\Support\Str::of($sAuthors->book_description ?? '')->words(10, ' ...')}}
                                         </p> --}}
 
-                                                            {{-- <span class="ratting-poing">8.9</span> --}}
-                                                            <a href="{{ url('author-details/' . $sAuthors->id) }}"
-                                                                class="card-link">
-                                                                Details</a>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @else
-                                                <h5 class="title">No other books available</h5>
-                                            @endif
-                                        </div>
-                                    </div>
-
-
-
+                                                    {{-- <span class="ratting-poing">8.9</span> --}}
+                                                    <a href="{{ url('author-details/' . $sAuthors->id) }}"
+                                                        class="card-link">
+                                                        Details</a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <h5 class="title">No other books available</h5>
+                                    @endif
                                 </div>
                             </div>
+
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
     </section>

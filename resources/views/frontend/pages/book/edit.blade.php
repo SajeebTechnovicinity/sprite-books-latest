@@ -234,6 +234,23 @@
 
                                     </div>
 
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="links" class="label">Meta Title*</label>
+                                            <input type="text" name="meta_title" class="input" required />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="links" class="label">Meta Description*</label>
+                                            <input type="text" name="meta_description" class="input" required />
+                                        </div>
+
+                                    </div>
+
+
                                     <div class="btn-group">
                                         <button class="btn btn-lite">Cancel</button>
                                         <button class="btn btn-solid">Add Book</button>
@@ -534,7 +551,24 @@
                             <div class="form-row">
                                 <div class="form-field">
                                     <label for="links" class="label">Meta Key*</label>
-                                    <input type="text" name="meta_key" class="input" value="{{ $book->meta_key }}" required />
+                                    <input type="text" name="meta_key" class="input" value="{{ $book->meta_key }}"
+                                        required />
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="links" class="label">Meta Title*</label>
+                                    <input type="text" name="meta_title" class="input"
+                                        value="{{ $book->meta_title }}" required />
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="links" class="label">Meta Description*</label>
+                                    <input type="text" name="meta_description" class="input"
+                                        value="{{ $book->meta_description }}" required />
                                 </div>
 
                             </div>
@@ -588,7 +622,7 @@
         }
     </script>
 
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         $(function() {
             $('#editor').summernote({
