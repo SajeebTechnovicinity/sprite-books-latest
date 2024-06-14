@@ -246,32 +246,28 @@
 
                                                             <?php
                                                             $text = $sBooks->book_description;
-                                                            if (strlen($text) > 30) {
-                                                                $firstPara = substr($text, 0, strpos($text, ' ', 30));
+                                                            if (strlen($text) > 40) {
+                                                                $firstPara = substr($text, 0, strpos($text, ' ', 40));
                                                                 $countLength = strlen($firstPara);
                                                                 $secondPara = substr($text, strpos($text, true) + $countLength);
                                                             } else {
                                                                 $firstPara = $row->book_description ?? '';
                                                             }
+
+                                                            $main_text = strip_tags($firstPara);
+                                                            $main_text = str_replace("\\n", '', $main_text);
+                                                            $main_text = str_replace("\\", '', $main_text);
                                                             ?>
 
                                                             <p class="para">
                                                                 <span class="main">
-                                                                    {{ $firstPara }}
+                                                                    {{ $main_text }}
                                                                 </span>
-                                                                @if (strlen($text) > 30)
-                                                                    <span class="extended">
-                                                                        {{ $secondPara }}
-                                                                    </span>
-                                                                    {{-- <span class="read-more">Show More</span> --}}
-                                                                @endif
                                                             </p>
 
-                                                            {{-- <p class="dsc">
-                                        {{Illuminate\Support\Str::of($sBooks->book_description ?? '')->words(10, ' ...')}}
-                                        </p> --}}
 
-                                                            {{-- <span class="ratting-poing">8.9</span> --}}
+
+
                                                             <a href="{{ url('book-details/' . $sBooks->id.'/'. $sBooks->book_name) }}"
                                                                 class="card-link">
                                                                 Details</a>
@@ -290,7 +286,7 @@
                             </div>
 
 
-                            <div class="block-wrap">
+                            <div class="block-wrap book-search-author">
                                 <div class="block-component">
 
                                     <!-- Grid Items -->
