@@ -13,15 +13,15 @@
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">List</h4>
-            
+
             <div class="card-tools">
 <!--                <a href="{{url('admin/genere/create')}}" class="btn btn-info btn-sm" >
                     <i class="fas fa-plus-circle"></i> Add New Genere-->
-                    
+
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-modal">
                   Add New Genere
                 </button>
-                    
+
                 </a>
             </div>
         </div>
@@ -43,7 +43,7 @@
                                 {{ $loop->iteration }}
                             </td>
 
-                           
+
                             <td>
                                 {{ $row->genere_name }}
                             </td>
@@ -51,7 +51,7 @@
                             <td>
                                 {{ $row->genere_description }}
                             </td>
-                            
+
                             <td>
                                {{-- @if(Auth::user()->can('add-genere')) --}}
                                <div class="row">
@@ -74,9 +74,9 @@
             </table>
         </div>
     </div>
-    
+
     <!-- Add Modal-->
-    
+
       <div class="modal fade" id="add-modal">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
@@ -88,13 +88,13 @@
             </div>
                 <form id="add_form">
             <div class="modal-body">
-                
+
                 <div class="success_msg"></div>
-            
-          
+
+
                 <div class="form-row">
 
-                   
+
 
                     <div class="form-group col-md-6">
                         <label for="Name">
@@ -114,8 +114,8 @@
 
                 </div>
 
-           
-        
+
+
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -128,9 +128,9 @@
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
-      
+
           <!--Edit Modal-->
-    
+
       <div class="modal fade" id="edit-modal">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
@@ -143,8 +143,8 @@
                 <form id="edit_form">
                     @method('PUT')
                     <div class="modal-body" id="edit_modal_body">
-             
-        
+
+
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -157,7 +157,7 @@
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
-    
+
 </div>
 
 <script>
@@ -167,7 +167,7 @@
         e.preventDefault();
         $(".error_msg").html('');
         var data = new FormData($('#add_form')[0]);
-        
+
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
@@ -179,15 +179,15 @@
             contentType: false,
             processData: false,
             success: function (data, textStatus, jqXHR) {
-                
+
             }
         }).done(function() {
             $('.loader').hide();
             $(".success_msg").html("Data Save Successfully");
             $(".success_msg").show();
-            setInterval(function() {
+            setTimeout(function() {
                 window.location.href = "{{ url('admin/genere')}}";
-            }, 1000);
+            }, 400);
             // location.reload();
         }).fail(function(data, textStatus, jqXHR) {
             $('.loader').hide();
@@ -199,8 +199,8 @@
             });
         });
     });
-    
-//    Edit 
+
+//    Edit
     $(".edit_modal").click(function (){
         $('.loader').show();
         var id = $(this).data("id");
@@ -215,11 +215,11 @@
                 $('.loader').hide();
                 $("#edit_modal_body").html(data);
                 $("#edit_modal").modal("show");
-                
+
             }
         });
     });
-    
+
 //    Update
 
         $("#edit_form").submit(function (e){
@@ -230,7 +230,7 @@
         $(".error_msg").html('');
 
         var data = new FormData($('#edit_form')[0]);
-    
+
         var id = $('[name=id]').val();
 
         $.ajax({
@@ -244,7 +244,7 @@
             contentType: false,
             processData: false,
             success: function (data, textStatus, jqXHR) {
-                
+
             }
         }).done(function() {
             $(".success_msg").html("Data Save Successfully");
