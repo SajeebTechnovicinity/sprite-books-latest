@@ -388,31 +388,7 @@
 
     </div>
  
-{{-- <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.editorConfig = function(config) {
-        // Disable version check
-        config.versionCheck = false;
-    };
 
-    $(function() {
-        // Replace the <textarea id="editor1"> with a CKEditor instance
-        CKEDITOR.replace('editor1');
-        // Replace the <textarea id="editor2"> with another CKEditor instance
-        CKEDITOR.replace('editor2');
-        CKEDITOR.replace('editor3');
-        CKEDITOR.replace('editor4');
-        CKEDITOR.replace('editor5');
-        CKEDITOR.replace('editor6');
-        CKEDITOR.replace('editor7');
-        CKEDITOR.replace('editor8');
-        CKEDITOR.replace('editor9');
-        CKEDITOR.replace('editor10');
-        
-        // Bootstrap WYSIHTML5 - text editor
-        $(".textarea").wysihtml5();
-    });
-</script> --}}
 
 <script src="https://cdn.tiny.cloud/1/59sp4a7vac944p04i9qpgiy90qx9ztls00hi5ogjxoimmy66/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
