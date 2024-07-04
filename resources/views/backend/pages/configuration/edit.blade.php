@@ -6,13 +6,14 @@
             width: 450px !important;
         }
 
-        .conf-top label{
+        .conf-top label {
             display: block;
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 15px;
         }
-        .conf-top{
+
+        .conf-top {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             grid-gap: 30px;
@@ -20,29 +21,30 @@
             padding: 0 0 20px;
         }
 
-        @media (min-width:1400px) and (max-width: 1600px){
-            .conf-top{
+        @media (min-width:1400px) and (max-width: 1600px) {
+            .conf-top {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
 
-        @media (min-width:680px) and (max-width: 1399px){
-            .conf-top{
+        @media (min-width:680px) and (max-width: 1399px) {
+            .conf-top {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        @media (max-width: 679px){
-            .conf-top{
+        @media (max-width: 679px) {
+            .conf-top {
                 grid-template-columns: repeat(1, 1fr);
             }
         }
 
-        .conf-top li img{
+        .conf-top li img {
             max-height: 100px;
             max-width: 100%;
         }
-        .conf-top li{
+
+        .conf-top li {
             padding: 22px;
             border: 1px solid #dddddd;
             border-radius: 4px;
@@ -79,60 +81,60 @@
                 <form action="{{ url('admin/configuration/update') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <ul class="conf-top">
-                    @if ($globalSetting->app_logo)
-                        <li>
-                            <label for="Name">Previous App Logo</label>
-                            <img src="{{ asset($globalSetting->app_logo) }}">
-                        </li>
-                    @endif
-                    {{-- @if ($globalSetting->hero_image)
+                        @if ($globalSetting->app_logo)
+                            <li>
+                                <label for="Name">Previous App Logo</label>
+                                <img src="{{ asset($globalSetting->app_logo) }}">
+                            </li>
+                        @endif
+                        {{-- @if ($globalSetting->hero_image)
                         <li>
                             <label for="Name">Previous Hero Image</label>
                             <img src="{{ asset($globalSetting->hero_image) }}">
                         </li>
                     @endif --}}
-                    @if ($globalSetting->section1_image)
-                    <li>
-                        <label for="Name">Previous Section1 Image</label>
-                        <img src="{{ asset($globalSetting->section1_image) }}">
-                    </li>
-                    @endif
-                    @if ($globalSetting->section2_image)
-                    <li>
-                        <label for="Name">Previous Section2 Image</label>
-                        <img src="{{ asset($globalSetting->section2_image) }}">
-                    </li>
-                    @endif
-                    @if ($globalSetting->section3_image)
-                    <li>
-                        <label for="Name">Previous Section3 Image</label>
-                        <img src="{{ asset($globalSetting->section3_image) }}">
-                    </li>
-                    @endif
-                    @if ($globalSetting->section2_icon1)
-                    <li>
-                        <label for="Name">Previous Section2 Icon1</label>
-                        <img src="{{ asset($globalSetting->section2_icon1) }}">
-                    </li>
-                    @endif
-                    @if ($globalSetting->section2_icon2)
-                    <li>
-                        <label for="Name">Previous Section2 Icon2</label>
-                        <img src="{{ asset($globalSetting->section2_icon2) }}">
-                    </li>
-                    @endif
-                    @if ($globalSetting->section2_icon3)
-                    <li>
-                        <label for="Name">Previous Section2 Icon3</label>
-                        <img src="{{ asset($globalSetting->section2_icon3) }}">
-                    </li>
-                    @endif
-                    @if ($globalSetting->section2_icon4)
-                    <li>
-                        <label for="Name">Previous Section2 Icon4</label>
-                        <img src="{{ asset($globalSetting->section2_icon4) }}">
-                    </li>
-                    @endif
+                        @if ($globalSetting->section1_image)
+                            <li>
+                                <label for="Name">Previous Section1 Image</label>
+                                <img src="{{ asset($globalSetting->section1_image) }}">
+                            </li>
+                        @endif
+                        @if ($globalSetting->section2_image)
+                            <li>
+                                <label for="Name">Previous Section2 Image</label>
+                                <img src="{{ asset($globalSetting->section2_image) }}">
+                            </li>
+                        @endif
+                        @if ($globalSetting->section3_image)
+                            <li>
+                                <label for="Name">Previous Section3 Image</label>
+                                <img src="{{ asset($globalSetting->section3_image) }}">
+                            </li>
+                        @endif
+                        @if ($globalSetting->section2_icon1)
+                            <li>
+                                <label for="Name">Previous Section2 Icon1</label>
+                                <img src="{{ asset($globalSetting->section2_icon1) }}">
+                            </li>
+                        @endif
+                        @if ($globalSetting->section2_icon2)
+                            <li>
+                                <label for="Name">Previous Section2 Icon2</label>
+                                <img src="{{ asset($globalSetting->section2_icon2) }}">
+                            </li>
+                        @endif
+                        @if ($globalSetting->section2_icon3)
+                            <li>
+                                <label for="Name">Previous Section2 Icon3</label>
+                                <img src="{{ asset($globalSetting->section2_icon3) }}">
+                            </li>
+                        @endif
+                        @if ($globalSetting->section2_icon4)
+                            <li>
+                                <label for="Name">Previous Section2 Icon4</label>
+                                <img src="{{ asset($globalSetting->section2_icon4) }}">
+                            </li>
+                        @endif
                     </ul>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -206,10 +208,11 @@
                             <input type="file" class="form-control" name="section2_image" id="email"
                                 placeholder="Enter section2 image">
                         </div>
-                         <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="Name">Section2 Image Link</label>
                             <input type="text" class="form-control" name="section2_image_link" id="name"
-                                placeholder="Enter section2 image link" value="{{ $globalSetting->section2_image_link }}">
+                                placeholder="Enter section2 image link"
+                                value="{{ $globalSetting->section2_image_link }}">
                         </div>
                     </div>
                     <div class="form-row">
@@ -229,7 +232,8 @@
                         <div class="form-group col-md-12">
                             <label for="Name">Section2 Icon1 Details</label>
                             <input type="text" class="form-control" name="section2_icon1_details" id="name"
-                                placeholder="Enter section2 icon1 details" value="{{ $globalSetting->section2_icon1_details }}">
+                                placeholder="Enter section2 icon1 details"
+                                value="{{ $globalSetting->section2_icon1_details }}">
                         </div>
                     </div>
                     <div class="form-row">
@@ -245,11 +249,12 @@
                                 placeholder="Enter section2 icon2">
                         </div>
                     </div>
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="Name">Section2 Icon2 Details</label>
                             <input type="text" class="form-control" name="section2_icon2_details" id="name"
-                                placeholder="Enter section2 icon2 details" value="{{ $globalSetting->section2_icon2_details }}">
+                                placeholder="Enter section2 icon2 details"
+                                value="{{ $globalSetting->section2_icon2_details }}">
                         </div>
                     </div>
                     <div class="form-row">
@@ -265,11 +270,12 @@
                                 placeholder="Enter section2 icon3">
                         </div>
                     </div>
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="Name">Section2 Icon3 Details</label>
                             <input type="text" class="form-control" name="section2_icon3_details" id="name"
-                                placeholder="Enter section2 icon3 details" value="{{ $globalSetting->section2_icon3_details }}">
+                                placeholder="Enter section2 icon3 details"
+                                value="{{ $globalSetting->section2_icon3_details }}">
                         </div>
                     </div>
                     <div class="form-row">
@@ -285,11 +291,12 @@
                                 placeholder="Enter section2 icon4">
                         </div>
                     </div>
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="Name">Section2 Icon4 Details</label>
                             <input type="text" class="form-control" name="section2_icon4_details" id="name"
-                                placeholder="Enter section2 icon4 details" value="{{ $globalSetting->section2_icon4_details }}">
+                                placeholder="Enter section2 icon4 details"
+                                value="{{ $globalSetting->section2_icon4_details }}">
                         </div>
                     </div>
                     <div class="form-row">
@@ -303,10 +310,11 @@
                             <input type="file" class="form-control" name="section3_image" id="email"
                                 placeholder="Enter section3 image">
                         </div>
-                          <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="Name">Section3 Image Link</label>
                             <input type="text" class="form-control" name="section3_image_link" id="name"
-                                placeholder="Enter section3 image link" value="{{ $globalSetting->section3_image_link }}">
+                                placeholder="Enter section3 image link"
+                                value="{{ $globalSetting->section3_image_link }}">
                         </div>
                     </div>
                     <div class="form-row">
@@ -379,23 +387,42 @@
 
 
     </div>
-    <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
-    <script>
-        $(function() {
-            // Replace the <textarea id="editor1"> with a CKEditor instance
-            CKEDITOR.replace('editor1');
-            // Replace the <textarea id="editor2"> with another CKEditor instance
-            CKEDITOR.replace('editor2');
-            CKEDITOR.replace('editor3');
-            CKEDITOR.replace('editor4');
-            CKEDITOR.replace('editor5');
-            CKEDITOR.replace('editor6');
-            CKEDITOR.replace('editor7');
-            CKEDITOR.replace('editor8');
-            CKEDITOR.replace('editor9');
-            CKEDITOR.replace('editor10');
-            // Bootstrap WYSIHTML5 - text editor
-            $(".textarea").wysihtml5();
+ 
+{{-- <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.editorConfig = function(config) {
+        // Disable version check
+        config.versionCheck = false;
+    };
+
+    $(function() {
+        // Replace the <textarea id="editor1"> with a CKEditor instance
+        CKEDITOR.replace('editor1');
+        // Replace the <textarea id="editor2"> with another CKEditor instance
+        CKEDITOR.replace('editor2');
+        CKEDITOR.replace('editor3');
+        CKEDITOR.replace('editor4');
+        CKEDITOR.replace('editor5');
+        CKEDITOR.replace('editor6');
+        CKEDITOR.replace('editor7');
+        CKEDITOR.replace('editor8');
+        CKEDITOR.replace('editor9');
+        CKEDITOR.replace('editor10');
+        
+        // Bootstrap WYSIHTML5 - text editor
+        $(".textarea").wysihtml5();
+    });
+</script> --}}
+
+<script src="https://cdn.tiny.cloud/1/59sp4a7vac944p04i9qpgiy90qx9ztls00hi5ogjxoimmy66/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        tinymce.init({
+            selector: '#editor1, #editor2, #editor3, #editor4, #editor5, #editor6, #editor7, #editor8, #editor9, #editor10'
         });
-    </script>
+    });
+</script>
+
+
 @endsection
