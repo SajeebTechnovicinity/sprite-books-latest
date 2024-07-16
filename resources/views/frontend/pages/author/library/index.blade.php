@@ -87,6 +87,15 @@
 
                     <div class="form-row">
                         <div class="form-field">
+                            <label for="links" class="label">Website Link</label>
+                            <input type="text" name="website_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
                             <input type="text" name="book_discount_in_percentage" class="input" placeholder=""
                                 pattern="\d+(\.\d+)?" title="Enter a valid number" />
@@ -157,7 +166,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Title*</label>
                             <input type="text" name="meta_title" class="input" required />
@@ -165,7 +174,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Description*</label>
                             <input type="text" name="meta_description" class="input" required />

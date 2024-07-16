@@ -409,6 +409,7 @@ class AuthorController extends Controller
         $book->book_price = $request->book_price;
         $book->genere_id = $request->genere_id;
         $book->video_link=$request->video_file_updoad;
+        $book->website_link=$request->website_link;
         $book->isbn = $request->isbn;
         $book->meta_key = $request->meta_key;
         $book->meta_title = $request->meta_title;
@@ -594,6 +595,7 @@ class AuthorController extends Controller
         $book->book_price = $request->book_price;
         $book->genere_id = $request->genere_id;
         $book->video_link=$request->video_file_updoad;
+        $book->website_link=$request->website_link;
         $book->isbn = $request->isbn;
         $book->meta_key = $request->meta_key;
         $book->meta_title = $request->meta_title;

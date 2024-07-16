@@ -41,21 +41,23 @@
                                                 onblur="handleInput()" required />
                                         </div>
                                     </div>
-                                    <div class="form-field">
-                                        <label for="isbn" class="label">Role*</label>
-                                        <input type="radio" value="Publisher" name="author_define" required>
-                                        <label for="html">Publisher</label>
-                                        <input type="radio" value="Author" name="author_define" required>
-                                        <label for="html">Author</label>
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="text-area" id="author_text">Author </label>
-                                        <select name="book_author" id="book_author" class="input">
-                                            @foreach ($author_created_list as $listA)
-                                                <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    @if (session('type') != 'AUTHOR' && session('type') != 'USER' && session('type') != null)
+                                        <div class="form-field">
+                                            <label for="isbn" class="label">Role*</label>
+                                            <input type="radio" value="Publisher" name="author_define" required>
+                                            <label for="html">Publisher</label>
+                                            <input type="radio" value="Author" name="author_define" required>
+                                            <label for="html">Author</label>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="text-area" id="author_text">Author </label>
+                                            <select name="book_author" id="book_author" class="input">
+                                                @foreach ($author_created_list as $listA)
+                                                    <option value="{{ $listA->id }}">{{ $listA->author_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
 
                                     <div class="form-field">
                                         <label for="title" class="label">Book Title*</label>
@@ -105,6 +107,14 @@
                             </defs>
                         </svg>
                     </div> --}}
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="links" class="label">Website Link</label>
+                                            <input type="text" name="website_link" id="links" class="input" />
+                                        </div>
+
                                     </div>
 
                                     <div class="form-row">

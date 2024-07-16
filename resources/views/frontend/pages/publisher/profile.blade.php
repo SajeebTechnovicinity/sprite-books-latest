@@ -107,6 +107,15 @@
 
                     <div class="form-row">
                         <div class="form-field">
+                            <label for="links" class="label">Website Link</label>
+                            <input type="text" name="website_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
                             <input type="text" name="book_discount_in_percentage" class="input" placeholder=""
                                 pattern="\d+(\.\d+)?" title="Enter a valid number" />
@@ -185,7 +194,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Title*</label>
                             <input type="text" name="meta_title" class="input" required />
@@ -193,7 +202,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Description*</label>
                             <input type="text" name="meta_description" class="input" required />
@@ -857,8 +866,8 @@
                                 @endif
 
                                 <!-- <p class="member-status unit">
-                                                    Member since {{ date('Y', strtotime($author->created_at)) }}
-                                                </p> -->
+                                                        Member since {{ date('Y', strtotime($author->created_at)) }}
+                                                    </p> -->
                             </div>
                             <div class="tabs-wrap space-0">
                                 <div class="tabs-btns-row">
@@ -904,8 +913,8 @@
                                                         @foreach ($author_created_list as $list)
                                                             <tr>
                                                                 <!-- <td>
-                                                                                    {{ $loop->iteration }}
-                                                                                </td> -->
+                                                                                        {{ $loop->iteration }}
+                                                                                    </td> -->
 
                                                                 {{-- <td>
                                                                     {{ $list->author_code }}
@@ -917,8 +926,8 @@
                                                                     {{ $list->author_email }}
                                                                 </td>
                                                                 <!-- <td>
-                                                                                    {{ $list->author_phone }}
-                                                                                </td> -->
+                                                                                        {{ $list->author_phone }}
+                                                                                    </td> -->
                                                                 {{-- <td>
                                                                     {{ $list->author_country }}
                                                                 </td> --}}

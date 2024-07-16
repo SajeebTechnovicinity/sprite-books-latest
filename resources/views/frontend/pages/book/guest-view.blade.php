@@ -94,6 +94,16 @@
                     </div> --}}
                                 </div>
 
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="links" class="label">Website Link</label>
+                                        <input type="text" name="website_link" id="links" class="input" />
+                                    </div>
+
+                                </div>
+
+
                                 <div class="form-row">
                                     <div class="form-field">
                                         <label class="label">Book Discount in Percentage</label>
