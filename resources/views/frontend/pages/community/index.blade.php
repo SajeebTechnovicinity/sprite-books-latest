@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
 
     <style>
@@ -224,6 +224,15 @@
 
                     <div class="form-row">
                         <div class="form-field">
+                            <label for="links" class="label">Website Link</label>
+                            <input type="text" name="website_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
                             <input type="text" name="book_discount_in_percentage" class="input" placeholder=""
                                 pattern="\d+(\.\d+)?" title="Enter a valid number" />
@@ -298,7 +307,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Title*</label>
                             <input type="text" name="meta_title" class="input" required />
@@ -306,7 +315,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Description*</label>
                             <input type="text" name="meta_description" class="input" required />
@@ -398,15 +407,16 @@
                                                     <!-- Your SVG code -->
                                                 </svg>
                                             </a>
-                                            <div class="dropdown-content" id="dropdownContent" style="margin-bottom:10px;">
-                                                <a href="#" class="add-btn btn-trigger edit-btn" data-target="#edit-community">Edit</a>
+                                            <div class="dropdown-content" id="dropdownContent"
+                                                style="margin-bottom:10px;">
+                                                <a href="#" class="add-btn btn-trigger edit-btn"
+                                                    data-target="#edit-community">Edit</a>
                                                 <a href="{{ url('author/delete-community/' . $community->id) }}"
                                                     onclick="confirmCancellation(event)">Delete</a>
-                                               
+
                                             </div>
-                                           
+
                                         </div>
-                                        
                                     @endif
                                 </div>
                                 <div class="tab-body">
@@ -973,9 +983,9 @@
                 contentType: false,
                 processData: false,
                 success: function(data, textStatus, jqXHR) {
-                     console.log(data);
+                    console.log(data);
                     $("#showMessage").text("Message has ben successfully send.");
-                   location.reload();
+                    location.reload();
                 }
             }).fail(function(data, textStatus, jqXHR) {
                 //console.log(data);

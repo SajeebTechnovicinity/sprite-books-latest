@@ -110,9 +110,20 @@
 
                                             <div class="form-row">
                                                 <div class="form-field">
+                                                    <label for="links" class="label">Website Link</label>
+                                                    <input type="text" name="website_link" id="links"
+                                                        class="input" />
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="form-row">
+                                                <div class="form-field">
                                                     <label class="label">Book Discount in Percentage</label>
                                                     <input type="text" name="book_discount_in_percentage" class="input"
-                                                        placeholder="" pattern="\d+(\.\d+)?" title="Enter a valid number" />
+                                                        placeholder="" pattern="\d+(\.\d+)?"
+                                                        title="Enter a valid number" />
                                                 </div>
 
                                             </div>
@@ -271,10 +282,10 @@
                                                             } else {
                                                                 $firstPara = $row->book_description ?? '';
                                                             }
-
+                                                            
                                                             $main_text = strip_tags($firstPara);
                                                             $main_text = str_replace("\\n", '', $main_text);
-                                                            $main_text = str_replace("\\", '', $main_text);
+                                                            $main_text = str_replace('\\', '', $main_text);
                                                             ?>
 
                                                             <p class="para">

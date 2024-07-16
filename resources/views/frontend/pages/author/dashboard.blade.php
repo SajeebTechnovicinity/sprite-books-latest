@@ -85,6 +85,24 @@
                         </div> --}}
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Website Link</label>
+                            <input type="text" name="website_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Website Link</label>
+                            <input type="text" name="website_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
 
 
                     <div class="form-row">
@@ -99,8 +117,8 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show*</label>
-                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?" placeholder="Price"
-                                required />
+                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="Price" required />
                         </div>
 
                         <div class="form-field">
@@ -168,7 +186,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Title*</label>
                             <input type="text" name="meta_title" class="input" required />
@@ -176,7 +194,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Description*</label>
                             <input type="text" name="meta_description" class="input" required />

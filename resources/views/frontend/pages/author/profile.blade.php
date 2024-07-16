@@ -131,6 +131,24 @@
 
                     <div class="form-row">
                         <div class="form-field">
+                            <label for="links" class="label">Website Link</label>
+                            <input type="text" name="website_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="links" class="label">Website Link</label>
+                            <input type="text" name="website_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
                             <input type="text" name="book_discount_in_percentage" class="input" placeholder=""
                                 pattern="\d+(\.\d+)?" title="Enter a valid number" />
@@ -141,8 +159,8 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label class="label">Main Price to Show*</label>
-                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?" placeholder="Price"
-                                required />
+                            <input type="text" name="book_price" class="input" pattern="\d+(\.\d+)?"
+                                placeholder="Price" required />
                         </div>
 
                         <div class="form-field">
@@ -211,7 +229,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Title*</label>
                             <input type="text" name="meta_title" class="input" required />
@@ -219,7 +237,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Description*</label>
                             <input type="text" name="meta_description" class="input" required />
@@ -334,7 +352,7 @@
                     </div>
                 </div>
 
-                 <div class="form-row">
+                <div class="form-row">
                     <div class="form-field">
                         <label class="label">Meta Title</label>
                         <input type="text" name="meta_title" class="input" placeholder="Meta Title" />
@@ -348,7 +366,7 @@
                     </div>
                 </div>
 
-                 <div class="form-row">
+                <div class="form-row">
                     <div class="form-field">
                         <label class="label">Meta Keyword</label>
                         <input type="text" name="meta_keyword" class="input" placeholder="Meta Keyword" />
@@ -778,8 +796,8 @@
                                 @endif
 
                                 <!-- <p class="member-status unit">
-                                                                        Member since {{ date('Y', strtotime($author->created_at)) }}
-                                                                    </p> -->
+                                                                                Member since {{ date('Y', strtotime($author->created_at)) }}
+                                                                            </p> -->
                             </div>
                             <div class="tabs-wrap space-0">
                                 <div class="tabs-btns-row">

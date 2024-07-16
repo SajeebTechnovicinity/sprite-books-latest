@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" />
     <!-- Add Book Modal -->
     <div class="add-book-modal modal d-none" id="add-book">
         <div class="modal__wrap">
@@ -83,6 +83,15 @@
 
                     <div class="form-row">
                         <div class="form-field">
+                            <label for="links" class="label">Website Link</label>
+                            <input type="text" name="website_link" id="links" class="input" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-field">
                             <label class="label">Book Discount in Percentage</label>
                             <input type="text" name="book_discount_in_percentage" class="input" placeholder=""
                                 pattern="\d+(\.\d+)?" title="Enter a valid number" />
@@ -161,7 +170,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Title*</label>
                             <input type="text" name="meta_title" class="input" required />
@@ -169,7 +178,7 @@
 
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-field">
                             <label for="links" class="label">Meta Description*</label>
                             <input type="text" name="meta_description" class="input" required />
@@ -251,7 +260,7 @@
                     </div>
                 </div>
 
-                   <div class="form-row">
+                <div class="form-row">
                     <div class="form-field">
                         <label class="label">Meta Title</label>
                         <input type="text" name="meta_title" class="input" placeholder="Meta Title" />
@@ -265,14 +274,14 @@
                     </div>
                 </div>
 
-                 <div class="form-row">
+                <div class="form-row">
                     <div class="form-field">
                         <label class="label">Meta Keyword</label>
                         <input type="text" name="meta_keyword" class="input" placeholder="Meta Keyword" />
                     </div>
                 </div>
 
-                
+
 
                 <div class="form-row">
                     <div class="form-field">
@@ -687,7 +696,7 @@
         });
     </script>
 
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
     <script>
         $(function() {
             $('#editor').summernote({
